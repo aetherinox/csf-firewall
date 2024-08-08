@@ -61,6 +61,35 @@
         color: #FFFFFF;
     }
 
+    /*
+        Make <small>text</small> opaque. used for changelog to show date
+    */
+
+    h3 > small
+    {
+        opacity: 0.4 !important;
+        padding-left: 10px;
+        margin-bottom: 28px;
+    }
+
+    /*
+        Badge > H3
+
+        These are for badges that show in h3 headers
+    */
+
+    h3 .mdx-badge__icon
+    {
+        font-size: 14px;
+        margin-inline-end: 5px;
+    }
+
+    h3 .mdx-badge svg
+    {
+        padding-left: 2px;
+        padding-top: 1px;
+    }
+
     .color-box {
         float: left;
         height: 24px;
@@ -391,7 +420,6 @@
         background-color: #090909;
     }
 
-
     /*
         Badge > Left Box (Icon
     */
@@ -399,6 +427,35 @@
     .md-typeset .mdx-badge__icon
     {
         background-color: #3f4faa;
+    }
+
+    /*
+        Make <small>text</small> opaque. used for changelog to show date
+    */
+
+    h3 > small
+    {
+        opacity: 0.4 !important;
+        padding-left: 10px;
+        margin-bottom: 28px;
+    }
+
+    /*
+        Badge > H3
+
+        These are for badges that show in h3 headers
+    */
+
+    h3 .mdx-badge__icon
+    {
+        font-size: 14px;
+        margin-inline-end: 5px;
+    }
+
+    h3 .mdx-badge svg
+    {
+        padding-left: 2px;
+        padding-top: 1px;
     }
 
     /*
