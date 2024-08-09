@@ -11,23 +11,25 @@
       
       
       
+        <link rel="prev" href="../commands/">
       
-        <link rel="next" href="../about_csf/">
+      
+        <link rel="next" href="../conf/">
       
       
-      <link rel="icon" href="../assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
-        <title>Home - CSF Firewall</title>
+        <title>Cheatsheet: Troubleshooting - CSF Firewall</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,20 +48,20 @@
       
     
     
-      <link rel="stylesheet" href="../css/timeago.css">
+      <link rel="stylesheet" href="../../css/timeago.css">
     
-      <link rel="stylesheet" href="../stylesheets/extra.css?v1.000">
+      <link rel="stylesheet" href="../../stylesheets/extra.css?v1.000">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  <link rel="stylesheet" href="../assets/stylesheets/custom.00c04c01.min.css">
+  <link rel="stylesheet" href="../../assets/stylesheets/custom.00c04c01.min.css">
 
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -72,7 +74,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -89,6 +91,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#cheatsheet-troubleshooting" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -118,7 +125,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="../.."> 
+  <a href="../../.."> 
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -135,7 +142,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="CSF Firewall" class="md-header__button md-logo" aria-label="CSF Firewall" data-md-component="logo">
+    <a href="../.." title="CSF Firewall" class="md-header__button md-logo" aria-label="CSF Firewall" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
@@ -160,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Cheatsheet: Troubleshooting
             
           </span>
         </div>
@@ -280,7 +287,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="CSF Firewall" class="md-nav__button md-logo" aria-label="CSF Firewall" data-md-component="logo">
+    <a href="../.." title="CSF Firewall" class="md-nav__button md-logo" aria-label="CSF Firewall" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
@@ -312,17 +319,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../home/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -331,7 +331,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -343,7 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about_csf/" class="md-nav__link">
+      <a href="../../about_csf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -363,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about_patcher/" class="md-nav__link">
+      <a href="../../about_patcher/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -380,8 +379,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -396,11 +397,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -414,7 +415,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Cheatsheet
@@ -428,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cheatsheet/structure/" class="md-nav__link">
+      <a href="../structure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -449,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cheatsheet/commands/" class="md-nav__link">
+      <a href="../commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -467,10 +468,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../cheatsheet/troubleshooting/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -479,6 +500,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cant-locate-object-method-new-via-package-cryptcbc-at-usrsbincsf-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can't locate object method "new" via package "Crypt::CBC" at /usr/sbin/csf line ***
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csf46313-open3-exec-of-sbinipset-flush-failed-no-such-file-or-directory-at-usrsbincsf-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      csf[46313]: open3: exec of /sbin/ipset flush failed: No such file or directory at /usr/sbin/csf line ****.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -491,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cheatsheet/conf/" class="md-nav__link">
+      <a href="../conf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -566,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csf/install/" class="md-nav__link">
+      <a href="../../csf/install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -587,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csf/configure/" class="md-nav__link">
+      <a href="../../csf/configure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -608,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csf/webui/" class="md-nav__link">
+      <a href="../../csf/webui/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csf/testing/" class="md-nav__link">
+      <a href="../../csf/testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -650,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../csf/uninstall/" class="md-nav__link">
+      <a href="../../csf/uninstall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -725,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/license/" class="md-nav__link">
+      <a href="../../about/license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -746,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/conventions/" class="md-nav__link">
+      <a href="../../about/conventions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -767,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/tags/" class="md-nav__link">
+      <a href="../../about/tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -788,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/changelog/" class="md-nav__link">
+      <a href="../../about/changelog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -809,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backers/index.md" class="md-nav__link">
+      <a href="../../backers/index.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -847,6 +906,34 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cant-locate-object-method-new-via-package-cryptcbc-at-usrsbincsf-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can't locate object method "new" via package "Crypt::CBC" at /usr/sbin/csf line ***
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csf46313-open3-exec-of-sbinipset-flush-failed-no-such-file-or-directory-at-usrsbincsf-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      csf[46313]: open3: exec of /sbin/ipset flush failed: No such file or directory at /usr/sbin/csf line ****.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -868,14 +955,23 @@
       
     
     
-      <a href="../about/tags/#home" class="md-tag md-tag-icon">home</a>
+      <a href="../../about/tags/#cheatsheet" class="md-tag md-tag-icon">cheatsheet</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../about/tags/#configure" class="md-tag md-tag-icon">configure</a>
     
   
 </nav>
 
 
   
-    <a href="https://github.com/Aetherinox/csf-firewall/edit/main/docs/docs/home.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/Aetherinox/csf-firewall/edit/main/docs/docs/cheatsheet/troubleshooting.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -884,35 +980,45 @@
     
       
     
-    <a href="https://github.com/Aetherinox/csf-firewall/raw/main/docs/docs/home.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/Aetherinox/csf-firewall/raw/main/docs/docs/cheatsheet/troubleshooting.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<p align="center"><a class="glightbox" href="https://github.com/user-attachments/assets/ce064ce9-6675-4b2f-ad18-641e02fefe19" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://github.com/user-attachments/assets/ce064ce9-6675-4b2f-ad18-641e02fefe19" width="860"></a></p>
-<h1 align="center"><b>ConfigServer Firewall</b></h1>
-
-<p align="center">
-
-<a class="glightbox" href="https://img.shields.io/github/v/tag/Aetherinox/csf-firewall?logo=GitHub&amp;label=version&amp;color=ba5225" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Version" src="https://img.shields.io/github/v/tag/Aetherinox/csf-firewall?logo=GitHub&amp;label=version&amp;color=ba5225" /></a>
-<a class="glightbox" href="https://img.shields.io/github/downloads/Aetherinox/csf-firewall/total" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Downloads" src="https://img.shields.io/github/downloads/Aetherinox/csf-firewall/total" /></a>
-<a class="glightbox" href="https://img.shields.io/github/repo-size/Aetherinox/csf-firewall?label=size&amp;color=59702a" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Repo Size" src="https://img.shields.io/github/repo-size/Aetherinox/csf-firewall?label=size&amp;color=59702a" /></a>
-<a class="glightbox" href="https://img.shields.io/github/last-commit/Aetherinox/csf-firewall?color=b43bcc" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Last Commit)" src="https://img.shields.io/github/last-commit/Aetherinox/csf-firewall?color=b43bcc" /></a>
-
-</p>
-<p>This documentation is related to the github repository for <a href="https://github.com/Aetherinox/csf-firewall">ConfigServer Firewall</a>; a popular and powerful firewall solution for Linux servers. On top of documentation for the software itself; this repository includes added patches which allow you to seamlessly integrate Docker and OpenVPN server with ConfigServer Firewall so that all of the services can communicate between each other without interruption.</p>
-<p>This documentation covers the following:</p>
-<ul>
-<li>Install, Configure &amp; Manage CSF (ConfigServer Firewall)</li>
-<li>Install CSF WebUI interface</li>
-<li>Install patches<ul>
-<li>Docker Integration</li>
-<li>OpenVPN Integration</li>
-</ul>
-</li>
-</ul>
+<h1 id="cheatsheet-troubleshooting">Cheatsheet: Troubleshooting<a class="headerlink" href="#cheatsheet-troubleshooting" title="Permanent link">&para;</a></h1>
+<p>The information below is a list of errors you may receive within CSF, and steps on how to correct each issue.</p>
+<p><br /></p>
+<h2 id="cant-locate-object-method-new-via-package-cryptcbc-at-usrsbincsf-line">Can't locate object method "new" via package "Crypt::CBC" at /usr/sbin/csf line ***<a class="headerlink" href="#cant-locate-object-method-new-via-package-cryptcbc-at-usrsbincsf-line" title="Permanent link">&para;</a></h2>
+<p>This error occurs when <strong>Crypt::CBC</strong> cannot be found. It is sometimes seen when executing commands such as <code>sudo csf -cp</code>.</p>
+<p><br /></p>
+<p>To correct the issue, open the file <code>/usr/sbin/csf</code> in a text editor.</p>
+<p>Locate the lines:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>use ConfigServer::Sendmail;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>use ConfigServer::LookUpIP qw(iplookup);
+</span></code></pre></div></p>
+<p>Add a new line with <code>use Crypt::CBC</code> as shown below:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>use ConfigServer::Sendmail;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>use ConfigServer::LookUpIP qw(iplookup);
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="hll">use Crypt::CBC
+</span></span></code></pre></div></p>
+<p><br /></p>
+<p>Save the file, and re-execute your previous command which caused the error.</p>
+<p><br /></p>
+<hr />
+<p><br /></p>
+<h2 id="csf46313-open3-exec-of-sbinipset-flush-failed-no-such-file-or-directory-at-usrsbincsf-line">csf[46313]: open3: exec of /sbin/ipset flush failed: No such file or directory at /usr/sbin/csf line ****.<a class="headerlink" href="#csf46313-open3-exec-of-sbinipset-flush-failed-no-such-file-or-directory-at-usrsbincsf-line" title="Permanent link">&para;</a></h2>
+<p>This error occurs when you are missing the package <code>ipset</code>. Install it with the following commands:</p>
+<p><br /></p>
+<p><strong>Debian based systems:</strong></p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ipset
+</span></code></pre></div>
+<p><strong>Redhat based systems:</strong>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>yum<span class="w"> </span>check-update
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>ipset
+</span></code></pre></div></p>
 <p><br /></p>
 <hr />
 <p><br /></p>
@@ -1009,15 +1115,31 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
+          
+          <a href="../commands/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Commands">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Commands
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="../about_csf/" class="md-footer__link md-footer__link--next" aria-label="Next: About CSF">
+          <a href="../conf/" class="md-footer__link md-footer__link--next" aria-label="Next: Example csf.conf">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                About CSF
+                Example csf.conf
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1109,22 +1231,22 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "toc.follow", "content.action.edit", "content.action.view", "content.tooltips", "search.highlight", "search.share", "search.suggest", "content.code.annotate", "content.code.select", "content.code.copy", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.tracking", "navigation.path", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"CSS": "css", "HTML5": "html", "JavaScript": "js"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "stable", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "toc.follow", "content.action.edit", "content.action.view", "content.tooltips", "search.highlight", "search.share", "search.suggest", "content.code.annotate", "content.code.select", "content.code.copy", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.tracking", "navigation.path", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"CSS": "css", "HTML5": "html", "JavaScript": "js"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "stable", "provider": "mike"}}</script>
     
     
   
-      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="../js/timeago.min.js"></script>
+        <script src="../../js/timeago.min.js"></script>
       
-        <script src="../js/timeago_mkdocs_material.js"></script>
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../../javascripts/tablesort.js"></script>
       
     
-  <script src="../assets/javascripts/custom.129bd6ad.min.js"></script>
+  <script src="../../assets/javascripts/custom.129bd6ad.min.js"></script>
 
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(() => { lightbox.reload() });

@@ -488,15 +488,89 @@
 
 }
 
+/*
+    Badge > Header Padding
+    if a badge is used in a header, add padding between the badge and text
+*/
+
+:is(h1, h2, h3, h4, h5, h6) .mdx-badge__icon
+{
+    margin-inline-end: 6px;
+}
+
+/*
+    Navigation > Spacer
+    Add a gap between the last "File" item in nav menu, and the folders under.
+*/
+
+li:has(a[href*="about_patcher"])
+{
+    margin-bottom: 28px !important;
+}
+
+/*
+    Navigation > Active Group Spacer
+    adds a small spacer between each group of items opened.
+
+    issue with this is that it makes animations choppy.
+    the only way to fix this; is to disable the transition.
+    (see the next two rules)
+*/
+
+& li.md-nav__item--nested > nav.md-nav[aria-expanded="true"]
+{
+    padding-bottom: 10px;
+}
+
+.md-nav__toggle ~ .md-nav
+{
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+.md-nav__toggle.md-toggle--indeterminate ~ .md-nav, .md-nav__toggle:checked ~ .md-nav
+{
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+/*
+    Badge > Header Positioning
+    This is mainly for the conventions page
+*/
+
+h2:has(.mdx-badge) > .mdx-badge > span
+{
+  padding-bottom: 2px;
+}
+
+h2:has(.mdx-badge) > .mdx-badge svg
+{
+  margin-bottom: 2px;
+}
+
+/*
+    Reposition badge icons in header
+*/
+
+:is(h1, h2, h3, h4, h5, h6) .mdx-badge__icon svg
+{
+    padding-top: 3px !important;
+    padding-right: 1px;
+}
+
 .md-typeset .mdx-badge a[title^="Requires"] svg, .md-typeset .mdx-badge a[title^="Default"] svg
 {
-    padding-top: 2px;
-    padding-left: 4px;
+
 }
 
 .md-typeset .mdx-badge a[title^="Type"] svg
 {
-    padding: 2px;
+ 
 }
 
 .mdx-badge__text a
