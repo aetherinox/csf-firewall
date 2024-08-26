@@ -395,8 +395,8 @@ fi
 # #
 
 if [ ! -z "${IP_PUBLIC}" ]; then
-    ${PATH_IPTABLES} -t nat -A POSTROUTING -j SNAT --to-source ${IP_PUBLIC}
-    printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-t nat -A POSTROUTING -j SNAT --to-source ${IP_PUBLIC}${NORMAL}"
+    # ${PATH_IPTABLES} -t nat -A POSTROUTING -j SNAT --to-source ${IP_PUBLIC}
+    # printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-t nat -A POSTROUTING -j SNAT --to-source ${IP_PUBLIC}${NORMAL}"
 else
     printf '\n%-17s %-35s %-55s' " " "${RED}X${DEVGREY} RULE" "     ${RED}couldn't find public ip${NORMAL}"
 fi
