@@ -5,7 +5,7 @@ conventions:
 
 <br />
 
-## <!-- md:version --> Release Type { data-toc-label="Version" }
+### <!-- md:version --> Release Type { data-toc-label="Version" }
 
 The tag symbol in conjunction with a version number denotes when a specific feature or behavior was added. Make sure you're at least on this version if you want to use it.
 
@@ -14,7 +14,7 @@ The tag symbol in conjunction with a version number denotes when a specific feat
 
 <br />
 
-## <!-- md:control --> Controls { #default data-toc-label="Control" }
+### <!-- md:control --> Controls { #default data-toc-label="Control" }
 
 These icons define what type of control a specified setting uses.
 
@@ -27,7 +27,7 @@ These icons define what type of control a specified setting uses.
 
 <br />
 
-## <!-- md:default --> Default Value { #default data-toc-label="Default value" }
+### <!-- md:default --> – Default Value { #default data-toc-label="Default value" }
 
 This defines what the default value for a setting is.
 
@@ -37,7 +37,7 @@ This defines what the default value for a setting is.
 
 <br />
 
-## <!-- md:command --> Command { #command data-toc-label="Command" }
+### <!-- md:command --> – Command { #command data-toc-label="Command" }
 
 This defines a command
 
@@ -45,25 +45,25 @@ This defines a command
 
 <br />
 
-## <!-- md:flag experimental --> Experimental { data-toc-label="Experimental" }
+### <!-- md:flag experimental --> – Experimental { data-toc-label="Experimental" }
 
 Anything listed with this icon are features or functionality that are still in development and may change in future versions.
 
 <br />
 
-## <!-- md:flag required --> Required value { #required data-toc-label="Required value" }
+### <!-- md:flag required --> – Required value { #required data-toc-label="Required value" }
 
 Items listed with this symbol indicate that they are required to be set.
 
 <br />
 
-## <!-- md:flag customization --> Customization { #customization data-toc-label="Customization" }
+### <!-- md:flag customization --> – Customization { #customization data-toc-label="Customization" }
 
 This symbol denotes that the item described is a customization which affects the overall look of the app.
 
 <br />
 
-## <!-- md:3rdparty --> 3rd Party { data-toc-label="3rd Party" }
+### <!-- md:3rdparty --> – 3rd Party { data-toc-label="3rd Party" }
 
 This symbol denotes that the item described is classified as something that changes the overall functionality of the plugin.
 
@@ -73,6 +73,12 @@ This symbol denotes that the item described is classified as something that chan
 
 This symbol denotes that the item described is a metadata property, which can
 be used in Markdown documents as part of the front matter definition.
+
+<br />
+
+### <!-- md:flag setting --> – Configurable Setting { #setting data-toc-label="Configurable Setting" }
+
+This symbol denotes that an item is configurable by the user
 
 <br />
 

@@ -47,6 +47,14 @@ CSF allows you to pick which service you want to use for geographical blocks. By
 
 <br />
 
+!!! warning "Performance Impact"
+
+    If using **MaxMind**, be aware of how many countries you allow / deny from accessing your server.
+    The more countries you add, the more rules that will be added to CSF. These rules will be loaded
+    every time you start or restart CSF; and may cause CSF to take longer-than-normal times to boot.
+
+<br />
+
 To change which database is used for geo blocking; open your CSF's `csf.conf` config file and locate the setting `CC_SRC`. If you have the [ConfigServer WebUI](../../webui/) enabled; you can access these settings from the CSF Admin WebUI.
 
 ```ini hl_lines="23"

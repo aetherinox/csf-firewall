@@ -143,7 +143,8 @@ def Create_Flag(args: str, page: Page, files: Files):
     elif type == "required":        return Badge_Flag_Required(page, files)
     elif type == "customization":   return Badge_Flag_Customization(page, files)
     elif type == "metadata":        return Badge_Flag_Metadata(page, files)
-    elif type == "multiple":        return Badge_Multiple_Instances(page, files)
+    elif type == "multiple":        return Badge_Flag_Multiple_Instances(page, files)
+    elif type == "setting":         return Badge_Flag_Setting(page, files)
     raise RuntimeError(f"Unknown type: {type}")
 
 # #
@@ -642,7 +643,7 @@ def Badge_Flag_Experimental(page: Page, files: Files):
 #           <!-- md:flag multiple -->
 # #
 
-def Badge_Multiple_Instances(page: Page, files: Files):
+def Badge_Flag_Multiple_Instances(page: Page, files: Files):
     icon = "material-inbox-multiple"
     href = _resolve_path( f"{PAGE_CONVENTIONS}#multiple-instances", page, files)
 
@@ -650,6 +651,27 @@ def Badge_Multiple_Instances(page: Page, files: Files):
 
     return Create_Badge(
         icon = f"[:{icon}:]({href} 'Multiple instances')"
+    )
+
+# #
+#   Badge > Flag > Setting
+#
+#   This symbol denotes that the specified item is a customizable setting
+#
+#   MUST add an entry in conventions.md
+#
+#       use the following tag in your md file:
+#           <!-- md:flag setting -->
+# #
+
+def Badge_Flag_Setting(page: Page, files: Files):
+    icon = "material-cog"
+    href = _resolve_path( f"{PAGE_CONVENTIONS}#setting", page, files)
+
+    print(clr.MAGENTA + 'VERBOSE - ' + clr.WHITE + ' Running ' + clr.YELLOW + inspect.stack()[0][3] + clr.WHITE + ' for page ' + clr.GREY + str(href) + clr.WHITE )
+
+    return Create_Badge(
+        icon = f"[:{icon}:]({href} 'Configurable Setting')"
     )
 
 # #

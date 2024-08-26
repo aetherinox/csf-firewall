@@ -321,13 +321,21 @@ if [ -z "${TUN_ADAPTER}" ]; then
 fi
 
 # #
-#   Add rules > tunnel
+#   Add rules > Tunnel > INPUT
+#
+#   Allow TUN interface connections to OpenVPN server
 # #
 
 ${PATH_IPTABLES} -A INPUT -i tun+ -j ACCEPT
-${PATH_IPTABLES} -A FORWARD -i tun+ -j ACCEPT
-
 printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-A INPUT -i tun+ -j ACCEPT${NORMAL}"
+
+# #
+#   Add rules > Tunnel > FORWARD
+#
+#   Allow TUN interface connections to be forwarded through other interfaces.
+# #
+
+${PATH_IPTABLES} -A FORWARD -i tun+ -j ACCEPT
 printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-A FORWARD -i tun+ -j ACCEPT${NORMAL}"
 
 # #
@@ -366,9 +374,11 @@ if [ ! -z "${ETH_ADAPTER}" ]; then
 
     done
 
+    ${PATH_IPTABLES} -A INPUT -i ${ETH_ADAPTER} -m state --state NEW -p udp --dport 1194 -j ACCEPT
     ${PATH_IPTABLES} -A FORWARD -i tun+ -o ${ETH_ADAPTER} -m state --state RELATED,ESTABLISHED -j ACCEPT
     ${PATH_IPTABLES} -A FORWARD -i ${ETH_ADAPTER} -o tun+ -m state --state RELATED,ESTABLISHED -j ACCEPT
 
+    printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-A INPUT -i ${ETH_ADAPTER} -m state --state NEW -p udp --dport 1194 -j ACCEPT${NORMAL}"
     printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-A FORWARD -i tun+ -o ${ETH_ADAPTER} -m state --state RELATED,ESTABLISHED -j ACCEPT${NORMAL}"
     printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-A FORWARD -i ${ETH_ADAPTER} -o tun+ -m state --state RELATED,ESTABLISHED -j ACCEPT${NORMAL}"
 else
@@ -385,11 +395,18 @@ fi
 # #
 
 if [ ! -z "${IP_PUBLIC}" ]; then
-    ${PATH_IPTABLES} -t nat -A POSTROUTING -j SNAT --to-source 10.0.2.15
+    ${PATH_IPTABLES} -t nat -A POSTROUTING -j SNAT --to-source ${IP_PUBLIC}
     printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-t nat -A POSTROUTING -j SNAT --to-source ${IP_PUBLIC}${NORMAL}"
 else
     printf '\n%-17s %-35s %-55s' " " "${RED}X${DEVGREY} RULE" "     ${RED}couldn't find public ip${NORMAL}"
 fi
+
+# #
+#   Required if OUTPUT value is not ACCEPT:
+# #
+
+${PATH_IPTABLES} -A OUTPUT -o tun+ -j ACCEPT
+printf '\n%-17s %-35s %-55s' " " "${DEVGREY}+ RULE" "${FUCHSIA}-A OUTPUT -o tun+ -j ACCEPT${NORMAL}"
 
 echo -e
 echo -e

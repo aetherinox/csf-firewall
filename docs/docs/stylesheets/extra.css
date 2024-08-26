@@ -448,7 +448,6 @@
 
     h3 .mdx-badge__icon
     {
-        font-size: 14px;
         margin-inline-end: 5px;
     }
 
@@ -489,14 +488,40 @@
 }
 
 /*
+    Badges in H4 will be right-aligned
+*/
+
+h4:has(.mdx-badge:nth-child(1)) > .mdx-badge
+{
+
+}
+
+& .md-typeset h4 .mdx-badge__icon
+{
+    background-color: transparent !important;
+}
+
+h4:has(.twemoji) .twemoji
+{
+    font-size: 1.6em;
+    padding-bottom: 1px;
+    margin-block-start: -6px;
+    margin-left: -7px;
+}
+
+/*
     Badge > Header Padding
     if a badge is used in a header, add padding between the badge and text
 */
+
+/*
 
 :is(h1, h2, h3, h4, h5, h6) .mdx-badge__icon
 {
     margin-inline-end: 6px;
 }
+
+*/
 
 /*
     Navigation > Spacer
