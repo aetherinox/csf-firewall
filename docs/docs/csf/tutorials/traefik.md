@@ -111,7 +111,6 @@ Next, we can add CSF through Docker and Traefik so that it's accessible via `csf
           ipAllowList:
             sourceRange:
               - "127.0.0.0/8"
-
             ipStrategy:
               excludedIPs:
                 # Cloudflare IP List
@@ -146,7 +145,7 @@ At the bottom of the same file, we must now add a new **loadBalancer** rule unde
 
 ```yml
 http:
-  middlewares:
+  routers:
     [CODE FROM ABOVE]
   services:
     csf:

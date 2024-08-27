@@ -1153,7 +1153,7 @@ At the bottom of the same file, we must now add a new **loadBalancer** rule unde
 
 ```yml
 http:
-  middlewares:
+  routers:
     [CODE FROM ABOVE]
   services:
     csf:
