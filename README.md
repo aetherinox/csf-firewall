@@ -80,6 +80,8 @@ ConfigServer Security & Firewall (CSF) is a popular and powerful firewall soluti
   - [Run Patch](#run-patch-1)
   - [Manual Run](#manual-run-1)
   - [Advanced Logs](#advanced-logs-1)
+- [Traefik Integration with CSF WebUI](#traefik-integration-with-csf-webui)
+  - [Adding Authentik Provider](#adding-authentik-provider)
 - [Download ConfigServer Firewall](#download-configserver-firewall)
 - [References for More Help](#references-for-more-help)
 - [Contributors ✨](#contributors-)
@@ -1077,6 +1079,173 @@ All steps performed by the script will be displayed in terminal:
                   + RULE                   -t nat -A POSTROUTING -j SNAT --to-source XX.XXX.XXX.XXX
                   + RULE                   -t nat -A POSTROUTING -s 10.8.0.0/24 -o enp0s3 -j MASQUERADE
 ```
+
+<br />
+
+---
+
+<br />
+
+## Traefik Integration with CSF WebUI
+To integrate CSF into Docker and Traefik so that you can access it via a domain and secure it:
+
+<br />
+
+Open `/etc/csf/csf.conf` and change the `UI_IP` value that the CSF WebUI is bound to. By default, the value is empty which binds CSF's WebUI to all IPs.
+
+Find
+```shell ignore
+UI_IP = ""
+```
+
+<br />
+
+Change the IP to your Docker network subnet. You MUST use the format below, which is `::IPv6:IPv4`
+```shell ignore
+UI_IP = "::ffff:172.17.0.1"
+```
+
+<br />
+
+The above change will ensure that your CSF WebUI is not accessible via your public IP address. We're going to allow access to it via your domain name, but add some Traefik middleware rules so that you must authenticate before you can access the WebUI.
+
+<br />
+
+Next, we can add CSF through Docker and Traefik so that it's accessible via `csf.domain.com`. Open up your Traefik's `dynamic.yml` and add the following:
+
+```yml
+    csf-http:
+      service: "csf"
+      rule: "Host(`csf.{{ env "SERVER_DOMAIN" }}`)"
+      entryPoints:
+        - "http"
+      middlewares:
+        - https-redirect@file
+
+    csf-https:
+      service: "csf"
+      rule: "Host(`csf.{{ env "SERVER_DOMAIN" }}`)"
+      entryPoints:
+        - "https"
+      middlewares:
+        - authentik@file
+        - whitelist@file
+        - geoblock@file
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "{{ env "SERVER_DOMAIN" }}"
+            sans:
+              - "*.{{ env "SERVER_DOMAIN" }}"
+
+```
+
+<br />
+
+With the example above, we are also going to add a few middlewares:
+- [Authentik](https://goauthentik.io/)
+- [IP Whitelist](https://doc.traefik.io/traefik/middlewares/http/ipwhitelist/)
+- [Geographical Location Blocking](https://plugins.traefik.io/plugins/62947302108ecc83915d7781/LICENSE)
+
+<br />
+
+By applying the above middlewares, we can restrict what IP addresses can access your CSF WebUI, as well as add Authentik's authentication system so that you must authenticate first before getting into the CSF WebUI. These are all optional, and you can apply whatever middlewares you deem fit.
+
+<br />
+
+Once you configure these changes in Traefik, you can restart your Traefik docker container:
+```shell
+docker compose down && docker compose up -d
+```
+
+<br />
+
+### Adding Authentik Provider
+If you are using [Authentik](https://goauthentik.io/) as a middleware in the steps above; the last thing you must do is log in to your Authentik admin panel and add a new **Provider** so that we can access the CSF WebUI via your domain.
+
+<br />
+
+Once you sign into the Authentik WebUI, on the left-side navigation, select **Applications** -> **Providers**. Then at the top of the new page, click **Create**.
+
+<br />
+
+<p align="center"><img style="width: 50%;text-align: center;" src="https://github.com/user-attachments/assets/8fe1dfc8-bbdc-4c8c-bc5a-be5b103e7404"></p>
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/82e3f027-b058-4b3c-86db-bdc4505a4e4e"></p>
+
+<br />
+
+For the **provider**, select `Proxy Provider`.
+
+<br />
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/086ae998-964f-45e3-8606-ae8a36ecf82c"></p>
+
+<br />
+
+Add the following provider values:
+- Name: `CSF ForwardAuth`
+- Authentication Flow: `default-source-authentication (Welcome to authentik!)`
+- Authorization Flow: `default-provider-authorization-implicit-consent (Authorize Application)`
+
+<br />
+
+Select **Forward Auth (single application)**:
+- External Host: `https://csf.domain.com`
+
+<br />
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/b1d6258a-f53e-4225-a4e9-9f9b5b69b191"></p>
+
+<br />
+
+Once finished, click **Create**. Then on the left-side menu, select **Applications** -> **Applications**. Then at the top of the new page, click **Create**.
+
+<br />
+
+<p align="center"><img style="width: 50%;text-align: center;" src="https://github.com/user-attachments/assets/405fb566-0384-4345-8f07-ad52b9af9358"></p>
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/82e3f027-b058-4b3c-86db-bdc4505a4e4e"></p>
+
+<br />
+
+Add the following parameters:
+- Name: `CSF (ConfigServer Firewall)`
+- Slug: `csf`
+- Group: `Administrative`
+- Provider: `CSF ForwardAuth`
+- Backchannel Providers: `None`
+- Policy Engine Mode: `any`
+
+<br />
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/11425a7a-f049-4434-a232-3ea2847145d7"></p>
+
+<br />
+
+Save, and then on the left-side menu, select **Applications** -> **Outposts**:
+
+<br />
+
+<p align="center"><img style="width: 50%;text-align: center;" src="https://github.com/user-attachments/assets/cb975af4-d167-44c5-8587-b366aa591716"></p>
+
+<br />
+
+Find your **Outpost** and edit it.
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/a349423f-6db5-431d-888e-8ba658053b2c"></p>
+
+<br />
+
+Move `CSF (ConfigServer Firewall)` to the right side **Selected Applications** box.
+
+<br />
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/b4b882d4-8f41-4af9-b788-cef649a48d24"></p>
+
+<br />
+
+You should be able to access `csf.domain.com` and be prompted now to authenticate with Authentik.
 
 <br />
 
