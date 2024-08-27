@@ -167,6 +167,7 @@ nav:
     - Uninstall: 'csf/uninstall.md'
     - Tutorials:
       - Geo Blocking: 'csf/tutorials/geographical.md'
+      - Traefik Integration: 'csf/tutorials/traefik.md'
   - Patcher:
     - Download: 'patcher/download.md'
     - Configure: 'patcher/configure.md'

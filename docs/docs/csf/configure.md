@@ -35,7 +35,7 @@ The list below outlines just a few of the important settings that you can modify
 
 Make sure to review the configuration file and adjust the settings to suit your server’s needs. After making changes to the configuration file, save and exit the text editor.
 
-Two **csf.conf** configuration files have been provided as examples; a full version, and clean (uncommented) version, and can be viewed on the [csf.conf](./conf.md) page.
+Two **csf.conf** configuration files have been provided as examples; a full version, and clean (uncommented) version, and can be viewed on the [csf.conf](../../cheatsheet/conf) page.
 
 <br />
 

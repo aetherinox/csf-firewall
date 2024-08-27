@@ -1114,6 +1114,8 @@ The above change will ensure that your CSF WebUI is **not** accessible via your 
 Next, we can add CSF through Docker and Traefik so that it's accessible via `csf.domain.com`. Open up your Traefik's `dynamic.yml` and add the following:
 
 ```yml
+http:
+  middlewares:
     csf-http:
       service: "csf"
       rule: "Host(`csf.{{ env "SERVER_DOMAIN" }}`)"
@@ -1137,6 +1139,21 @@ Next, we can add CSF through Docker and Traefik so that it's accessible via `csf
           - main: "{{ env "SERVER_DOMAIN" }}"
             sans:
               - "*.{{ env "SERVER_DOMAIN" }}"
+```
+
+<br />
+
+At the bottom of the same file, we must now add a new **loadbalance** rule under `http` -> `services`:
+
+```yml
+http:
+  middlewares:
+    [CODE FROM ABOVE]
+  services:
+    csf:
+      loadBalancer:
+        servers:
+          - url: "https://172.17.0.1:8546/"
 ```
 
 <br />
