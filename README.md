@@ -1143,7 +1143,7 @@ http:
 
 <br />
 
-At the bottom of the same file, we must now add a new **loadbalance** rule under `http` -> `services`:
+At the bottom of the same file, we must now add a new **loadBalancer** rule under `http` -> `services`. Change the `ip` and `port` if you have different values:
 
 ```yml
 http:
