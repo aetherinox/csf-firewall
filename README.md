@@ -126,6 +126,7 @@ This guide will help you with the following:
 - Install patches
   - Docker Integration
   - OpenVPN Integration
+- Integrate CSF WebUI with Traefik for domain access
 
 <br />
 
