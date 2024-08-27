@@ -12,15 +12,17 @@ This section explains how to integrate ConfigServer Firewall and Traefik so that
 
 Open `/etc/csf/csf.conf` and change `UI_IP`. This specifies the IP address that the CSF WebUI will bind to. By default, the value is empty and binds CSF's WebUI to all IPs on your server.
 
-Find
-```shell ignore
+Find:
+
+```shell
 UI_IP = ""
 ```
 
 <br />
 
 Change the IP to your Docker network subnet. You MUST use the format below, which is `::IPv6:IPv4`
-```shell ignore
+
+```shell
 UI_IP = "::ffff:172.17.0.1"
 ```
 
@@ -78,6 +80,7 @@ http:
 <br />
 
 With the example above, we are also going to add a few middlewares:
+
 - [Authentik](https://goauthentik.io/)
 - [IP Whitelist](https://doc.traefik.io/traefik/middlewares/http/ipwhitelist/)
 - [Geographical Location Blocking](https://plugins.traefik.io/plugins/62947302108ecc83915d7781/LICENSE)
@@ -94,8 +97,28 @@ You must configure the above middleware if you have not added it to Traefik yet.
 <br />
 
 Once you configure these changes in Traefik, you can restart your Traefik docker container. The command for that depends on how you set up the container. If you used `docker-compose.yml`, you can `cd` into the folder with the `docker-compose.yml` file and then execute:
+
 ```shell
 docker compose down && docker compose up -d
+```
+
+<br />
+
+---
+
+<br />
+
+## Next Steps
+
+```embed
+url:            ../authentik
+name:           Next: Integrating Authentik
+desc:           Instructions for adding Authentik middleware to ConfigServer via Traefik
+image:          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjXOa4WN-mW3gXnIo_hEY6uAwoi2v_e02eG3TCHxSwIY70Y_OzErdaeaepXFoRa2sYx8M&usqp=CAU
+favicon:        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjXOa4WN-mW3gXnIo_hEY6uAwoi2v_e02eG3TCHxSwIY70Y_OzErdaeaepXFoRa2sYx8M&usqp=CAU
+favicon_size:   25
+target:         same
+accent:         a40547E0
 ```
 
 <br />
