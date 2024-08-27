@@ -1115,10 +1115,10 @@ Next, we can add CSF through Docker and Traefik so that it's accessible via `csf
 
 ```yml
 http:
-  middlewares:
+  routers:
     csf-http:
       service: "csf"
-      rule: "Host(`csf.{{ env "SERVER_DOMAIN" }}`)"
+      rule: "Host(`csf.domain.com`)"
       entryPoints:
         - "http"
       middlewares:
@@ -1126,7 +1126,7 @@ http:
 
     csf-https:
       service: "csf"
-      rule: "Host(`csf.{{ env "SERVER_DOMAIN" }}`)"
+      rule: "Host(`csf.domain.com`)"
       entryPoints:
         - "https"
       middlewares:
@@ -1136,10 +1136,16 @@ http:
       tls:
         certResolver: cloudflare
         domains:
-          - main: "{{ env "SERVER_DOMAIN" }}"
+          - main: "domain.com"
             sans:
-              - "*.{{ env "SERVER_DOMAIN" }}"
+              - "*.domain.com"
 ```
+
+<br />
+
+A full example of the Traefik routers and middleware can be found at:
+
+- https://aetherinox.github.io/csf-firewall/csf/tutorials/traefik/
 
 <br />
 

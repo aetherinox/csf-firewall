@@ -34,33 +34,111 @@ The above change will ensure that your CSF WebUI is **not** accessible via your 
 
 Next, we can add CSF through Docker and Traefik so that it's accessible via `csf.domain.com`. Open up your Traefik's `dynamic.yml` and add the following:
 
-```yml
-http:
-  middlewares:
-    csf-http:
-      service: "csf"
-      rule: "Host(`csf.{{ env "SERVER_DOMAIN" }}`)"
-      entryPoints:
-        - "http"
-      middlewares:
-        - https-redirect@file
+=== "dynamic.yml (routers)"
 
-    csf-https:
-      service: "csf"
-      rule: "Host(`csf.{{ env "SERVER_DOMAIN" }}`)"
-      entryPoints:
-        - "https"
+    ```
+    http:
+      routers:
+        csf-http:
+          service: "csf"
+          rule: "Host(`csf.domain.com`)"
+          entryPoints:
+            - "http"
+          middlewares:
+            - https-redirect@file
+
+        csf-https:
+          service: "csf"
+          rule: "Host(`csf.domain.com`)"
+          entryPoints:
+            - "https"
+          middlewares:
+            - authentik@file
+            - whitelist@file
+            - geoblock@file
+          tls:
+            certResolver: cloudflare
+            domains:
+              - main: "domain.com"
+                sans:
+                  - "*.domain.com"
+    ```
+
+=== "dynamic.yml (middleware)"
+
+    ```
+    http:
       middlewares:
-        - authentik@file
-        - whitelist@file
-        - geoblock@file
-      tls:
-        certResolver: cloudflare
-        domains:
-          - main: "{{ env "SERVER_DOMAIN" }}"
-            sans:
-              - "*.{{ env "SERVER_DOMAIN" }}"
-```
+        authentik:
+          forwardauth:
+            address: http://authentik-server:9000/outpost.goauthentik.io/auth/traefik
+            trustForwardHeader: true
+            authResponseHeaders:
+              - X-authentik-username
+              - X-authentik-groups
+              - X-authentik-email
+              - X-authentik-name
+              - X-authentik-uid
+              - X-authentik-jwt
+              - X-authentik-meta-jwks
+              - X-authentik-meta-outpost
+              - X-authentik-meta-provider
+              - X-authentik-meta-app
+              - X-authentik-meta-version
+
+        geoblock:
+          plugin:
+            GeoBlock:
+              allowLocalRequests: "true"
+              allowUnknownCountries: "false"
+              blackListMode: "false"
+              api: https://get.geojs.io/v1/ip/country/{ip}
+              ipGeolocationHttpHeaderField: "Cf-Ipcountry"
+              xForwardedFor: "X-Forwarded-For"
+              apiTimeoutMs: "150"
+              cacheSize: "15"
+              addCountryHeader: "true"
+              forceMonthlyUpdate: "true"
+              logAllowedRequests: "true"
+              logApiRequests: "true"
+              logLocalRequests: "true"
+              silentStartUp: "false"
+              unknownCountryApiResponse: nil
+              countries:
+                - US
+
+        whitelist:
+          ipAllowList:
+            sourceRange:
+              - "127.0.0.0/8"
+
+            ipStrategy:
+              excludedIPs:
+                # Cloudflare IP List
+                # These will be ignored and the next IP in line will be checked
+                - 173.245.48.0/20
+                - 103.21.244.0/22
+                - 103.22.200.0/22
+                - 103.31.4.0/22
+                - 141.101.64.0/18
+                - 108.162.192.0/18
+                - 190.93.240.0/20
+                - 188.114.96.0/20
+                - 197.234.240.0/22
+                - 198.41.128.0/17
+                - 162.158.0.0/15
+                - 104.16.0.0/13
+                - 104.24.0.0/14
+                - 172.64.0.0/13
+                - 131.0.72.0/22
+                - 2400:cb00::/32
+                - 2606:4700::/32
+                - 2803:f800::/32
+                - 2405:b500::/32
+                - 2405:8100::/32
+                - 2a06:98c0::/29
+                - 2c0f:f248::/32
+    ```
 
 <br />
 
