@@ -61,6 +61,7 @@ Once finished, click **Create**. Then on the left-side menu, select **Applicatio
 <br />
 
 Add the following parameters:
+
 - Name: `CSF (ConfigServer Firewall)`
 - Slug: `csf`
 - Group: `Administrative`
