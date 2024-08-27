@@ -1107,7 +1107,7 @@ UI_IP = "::ffff:172.17.0.1"
 
 <br />
 
-The above change will ensure that your CSF WebUI is not accessible via your public IP address. We're going to allow access to it via your domain name, but add some Traefik middleware rules so that you must authenticate before you can access the WebUI.
+The above change will ensure that your CSF WebUI is **not** accessible via your public IP address. We're going to allow access to it via your domain name, but add some Traefik middleware so that you must authenticate before you can access the WebUI.
 
 <br />
 
@@ -1137,7 +1137,6 @@ Next, we can add CSF through Docker and Traefik so that it's accessible via `csf
           - main: "{{ env "SERVER_DOMAIN" }}"
             sans:
               - "*.{{ env "SERVER_DOMAIN" }}"
-
 ```
 
 <br />
@@ -1153,7 +1152,12 @@ By applying the above middlewares, we can restrict what IP addresses can access 
 
 <br />
 
-Once you configure these changes in Traefik, you can restart your Traefik docker container:
+You must configure the above middleware if you have not added it to Traefik yet. This guide does not go into how to add middleware to Traefik, that information can be found at:
+- https://doc.traefik.io/traefik/middlewares/overview/
+
+<br />
+
+Once you configure these changes in Traefik, you can restart your Traefik docker container. The command for that depends on how you set up the container. If you used `docker-compose.yml`, you can `cd` into the folder with the `docker-compose.yml` file and then execute:
 ```shell
 docker compose down && docker compose up -d
 ```
@@ -1161,15 +1165,15 @@ docker compose down && docker compose up -d
 <br />
 
 ### Adding Authentik Provider
-If you are using [Authentik](https://goauthentik.io/) as a middleware in the steps above; the last thing you must do is log in to your Authentik admin panel and add a new **Provider** so that we can access the CSF WebUI via your domain.
+If you are adding [Authentik](https://goauthentik.io/) as middleware in the steps above; the last thing you must do is log in to your Authentik admin panel and add a new **Provider** so that we can access the CSF WebUI via your domain.
 
 <br />
 
-Once you sign into the Authentik WebUI, on the left-side navigation, select **Applications** -> **Providers**. Then at the top of the new page, click **Create**.
+Once you sign into the Authentik admin panel, go to the left-side navigation, select **Applications** -> **Providers**. Then at the top of the new page, click **Create**.
 
 <br />
 
-<p align="center"><img style="width: 50%;text-align: center;" src="https://github.com/user-attachments/assets/8fe1dfc8-bbdc-4c8c-bc5a-be5b103e7404"></p>
+<p align="center"><img style="width: 40%;text-align: center;" src="https://github.com/user-attachments/assets/8fe1dfc8-bbdc-4c8c-bc5a-be5b103e7404"></p>
 
 <p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/82e3f027-b058-4b3c-86db-bdc4505a4e4e"></p>
 
@@ -1203,7 +1207,7 @@ Once finished, click **Create**. Then on the left-side menu, select **Applicatio
 
 <br />
 
-<p align="center"><img style="width: 50%;text-align: center;" src="https://github.com/user-attachments/assets/405fb566-0384-4345-8f07-ad52b9af9358"></p>
+<p align="center"><img style="width: 40%;text-align: center;" src="https://github.com/user-attachments/assets/405fb566-0384-4345-8f07-ad52b9af9358"></p>
 
 <p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/82e3f027-b058-4b3c-86db-bdc4505a4e4e"></p>
 
@@ -1227,7 +1231,7 @@ Save, and then on the left-side menu, select **Applications** -> **Outposts**:
 
 <br />
 
-<p align="center"><img style="width: 50%;text-align: center;" src="https://github.com/user-attachments/assets/cb975af4-d167-44c5-8587-b366aa591716"></p>
+<p align="center"><img style="width: 40%;text-align: center;" src="https://github.com/user-attachments/assets/cb975af4-d167-44c5-8587-b366aa591716"></p>
 
 <br />
 
