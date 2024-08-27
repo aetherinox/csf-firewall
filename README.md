@@ -84,6 +84,7 @@ ConfigServer Security & Firewall (CSF) is a popular and powerful firewall soluti
   - [Run Patch](#run-patch-1)
   - [Manual Run](#manual-run-1)
   - [Advanced Logs](#advanced-logs-1)
+- [Install Dark Theme](#install-dark-theme)
 - [Traefik Integration with CSF WebUI](#traefik-integration-with-csf-webui)
   - [Adding Authentik Provider](#adding-authentik-provider)
 - [Download ConfigServer Firewall](#download-configserver-firewall)
@@ -1083,6 +1084,32 @@ All steps performed by the script will be displayed in terminal:
                   + RULE                   -t nat -A POSTROUTING -j SNAT --to-source XX.XXX.XXX.XXX
                   + RULE                   -t nat -A POSTROUTING -s 10.8.0.0/24 -o enp0s3 -j MASQUERADE
 ```
+
+<br />
+
+---
+
+<br />
+
+## Install Dark Theme
+The dark theme is an unofficial theme not available in the official install of ConfigServer firewall. You may use the files provided in this repository to switch your copy of CSF over to the dark theme.
+
+<br />
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/98440f33-8947-4409-8ff4-32138ddf4763"></p>
+
+<br />
+
+Head over to the [Releases](https://github.com/Aetherinox/csf-firewall/releases) page and download the dark theme zip file:
+
+- `*-theme-dark.zip`
+
+<br />
+
+Extract the files from the zip to the same paths as they are shown in the zip. You should have the following files:
+
+- `/etc/csf/ui/images/*.css`
+- `/usr/local/csf/lib/ConfigServer/*.pm`
 
 <br />
 

@@ -255,6 +255,8 @@ jobs:
                   echo Building STABLE Package .zip ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip
                   mv patch/* .
                   zip -r ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip README.md LICENSE *.sh
+                  mv extras/* .
+                  zip -r ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip ./etc/csf/ui/* ./etc/csf/ui/* ./usr/*
                   ls
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
@@ -265,6 +267,8 @@ jobs:
               run: |
                   echo Building PRE-RELEASE Package .zip ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-patches.zip
                   zip -r ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-patches.zip README.md LICENSE *.sh
+                  mv extras/* .
+                  zip -r ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-theme-dark.zip ./etc/csf/ui/* ./etc/csf/ui/* ./usr/*
                   ls
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
