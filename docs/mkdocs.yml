@@ -168,6 +168,7 @@ nav:
     - Tutorials:
       - Geo Blocking: 'csf/tutorials/geographical.md'
       - Traefik Integration: 'csf/tutorials/traefik.md'
+      - Authentik Integration: 'csf/tutorials/authentik.md'
   - Patcher:
     - Download: 'patcher/download.md'
     - Configure: 'patcher/configure.md'

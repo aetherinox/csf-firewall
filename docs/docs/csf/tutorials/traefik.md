@@ -92,6 +92,7 @@ By applying the above middlewares, we can restrict what IP addresses can access 
 <br />
 
 You must configure the above middleware if you have not added it to Traefik yet. This guide does not go into how to add middleware to Traefik, that information can be found at:
+
 - https://doc.traefik.io/traefik/middlewares/overview/
 
 <br />
