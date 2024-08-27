@@ -438,6 +438,7 @@ jobs:
                 draft: false
                 generate_release_notes: false
                 files: |
+                  ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip
                   ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip
                   ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz/${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz
                 prerelease: false
@@ -461,6 +462,7 @@ jobs:
                 draft: false
                 generate_release_notes: false
                 files: |
+                  ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-theme-dark.zip
                   ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-patches.zip
                   ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz/${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz
                 prerelease: false
