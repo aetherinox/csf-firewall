@@ -4,7 +4,7 @@ body
     font-size: 14px;
     line-height: 1.42857143;
     color: #cccccc;
-    background-color: #242424
+    background-color: #1e1d1d
 }
 
 .panel
@@ -155,7 +155,16 @@ th
 
 thead > tr > th
 {
-	background-color: #a00c45;
+	background-color: #3c3c3c;
+	border-bottom: 1px solid #e3e3e31a !important;
+}
+
+.table > thead > tr > th
+{
+	vertical-align: bottom;
+	border-bottom: 1px solid #e3e3e31a !important;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 
 input[type="text"]
@@ -218,20 +227,25 @@ input[type=text]:focus, select:focus
 .table-bordered
 {
 	border-top: none;
-	border-left: 1px solid #990000;
+	border-left: none;
 	border-right: none;
-	border-bottom: 1px solid #990000;
+	border-bottom: none;
 }
 
 tbody
 {
-	border-left: 1px solid #990000;
-	border-right: 1px solid #990000;
+	border-left: none;
+	border-right: none;
+}
+
+.table-striped > tbody > tr
+{
+	background-color: #333;
 }
 
 .table-striped > tbody > tr:nth-of-type(2n+1)
 {
-	background-color: #e3e3e31a;
+	background-color: #2b2b2b;
 }
 
 .table-bordered > thead > tr > td, .table-bordered > thead > tr > th
@@ -276,6 +290,20 @@ tbody
 	color: #31708f;
 	background-color: #353535;
 	border-color: #e3e3e31a;
+}
+
+.panel-body
+{
+	background-color: #2b2b2b;
+}
+
+code
+{
+	padding: 2px 4px;
+	font-size: 90%;
+	color: #ea8c28;
+	background-color: #1e1e1e;
+	border-radius: 4px;
 }
 
 .well
@@ -370,8 +398,8 @@ tbody
 
 .bs-callout-info
 {
-    border-left-color: #5bc0de;
-	background-color: #141414;
+	border-left-color: #18a4ce;
+	background-color: #044f66;
 }
 
 .bs-callout-info h4
