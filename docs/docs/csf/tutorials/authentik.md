@@ -6,7 +6,7 @@ tags:
 ---
 
 # Authentik Integration
-This section explains how to add Authentik as a **middleware** through [Traefik](./traefik/) so that you can secure the ConfigServer WebUI behind an authentication server.
+This section explains how to add Authentik as a **middleware** through [Traefik](../traefik/) so that you can secure the ConfigServer WebUI behind an authentication server.
 
 <br />
 
