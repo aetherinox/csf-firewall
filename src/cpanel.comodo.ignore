@@ -1,0 +1,23 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following IP addresses will be allowed through iptables and ignored by
+# lfd to allow for unimpeded access to cPanels free SSL certificate service
+# available in cPanel v58+
+#
+# Each IP address belongs to the Sectigo SSL provider (formerly Comodo)
+#
+# Note: This file will be replaced when csf is upgraded - do NOT make any
+# changes to this file. If you do not want to whitelist these IP addresses you
+# need to remove the Include line from csf.ignore as this is only added there
+# once
+
+178.255.81.12 # Sectigo SSL Resolver
+178.255.81.13 # Sectigo SSL Resolver
+91.199.212.52 # Sectigo DCV Server
+91.199.212.132 # Sectigo DCV Server
+199.66.201.132 # Sectigo DCV Backup Server
+2a02:1788:400:1ce4::/64 # Sectigo DCV Server
+2a02:1788:400:1ce4::/64 # Sectigo DCV Server

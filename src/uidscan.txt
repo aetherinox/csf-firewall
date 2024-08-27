@@ -1,0 +1,10 @@
+From: root
+To: root
+Subject: lfd on [hostname]: UID [uid] Tracking Hit
+
+Time:    [time]
+UID:     [uid]
+Hits:    [count]
+
+Sample of port hits:
+[ports]

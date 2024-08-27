@@ -1,0 +1,10 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Fork Bomb detected and killed
+
+Time:    [time]
+Trigger: [level]
+
+Processes:
+
+[text]

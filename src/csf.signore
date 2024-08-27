@@ -1,0 +1,7 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of files that LF_SCRIPT_ALERT will ignore. You must
+# specify the full path to the directory containing the script

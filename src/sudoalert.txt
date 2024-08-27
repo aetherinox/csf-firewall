@@ -1,0 +1,12 @@
+From: root
+To: root
+Subject: lfd on [hostname]: SUDO login alert - [status] from [from] to [to]
+
+Time:    [time]
+From:    [from]
+To:      [to]
+Status:  [status]
+
+Log line:
+
+[text]

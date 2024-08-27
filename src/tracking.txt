@@ -1,0 +1,12 @@
+From: root
+To: root
+Subject: lfd on [hostname]: [account] blocked for [app] access
+
+Time:        [time]
+Account:     [account]
+Application: [app]
+IP:          [ip]
+Logins:      [logins]
+Interval:    [timeout]
+Allowable:   [rate] logins per hour in 3600 second interval
+Flushed in:  [flush] seconds

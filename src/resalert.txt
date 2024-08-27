@@ -1,0 +1,12 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Excessive resource usage: [user] ([pid])
+
+Time:         [time]
+Account:      [user]
+Resource:     [resource]
+Exceeded:     [level]
+Executable:   [exe]
+Command Line: [cmd]
+PID:          [pid]
+Killed:       [kill]

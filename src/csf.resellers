@@ -1,0 +1,47 @@
+###############################################################################
+# Copyright 2006-2019, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of Reseller accounts that you want to allow access to
+# limited csf functionality.
+#
+# WARNING: You should only ever provide access to this facility to people you
+# trust as it could easily render your server inaccessible or open to attack.
+# For security reasons, resellers cannot list blocked IP addresses or the whole
+# iptables configuration. They must know what IP address they want to use with
+# this facility.
+#
+# You should list each account, one per line, followed by a colon, then a 0 or
+# 1 depending on whether you want an email alert sent using the email template
+# reselleralter.txt whenever an ALLOW/DENY or UNBLOCK is performed, then a
+# colon, then a comma separated list of the feature codes that you want each
+# reseller to have access to.
+#
+# As of writing, the following is a list of the available feature codes. More
+# may be added in the feature, in which case they will be listed in the main
+# csf readme.txt:
+#
+# USE        - The reseller can use this facility through WHM (required)
+# UNBLOCK    - The reseller can use the Quick Unblock feature
+# GREP       - The reseller can use the Search IP feature
+# ALLOW      - The reseller can use the Quick Allow feature
+# DENY       - The reseller can use the Quick Deny feature
+#
+# For example, to allow reseller "someuser" to unblock IP addresses and have an
+# alert email sent to root, use:
+#
+#someuser:1:USE,UNBLOCK
+#
+# For example, to allow reseller "someuser" to allow, deny and unblock IP
+# addresses, but no alert sent, use:
+#
+#someuser:0:USE,ALLOW,DENY,UNBLOCK
+#
+# RECOMMEND: For security reasons, we recommend only allowing resellers USE,
+# UNBLOCK and GREP
+#
+# NOTE: As of version cPanel v11.8.1 you must additionally grant resellers
+# access via "WHM > Edit Reseller Nameservers and Privileges > Third Party
+# Services > ConfigServer Security & Firewall (Reseller UI)".
+#

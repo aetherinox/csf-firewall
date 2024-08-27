@@ -1,0 +1,10 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Network class [class] [block] has been blocked
+
+Time:    [time]
+Block:   [block]
+Hits:    [count]
+
+IP addresses that triggered the block
+[ips]

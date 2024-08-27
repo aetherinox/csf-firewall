@@ -1,0 +1,11 @@
+From: root
+To: root
+Subject: lfd on [hostname]: WHM/cPanel [user] access alert from [ip]
+
+Time:    [time]
+IP:      [ip]
+User:    [user]
+
+Log line:
+
+[text]

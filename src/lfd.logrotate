@@ -1,0 +1,12 @@
+/var/log/lfd.log {
+        weekly
+        rotate 1
+        compress
+	missingok
+}
+/var/log/lfd_messenger.log {
+        weekly
+        rotate 1
+        compress
+	missingok
+}

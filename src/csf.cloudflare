@@ -1,0 +1,50 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# This file contains configuration elements for the CF_ENABLE CloudFlare
+# feature
+#
+# Entries:
+#
+# DOMAIN:
+# These list the per domain CloudFlare credientials for each matching domain
+# for all relevant triggers (i.e. LF_MODSEC)
+#
+# The special case "any" can be used as the domain name for all relevant
+# triggers regardless of domain
+#
+# USER:
+# This must be a unique name for the entry, but does not have to be a local
+# linux account name
+#
+# CFACCOUNT:
+# This is the CloudFlare login user (email address)
+#
+# CFAPIKEY:
+# This is the CloudFlare Client API Key
+#
+# DISABLE:
+# Normally, comment out a line to disable it. On servers with CF_CPANEL enabled
+# a cPanel user can be disabled here
+#
+# ANY:
+# On servers with CF_CPANEL enabled a cPanel user can be configured to use the
+# special "any" case (see above)
+#
+
+# CloudFlare client credientials for any domain triggered:
+#DOMAIN:any:USER:myuser:CFACCOUNT:sales@hostsdomain.com:CFAPIKEY:12345abcdef6789
+
+# CloudFlare client credientials for domain.com involved in trigger:
+#DOMAIN:domain.com:USER:myuser:CFACCOUNT:sales@domain.com:CFAPIKEY:12345abcdef6789
+
+# CloudFlare client credientials for domain2.com involved in trigger:
+#DOMAIN:domain2.com:USER:myuser:CFACCOUNT:myuser@hotmail.com:CFAPIKEY:12345abcdef6789
+
+# Disable CloudFlare cPanel user mycpanel from this feature:
+#DISABLE:mycpanel
+
+# Enable a cPanel user mycpanel to use the "any" feature:
+#ANY:mycpanel

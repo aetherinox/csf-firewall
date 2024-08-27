@@ -1,0 +1,31 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Suspicious process running under user [user]
+
+Time:    [time]
+PID:     [pid]
+Account: [user]
+Uptime:  [uptime] seconds
+
+
+Executable:
+
+[exe]
+
+
+Command Line (often faked in exploits):
+
+[cmdline]
+
+
+Network connections by the process (if any):
+
+[sockets]
+
+Files open by the process (if any):
+
+[files]
+
+Memory maps by the process (if any):
+
+[maps]

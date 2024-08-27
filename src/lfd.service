@@ -1,0 +1,12 @@
+[Unit]
+Description=ConfigServer Firewall & Security - lfd
+After=network.target csf.service
+
+[Service]
+LimitNOFILE=4096
+ExecStart=/usr/sbin/lfd
+Type=forking
+PIDFile=/run/lfd.pid
+
+[Install]
+WantedBy=multi-user.target
