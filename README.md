@@ -918,7 +918,7 @@ git clone https://github.com/Aetherinox/csf-firewall.git
 <br />
 
 ### Install
-The OpenVPN patch will automatically be installed if you run the `/patch/install.sh` script. It is the 3rd step in the process, right after the [Docker Patch](#install-docker-patch).
+The OpenVPN patch will automatically be installed when you run the `/patch/install.sh` script.
 
 <br />
 
@@ -950,8 +950,8 @@ Each setting is defined below:
 
 | Setting | Description |
 | --- | --- |
-| `ETH_ADAPTER` | <br>primary network adapter <br><br> |
-| `TUN_ADAPTER` | <br>openvpn tunnel adapter <br><br> |
+| `ETH_ADAPTER` | <br>primary network adapter on host machine <br><br> |
+| `TUN_ADAPTER` | <br>openvpn tunnel adapter, usually `tun0` <br><br> |
 | `IP_PUBLIC` | <br>server's public ip address <br><br> |
 | `DEBUG_ENABLED` | <br>debugging / better logs <br><br> |
 | `IP_POOL` | <br>openvpn ip pool <br><br> |
@@ -978,12 +978,8 @@ IP_PUBLIC="216.55.100.5"
 
 <br />
 
-After changing the values re-run `install.sh`
-
-<br />
-
 ### Run Patch
-Set the permissions (if needed)
+Set the permissions:
 
 ```shell
 sudo chmod +x /patch/install.sh
@@ -1061,7 +1057,7 @@ Ubuntu | 24.04
 ### Advanced Logs
 This script includes debugging prints / logs. To view these, restart `csf.service` by running the following command in terminal:
 ```shell ignore
-sudo csf -r
+sudo csf -ra
 ```
 
 <br />
@@ -1087,11 +1083,11 @@ All steps performed by the script will be displayed in terminal:
 <br />
 
 ## Traefik Integration with CSF WebUI
-To integrate CSF into Docker and Traefik so that you can access it via a domain and secure it:
+To integrate the CSF WebUI into Docker and Traefik so that you can access it via a domain and secure it:
 
 <br />
 
-Open `/etc/csf/csf.conf` and change the `UI_IP` value that the CSF WebUI is bound to. By default, the value is empty which binds CSF's WebUI to all IPs.
+Open `/etc/csf/csf.conf` and change the `UI_IP`. This specifies the IP address that the CSF WebUI will bind to. By default, the value is empty and binds CSF's WebUI to all IPs on your server.
 
 Find
 ```shell ignore
