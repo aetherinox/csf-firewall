@@ -35,7 +35,7 @@ ConfigServer Security & Firewall (CSF) is a popular and powerful firewall soluti
 
 <p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/f93fcd88-4817-4fc8-b342-56a2375c0b92"></p>
 
-<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/98440f33-8947-4409-8ff4-32138ddf4763"></p>
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/46f73b52-13bd-4271-a94f-1aeeea4bd827"></p>
 
 </div>
 
@@ -1101,7 +1101,7 @@ The dark theme is an unofficial theme not available in the official install of C
 
 <p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/f93fcd88-4817-4fc8-b342-56a2375c0b92"></p>
 
-<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/98440f33-8947-4409-8ff4-32138ddf4763"></p>
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/46f73b52-13bd-4271-a94f-1aeeea4bd827"></p>
 
 <br />
 
