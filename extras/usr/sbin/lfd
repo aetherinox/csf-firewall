@@ -93,53 +93,68 @@ if ($config{UI}) {
 		import IO::Socket::SSL;
 	};
 }
+
 if ($config{LF_DIRWATCH}) {
 	require File::Find;
 	import File::Find;
 }
+
 if ($config{UI} or $config{LF_DIRWATCH_FILE}) {
 	require Digest::MD5;
 	import Digest::MD5;
 }
+
 if ($config{SYSLOG} or $config{SYSLOG_CHECK}) {
 	eval('use Sys::Syslog;'); ##no critic
 	unless ($@) {$sys_syslog = 1}
 }
+
 if ($config{DEBUG}) {
 	require Time::HiRes;
 	import Time::HiRes;
 }
+
 if ($config{CLUSTER_SENDTO} or $config{CLUSTER_RECVFROM}) {
 	require Crypt::CBC;
 	import Crypt::CBC;
 	require File::Basename;
 	import File::Basename;
 }
+
 if ($config{CLUSTER_SENDTO} or $config{CLUSTER_RECVFROM}) {
 	require IO::Socket::INET;
 	import IO::Socket::INET;
 }
+
 if ($config{MESSENGER}) {
 	require ConfigServer::Messenger;
 	import ConfigServer::Messenger;
 }
+
 if ($config{CF_ENABLE}) {
 	require ConfigServer::CloudFlare;
 	import ConfigServer::CloudFlare;
 }
+
 if (-e "/etc/cxs/cxs.reputation" and -e "/usr/local/csf/lib/ConfigServer/cxs.pm") {
 	require ConfigServer::cxs;
 	import ConfigServer::cxs;
 	$cxsreputation = 1;
 	%cxsports = ConfigServer::cxs::Rports();
 }
+
 $SIG{CHLD} = 'IGNORE';
 
-if ($pid = fork)  {
+if ($pid = fork)
+{
 	exit 0;
-} elsif (defined($pid)) {
+}
+elsif (defined($pid))
+{
 	$pid = $$;
-} else {
+}
+else
+{
 	die "*Error* Unable to fork: $!";
 }
 
@@ -152,6 +167,9 @@ open STDIN, "<","/dev/null";
 open STDOUT, ">","/dev/null";
 open STDERR, ">","/dev/null";
 setsid();
+
+our $th_dark_version = 2.10;
+my $th_dark_url = "https://github.com/Aetherinox/csf-firewall";
 
 my $oldfh = select STDERR; ##no critic
 $| = 1;
@@ -9876,26 +9894,132 @@ sub ui {
 
 					if ($valid eq "login")
 					{
+
 						print "HTTP/1.0 200 OK\r\n";
 						print "Content-type: text/html\r\n";
 						print "\r\n";
 						print "<!DOCTYPE html>\n";
-						print "<HTML>\n<TITLE>ConfigServer Security & Firewall</TITLE>\n<BODY style='background-color:#1c1c1c;font-family:Arial, Helvetica, sans-serif;' onload='document.getElementById(\"user\").focus()'>\n";
+						print "<HTML>\n";
+						print "<HEAD>";
+						print "<TITLE>ConfigServer Security & Firewall</TITLE>\n";
+						print "<link rel='stylesheet' href='style.css'>";
+						print <<EOF;
+<style>
+
+body
+{
+	font-family: Nunito,Roboto,sans-serif;
+}
+
+input::placeholder
+{
+	font-weight: light;
+	opacity: 0.8;
+	color: #707070;
+}
+
+.btn-login
+{
+	background-color: #6d7934;
+	color: #FFF;
+	border: 1px solid #e3e3e31a;
+	border-radius: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	min-width: 100px;
+	margin-top: 15px;
+	cursor: pointer;
+}
+
+.btn-login:hover
+{
+	background-color: #8e9c4a;
+}
+
+img.login-logo
+{
+	width: 100px;
+	opacity: 0.6;
+}
+
+img.login-logo:hover
+{
+	opacity: 1;
+}
+
+form.login-form
+{
+
+}
+
+.login-container-logo
+{
+	margin-top: -150px;
+	margin-bottom: 20px;
+}
+
+.login-container-main
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 100vh;
+}
+
+.login-container
+{
+	background-color: #282828;
+	border:1px solid #e3e3e31a;
+	padding:15px;
+}
+
+.login-footer
+{
+	font-size: 8pt;
+	padding-top: 20px;
+	color: #575757;
+}
+
+.input
+{
+	width: 30vw;
+	max-width: 400px;
+	min-width: 100px;
+	padding-left:10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	background-color: #393939;
+	border: 1px solid #e3e3e31a;
+	color: #FFF;
+	font-size: 14pt;
+}
+</style>
+EOF
+						print "</HEAD>\n";
+						print "<BODY style='background-color:#1c1c1c;font-family:Arial, Helvetica, sans-serif;' onload='document.getElementById(\"user\").focus()'>\n";
+
 						if ($valid eq "failed") {print "<div align='center'><h2>Login Failed</h2></div>\n"}
 
-						print "<div style='display: flex;justify-content: center;align-items: center; text-align: center; min-height: 100vh;'>";
-						print "<form action='/' method='post'><div style='width: 500px;' align='center'>\n";
-						print "<div style='margin-top: -100px;'><img style='width: 100px;' src='https://icons.veryicon.com/png/o/miscellaneous/2022-complete-collection-of-alibaba-cloud/waf-web-application-firewall-2.png'></div>";
-						print "<table align='center' cellspacing='0' cellpadding='4' style='width: 500px; background-color: #282828; border:1px solid #e3e3e31a; padding:15px;'>\n";
-						print "<tr style=''><td style='color:#FFF;'>Username:</td><td><input id='user' name='csflogin' type='text' style='width: 95%; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px; background-color: #393939; border: 1px solid #e3e3e31a; color: #FFF;' size='25'></td></tr>\n";
-						print "<tr style=''><td style='color:#FFF;'>Password:</td><td><input name='csfpassword' type='password' style='width: 95%; padding-left: 10px; padding-right: 10px; padding-top: 4px; padding-bottom: 4px; background-color: #393939; border: 1px solid #e3e3e31a; color: #FFF;' size='25'></td></tr>\n";
-						print "<tr style=''><td style='color:#FFF;' colspan='2' align='center'><input type='submit' value='Enter' style='background-color: #6d7934; color: #FFF; border: 1px solid #e3e3e31a; border-radius: 4px; padding-left: 4px; padding-right: 4px; padding-top: 7px; padding-bottom: 7px; min-width: 100px; margin-top: 15px; cursor: pointer;'></td></tr>\n";
-						print "<", "/table></div></form>\n";
+						print "<div class='login-container-main'>";
+						print "<form action='/' method='post'><div class='login-form' align='center'>\n";
+						print "<div class='login-container-logo'><a href='$th_dark_url'><img class='login-logo' src='https://cdn.icon-icons.com/icons2/1508/PNG/512/firewall_104554.png'></a></div>";
+						print "<table align='center' cellspacing='0' cellpadding='4' class='login-container'>\n";
+						print "<tr><td><input placeholder='Username' id='user' name='csflogin' type='text' class='input' size='25'></td></tr>\n";
+						print "<tr><td><input placeholder='Password' name='csfpassword' type='password' class='input' size='25'></td></tr>\n";
+						print "<tr><td style='color:#FFF;' colspan='2' align='center'><input type='submit' value='Enter' class='btn-login'></td></tr>\n";
+						print "<", "/table>";
+						print "<div class='login-footer'>Dark Theme</div>";
+						print "</div></form>\n";
 						print "</div>";
 						print "\n</BODY>\n</HTML>\n";
 					}
 	
-					if ($valid eq "session") {
+					if ($valid eq "session")
+					{
 						if (defined $FORM{csfapp} and ($FORM{csfapp} ne $application)) {
 							my $newapp = $application;
 							if ($FORM{csfapp} eq "csf") {$newapp = "csf"}

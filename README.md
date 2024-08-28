@@ -33,6 +33,8 @@ ConfigServer Security & Firewall (CSF) is a popular and powerful firewall soluti
 
 <br />
 
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/f93fcd88-4817-4fc8-b342-56a2375c0b92"></p>
+
 <p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/98440f33-8947-4409-8ff4-32138ddf4763"></p>
 
 </div>
@@ -1095,6 +1097,8 @@ All steps performed by the script will be displayed in terminal:
 The dark theme is an unofficial theme not available in the official install of ConfigServer firewall. You may use the files provided in this repository to switch your copy of CSF over to the dark theme.
 
 <br />
+
+<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/f93fcd88-4817-4fc8-b342-56a2375c0b92"></p>
 
 <p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/98440f33-8947-4409-8ff4-32138ddf4763"></p>
 
