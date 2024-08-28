@@ -102,7 +102,11 @@ ConfigServer Security & Firewall (CSF) is a popular and powerful firewall soluti
 
 ## Summary
 This repository contains several folders:
-- 📁 `extras`: The official CSF `config.conf`
+- 📁 `extras`: Extra resources
+  - Official CSF `config.conf` (full version)
+  - Official CSF `config.conf` (clean version)
+  - GeoIP configuration file
+  - Dark theme
 - 📁 `patches`: Custom patches
   - Docker
   - OpenVPN Server
