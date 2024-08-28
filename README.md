@@ -1115,6 +1115,7 @@ Extract the files from the zip to the same paths as they are shown in the zip. Y
 
 - `/etc/csf/ui/images/*.css`
 - `/usr/local/csf/lib/ConfigServer/*.pm`
+- `/usr/sbin/lfd`
 
 <br />
 
