@@ -114,9 +114,11 @@ This repository contains several folders:
 <br />
 <br />
 
-Each release posted on the [Releases Page](https://github.com/Aetherinox/csf-firewall/releases) contains two files:
+Each release posted on the [Releases Page](https://github.com/Aetherinox/csf-firewall/releases) contains several `.zip` files and a `.tgz`:
 - `csf-firewall-vxx.xx.tgz`
-  - This is the latest version of ConfigServer Firewall. You do not need this if you already have CSF installed on your system.
+  - Latest official version of ConfigServer Firewall. You do not need this if you already have CSF installed on your system.
+- `csf-firewall-vx.x.x-theme-dark.zip`
+  - Custom dark theme
 - `csf-firewall-vx.x.x-patches.zip`
   - The patches contained in this repository, which include the files:
     - 📄 csfpost.sh
