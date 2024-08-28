@@ -9918,6 +9918,16 @@ input::placeholder
 	color: #707070;
 }
 
+input:focus::placeholder
+{
+	color: transparent;
+}
+
+input:focus
+{
+    outline: none;
+}
+
 .btn-login
 {
 	background-color: #6d7934;
@@ -9983,6 +9993,12 @@ form.login-form
 	color: #575757;
 }
 
+.login-footer a
+{
+	color: #dd761c;
+	text-decoration: none;
+}
+
 .input
 {
 	width: 30vw;
@@ -9996,6 +10012,15 @@ form.login-form
 	border: 1px solid #e3e3e31a;
 	color: #FFF;
 	font-size: 14pt;
+	transition: 0.5s;
+	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #393939;
+	cursor: pointer;
+	text-align: center;
+}
+
+.input:hover
+{
+	background-size: 100% 1px;
 }
 </style>
 EOF
@@ -10012,7 +10037,7 @@ EOF
 						print "<tr><td><input placeholder='Password' name='csfpassword' type='password' class='input' size='25'></td></tr>\n";
 						print "<tr><td style='color:#FFF;' colspan='2' align='center'><input type='submit' value='Enter' class='btn-login'></td></tr>\n";
 						print "<", "/table>";
-						print "<div class='login-footer'>Dark Theme</div>";
+						print "<div class='login-footer'><a href='$th_dark_url'>Dark Theme</a> v$th_dark_version</div>";
 						print "</div></form>\n";
 						print "</div>";
 						print "\n</BODY>\n</HTML>\n";
