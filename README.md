@@ -1,12 +1,12 @@
 <div align="center">
-<h6>Adds support for Docker, Traefik, and OpenVPN servers</h6>
+<h6>Adds a new dark theme, and support for Docker, Traefik, and OpenVPN servers</h6>
 <h1>♾️ ConfigServer Firewall ♾️</h1>
 
 <br />
 
 <p>
 
-ConfigServer Security & Firewall (CSF) is a popular and powerful firewall solution for Linux servers. This repo contains complete installation guides, and also numerous patches for `Docker` and `OpenVPN` firewall support so that you can allow traffic between these services without interruption.
+ConfigServer Security & Firewall (CSF) is a popular and powerful firewall solution for Linux servers. This repo contains complete installation guides, a new dark theme, and also numerous patches for `Docker` and `OpenVPN` firewall support so that you can allow traffic between these services without interruption.
 
 </p>
 
@@ -133,6 +133,7 @@ This guide will help you with the following:
 - Install patches
   - Docker Integration
   - OpenVPN Integration
+- Install Dark Theme
 - Traefik + CSF WebUI
   - Access CSF WebUI via domain
   - Secure domain with Authentik
