@@ -9930,7 +9930,7 @@ input:focus
 
 .btn-login
 {
-	background-color: #6d7934;
+	background-color: #a81840;
 	color: #FFF;
 	border: 1px solid #e3e3e31a;
 	border-radius: 4px;
@@ -9945,7 +9945,7 @@ input:focus
 
 .btn-login:hover
 {
-	background-color: #8e9c4a;
+	background-color: #6a791c;
 }
 
 img.login-logo
@@ -9990,13 +9990,18 @@ form.login-form
 {
 	font-size: 8pt;
 	padding-top: 20px;
-	color: #575757;
+	color: #868686;
 }
 
 .login-footer a
 {
 	color: #dd761c;
 	text-decoration: none;
+}
+
+.login-footer a:hover
+{
+	color: #ffa354;
 }
 
 .input
@@ -10031,11 +10036,11 @@ EOF
 
 						print "<div class='login-container-main'>";
 						print "<form action='/' method='post'><div class='login-form' align='center'>\n";
-						print "<div class='login-container-logo'><a href='$th_dark_url'><img class='login-logo' src='https://cdn.icon-icons.com/icons2/1508/PNG/512/firewall_104554.png'></a></div>";
+						print "<div class='login-container-logo'><a href='$th_dark_url'><img class='login-logo' src='https://github.com/user-attachments/assets/ba005563-da8b-456c-8c4d-19f4ee31eb71'></a></div>";
 						print "<table align='center' cellspacing='0' cellpadding='4' class='login-container'>\n";
 						print "<tr><td><input placeholder='Username' id='user' name='csflogin' type='text' class='input' size='25'></td></tr>\n";
 						print "<tr><td><input placeholder='Password' name='csfpassword' type='password' class='input' size='25'></td></tr>\n";
-						print "<tr><td style='color:#FFF;' colspan='2' align='center'><input type='submit' value='Enter' class='btn-login'></td></tr>\n";
+						print "<tr><td colspan='2' align='center'><input type='submit' value='Enter' class='btn-login'></td></tr>\n";
 						print "<", "/table>";
 						print "<div class='login-footer'><a href='$th_dark_url'>Dark Theme</a> v$th_dark_version</div>";
 						print "</div></form>\n";
@@ -10160,7 +10165,7 @@ EOF
 									print "</div>\n";
 									print <<EOF;
 <div class='panel panel-default panel-body'>
-<img class='logo' align='absmiddle' src='https://github.com/user-attachments/assets/732ee286-94bc-40c1-8449-9b94c263dfdf' alt='ConfigServer Firewall' style='float:left'>
+<a href='/$session/'><img class='logo' align='absmiddle' src='https://github.com/user-attachments/assets/ba005563-da8b-456c-8c4d-19f4ee31eb71' alt='ConfigServer Firewall' style='float:left'></a>
 <h3>ConfigServer Firewall v$myv</h3>
 </div>
 EOF
@@ -10320,7 +10325,7 @@ EOF
 										print "</div>\n";
 										print <<EOF;
 <div class='panel panel-default panel-body'>
-<img class='logo' align='absmiddle' src='https://github.com/user-attachments/assets/732ee286-94bc-40c1-8449-9b94c263dfdf' alt='ConfigServer eXploit Scanner' style='float:left'>
+<img class='logo' align='absmiddle' src='https://github.com/user-attachments/assets/ba005563-da8b-456c-8c4d-19f4ee31eb71' alt='ConfigServer eXploit Scanner' style='float:left'>
 <h3>ConfigServer eXploit Scanner - cxs v$myv</h3>
 </div>
 EOF

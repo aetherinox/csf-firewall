@@ -7,6 +7,24 @@ body
     background-color: #1e1d1d
 }
 
+.login-body
+{
+	font-family:Arial, Helvetica, sans-serif;
+	background-color: #000;
+}
+
+/*
+	Logo
+
+	Live 		: /usr/sbin/lfd
+	Source		: /src/lfd.pl
+*/
+
+img.logo
+{
+	width: 65px;
+}
+
 .panel
 {
 	margin-bottom: 20px;
@@ -28,7 +46,39 @@ body
 
 .panel h3
 {
-	margin: 9px -15px;
+	margin: 15px -15px;
+}
+
+/*
+	Button > Quick Allow
+*/
+
+.btn-allow
+{
+	background-color: #486a47  !important;
+	border: 1px solid #FFFFFF0A !important;
+}
+
+.btn-allow:hover
+{
+	filter: brightness(120%);
+	transition: all 0.3s;
+}
+
+/*
+	Button > Quick Deny
+*/
+
+.btn-deny
+{
+	background-color: #a81840 !important;
+	border: 1px solid #FFFFFF0A !important;
+}
+
+.btn-deny:hover
+{
+	filter: brightness(120%);
+	transition: all 0.3s;
 }
 
 button#CSFpauseID
@@ -39,6 +89,27 @@ button#CSFpauseID
 	color: #d1d1d1 !important;
 }
 
+button#CSFpauseID:hover
+{
+	filter: brightness(120%) !important;
+	transition: all 0.3s;
+}
+
+#paginatediv2 > .btn-default, #paginatediv > .btn-default
+{
+	background: #3566c0;
+	border-radius: 4px;
+	border: 1px solid #3566c0;
+	color: #FFF !important;
+	width: 80px;
+}
+
+#paginatediv2 > .btn-default:hover, #paginatediv > .btn-default:hover
+{
+	filter: brightness(120%) !important;
+	transition: all 0.3s;
+}
+
 button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):active,
 button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):visited,
 button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):focus,
@@ -47,13 +118,138 @@ button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
 	background:#3566c0;
 	border-radius:4px;
 	border: 1px solid #3566c0;
-	color: #d1d1d1 !important;
+	color: #FFF !important;
 	min-width: 13em;
 }
 
-button:not(button#fontminus-btn):not(button#fontplus-btn):hover
+button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):hover
 {
-	background:#4378da;
+	background: #457ce4;
+	transition: all 0.3s;
+}
+
+/*
+	Button > Desktop View
+*/
+
+.btn-desktop-view
+{
+	background:#552c71 !important;
+	border-radius:4px;
+	border: 1px solid #552c71 !important;
+	color: #FFF !important;
+}
+
+.btn-desktop-view:hover
+{
+	background: #6d3a8f !important;
+	transition: all 0.3s;
+	border: 1px solid #6d3a8f !important;
+}
+
+.mobilecontainer
+{
+	width: 50vw;
+	margin: auto auto;
+}
+
+/*
+	Button > Mobile > Large
+*/
+
+.btn-lg
+{
+	width: 50vw;
+	margin: auto auto;
+}
+
+.form-mobile-ip-textbox:has(+p)
+{
+	padding-bottom: 20px;
+}
+
+.input-ipaddr:focus
+{
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0),0 0 8px rgba(102, 174, 233, 0);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0),0 0 8px rgba(102, 174, 233, 0);
+}
+
+.input-ipaddr
+{
+	margin: auto auto;
+	height: 40px;
+	width: 50vw;
+	padding-left:10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	background-color: #393939;
+	border: 1px solid #e3e3e31a;
+	color: #FFF;
+	font-size: 16pt;
+	transition: 0.5s;
+	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #393939;
+	cursor: pointer;
+	text-align: center;
+	margin-bottom: 20px !important;
+}
+
+.input-ipaddr:hover
+{
+	background-size: 100% 1px;
+}
+
+.input-ipaddr::placeholder
+{
+	font-weight: light;
+	opacity: 0.8;
+	color: #707070;
+}
+
+.input-ipaddr:focus::placeholder
+{
+	color: transparent;
+}
+
+.input-ipaddr:focus
+{
+    outline: none;
+}
+
+/*
+	Button > Mobile View
+*/
+
+.btn-mobile
+{
+	background:#2a7582;
+	border-radius:4px;
+	border: 1px solid #2a7582 !important;
+	color: #FFF !important;
+	min-width: 13em;
+}
+
+.btn-mobile:hover
+{
+	filter: brightness(120%) !important;
+	transition: all 0.3s;
+	background: #2a7582 !important;
+}
+
+/*
+	Right side scroll icon
+*/
+
+.glyphicon
+{
+	color: #c83062;
+}
+
+.glyphicon:hover
+{
+	color: #FFF;
+	transition: all 0.3s;
 }
 
 /*
@@ -74,7 +270,7 @@ select:has(+ .btn-default)
 	background:#3566c0;
 	border-radius:4px;
 	border: 1px solid #3566c0;
-	color: #d1d1d1 !important;
+	color: #FFF !important;
 	max-width: 7em;
 }
 */
@@ -83,17 +279,40 @@ select:has(+ .btn-default)
 	Button > Logout
 */
 
-.pull-right > a[href*="csflogout"] {
-  margin-top: 15px;
-  margin-right: 20px;
-  background-color: #9f1542;
-  color: #FFF;
-  border: 1px solid #FFF0;
+.pull-right > a[href*="csflogout"]
+{
+	background-color: #a81840;
+	color: #FFF;
+	border: 1px solid #FFF0;
+	position: absolute;
+	top: 2.9%;
+	right: 8%;
+	transition: all 0.3s;
+}
+
+.pull-right > a[href*="csflogout"]:after
+{
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+	padding-top: 6px;
+}
+
+.pull-right > a[href*="csflogout"]:hover:after
+{
+	opacity: 1;
+	right: 0;
+	margin-right: 13px;
 }
 
 .pull-right > a[href*="csflogout"]:hover
 {
-	background-color: #c83062;
+	filter: brightness(120%);
+	transition: all 0.3s;
+	padding-right: 30px;
 }
 
 .icon-configserver
@@ -111,7 +330,8 @@ select:has(+ .btn-default)
 
 #fontminus-btn:hover, #fontplus-btn:hover
 {
-	background-color: #426f3f;
+	filter: brightness(120%);
+	transition: all 0.3s;
 }
 
 #fontminus-btn
@@ -124,19 +344,20 @@ input.btn-default[type="submit"]
 	background: #3566c0;
 	border-radius: 4px;
 	border: 1px solid #3566c0;
-	color: #d1d1d1 !important;
+	color: #FFF !important;
 	max-width: 7em;
 }
 
 input.btn-default[type="submit"]:hover
 {
-	background: #477de2;
+	filter: brightness(120%);
+	transition: all 0.3s;
 }
 
 .btn-default:hover
 {
-	border: 1px solid #a0a0a0;
-	background: #3c70d1;
+	filter: brightness(120%);
+	transition: all 0.3s;
 }
 
 .btn-csf-config:focus,
@@ -159,7 +380,7 @@ input.btn-default[type="submit"]:hover
 		- lfd restart
 */
 
-:not(select):not(button) + .btn-default:not(button#CSFpauseID)
+:not(select):not(button) + .btn-default:not(button#CSFpauseID):not(a)
 {
   	min-width: 13em;
 }
@@ -208,6 +429,7 @@ th
 {
 	border-bottom: 1px solid #e3e3e31a;
 	background-color: #373737;
+	margin-top: 20px;
 }
 
 /*
@@ -274,7 +496,8 @@ textarea
 
 .comment
 {
-	border-radius: 5px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
 	border: 1px solid #e3e3e31a;
 	padding: 10px;
 	font-family: Courier New, Courier;
@@ -504,18 +727,32 @@ code
 	100% { transform: rotate(360deg); }
 }
 
+/*
+	List each item / setting
+*/
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th
+{
+	padding: 8px;
+		padding-top: 6px;
+		padding-bottom: 6px;
+	line-height: 1.42857143;
+	vertical-align: top;
+}
+
 .bs-callout
 {
-    padding: 20px;
-    margin: 20px 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    margin: 10px 0;
     border: 1px solid #3c3c3c;
     border-left-width: 11px;
     border-radius: 3px;
+	min-width: 10vw;
 }
 
 .bs-callout h4
 {
-    margin-top: 0;
     margin-bottom: 5px;
 }
 
@@ -540,13 +777,15 @@ code
 
 .bs-callout-success
 {
-    border-left-color: #839751;
-	background-color: #394027;
+    border-left-color: #798e42;
+	background-color: #4c533b;
 }
 
 .bs-callout-success h4
 {
-    color: #5cb85c;
+	color: #FFF;
+	font-weight: 100;
+	font-size: 12pt;
 }
 
 /*
@@ -561,7 +800,9 @@ code
 
 .bs-callout-info h4
 {
-    color: #5bc0de;
+	color: #FFF;
+	font-weight: 100;
+	font-size: 12pt;
 }
 
 /*
@@ -570,13 +811,15 @@ code
 
 .bs-callout-warning
 {
-    border-left-color: #f0ad4e;
-	background-color: #4d3e13;
+    border-left-color: #fa3;
+	background-color: #6f5e2f;
 }
 
 .bs-callout-warning h4
 {
-    color: #f0ad4e;
+	color: #FFF;
+	font-weight: 100;
+	font-size: 12pt;
 }
 
 /*
@@ -586,12 +829,14 @@ code
 .bs-callout-danger
 {
     border-left-color: #d9534f;
-	background-color: #141414;
+	background-color: #6f2f2f;
 }
 
 .bs-callout-danger h4
 {
-    color: #d9534f;
+	color: #FFF;
+	font-weight: 100;
+	font-size: 12pt;
 }
 
 .label-pill
@@ -603,43 +848,69 @@ code
 
 .value-default
 {
-	background: #91193A;
+	background: #333;
 	padding: 2px;
 		padding-right: 2px;
 		padding-left: 2px;
-	border-radius: 5px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .value-other
 {
-	background:#F4F4EA;
-	padding:2px;
-	border-radius:5px;
+	background:#2A3F57;
+	padding: 2px;
+		padding-right: 2px;
+		padding-left: 2px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .value-disabled
 {
 	background:#F5F5F5;
-	padding:2px;
-	border-radius:5px;
+	padding: 2px;
+		padding-right: 2px;
+		padding-left: 2px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .value-warning
 {
-	background:#FFC0CB;
-	padding:2px;
-	border-radius:5px;
+	background:#8E2A3C;
+	padding: 2px;
+		padding-right: 2px;
+		padding-left: 2px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .section
 {
-	border-radius:5px;
-	border: 2px solid #990000;
-	padding: 10px;
-	font-size:16px;
-	font-weight:bold;
+	background-color: #396852;
+	padding: 8px;
+	margin-top: 30px;
+	line-height: 1.42857143;
+	border-bottom: 1px solid #e3e3e31a !important;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 
 .toplink
@@ -696,13 +967,13 @@ code
 	display: flex;
 	width: 100%;
 	clear: both;
-	background-color: #731829;
+	background-color: #2b2b2b;
 }
 
 .server-check-status-check
 {
 	width: 250px;
-	background-color: #8E2841;
+	background-color: #80273D;
 	padding: 8px;
 	border-bottom: 1px solid #e3e3e31a;
 }
@@ -859,6 +1130,59 @@ code
 	Check IPs IBL
 */
 
-.rbl-option .btn-default {
-  min-width: 214px !important;
+.rbl-option .btn-default
+{
+	min-width: 214px !important;
+}
+
+/*
+	Firewall Configuration
+*/
+
+.btn-group .btn-default
+{
+	width: 60px !important;
+	min-width: 0px !important;
+}
+
+/*
+	Toggle > Disabled > Normal
+*/
+
+.btn.btn-default.btn-csf-config.option-disabled
+{
+	background-color: #282828;
+	color: #FFF;
+	border-color: #ffffff29;
+}
+
+/*
+	Toggle > Disabled > Active
+*/
+
+.btn.btn-default.btn-csf-config.option-disabled.active
+{
+	background-color: #A81B43 !important;
+	color: #FFF;
+}
+
+/*
+	Toggle > Enabled > Normal
+*/
+
+.btn.btn-default.btn-csf-config.option-enabled
+{
+	background-color: #282828;
+	color: #FFF;
+	border-color: #ffffff29;
+}
+
+/*
+	Toggle > Enabled > Active
+*/
+
+.btn.btn-default.btn-csf-config.option-enabled.active
+{
+	background-color: #5a732f  !important;
+	color: #FFF;
 }

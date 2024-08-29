@@ -2158,22 +2158,33 @@ EOF
 		waitpid ($pid, 0);
 		chomp @iptstatus;
 		if ($iptstatus[0] =~ /# Warning: iptables-legacy tables present/) {shift @iptstatus}
+
 		my $status = "<div class='bs-callout bs-callout-success text-center'><h4>Firewall Status: Enabled & Running</h4></div>";
 
-		if (-e "/etc/csf/csf.disable") {
+		if (-e "/etc/csf/csf.disable")
+		{
 			$status = "<div class='bs-callout bs-callout-danger text-center'><form action='$script' method='post'><h4>Firewall Status: Disabled and Stopped <input type='hidden' name='action' value='enable'><input type='submit' class='btn btn-default' value='Enable'></form></h4></div>\n"
 		}
-		elsif ($config{TESTING}) {
+		elsif ($config{TESTING})
+		{
 			$status = "<div class='bs-callout bs-callout-warning text-center'><form action='$script' method='post'><h4>Firewall Status: Enabled but in Test Mode - Don't forget to disable TESTING in the Firewall Configuration</h4></div>";
 		}
-		elsif ($iptstatus[0] !~ /^Chain LOCALINPUT/) {
+		elsif ($iptstatus[0] !~ /^Chain LOCALINPUT/)
+		{
 			$status = "<div class='bs-callout bs-callout-danger text-center'><form action='$script' method='post'><h4>Firewall Status: Enabled but Stopped <input type='hidden' name='action' value='start'><input type='submit' class='btn btn-default' value='Start'></form></h4></div>"
 		}
+
 		if (-e "/var/lib/csf/lfd.restart") {$status .= "<div class='bs-callout bs-callout-info text-center'><h4>lfd restart request pending</h4></div>"}
-		unless ($config{RESTRICT_SYSLOG}) {$status .= "<div class='bs-callout bs-callout-warning text-center'><h4>WARNING: RESTRICT_SYSLOG is disabled. See SECURITY WARNING in Firewall Configuration</h4></div>\n"}
+		unless ($config{RESTRICT_SYSLOG}) {$status .= "<div class='bs-callout bs-callout-warning text-center'><h4><b>WARNING:</b> RESTRICT_SYSLOG is disabled. See SECURITY WARNING in Firewall Configuration</h4></div>\n"}
+
+		# $status .= "<div class='bs-callout bs-callout-info text-center'><h4>Test information callout</h4></div>";
+		# $status .= "<div class='bs-callout bs-callout-danger text-center'><h4>Test danger callout</h4></div>";
+		# $status .= "<div class='bs-callout bs-callout-warning text-center'><h4>Test warning callout</h4></div>";
+		# $status .= "<div class='bs-callout bs-callout-success text-center'><h4>Test success callout</h4></div>";
 
 		my $tempcnt = 0;
-		if (! -z "/var/lib/csf/csf.tempban") {
+		if (! -z "/var/lib/csf/csf.tempban")
+		{
 			sysopen (my $IN, "/var/lib/csf/csf.tempban", O_RDWR);
 			flock ($IN, LOCK_EX);
 			my @data = <$IN>;
@@ -2221,6 +2232,7 @@ EOF
 
 		print $status;
 
+		# tag 'normalcontainer' closed within mobile view
 		print "<div class='normalcontainer'>\n";
 		print "<div class='bs-callout bs-callout-info text-center collapse' id='upgradebs'><h4>A new version of csf is <a href='#upgradetable'>available</a></h4></div>";
 
@@ -2229,11 +2241,19 @@ EOF
 		print "<li><a data-toggle='tab' href='#home'>Info</a></li>\n";
 		print "<li><a data-toggle='tab' href='#csf'>csf</a></li>\n";
 		print "<li><a data-toggle='tab' href='#lfd'>lfd</a></li>\n";
-		if ($config{CLUSTER_SENDTO}) {
+	
+		if ($config{CLUSTER_SENDTO})
+		{
 			print "<li><a data-toggle='tab' href='#cluster'>Cluster</a></li>\n";
 		}
+
 		print "<li><a data-toggle='tab' href='#other'>Other</a></li>\n";
 		print "</ul><br>\n";
+
+		print "<table class='table table-bordered table-striped'>\n";
+		print "<thead><tr><th colspan='2'>Mobile View</th></tr></thead>";
+		print "<tr><td><a class='btn btn-default btn-mobile' id='MobileView'>Mobile View</a></td><td style='width:100%'>Shows mobile friendly action buttons to manage your firewall.</td></tr>\n";
+		print "</table>\n";
 
 		print "<div class='tab-content'>\n";
 		print "<div id='home' class='tab-pane active'>\n";
@@ -2297,6 +2317,7 @@ EOF
 				print "</td></tr>\n";
 			}
 		}
+		
 		print "</table>\n";
 		print "</form>\n";
 		if ($upgrade) {print "<script>\$('\#upgradebs').show();</script>\n"}
@@ -2442,19 +2463,20 @@ EOF
 					print "<a id='cpframetr2' href='$ENV{cp_security_token}' class='btn btn-success' data-spy='affix' data-offset-bottom='0' style='bottom: 0; left:45%'><span class='glyphicon glyphicon-home'></span> cPanel Main Page</a>\n";
 				}
 			}
+
 			if  (defined $ENV{WEBMIN_VAR} and defined $ENV{WEBMIN_CONFIG} and !$config{THIS_UI}) {
 				print "<a id='webmintr2' href='/' class='btn btn-success' data-spy='affix' data-offset-bottom='0' style='bottom: 0; left:45%'><span class='glyphicon glyphicon-home'></span> Webmin Main Page</a>\n";
 			}
-			print "<div class='panel panel-default'><div class='panel-heading panel-heading-cxs'>Shows a subset of functions suitable for viewing on mobile devices</div>\n";
-			print "<div class='panel-body text-center'><a class='btn btn-primary btn-block' style='margin:10px;padding: 18px 28px;font-size: 22px; line-height: normal;border-radius: 8px;' id='MobileView'>Mobile View</a></div></div>\n";
 
+
+			# </div> closes 'normalcontainer'
 			print "</div>\n<div class='mobilecontainer'>\n";
 
 			print "<form action='$script' method='post'>\n";
 			print "<div class='form-group' style='width:100%'>\n";
-			print "<p><label>IP address:</label><input id='ip' type='text' class='form-control' name='ip'></p>\n";
-			print "<p><button class='btn btn-primary btn-lg btn-block' type='submit' name='action' value='qallow'>Quick Allow IP</button></p>\n";
-			print "<p><button class='btn btn-primary btn-lg btn-block' type='submit' name='action' value='qdeny'>Quick Deny IP</button></p>\n";
+			print "<p><input id='ip' type='text' placeholder='IP Address' class='form-control input-ipaddr form-mobile-ip-textbox' name='ip'></p>\n";
+			print "<p><button class='btn btn-primary btn-lg btn-block btn-allow' type='submit' name='action' value='qallow'>Quick Allow IP</button></p>\n";
+			print "<p><button class='btn btn-primary btn-lg btn-block btn-deny' type='submit' name='action' value='qdeny'>Quick Deny IP</button></p>\n";
 			print "<p><button class='btn btn-primary btn-lg btn-block' type='submit' name='action' value='qignore'>Quick Ignore IP</button></p>\n";
 			print "<p><button class='btn btn-primary btn-lg btn-block' type='submit' name='action' value='kill'>Quick Unblock IP</button></p>\n";
 			print "<p><button class='btn btn-primary btn-lg btn-block' type='submit' name='action' value='grep'>Search for IP</button></p>\n";
@@ -2480,7 +2502,7 @@ EOF
 				print "<br><p><a href='/' class='btn btn-info btn-lg btn-block'><span class='glyphicon glyphicon-home'></span> Webmin Main Page</a></p>\n";
 			}
 
-			print "<br><p><button class='btn btn-info btn-lg btn-block' id='NormalView'>Desktop View</button></p>\n";
+			print "<br><p><button class='btn btn-info btn-lg btn-block btn-desktop-view' id='NormalView'>Desktop View</button></p>\n";
 			print "</div>\n<div><br>\n";
 		}
 
@@ -2729,10 +2751,13 @@ sub systemstats {
 
 	return;
 }
+
 # end systemstats
 ###############################################################################
 # start editfile
-sub editfile {
+
+sub editfile
+{
 	my $file = shift;
 	my $save = shift;
 	my $extra = shift;
@@ -2813,21 +2838,28 @@ sub editfile {
 </script>
 EOF
 	} else {
-		if ($config{DIRECTADMIN}) {
+		if ($config{DIRECTADMIN})
+		{
 			print "<form action='$script?pipe_post=yes' method='post'>\n<div class='panel panel-default'>\n";
-		} else {
+		}
+		else
+		{
 			print "<form action='$script' method='post'>\n<div class='panel panel-default'>\n";
 		}
+
 		print "<div class='panel-heading panel-heading-cxs'>Edit <code>$file</code></div>\n";
 		print "<div class='panel-body'>\n";
 		print "<input type='hidden' name='action' value='$save'>\n";
 		if ($extra) {print "<input type='hidden' name='$extra' value='$FORM{$extra}'>\n";}
 		print "<textarea class='textarea' name='formdata' style='width:100%;height:500px;border: 1px solid #000;' wrap='off'>";
-		foreach my $line (@confdata) {
+
+		foreach my $line (@confdata)
+		{
 			$line =~ s/\</\&lt\;/g;
 			$line =~ s/\>/\&gt\;/g;
 			print $line."\n";
 		}
+
 		print "</textarea></div>\n";
 		print "<div class='panel-footer text-center'><input type='submit' class='btn btn-default' value='Change'></div>\n";
 		print "</div></form>\n";
@@ -2835,15 +2867,18 @@ EOF
 
 	return;
 }
+
 # end editfile
 ###############################################################################
 # start savefile
-sub savefile {
+sub savefile
+{
 	my $file = shift;
 	my $restart = shift;
 
 	$FORM{formdata} =~ s/\r//g;
-	if ($FORM{ace} == "1") {
+	if ($FORM{ace} == "1")
+	{
 		if ($FORM{formdata} !~ /^# Do not remove or change this line as it is a safeguard for the UI editor\n/) {
 			print "<div>UI editor safeguard missing, changes have not been saved.</div>\n";
 			return;
@@ -2859,11 +2894,13 @@ sub savefile {
 	print $OUT $FORM{formdata};
 	close ($OUT);
 
-	if ($restart eq "csf") {
+	if ($restart eq "csf")
+	{
 		print "<div>Changes saved. You should restart csf.</div>\n";
 		print "<div><form action='$script' method='post'><input type='hidden' name='action' value='restart'><input type='submit' class='btn btn-default' value='Restart csf'></form></div>\n";
 	}
-	elsif ($restart eq "lfd") {
+	elsif ($restart eq "lfd")
+	{
 		print "<div>Changes saved. You should restart lfd.</div>\n";
 		print "<div><form action='$script' method='post'><input type='hidden' name='action' value='lfdrestart'><input type='submit' class='btn btn-default' value='Restart lfd'></form></div>\n";
 	}
@@ -2871,16 +2908,20 @@ sub savefile {
 		print "<div>Changes saved. You should restart csf and lfd.</p>\n";
 		print "<div><form action='$script' method='post'><input type='hidden' name='action' value='restartboth'><input type='submit' class='btn btn-default' value='Restart csf+lfd'></form></div>\n";
 	}
-	else {
+	else
+	{
 		print "<div>Changes saved.</div>\n";
 	}
 
 	return;
 }
+
 # end cloudflare
 ###############################################################################
 # start cloudflare
-sub cloudflare {
+
+sub cloudflare
+{
 	my $scope = &ConfigServer::CloudFlare::getscope();
 	print "<link rel='stylesheet' href='$images/bootstrap-chosen.css'>\n";
 	print "<script src='$images/chosen.min.js'></script>\n";
@@ -2906,6 +2947,7 @@ sub cloudflare {
 	print "<tr><td><button type='button' id='cfremovebtn' class='btn btn-default' disabled='true'>CloudFlare Delete</button></td><td style='width:100%'><form action='#' id='cfremove'>Delete rule for target <input type='text' name='target' value='' size='18' id='target'> in CloudFlare ONLY</form></td></tr>\n";
 	print "<tr><td><button type='button' id='cftempdenybtn' class='btn btn-default' disabled='true'>CF Temp Allow/Deny</button></td><td style='width:100%'><form action='#' id='cftempdeny'>Temporarily <select name='do' id='do'><option>allow</option><option>deny</option></select> IP address <input type='text' name='target' value='' size='18' id='target'> for $config{CF_TEMP} secs in CloudFlare AND csf for the chosen accounts and those with to \"any\"</form></td></tr>";
 	print "</table>\n";
+
 	print "<div id='CFajax'><div class='panel panel-info'><div class='panel-heading'>Output will appear here</div></div></div>\n";
 	print "<div class='bs-callout bs-callout-success'>Note:\n<ul>\n";
 	print "<li><mark>target</mark> can be one of:<ul><li>An IP address</li>\n<li>2 letter Country Code</li>\n<li>IP range CIDR</li></ul>\n</li>\n";
@@ -2941,20 +2983,28 @@ sub cloudflare {
 	&printreturn;
 	return;
 }
+
 # end cloudflare
 ###############################################################################
 # start resize
-sub resize {
+
+sub resize
+{
 	my $part = shift;
 	my $scroll = shift;
-	if ($part eq "top") {
+	if ($part eq "top")
+	{
 		print "<div class='pull-right btn-group'><button class='btn btn-default' id='fontminus-btn'><strong>a</strong><span class='glyphicon glyphicon-arrow-down icon-configserver'></span></button>\n";
 		print "<button class='btn btn-default' id='fontplus-btn'><strong>A</strong><span class='glyphicon glyphicon-arrow-up icon-configserver'></span></button></div>\n";
-	} else {
+	}
+	else
+	{
 		print "<script>\n";
-		if ($scroll) {
+		if ($scroll)
+		{
 			print "\$('#output').scrollTop(\$('#output')[0].scrollHeight);\n";
 		}
+
 		print <<EOF;
 
 	var myFont = 14;
