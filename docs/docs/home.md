@@ -4,7 +4,7 @@ tags:
   - home
 ---
 
-<p align="center"><img src="https://github.com/user-attachments/assets/ce064ce9-6675-4b2f-ad18-641e02fefe19" width="860"></p>
+<p align="center"><img src="https://github.com/user-attachments/assets/df9085af-788e-4a55-ad0e-17815f95741c" width="860"></p>
 <h1 align="center"><b>ConfigServer Firewall</b></h1>
 
 <p align="center" markdown="1">
@@ -25,6 +25,7 @@ This documentation covers the following:
   - Install patches
       - Docker Integration
       - OpenVPN Integration
+  - Install dark theme
 
 <br />
 
