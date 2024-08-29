@@ -1,7 +1,8 @@
 ###############################################################################
-# Copyright 2006-2023, Way to the Web Limited
-# URL: http://www.configserver.com
-# Email: sales@waytotheweb.com
+#	Copyright 2006-2024, Way to the Web Limited
+#
+#	@url: 		http://www.configserver.com
+#	@email: 	sales@waytotheweb.com
 ###############################################################################
 ## no critic (RequireUseWarnings, ProhibitExplicitReturnUndef, ProhibitMixedBooleanOperators, RequireBriefOpen)
 
@@ -46,14 +47,14 @@ my $cleanreg = ConfigServer::Slurp->cleanreg;
 
 sub main
 {
-	my $form_ref = shift;
-	%FORM = %{$form_ref};
-	$script = shift;
-	$script_da = shift;
-	$images = shift;
-	$myv = shift;
-	$config{THIS_UI} = shift;
-	$| = 1;
+	my $form_ref 		= shift;
+	%FORM 				= %{$form_ref};
+	$script 			= shift;
+	$script_da 			= shift;
+	$images 			= shift;
+	$myv 				= shift;
+	$config{THIS_UI} 	= shift;
+	$| 					= 1;
 
 	# #
 	#	Date
@@ -79,27 +80,35 @@ sub main
 	$ipv4reg = $config->ipv4reg;
 	$ipv6reg = $config->ipv6reg;
 
-	if ($config{CF_ENABLE}) {
+	if ( $config{CF_ENABLE} )
+	{
 		require ConfigServer::CloudFlare;
 		import ConfigServer::CloudFlare;
 	}
 
 	$mobile = 0;
-	if ($FORM{mobi}) {$mobile = 1}
+	if ( $FORM{mobi} )
+	{
+		$mobile = 1
+	}
 
 	$chart = 1;
-	if ($config{ST_ENABLE}) {
+	if ($config{ST_ENABLE})
+	{
 		if (!defined ConfigServer::ServerStats::init()) {$chart = 0}
 	}
 
 	$urlget = ConfigServer::URLGet->new($config{URLGET}, "csf/$myv", $config{URLPROXY});
-	unless (defined $urlget) {
+
+	unless (defined $urlget)
+	{
 		$config{URLGET} = 1;
 		$urlget = ConfigServer::URLGet->new($config{URLGET}, "csf/$myv", $config{URLPROXY});
 		print "<p>*WARNING* URLGET set to use LWP but perl module is not installed, reverting to HTTP::Tiny<p>\n";
 	}
 
-	if ($config{RESTRICT_UI} == 2) {
+	if ($config{RESTRICT_UI} == 2)
+	{
 		print "<table class='table table-bordered table-striped'>\n";
 		print "<tr><td><font color='red'>csf UI Disabled via the RESTRICT_UI option in /etc/csf/csf.conf</font></td></tr>\n";
 		print "</tr></table>\n";
@@ -108,148 +117,218 @@ sub main
 
 	if ($FORM{ip} ne "") {$FORM{ip} =~ s/(^\s+)|(\s+$)//g}
 
-	if (($FORM{ip} ne "") and ($FORM{ip} ne "all") and (!checkip(\$FORM{ip}))) {
+	if (($FORM{ip} ne "") and ($FORM{ip} ne "all") and (!checkip(\$FORM{ip})))
+	{
 		print "[$FORM{ip}] is not a valid IP/CIDR";
 	}
-	elsif (($FORM{ignorefile} ne "") and ($FORM{ignorefile} =~ /[^\w\.]/)) {
+	elsif (($FORM{ignorefile} ne "") and ($FORM{ignorefile} =~ /[^\w\.]/))
+	{
 		print "[$FORM{ignorefile}] is not a valid file";
 	}
-	elsif (($FORM{template} ne "") and ($FORM{template} =~ /[^\w\.]/)) {
+	elsif (($FORM{template} ne "") and ($FORM{template} =~ /[^\w\.]/))
+	{
 		print "[$FORM{template}] is not a valid file";
 	}
-	elsif ($FORM{action} eq "manualcheck") {
+	elsif ($FORM{action} eq "manualcheck")
+	{
 		print "<div><p>Checking version...</p>\n\n";
-		my ($upgrade, $actv) = &manualversion($myv);
-		if ($upgrade) {
-			print "<form action='$script' method='post'><button name='action' value='upgrade' type='submit' class='btn btn-default'>Upgrade csf</button> A new version of csf (v$actv) is available. Upgrading will retain your settings. <a href='https://$config{DOWNLOADSERVER}/csf/changelog.txt' target='_blank'>View ChangeLog</a></form>\n";
-		} else {
-			if ($actv ne "") {
-				print "<div class='bs-callout bs-callout-danger'>$actv</div>\n";
+
+		my ( $upgrade, $response ) = &manualversion( $myv );
+
+		if ($upgrade)
+		{
+			print "<form action='$script' method='post'><button name='action' value='upgrade' type='submit' class='btn btn-default'>Upgrade csf</button> A new version of csf (v$response) is available. Upgrading will retain your settings. <a href='https://$config{DOWNLOADSERVER}/csf/changelog.txt' target='_blank'>View ChangeLog</a></form>\n";
+		}
+		else
+		{
+			if ( $response ne "" )
+			{
+				print "<div class='bs-callout bs-callout-danger'>$response</div>\n";
 			}
-			else {
+			else
+			{
 				print "<div class='bs-callout bs-callout-info'>You are running the latest version of csf (v$myv). An Upgrade button will appear here if a new version becomes available</div>\n";
 			}
 		}
+
 		print "</div>\n";
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "lfdstatus") {
+	elsif ($FORM{action} eq "lfdstatus")
+	{
 		print "<div><p>Show lfd status...</p>\n<pre class='comment' style='white-space: pre-wrap;'>\n";
 		ConfigServer::Service::statuslfd();
+
 		print "</pre>\n<p>...<b>Done</b>.</div>\n";
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "ms_list") {
+	elsif ($FORM{action} eq "ms_list")
+	{
 		&modsec;
 	}
-	elsif ($FORM{action} eq "chart") {
+	elsif ($FORM{action} eq "chart")
+	{
 		&chart;
 	}
-	elsif ($FORM{action} eq "systemstats") {
+	elsif ($FORM{action} eq "systemstats")
+	{
 		&systemstats($FORM{graph});
 	}
-	elsif ($FORM{action} eq "lfdstart") {
+	elsif ($FORM{action} eq "lfdstart")
+	{
 		print "<div><p>Starting lfd...</p>\n<pre class='comment' style='white-space: pre-wrap;'>\n";
 		ConfigServer::Service::startlfd();
+
 		print "</pre>\n<p>...<b>Done</b>.</p></div>\n";
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "lfdrestart") {
+	elsif ($FORM{action} eq "lfdrestart")
+	{
 		if ($config{THIS_UI}) {
 			print "<div><p>Signal lfd to <i>restart</i>...</p>\n<pre class='comment' style='white-space: pre-wrap;'>\n";
+
 			sysopen (my $OUT, "/var/lib/csf/lfd.restart",, O_WRONLY | O_CREAT) or die "Unable to open file: $!";
 			close ($OUT);
-		} else {
+		}
+		else
+		{
 			print "<div><p>Restarting lfd...</p>\n<pre class='comment' style='white-space: pre-wrap;'>\n";
 			ConfigServer::Service::restartlfd();
 		}
+
 		print "</pre>\n<p>...<b>Done</b>.</p></div>\n";
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "lfdstop") {
+	elsif ($FORM{action} eq "lfdstop")
+	{
 		print "<div><p>Stopping lfd...</p>\n<pre class='comment' style='white-space: pre-wrap;'>\n";
 		ConfigServer::Service::stoplfd();
+
 		print "</pre>\n<p>...<b>Done</b>.</p></div>\n";
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "status") {
+	elsif ($FORM{action} eq "status")
+	{
 		&resize("top");
+	
 		print "<pre class='comment' style='white-space: pre-wrap; height: 500px; overflow: auto; resize:both; clear:both' id='output'>\n";
 		&printcmd("/usr/sbin/csf","-l");
-		if ($config{IPV6}) {
+
+		if ($config{IPV6})
+		{
 			print "\n\nip6tables:\n\n";
 			&printcmd("/usr/sbin/csf","-l6");
 		}
+
 		print "</pre>\n";
 		&resize("bot",1);
+	
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "start") {
+	elsif ($FORM{action} eq "start")
+	{
 		print "<div><p>Starting csf...</p>\n";
 		&resize("top");
+
 		print "<pre class='comment' style='white-space: pre-wrap; height: 500px; overflow: auto; resize:both; clear:both' id='output'>\n";
 		&printcmd("/usr/sbin/csf","-sf");
+
 		print "</pre>\n<p>...<b>Done</b>.</p></div>\n";
 		&resize("bot",1);
+
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "restart") {
+	elsif ($FORM{action} eq "restart")
+	{
 		print "<div><p>Restarting csf...</p>\n";
 		&resize("top");
+
 		print "<pre class='comment' style='white-space: pre-wrap; height: 500px; overflow: auto; resize:both; clear:both' id='output'>\n";
 		&printcmd("/usr/sbin/csf","-sf");
+
 		print "</pre>\n<p>...<b>Done</b>.</div>\n";
 		&resize("bot",1);
+
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "restartq") {
+	elsif ($FORM{action} eq "restartq")
+	{
 		print "<div><p>Restarting csf via lfd...</p>\n<pre class='comment' style='white-space: pre-wrap;'>\n";
 		&printcmd("/usr/sbin/csf","-q");
+
 		print "</pre>\n<p>...<b>Done</b>.</p></div>\n";
 		&printreturn;
 	}
-	elsif ($FORM{action} eq "temp") {
+	elsif ($FORM{action} eq "temp")
+	{
 		print "<table class='table table-bordered table-striped'>\n";
 		print "<thead><tr><th>&nbsp;</th><th>A/D</th><th>IP address</th><th>Port</th><th>Dir</th><th>Time To Live</th><th>Comment</th></tr></thead>\n";
+
 		my @deny;
-		if (! -z "/var/lib/csf/csf.tempban") {
+
+		if (! -z "/var/lib/csf/csf.tempban")
+		{
 			open (my $IN, "<", "/var/lib/csf/csf.tempban") or die $!;
 			flock ($IN, LOCK_SH);
 			@deny = <$IN>;
 			chomp @deny;
 			close ($IN);
 		}
-		foreach my $line (reverse @deny) {
-			if ($line eq "") {next}
-			my ($time,$ip,$port,$inout,$timeout,$message) = split(/\|/,$line);
-			$time = $timeout - (time - $time);
-			if ($port eq "") {$port = "*"}
-			if ($inout eq "") {$inout = " *"}
-			if ($time < 1) {
+
+		foreach my $line ( reverse @deny )
+		{
+			if ( $line eq "" )
+			{
+				next
+			}
+
+			my ( $time,$ip,$port,$inout,$timeout,$message ) = split( /\|/, $line );
+			$time = $timeout - ( time - $time );
+
+			if ( $port eq "" )
+			{
+				$port = "*"
+			
+			}
+			if ( $inout eq "" )
+			{
+				$inout = " *"
+			}
+
+			if ( $time < 1 )
+			{
 				$time = "<1";
-			} else {
+			}
+			else
+			{
 				my $days = int($time/(24*60*60));
 				my $hours = ($time/(60*60))%24;
 				my $mins = ($time/60)%60;
 				my $secs = $time%60;
+
 				$days = $days < 1 ? '' : $days .'d ';
 				$hours = $hours < 1 ? '' : $hours .'h ';
 				$mins = $mins < 1 ? '' : $mins . 'm ';
 				$time = $days . $hours . $mins . $secs . 's'; 
 			}
+		
 			print "<tr><td style='white-space: nowrap;'><a class='btn btn-success' href='$script?action=temprmd&ip=$ip' data-tooltip='tooltip' title='Unblock $ip'><span class='glyphicon glyphicon-ok-circle'></span></a> \n";
 			print "<a class='btn btn-danger' href='$script?action=temptoperm&ip=$ip' data-tooltip='tooltip' title='Permanently block $ip'><span class='glyphicon glyphicon-ban-circle'></span></a></td>\n";
 			print "<td>DENY</td><td>$ip</td><td>$port</td><td>$inout</td><td>$time</td><td>$message</td></tr>\n";
 		}
+
 		my @allow;
-		if (! -z "/var/lib/csf/csf.tempallow") {
+		if (! -z "/var/lib/csf/csf.tempallow")
+		{
 			open (my $IN, "<", "/var/lib/csf/csf.tempallow") or die $!;
 			flock ($IN, LOCK_SH);
 			@allow = <$IN>;
 			chomp @allow;
 			close ($IN);
 		}
-		foreach my $line (@allow) {
+
+		foreach my $line (@allow)
+		{
 			if ($line eq "") {next}
 			my ($time,$ip,$port,$inout,$timeout,$message) = split(/\|/,$line);
 			$time = $timeout - (time - $time);
@@ -2266,52 +2345,82 @@ EOF
 		print "<tr><td><button name='action' value='loggrep' type='submit' class='btn btn-default'>Search System Logs</button></td><td style='width:100%'>Search (grep) various system log files (listed in csf.syslogs)</td></tr>\n";
 		print "<tr><td><button name='action' value='viewports' type='submit' class='btn btn-default'>View Listening Ports</button></td><td style='width:100%'>View ports on the server that have a running process behind them listening for external connections</td></tr>\n";
 		print "<tr><td><button name='action' value='rblcheck' type='submit' class='btn btn-default'>Check for IPs in RBLs</button></td><td style='width:100%'>Check whether any of the servers IP addresses are listed in RBLs</td></tr>\n";
-		if ($config{ST_ENABLE}) {
+
+		if ($config{ST_ENABLE})
+		{
 			print "<tr><td><button name='action' value='viewlogs' type='submit' class='btn btn-default'>View iptables Log</button></td><td style='width:100%'>View the last $config{ST_IPTABLES} iptables log lines</td></tr>\n";
-			if ($chart) {
+			if ($chart)
+			{
 				print "<tr><td><button name='action' value='chart' type='submit' class='btn btn-default'>View lfd Statistics</button></td><td style='width:100%'>View lfd blocking statistics</td></tr>\n";
-				if ($config{ST_SYSTEM}) {
+				if ($config{ST_SYSTEM})
+				{
 					print "<tr><td><button name='action' value='systemstats' type='submit' class='btn btn-default'>View System Statistics</button></td><td style='width:100%'>View basic system statistics</td></tr>\n";
 				}
 			}
 		}
+
 		print "</table>\n";
 		print "</form>\n";
 
 		print "<form action='$script' method='post'>\n";
 		print "<table class='table table-bordered table-striped' id='upgradetable'>\n";
 		print "<thead><tr><th colspan='2'>Upgrade</th></tr></thead>";
-		my ($upgrade, $actv) = &csgetversion("csf",$myv);
-		if ($upgrade) {
-			print "<tr><td><button name='action' value='upgrade' type='submit' class='btn btn-default'>Upgrade csf</button></td><td style='width:100%'><b>A new version of csf (v$actv) is available. Upgrading will retain your settings<br><a href='https://$config{DOWNLOADSERVER}/csf/changelog.txt' target='_blank'>View ChangeLog</a></b></td></tr>\n";
-		} else {
-			print "<tr><td><button name='action' value='manualcheck' type='submit' class='btn btn-default'>Manual Check</button></td><td>";
-			if ($actv ne "") {
-				print "(csget cron check) $actv</td></tr>\n";
+
+		#	upgrade (int)		0, 1
+		#	response (str)		upgrade status or version
+		my ( $upgrade, $response ) = &csgetversion( "csf", $myv );
+
+		print "$response";
+		print "$upgrade";
+
+		if ($upgrade)
+		{
+			print "<tr><td><button name='action' value='upgrade' type='submit' class='btn btn-default'>Upgrade csf</button></td><td style='width:100%'><b>A new version of csf (v$response) is available. Upgrading will retain your settings<br><a href='https://$config{DOWNLOADSERVER}/csf/changelog.txt' target='_blank'>View ChangeLog</a></b></td></tr>\n";
+		}
+		else
+		{
+			print "<tr><td><button name='action' value='manualcheck' type='submit' class='btn btn-default'>Manual Check</button></td>";
+			print "<td style='width:100%;'>";
+
+			if ( $response ne "" )
+			{
+				print "(csget cron check) $response</td></tr>\n";
 			}
-			else {
-				print "You are running the latest version of csf. An Upgrade button will appear here if a new version becomes available. New version checking is performed automatically by a daily cron job (csget)</td></tr>\n";
+			else
+			{
+				print "Running latest version of CSF. An Upgrade button will appear here if a new version becomes available. New version checking is performed automatically by a daily cron job (csget)</td></tr>\n";
 			}
 		}
-		if (!$config{INTERWORX} and (-e "/etc/apf" or -e "/usr/local/bfd")) {
+
+		if (!$config{INTERWORX} and (-e "/etc/apf" or -e "/usr/local/bfd"))
+		{
 			print "<tr><td><button name='action' value='remapf' type='submit' class='btn btn-default'>Remove APF/BFD</button></td><td style='width:100%'>Remove APF/BFD from the server. You must not run both APF or BFD with csf on the same server</td></tr>\n";
 		}
-		unless (-e "/etc/cxs/cxs.pl") {
-			if (-e "/usr/local/cpanel/version" or $config{DIRECTADMIN} or $config{INTERWORX} or $config{VESTA} or $config{CWP} or $config{CYBERPANEL}) {
+	
+		unless (-e "/etc/cxs/cxs.pl")
+		{
+			if (-e "/usr/local/cpanel/version" or $config{DIRECTADMIN} or $config{INTERWORX} or $config{VESTA} or $config{CWP} or $config{CYBERPANEL})
+			{
 				print "<tr><td colspan='2'>\n";
 				print "<div class='bs-callout bs-callout-info h4'>Add server and user data protection against exploits using <a href='https://configserver.com/cp/cxs.html' target='_blank'>ConfigServer eXploit Scanner (cxs)</a></div>\n";
 				print "</td></tr>\n";
 			}
 		}
-		unless (-e "/etc/osm/osmd.pl") {
-			if (-e "/usr/local/cpanel/version" or $config{DIRECTADMIN}) {
+	
+		unless (-e "/etc/osm/osmd.pl")
+		{
+			if (-e "/usr/local/cpanel/version" or $config{DIRECTADMIN})
+			{
 				print "<tr><td colspan='2'>\n";
 				print "<div class='bs-callout bs-callout-info h4'>Add outgoing spam monitoring and prevention using <a href='https://configserver.com/cp/osm.html' target='_blank'>ConfigServer Outgoing Spam Monitor(osm)</a></div>\n";
 				print "</td></tr>\n";
 			}
 		}
-		unless (-e "/usr/msfe/mschange.pl") {
-			if (-e "/usr/local/cpanel/version" or $config{DIRECTADMIN}) {
+
+		unless (-e "/usr/msfe/mschange.pl")
+		{
+			if (-e "/usr/local/cpanel/version" or $config{DIRECTADMIN})
+			{
 				print "<tr><td colspan='2'>\n";
 				print "<div class='bs-callout bs-callout-info h4'>Add effective incoming virus and spam detection and user level processing using <a href='https://configserver.com/cp/msfe.html' target='_blank'>ConfigServer MailScanner Front-End (msfe)</a></div>\n";
 				print "</td></tr>\n";
@@ -2359,7 +2468,7 @@ EOF
 		print "<thead><tr><th colspan='2'>lfd - Login Failure Daemon</th></tr></thead>";
 		print "<tr><td><form action='$script' method='post'><input type='hidden' name='action' value='lfdstatus'><input type='submit' class='btn btn-default' value='lfd Status'></form></td><td style='width:100%'>Display lfd status</td></tr>\n";
 		print "<tr><td><form action='$script' method='post'><input type='hidden' name='action' value='lfdrestart'><input type='submit' class='btn btn-default' value='lfd Restart'></form></td><td style='width:100%'>Restart lfd</td></tr>\n";
-		print "<tr><td style='white-space: nowrap;'><form action='$script' method='post'><input type='hidden' name='action' value='ignorefiles'><select name='ignorefile'>\n";
+		print "<tr><td><form action='$script' method='post'><input type='hidden' name='action' value='ignorefiles'><select style='width: 13em;' name='ignorefile'>\n";
 		print "<option value='csf.ignore'>csf.ignore - IP Blocking</option>\n";
 		print "<option value='csf.pignore'>csf.pignore, Process Tracking</option>\n";
 		print "<option value='csf.fignore'>csf.fignore, Directory Watching</option>\n";
@@ -2369,12 +2478,17 @@ EOF
 		print "<option value='csf.mignore'>csf.mignore, RT_LOCALRELAY</option>\n";
 		print "<option value='csf.logignore'>csf.logignore, Log Scanner</option>\n";
 		print "<option value='csf.uidignore'>csf.uidignore, User ID Tracking</option>\n";
-		print "</select> <input type='submit' class='btn btn-default' value='Edit'></form></td><td style='width:100%'>Edit lfd ignore file</td></tr>\n";
-		print "<tr><td><form action='$script' method='post'><button name='action' value='dirwatch' type='submit' class='btn btn-default'>lfd Directory File Watching</button></form></td><td style='width:100%'>Edit the Directory File Watching file (csf.dirwatch) - all listed files and directories will be watched for changes by lfd</td></tr>\n";
+
+		print "</select><input style='min-width: 13em;' type='submit' class='btn btn-edit' value='Edit'></form></td><td style='width:100%'>Edit lfd ignore file</td></tr>\n";
+
+		print "<tr><td><form action='$script' method='post'><button name='action' value='dirwatch' type='submit' class='btn btn-default'>lfd Dir File Watching</button></form></td><td style='width:100%'>Edit the Directory File Watching file (csf.dirwatch) - all listed files and directories will be watched for changes by lfd</td></tr>\n";
 		print "<tr><td><form action='$script' method='post'><button name='action' value='dyndns' type='submit' class='btn btn-default'>lfd Dynamic DNS</button></form></td><td style='width:100%'>Edit the Dynamic DNS file (csf.dyndns) - all listed domains will be resolved and allowed through the firewall</td></tr>\n";
-		print "<tr><td><form action='$script' method='post'><select name='template'>\n";
+		print "<tr><td><form action='$script' method='post'><select style='width: 13em;' name='template'>\n";
+
 		foreach my $tmp ("alert.txt","tracking.txt","connectiontracking.txt","processtracking.txt","accounttracking.txt","usertracking.txt","sshalert.txt","webminalert.txt","sualert.txt","sudoalert.txt","uialert.txt","cpanelalert.txt","scriptalert.txt","filealert.txt","watchalert.txt","loadalert.txt","resalert.txt","integrityalert.txt","exploitalert.txt","relayalert.txt","portscan.txt","uidscan.txt","permblock.txt","netblock.txt","queuealert.txt","logfloodalert.txt","logalert.txt","modsecipdbcheck.txt") {print "<option>$tmp</option>\n"}
-		print "</select> <button name='action' value='templates' type='submit' class='btn btn-default'>Edit</button></form></td><td style='width:100%'>Edit email alert templates. See Firewall Information for details of each file</td></tr>\n";
+
+		print "</select> <button name='action' value='templates' type='submit' class='btn btn-edit'>Edit</button></form></td><td style='width:100%'>Edit email alert templates. See Firewall Information for details of each file</td></tr>\n";
+
 		print "<tr><td><form action='$script' method='post'><button name='action' value='logfiles' type='submit' class='btn btn-default'>lfd Log Scanner Files</button></form></td><td style='width:100%'>Edit the Log Scanner file (csf.logfiles) - Scan listed log files for log lines and periodically send a report</td></tr>\n";
 		print "<tr><td><form action='$script' method='post'><button name='action' value='blocklists' type='submit' class='btn btn-default'>lfd Blocklists</button></form></td><td style='width:100%'>Edit the Blocklists configuration file (csf.blocklists)</td></tr>\n";
 		print "<tr><td><form action='$script' method='post'><button name='action' value='syslogusers' type='submit' class='btn btn-default'>lfd Syslog Users</button></form></td><td style='width:100%'>Edit the syslog/rsyslog allowed users file (csf.syslogusers)</td></tr>\n";
@@ -2752,9 +2866,9 @@ sub systemstats {
 	return;
 }
 
-# end systemstats
-###############################################################################
-# start editfile
+# #
+#	File > Edit
+# #
 
 sub editfile
 {
@@ -2765,13 +2879,16 @@ sub editfile
 
 	sysopen (my $IN, $file, O_RDWR | O_CREAT) or die "Unable to open file: $!";
 	flock ($IN, LOCK_SH);
+
 	my @confdata = <$IN>;
+
 	close ($IN);
 	chomp @confdata;
 
-	if (-e "/usr/local/cpanel/3rdparty/share/ace-editor/optimized/src-min-noconflict/ace.js") {$ace = 1}
+	if ( -e "/usr/local/cpanel/3rdparty/share/ace-editor/optimized/src-min-noconflict/ace.js") {$ace = 1}
 
-	if (-e "/usr/local/cpanel/version" and $ace and !$config{THIS_UI}) {
+	if ( -e "/usr/local/cpanel/version" and $ace and !$config{THIS_UI} )
+	{
 		print "<script src='/libraries/ace-editor/optimized/src-min-noconflict/ace.js'></script>\n";
 		print "<h4>Edit <code>$file</code></h4>\n";
 		print "<button class='btn btn-default' id='toggletextarea-btn'>Toggle Editor/Textarea</button>\n";
@@ -2868,9 +2985,10 @@ EOF
 	return;
 }
 
-# end editfile
-###############################################################################
-# start savefile
+# #
+#	File > Save
+# #
+
 sub savefile
 {
 	my $file = shift;
@@ -2916,9 +3034,9 @@ sub savefile
 	return;
 }
 
-# end cloudflare
-###############################################################################
-# start cloudflare
+# #
+#	Cloudflare
+# #
 
 sub cloudflare
 {
@@ -3023,20 +3141,28 @@ EOF
 	}
 	return;
 }
-# end resize
-###############################################################################
-# start printreturn
-sub printreturn {
+
+# #
+#	Print Return
+# #
+
+sub printreturn
+{
 	print "<hr><div><form action='$script' method='post'><input type='hidden' name='mobi' value='$mobile'><input id='csfreturn' type='submit' class='btn btn-default' value='Return'></form></div>\n";
 
 	return;
 }
-# end printreturn
-###############################################################################
-# start confirmmodal
-#	print "<button type='button' class='btn btn-default confirmButton' data-query='Are you sure?' data-href='$script?action=fix' data-toggle='modal' data-target='#confirmmodal'>Submit</button>\n";
-#	&confirmmodal;
-sub confirmmodal {
+
+# #
+#	Confirm Modal
+#
+#	start confirmmodal
+#		print "<button type='button' class='btn btn-default confirmButton' data-query='Are you sure?' data-href='$script?action=fix' data-toggle='modal' data-target='#confirmmodal'>Submit</button>\n";
+#		&confirmmodal;
+# #
+
+sub confirmmodal
+{
 	print "<div class='modal fade' id='confirmmodal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true' data-backdrop='false' style='background-color: rgba(0, 0, 0, 0.5)'>\n";
 	print "<div class='modal-dialog modal-sm'>\n";
 	print "<div class='modal-content'>\n";
@@ -3061,71 +3187,125 @@ sub confirmmodal {
 	print "  \$(event.target).modal('hide')\n";
 	print "});\n";
 	print "</script>\n";
+
 	return;
 }
-# end confirmmodal
-###############################################################################
-# start csgetversion
-sub csgetversion {
+
+# #
+#	Version > Get
+# #
+
+sub csgetversion
+{
 	my $product = shift;
 	my $current = shift;
 	my $upgrade = 0;
 	my $newversion;
-	if (-e "/var/lib/configserver/".$product.".txt.error") {
-		open (my $VERSION, "<", "/var/lib/configserver/".$product.".txt.error");
+
+	if ( -e "/var/lib/configserver/" . $product . ".txt.error" )
+	{
+		open (my $VERSION, "<", "/var/lib/configserver/" . $product . ".txt.error");
 		flock ($VERSION, LOCK_SH);
+
 		$newversion = <$VERSION>;
+
 		close ($VERSION);
 		chomp $newversion;
-		if ($newversion eq "") {
+
+		if ( $newversion eq "" )
+		{
 			$newversion = "Failed to retrieve latest version from ConfigServer";
-		} else {
+		}
+		else
+		{
 			$newversion = "Failed to retrieve latest version from ConfigServer: $newversion";
 		}
 	}
-	elsif (-e "/var/lib/configserver/".$product.".txt") {
-		open (my $VERSION, "<", "/var/lib/configserver/".$product.".txt");
+	elsif ( -e "/var/lib/configserver/" . $product . ".txt" )
+	{
+		open (my $VERSION, "<", "/var/lib/configserver/" . $product . ".txt");
 		flock ($VERSION, LOCK_SH);
 		$newversion = <$VERSION>;
 		close ($VERSION);
 		chomp $newversion;
-		if ($newversion eq "") {
+
+		if ( $newversion eq "" )
+		{
 			$newversion = "Failed to retrieve latest version from ConfigServer";
-		} else {
-			if ($newversion =~ /^[\d\.]*$/) {
-				if ($newversion > $current) {$upgrade = 1} else {$newversion = ""}
-			} else {$newversion = ""}
+		}
+		else
+		{
+			if ( $newversion =~ /^[\d\.]*$/ )
+			{
+				if ( $newversion > $current )
+				{
+					$upgrade = 1
+				}
+				else
+				{
+					$newversion = ""
+				}
+			}
+			else
+			{
+				$newversion = ""
+			}
 		}
 	}
-	elsif (-e "/var/lib/configserver/error") {
+	elsif (-e "/var/lib/configserver/error")
+	{
 		open (my $VERSION, "<", "/var/lib/configserver/error");
 		flock ($VERSION, LOCK_SH);
+
 		$newversion = <$VERSION>;
+
 		close ($VERSION);
 		chomp $newversion;
-		if ($newversion eq "") {
+
+		if ( $newversion eq "" )
+		{
 			$newversion = "Failed to retrieve latest version from ConfigServer";
-		} else {
+		}
+		else
+		{
 			$newversion = "Failed to retrieve latest version from ConfigServer: $newversion";
 		}
-	} else {
+	}
+	else
+	{
 		$newversion = "Failed to retrieve latest version from ConfigServer";
 	}
-	return ($upgrade, $newversion);
+
+	return ( $upgrade, $newversion );
 }
-# end csgetversion
-###############################################################################
-# start manualversion
-sub manualversion {
+
+# #
+#	Version > Get Manual
+# #
+
+sub manualversion
+{
 	my $current = shift;
 	my $upgrade = 0;
 	my $url = "https://$config{DOWNLOADSERVER}/csf/version.txt";
-	if ($config{URLGET} == 1) {$url = "http://$config{DOWNLOADSERVER}/csf/version.txt";}
-	my ($status, $newversion) = $urlget->urlget($url);
-	if (!$status and $newversion ne "" and $newversion =~ /^[\d\.]*$/ and $newversion > $current) {$upgrade = 1} else {$newversion = ""}
-	return ($upgrade, $newversion);
+
+	if ( $config{URLGET} == 1 )
+	{
+		$url = "http://$config{DOWNLOADSERVER}/csf/version.txt";
+	}
+
+	my ( $status, $newversion ) = $urlget->urlget( $url );
+
+	if ( !$status and $newversion ne "" and $newversion =~ /^[\d\.]*$/ and $newversion > $current )
+	{
+		$upgrade = 1
+	}
+	else
+	{
+		$newversion = ""
+	}
+
+	return ( $upgrade, $newversion );
 }
-# end manualversion
-###############################################################################
 
 1;

@@ -110,10 +110,10 @@ button#CSFpauseID:hover
 	transition: all 0.3s;
 }
 
-button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):active,
-button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):visited,
-button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):focus,
-button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
+button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):not(.btn-edit):active,
+button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):not(.btn-edit):visited,
+button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):not(.btn-edit):focus,
+button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):not(.btn-edit)
 {
 	background:#3566c0;
 	border-radius:4px;
@@ -122,7 +122,7 @@ button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
 	min-width: 13em;
 }
 
-button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):hover
+button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn):not(.btn-edit):hover
 {
 	background: #457ce4;
 	transition: all 0.3s;
@@ -179,9 +179,6 @@ button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
 
 form input
 {
-	width: 30vw;
-	max-width: 400px;
-	min-width: 100px;
 	padding-left:10px;
 	padding-right: 10px;
 	padding-top: 4px;
@@ -202,7 +199,7 @@ form input:hover
 
 .input-ipaddr
 {
-	margin: auto auto;
+	margin: 0 auto !important;
 	height: 50px;
 	width: 50vw;
 	padding-left:10px;
@@ -240,6 +237,25 @@ form input:hover
 .input-ipaddr:focus
 {
     outline: none;
+}
+
+/*
+	Button > Edit
+*/
+
+.btn-edit
+{
+	background: #2c735f;
+	border-radius: 4px;
+	border: 1px solid #2c735f;
+	color: #FFF !important;
+	min-width: 13em;
+}
+
+.btn-edit:hover
+{
+	filter: brightness(120%);
+	transition: all 0.3s;
 }
 
 /*
@@ -765,7 +781,6 @@ code
 		padding-top: 6px;
 		padding-bottom: 6px;
 	line-height: 1.42857143;
-	vertical-align: top;
 }
 
 .bs-callout
