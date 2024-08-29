@@ -186,7 +186,7 @@ form input[type=text], form input[type=password]
 	color: #FFF;
 	font-size: 11pt;
 	transition: 0.5s;
-	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #393939;
+	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #202020;
 	cursor: pointer;
 }
 
@@ -207,9 +207,10 @@ form input:hover
 	background-color: #393939;
 	border: 1px solid #e3e3e31a;
 	color: #FFF;
-	font-size: 16pt;
+	font-family: "Abel";
+	font-size: 24pt !important;
 	transition: 0.5s;
-	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #393939;
+	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #393939 !important;
 	cursor: pointer;
 	text-align: center;
 	margin-bottom: 20px !important;
@@ -222,9 +223,11 @@ form input:hover
 
 .input-ipaddr::placeholder
 {
-	font-weight: light;
+	font-weight: lighter;
 	opacity: 0.8;
 	color: #707070;
+	font-family: "Abel";
+	font-size: 24pt;
 }
 
 .input-ipaddr:focus::placeholder

@@ -9902,8 +9902,11 @@ sub ui {
 						print "<HTML>\n";
 						print "<HEAD>";
 						print "<TITLE>ConfigServer Security & Firewall</TITLE>\n";
-						print "<link rel='stylesheet' href='style.css'>";
 						print <<EOF;
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 <style>
 
 body
@@ -9913,7 +9916,7 @@ body
 
 input::placeholder
 {
-	font-weight: light;
+	font-weight: lighter;
 	opacity: 0.8;
 	color: #707070;
 }
@@ -10017,6 +10020,7 @@ form.login-form
 	border: 1px solid #e3e3e31a;
 	color: #FFF;
 	font-size: 14pt;
+	font-family: "Abel";
 	transition: 0.5s;
 	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #393939;
 	cursor: pointer;
@@ -10134,6 +10138,9 @@ EOF
 <!doctype html>
 <html lang='en' $htmltag>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 <title>ConfigServer Security &amp; Firewall</title>
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
