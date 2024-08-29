@@ -9909,6 +9909,34 @@ sub ui {
 <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 <style>
 
+\@-webkit-keyframes fade-in
+{
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+\@-moz-keyframes fade-in
+{
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+\@keyframes fade-in
+{
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+\@keyframes scale-in
+{
+    from {
+        transform: scale(1, 1);
+    }
+    to {
+        transform: scale(1.1, 1.1);
+    }
+}
+
 body
 {
 	font-family: Nunito,Roboto,sans-serif;
@@ -9949,6 +9977,7 @@ input:focus
 .btn-login:hover
 {
 	background-color: #6a791c;
+	transition: all 0.3s;
 }
 
 img.login-logo
@@ -9959,7 +9988,21 @@ img.login-logo
 
 img.login-logo:hover
 {
-	opacity: 1;
+	animation-name:             fade-in, scale-in;
+	animation-duration:         1s, 0.5s;
+	animation-timing-function:  ease-in, linear;
+	animation-direction:        alternate, alternate;
+	animation-iteration-count:  infinite, 1;
+	transition: all 0.3s;
+	opacity: 0.5;
+	transform: scale(1.1);
+}
+
+img.login-logo:not(:hover)
+{
+	transition: all 0.3s;
+	opacity: 0.5;
+	transform: scale(1);
 }
 
 form.login-form
@@ -9969,7 +10012,7 @@ form.login-form
 
 .login-container-logo
 {
-	margin-top: -150px;
+	margin-top: -75px;
 	margin-bottom: 20px;
 }
 
@@ -10005,6 +10048,7 @@ form.login-form
 .login-footer a:hover
 {
 	color: #ffa354;
+	transition: all 0.3s;
 }
 
 .input
@@ -10019,18 +10063,28 @@ form.login-form
 	background-color: #393939;
 	border: 1px solid #e3e3e31a;
 	color: #FFF;
-	font-size: 14pt;
+	font-size: 16pt;
 	font-family: "Abel";
 	transition: 0.5s;
-	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #393939;
+	background: linear-gradient(#ff3678 0 0) bottom / 0% 2px no-repeat #393939;
 	cursor: pointer;
 	text-align: center;
 }
 
-.input:hover
+.input:hover, .input:focus
 {
-	background-size: 100% 1px;
+	background-size: 100% 2px;
+	transition: all 0.3s;
 }
+
+.input:focus
+{
+	transition: 0.5s;
+	background: linear-gradient(#1F85DE 0 0) bottom / 0% 2px no-repeat #393939;
+	background-size: 100% 2px;
+	transition: all 0.3s;
+}
+
 </style>
 EOF
 						print "</HEAD>\n";
