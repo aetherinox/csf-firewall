@@ -1446,8 +1446,8 @@ sub phpcheck {
 				$line =~ /^PHP Version\s*=>\s*(.*)/i;
 				($mas,$maj,$min) = split(/\./,$1);
 				$version = "$mas.$maj.$min";
-				if ($mas < 7) {$status = 1}
-				if ($mas == 7 and $maj < 5) {$status = 1}
+				if ($mas < 8) {$status = 1}
+				if ($mas == 8 and $maj < 1) {$status = 1}
 			}
 			open (my $IN, "<", "/usr/local/apache/conf/php.conf.yaml");
 			flock ($IN, LOCK_SH);
