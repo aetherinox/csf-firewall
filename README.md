@@ -1116,7 +1116,10 @@ The dark theme is an unofficial theme not available in the official install of C
 
 <br />
 
-<p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/f93fcd88-4817-4fc8-b342-56a2375c0b92"></p>
+<p align="center">
+  <img style="padding-right:15px;" src="https://github.com/user-attachments/assets/aa837e8c-ef39-4e94-b446-0dfad69a3a74" width="400" />
+  <img src="https://github.com/user-attachments/assets/df9085af-788e-4a55-ad0e-17815f95741c" width="400" /> 
+</p>
 
 <p align="center"><img style="width: 80%;text-align: center;" src="https://github.com/user-attachments/assets/46f73b52-13bd-4271-a94f-1aeeea4bd827"></p>
 
