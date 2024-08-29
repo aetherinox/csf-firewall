@@ -1678,34 +1678,40 @@ EOD
 
 		print "<form action='$script' method='post'><input type='hidden' name='action' value='profileapply'>\n";
 		print "<table class='table table-bordered table-striped'>\n";
-		print "<thead><tr><th>Preconfigured Profiles</th><th style='border-left:1px solid #990000'>&nbsp;</th></tr></thead>\n";
+		print "<thead><tr><th>Preconfigured Profiles</th><th>&nbsp;</th></tr></thead>\n";
 
-		foreach my $profile (@profiles)
+		foreach my $profile ( @profiles )
 		{
-			my ($file, undef) = fileparse($profile);
+			my ( $file, undef ) = fileparse( $profile );
 			$file =~ s/\.conf$//;
+
 			my $text;
-			open (my $IN, "<", $profile);
-			flock ($IN, LOCK_SH);
+			open ( my $IN, "<", $profile );
+			flock ( $IN, LOCK_SH );
+
 			my @profiledata = <$IN>;
-			close ($IN);
+			close ( $IN );
 			chomp @profiledata;
 
-			if ($file eq "reset_to_defaults")
+			if ( $file eq "reset_to_defaults" )
 			{
 				$text = "This is the installation default profile and will reset all csf.conf settings, including enabling TESTING mode";
 			}
-			elsif ($profiledata[0] =~ /^\# Profile:/)
+			elsif ( $profiledata[ 0 ] =~ /^\# Profile:/ )
 			{
-				foreach my $line (@profiledata) {
-					if ($line =~ /^\# (.*)$/) {$text .= "$1 "}
+				foreach my $line ( @profiledata )
+				{
+					if ( $line =~ /^\# (.*)$/ )
+					{
+						$text .= "$1 "
+					}
 				}
 			}
 
-			print "<tr><td><b>$file</b><br>\n$text</td><td style='border-left:1px solid #990000'><input type='radio' name='profile' value='$file'></td></tr>\n";
+			print "<tr><td class='preconfigured-profiles'>📄 <span class='item-filename'>$file</span><br>\n<span class='item-description'>$text</span></td><td class='checkbox-container'><div class='checkbox-wrapper'><div class='cbx'><input id='cbx-12' type='radio' name='profile' value='$file'><label for='cbx-12'></label><svg width='15' height='14' viewbox='0 0 15 14' fill='none'><path d='M2 8.36364L6.23077 12L13 2'></path></svg></div></div></td></tr>\n";
 		}
 
-		print "<tr><td>You can apply one or more of these profiles to csf.conf. Apart from reset_to_defaults, most of these profiles contain only a subset of settings. You can find out what will be changed by comparing the profile to the current configuration below. A backup of csf.conf will be created before any profile is applied.</td><td style='border-left:1px solid #990000'><input type='submit' class='btn btn-default' value='Apply Profile'></td></tr>\n";
+		print "<tr><td>You can apply one or more of these profiles to csf.conf. Apart from reset_to_defaults, most of these profiles contain only a subset of settings. You can find out what will be changed by comparing the profile to the current configuration below. A backup of csf.conf will be created before any profile is applied.</td><td><input type='submit' class='btn-apply' value='Apply Profile'></td></tr>\n";
 		print "</table>\n";
 		print "</form>\n";
 
@@ -1729,7 +1735,7 @@ EOD
 		}
 
 		print "</select></td></tr>\n";
-		print "<tr><td><input type='submit' class='btn btn-default' value='Restore Backup'></td></tr>\n";
+		print "<tr><td><input type='submit' class='btn btn-long' value='Restore Backup'></td></tr>\n";
 		print "</table>\n";
 		print "</form>\n";
 
@@ -1754,7 +1760,7 @@ EOD
 		}
 
 		print "</select></td></tr>\n";
-		print "<tr><td style='border-top:1px dashed #990000'>Select second configuration:<br>\n<select name='profile2' size='10' style='min-width:400px'>\n";
+		print "<tr><td>Select second configuration:<br>\n<select name='profile2' size='10' style='min-width:400px'>\n";
 		print "<optgroup label='Current Configuration:'><option value='current' selected>/etc/csf/csf.conf</option></optgroup>\n";
 		print "<optgroup label='Profiles:'>\n";
 		foreach my $profile (@profiles)
@@ -1771,7 +1777,7 @@ EOD
 			print "<optgroup label='".localtime($stamp).":'><option>$file</option></optgroup>\n";
 		}
 		print "</select></td></tr>\n";
-		print "<tr><td><input type='submit' class='btn btn-default' value='Compare Config/Backup/Profile Settings'></td></tr>\n";
+		print "<tr><td><input type='submit' class='btn btn-long' value='Compare Config/Backup/Profile Settings'></td></tr>\n";
 		print "</table>\n";
 		print "</form>\n";
 
@@ -2369,9 +2375,6 @@ EOF
 		#	upgrade (int)		0, 1
 		#	response (str)		upgrade status or version
 		my ( $upgrade, $response ) = &csgetversion( "csf", $myv );
-
-		print "$response";
-		print "$upgrade";
 
 		if ($upgrade)
 		{
