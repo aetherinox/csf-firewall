@@ -62,6 +62,8 @@ exe:/usr/sbin/apache2
 exe:/usr/sbin/mysqld
 exe:/lib/systemd/systemd-timesyncd
 exe:/sbin/rngd
+exe:/usr/bin/dbus-broker-launch
+exe:/usr/bin/dbus-broker
 
 exe:/usr/local/interworx/mysql/usr/sbin/mysqld
 exe:/usr/bin/tcpserver

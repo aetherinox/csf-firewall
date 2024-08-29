@@ -251,6 +251,7 @@ sub geo_binary {
 				elsif ($geoid > $bits[0]) {
 					$start = $mid + 1;
 				} else {
+					$b =~ s/\"//g;
 					my ($geoname_id, $locale_code, $continent_code, $continent_name, $country_iso_code, $country_name, $subdivision_1_iso_code, $subdivision_1_name, $subdivision_2_iso_code, $subdivision_2_name, $city_name, $metro_code, $time_zone) = split(/\,/,$b);
 					my $region = $subdivision_2_name;
 					if ($region eq "" or $region eq $city_name) {$region = $subdivision_1_name}

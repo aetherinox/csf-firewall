@@ -16,7 +16,7 @@ use POSIX qw(:sys_wait_h sysconf strftime setsid);
 use Socket;
 use ConfigServer::Config;
 use ConfigServer::Slurp qw(slurp);
-use ConfigServer::CheckIP qw(checkip);
+use ConfigServer::CheckIP qw(checkip cccheckip);
 use ConfigServer::URLGet;
 use ConfigServer::GetIPs qw(getips);
 use ConfigServer::Service;
@@ -3678,18 +3678,14 @@ sub connectiontracking {
 
 				$dip = &hex2ip($dip);
 				if ($dip =~ /^0:0:0:0:0:ffff:(.*)$/) {
-					my $embed = $1;
-					$embed =~ s/://g;
-					my $embedded = inet_ntoa(pack("N",hex($embed)));
-					if ($embedded =~ /^$ipv4reg$/) {$dip = $embedded}
+					my $embed = ipv4in6($dip);
+					if ($embed =~ /^$ipv4reg$/) {$dip = $embed}
 				}
 
 				$sip = &hex2ip($sip);
 				if ($sip =~ /^0:0:0:0:0:ffff:(.*)$/) {
-					my $embed = $1;
-					$embed =~ s/://g;
-					my $embedded = inet_ntoa(pack("N",hex($embed)));
-					if ($embedded =~ /^$ipv4reg$/) {$sip = $embedded}
+					my $embed = ipv4in6($sip);
+					if ($embed =~ /^$ipv4reg$/) {$sip = $embed}
 				}
 
 				my $state = $tcpstates{$rec[3]};
@@ -4012,18 +4008,14 @@ sub processtracking {
 
 				$dip = &hex2ip($dip);
 				if ($dip =~ /^0:0:0:0:0:ffff:(.*)$/) {
-					my $embed = $1;
-					$embed =~ s/://g;
-					my $embedded = inet_ntoa(pack("N",hex($embed)));
-					if ($embedded =~ /^$ipv4reg$/) {$dip = $embedded}
+					my $embed = ipv4in6($dip);
+					if ($embed =~ /^$ipv4reg$/) {$dip = $embed}
 				}
 
 				$sip = &hex2ip($sip);
 				if ($sip =~ /^0:0:0:0:0:ffff:(.*)$/) {
-					my $embed = $1;
-					$embed =~ s/://g;
-					my $embedded = inet_ntoa(pack("N",hex($embed)));
-					if ($embedded =~ /^$ipv4reg$/) {$sip = $embedded}
+					my $embed = ipv4in6($sip);
+					if ($embed =~ /^$ipv4reg$/) {$sip = $embed}
 				}
 
 				if ($sip eq '0.0.0.1') {next}
@@ -5519,7 +5511,7 @@ sub countrycode {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							push @ipset,"add new_$cc $ip";
 							$cnt++;
 						}
@@ -5560,7 +5552,7 @@ sub countrycode {
 						while (my $line = <$IN>) {
 							chomp $line;
 							my ($ip,undef) = split (/\s/,$line,2);
-							if (checkip(\$ip)) {
+							if (cccheckip(\$ip)) {
 								if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 									my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 									if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -5604,7 +5596,7 @@ sub countrycode {
 						while (my $line = <$IN>) {
 							chomp $line;
 							my ($ip,undef) = split (/\s/,$line,2);
-							if (checkip(\$ip)) {
+							if (cccheckip(\$ip)) {
 								if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 									my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 									if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -5649,7 +5641,7 @@ sub countrycode {
 						while (my $line = <$IN>) {
 							chomp $line;
 							my ($ip,undef) = split (/\s/,$line,2);
-							if (checkip(\$ip)) {
+							if (cccheckip(\$ip)) {
 								if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 									my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 									if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -5711,7 +5703,7 @@ sub countrycode {
 						while (my $line = <$IN>) {
 							chomp $line;
 							my ($ip,undef) = split (/\s/,$line,2);
-							if (checkip(\$ip)) {
+							if (cccheckip(\$ip)) {
 								if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 									my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 									if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -5757,7 +5749,7 @@ sub countrycode {
 						while (my $line = <$IN>) {
 							chomp $line;
 							my ($ip,undef) = split (/\s/,$line,2);
-							if (checkip(\$ip)) {
+							if (cccheckip(\$ip)) {
 								if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 									my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 									if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -5830,7 +5822,7 @@ sub countrycode {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						my $status = checkip(\$ip);
+						my $status = cccheckip(\$ip);
 						if ($status == 4) {print $SMTPAUTH "$ip\n"}
 						elsif ($status == 6) {print $SMTPAUTH "\"$ip\"\n"}
 					}
@@ -5847,7 +5839,7 @@ sub countrycode {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						my $status = checkip(\$ip);
+						my $status = cccheckip(\$ip);
 						if ($status == 4) {print $SMTPAUTH "$ip\n"}
 						elsif ($status == 6) {print $SMTPAUTH "\"$ip\"\n"}
 					}
@@ -6298,7 +6290,7 @@ sub countrycode6 {
 						if ($drop_cidr eq "") {$drop_cidr = "32"}
 						if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 					}
-					if (checkip(\$ip)) {
+					if (cccheckip(\$ip)) {
 						push @ipset,"add new_6_$cc $ip";
 						$cnt++;
 					}
@@ -6339,7 +6331,7 @@ sub countrycode6 {
 					while (my $line = <$IN>) {
 						chomp $line;
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							if ($config{SAFECHAINUPDATE}) {
 								&iptablescmd(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} -A NEWCC_DENY -s $ip -j $drop");
 							} else {
@@ -6378,7 +6370,7 @@ sub countrycode6 {
 					while (my $line = <$IN>) {
 						chomp $line;
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							if ($config{SAFECHAINUPDATE}) {
 								&iptablescmd(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} -A NEWCC_ALLOW -s $ip -j $accept");
 							} else {
@@ -6418,7 +6410,7 @@ sub countrycode6 {
 					while (my $line = <$IN>) {
 						chomp $line;
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							$cnt++;
 							if ($config{SAFECHAINUPDATE}) {
 								&iptablescmd(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} -A NCC_ALLOWF -s $ip -j RETURN");
@@ -6475,7 +6467,7 @@ sub countrycode6 {
 					while (my $line = <$IN>) {
 						chomp $line;
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							$cnt++;
 							if ($config{SAFECHAINUPDATE}) {
 								&iptablescmd(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} -A NCC_ALLOWP -s $ip -j CC_ALLOWPORTS");
@@ -6516,7 +6508,7 @@ sub countrycode6 {
 					while (my $line = <$IN>) {
 						chomp $line;
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							$cnt++;
 							if ($config{SAFECHAINUPDATE}) {
 								&iptablescmd(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} -A NCC_DENYP -s $ip -j CC_DENYPORTS");
@@ -7721,6 +7713,25 @@ sub hex2ip {
     }
 }
 ## end hex2ip
+###############################################################################
+## start ipv4in6
+sub ipv4in6 {
+	my $in = $_[0];
+	my @ipv6 = split (":", $in);
+
+	my $v6part1 = hex($ipv6[6]);
+	my $v6part2 = hex($ipv6[7]);
+
+	my $ip41=scalar($v6part1>>8);
+	my $ip42=scalar($v6part1&0xff);
+	my $ip43=scalar($v6part2>>8);
+	my $ip44=scalar($v6part2&0xff);
+
+	my $out = $ip41 . "." . $ip42 . "." . $ip43 . "." . $ip44;
+	
+	return $out;
+}
+## end ipv4in6
 ###############################################################################
 # start cleanup
 sub cleanup {

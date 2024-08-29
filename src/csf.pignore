@@ -117,6 +117,8 @@ exe:/usr/lib/apt/methods/http
 exe:/usr/sbin/rngd
 exe:/usr/lib/systemd/systemd-resolved
 exe:/usr/sbin/uuidd
+exe:/usr/bin/dbus-broker-launch
+exe:/usr/bin/dbus-broker
 exe:/usr/local/cpanel/3rdparty/wp-toolkit/bin/wpt-panopticon
 
 # Some additional entries that you might want to ignore on cPanel servers.

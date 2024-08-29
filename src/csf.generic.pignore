@@ -64,3 +64,5 @@ exe:/usr/libexec/postfix/qmgr
 exe:/usr/libexec/postfix/tlsmgr
 exe:/sbin/rngd
 exe:/usr/sbin/mariadbd
+exe:/usr/bin/dbus-broker-launch
+exe:/usr/bin/dbus-broker

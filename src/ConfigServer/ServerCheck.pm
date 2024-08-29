@@ -1331,8 +1331,8 @@ sub phpcheck {
 				$line =~ /^PHP Version\s*=>\s*(.*)/i;
 				($mas,$maj,$min) = split(/\./,$1);
 				$version = "$mas.$maj.$min";
-				if ($mas < 7) {$status = 1}
-				if ($mas == 7 and $maj < 5) {$status = 1}
+				if ($mas < 8) {$status = 1}
+				if ($mas == 8 and $maj < 1) {$status = 1}
 			}
 			open (my $IN, "<", "/usr/local/apache/conf/php.conf.yaml");
 			flock ($IN, LOCK_SH);
@@ -1395,7 +1395,7 @@ sub phpcheck {
 		if ($key eq "version") {
 			my $status = 0;
 			if ($values ne "") {$status = 1}
-			&addline($status,"Check php version","Any version of PHP older than v7.2.* is now obsolete and should be considered a security threat. You should upgrade exclusively to PHP v7.3+:<br><b>Affected PHP versions:</b>$values");
+			&addline($status,"Check php version","Any version of PHP older than v8.1.* is now obsolete and should be considered a security threat. You should upgrade to at least PHP v8.1+:<br><b>Affected PHP versions:</b>$values");
 		}
 		if ($key eq "enable_dl") {
 			my $status = 0;

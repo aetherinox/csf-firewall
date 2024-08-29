@@ -16,7 +16,7 @@ use Net::CIDR::Lite;
 use Socket;
 use ConfigServer::Config;
 use ConfigServer::Slurp qw(slurp);
-use ConfigServer::CheckIP qw(checkip);
+use ConfigServer::CheckIP qw(checkip cccheckip);
 use ConfigServer::Ports;
 use ConfigServer::URLGet;
 use ConfigServer::Sanity qw(sanity);
@@ -565,7 +565,7 @@ sub doclusterdeny {
 	my ($ip,$comment) = split (/\s/,$input{argument},2);
 
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -595,7 +595,7 @@ sub doclustertempdeny {
 	}
 
 	unless ($iptype) {
-		print "csf: [$ip] is not a valid IP\n";
+		print "csf: [$ip] is not a valid PUBLIC IP\n";
 		return;
 	}
 
@@ -618,7 +618,7 @@ sub doclustertempdeny {
 	if ($ports eq "") {$ports = "*"}
 
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -632,7 +632,7 @@ sub doclusterrm {
 	my ($ip,$comment) = split (/\s/,$input{argument},2);
 
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -646,7 +646,7 @@ sub doclusterarm {
 	my ($ip,$comment) = split (/\s/,$input{argument},2);
 
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -660,7 +660,7 @@ sub doclusterallow {
 	my ($ip,$comment) = split (/\s/,$input{argument},2);
 
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -690,7 +690,7 @@ sub doclustertempallow {
 	}
 
 	unless ($iptype) {
-		print "csf: [$ip] is not a valid IP\n";
+		print "csf: [$ip] is not a valid PUBLIC IP\n";
 		return;
 	}
 
@@ -713,7 +713,7 @@ sub doclustertempallow {
 	if ($ports eq "") {$ports = "*"}
 
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -727,7 +727,7 @@ sub doclusterignore {
 	my ($ip,$comment) = split (/\s/,$input{argument},2);
 
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -741,7 +741,7 @@ sub doclusterirm {
 	my ($ip,$comment) = split (/\s/,$input{argument},2);
 
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -765,7 +765,7 @@ sub docconfig {
 sub doclustergrep {
 	my $ip = $input{argument};
 	if (!checkip(\$ip)) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -1450,7 +1450,7 @@ sub doadd {
 	}
 
 	if (!$checkip and !(($ip =~ /:|\|/) and ($ip =~ /=/))) {
-		print "add failed: [$ip] is not a valid IP/CIDR\n";
+		print "add failed: [$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -1534,7 +1534,7 @@ sub dodeny {
 	}
 
 	if (!$checkip and !(($ip =~ /:|\|/) and ($ip =~ /=/))) {
-		print "deny failed: [$ip] is not a valid IP/CIDR\n";
+		print "deny failed: [$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -1694,7 +1694,7 @@ sub dokill {
 	if (checkip(\$ip)) {$is_ip = 1}
 
 	if (!$is_ip and !(($ip =~ /:|\|/) and ($ip =~ /=/))) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -1792,7 +1792,7 @@ sub doakill {
 	my $ip = $input{argument};
 
 	if (!checkip(\$ip) and !(($ip =~ /:|\|/) and ($ip =~ /=/))) {
-		print "[$ip] is not a valid IP/CIDR\n";
+		print "[$ip] is not a valid PUBLIC IP/CIDR\n";
 		return;
 	}
 
@@ -2187,7 +2187,7 @@ sub doportfilters {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						if (checkip(\$ip)) {push @ipset,"add -exist cc_$cc $ip"}
+						if (cccheckip(\$ip)) {push @ipset,"add -exist cc_$cc $ip"}
 					}
 					&ipsetrestore("cc_$cc");
 				} else {
@@ -2196,7 +2196,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 								my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 								if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -2215,7 +2215,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {push @ipset,"add -exist cc_6_$cc $ip"}
+						if (cccheckip(\$ip)) {push @ipset,"add -exist cc_6_$cc $ip"}
 					}
 					&ipsetrestore("cc_6_$cc");
 				} else {
@@ -2224,7 +2224,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							&syscommand(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} $verbose -A CC_ALLOW -s $ip -j $accept");
 						}
 					}
@@ -2431,7 +2431,7 @@ sub doportfilters {
 						if ($drop_cidr eq "") {$drop_cidr = "32"}
 						if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 					}
-					my $status = checkip(\$ip);
+					my $status = cccheckip(\$ip);
 					if ($status == 4) {print $SMTPAUTH "$ip\n"}
 					elsif ($status == 6) {print $SMTPAUTH "\"$ip\"\n"}
 				}
@@ -2442,7 +2442,7 @@ sub doportfilters {
 					$line =~ s/$cleanreg//g;
 					if ($line =~ /^(\s|\#|$)/) {next}
 					my ($ip,undef) = split (/\s/,$line,2);
-					my $status = checkip(\$ip);
+					my $status = cccheckip(\$ip);
 					if ($status == 4) {print $SMTPAUTH "$ip\n"}
 					elsif ($status == 6) {print $SMTPAUTH "\"$ip\"\n"}
 				}
@@ -2478,7 +2478,7 @@ sub doportfilters {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						if (checkip(\$ip)) {push @ipset,"add -exist cc_$cc $ip"}
+						if (cccheckip(\$ip)) {push @ipset,"add -exist cc_$cc $ip"}
 					}
 					&ipsetrestore("cc_$cc");
 				} else {
@@ -2492,7 +2492,7 @@ sub doportfilters {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 								&syscommand(__LINE__,"$config{IPTABLES} $config{IPTABLESWAIT} $verbose -I CC_DENY -s $ip -j $drop");
 						}
 					}
@@ -2506,7 +2506,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {push @ipset,"add -exist cc_6_$cc $ip"}
+						if (cccheckip(\$ip)) {push @ipset,"add -exist cc_6_$cc $ip"}
 					}
 					&ipsetrestore("cc_6_$cc");
 				} else {
@@ -2515,7 +2515,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 								&syscommand(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} $verbose -I CC_DENY -s $ip -j $drop");
 						}
 					}
@@ -2556,7 +2556,7 @@ sub doportfilters {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							push @ipset,"add -exist cc_$cc $ip";
 							$cnt++;
 						}
@@ -2568,7 +2568,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 								my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 								if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -2588,7 +2588,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							push @ipset,"add -exist cc_6_$cc $ip";
 							$cnt6++;
 						}
@@ -2600,7 +2600,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							&syscommand(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} $verbose -A CC_ALLOWF -s $ip -j RETURN");
 							$cnt6++;
 						}
@@ -2685,7 +2685,7 @@ sub doportfilters {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						if (checkip(\$ip)) {push @ipset,"add -exist cc_$cc $ip"}
+						if (cccheckip(\$ip)) {push @ipset,"add -exist cc_$cc $ip"}
 					}
 					&ipsetrestore("cc_$cc");
 				} else {
@@ -2694,7 +2694,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 								my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 								if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -2714,7 +2714,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {push @ipset,"add -exist cc_6_$cc $ip"}
+						if (cccheckip(\$ip)) {push @ipset,"add -exist cc_6_$cc $ip"}
 					}
 					&ipsetrestore("cc_6_$cc");
 				} else {
@@ -2723,7 +2723,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							&syscommand(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} $verbose -A CC_ALLOWP -s $ip -j CC_ALLOWPORTS");
 							$cnt++;
 						}
@@ -2786,7 +2786,7 @@ sub doportfilters {
 							if ($drop_cidr eq "") {$drop_cidr = "32"}
 							if ($drop_cidr > $config{CC_DROP_CIDR}) {next}
 						}
-						if (checkip(\$ip)) {push @ipset,"add -exist cc_$cc $ip"}
+						if (cccheckip(\$ip)) {push @ipset,"add -exist cc_$cc $ip"}
 					}
 					&ipsetrestore("cc_$cc");
 				} else {
@@ -2795,7 +2795,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							if ($config{CC_DROP_CIDR} > 0 and $config{CC_DROP_CIDR} < 33) {
 								my ($drop_ip,$drop_cidr) = split(/\//,$ip);
 								if ($drop_cidr eq "") {$drop_cidr = "32"}
@@ -2815,7 +2815,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {push @ipset,"add -exist cc_6_$cc $ip"}
+						if (cccheckip(\$ip)) {push @ipset,"add -exist cc_6_$cc $ip"}
 					}
 					&ipsetrestore("cc_6_$cc");
 				} else {
@@ -2824,7 +2824,7 @@ sub doportfilters {
 						$line =~ s/$cleanreg//g;
 						if ($line =~ /^(\s|\#|$)/) {next}
 						my ($ip,undef) = split (/\s/,$line,2);
-						if (checkip(\$ip)) {
+						if (cccheckip(\$ip)) {
 							&syscommand(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} $verbose -A CC_DENYP -s $ip -j CC_DENYPORTS");
 							$cnt++;
 						}
@@ -3817,7 +3817,7 @@ sub doiplookup {
 	if (checkip(\$input{argument})) {
 		print iplookup($input{argument})."\n";
 	} else {
-		print "lookup failed: [$input{argument}] is not a valid IP\n";
+		print "lookup failed: [$input{argument}] is not a valid PUBLIC IP\n";
 	}
 	return;
 }
@@ -4234,7 +4234,7 @@ sub dotempdeny {
 	}
 
 	unless ($iptype) {
-		print "csf: [$ip] is not a valid IP\n";
+		print "csf: [$ip] is not a valid PUBLIC IP\n";
 		return;
 	}
 
@@ -4372,7 +4372,7 @@ sub dotempallow {
 	}
 
 	unless ($iptype) {
-		print "csf: [$ip] is not a valid IP\n";
+		print "csf: [$ip] is not a valid PUBLIC IP\n";
 		return;
 	}
 	if ($timeout =~ /\D/) {
@@ -4490,7 +4490,7 @@ sub dotemprm {
 	}
 
 	unless ($iptype) {
-		print "csf: [$ip] is not a valid IP\n";
+		print "csf: [$ip] is not a valid PUBLIC IP\n";
 		return;
 	}
 	&getethdev;
@@ -4658,7 +4658,7 @@ sub dotemprmd {
 	}
 
 	unless ($iptype) {
-		print "csf: [$ip] is not a valid IP\n";
+		print "csf: [$ip] is not a valid PUBLIC IP\n";
 		return;
 	}
 	&getethdev;
@@ -4759,7 +4759,7 @@ sub dotemprma {
 	}
 
 	unless ($iptype) {
-		print "csf: [$ip] is not a valid IP\n";
+		print "csf: [$ip] is not a valid PUBLIC IP\n";
 		return;
 	}
 	&getethdev;
@@ -4990,7 +4990,7 @@ sub dotrace {
 
 	my $checkip = checkip(\$ip);
 	unless ($checkip) {
-		print "csf: [$ip] is not a valid IP\n";
+		print "csf: [$ip] is not a valid PUBLIC IP\n";
 		return;
 	}
 

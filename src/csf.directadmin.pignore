@@ -69,6 +69,8 @@ exe:/lib/systemd/systemd-timesyncd
 exe:/usr/local/bin/freshclam
 exe:/sbin/rngd
 exe:/usr/sbin/mariadbd
+exe:/usr/bin/dbus-broker-launch
+exe:/usr/bin/dbus-broker
 
 # Some additional entries that you might want to ignore on DirectAdmin
 # servers.

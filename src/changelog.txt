@@ -1,8 +1,18 @@
 ChangeLog:
 
+14.21 - Modified IP lookup to strip some missed quotes
+
+        Added exe:/usr/bin/dbus-broker-launch and exe:/usr/bin/dbus-broker to
+	csf.pignore for new installations
+	
+	Added check to ensure that only PUBLIC IP addresses are used when
+	loading IPv4 CC zone files
+	
+	Fixed issue when converting embedded IPv4 addresses in IPv6 connections
+
 14.20 - Modified MaxMind URLs to use https
 
-        Fixed DCOTYPE print order for integrated UI login
+        Fixed DOCTYPE print order for integrated UI login
 
         Added "Require all granted" to Messenger v3 .htaccess generation
 

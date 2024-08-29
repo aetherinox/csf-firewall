@@ -92,6 +92,8 @@ exe:/usr/libexec/postfix/spawn
 exe:/usr/sbin/varnishd
 exe:/usr/sbin/nginx
 exe:/usr/sbin/mariadbd
+exe:/usr/bin/dbus-broker-launch
+exe:/usr/bin/dbus-broker
 
 # Some additional entries that you might want to ignore on cPanel servers.
 # However, be aware of the security implications under "Process Tracking" in
