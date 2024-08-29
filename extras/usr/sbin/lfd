@@ -10050,32 +10050,43 @@ EOF
 	
 					if ($valid eq "session")
 					{
-						if (defined $FORM{csfapp} and ($FORM{csfapp} ne $application)) {
+						if (defined $FORM{csfapp} and ($FORM{csfapp} ne $application))
+						{
 							my $newapp = $application;
 							if ($FORM{csfapp} eq "csf") {$newapp = "csf"}
 							elsif ($FORM{csfapp} eq "cxs" and $config{UI_CXS}) {$newapp = "cxs"}
 							elsif ($FORM{csfapp} eq "cse" and $config{UI_CSE}) {$newapp = "cse"}
-							if ($newapp ne $application) {
+							if ($newapp ne $application)
+							{
 								sysopen (my $SESSION,"/var/lib/csf/ui/ui.session", O_RDWR | O_CREAT) or &childcleanup(__LINE__,"UI: unable to open csf.session: $!");
 								flock ($SESSION, LOCK_EX);
 								my @records = <$SESSION>;
 								chomp @records;
 								seek ($SESSION, 0, 0);
 								truncate ($SESSION, 0);
-								foreach my $record (@records) {
+
+								foreach my $record (@records)
+								{
 									my ($rtype,$rstart,$rtime,$rsession,$rcookie,$rip,$rhead,$rapp) = split(/\|/,$record,8);
-									if ($rip eq $peeraddress and $rsession eq $session) {
+									if ($rip eq $peeraddress and $rsession eq $session)
+									{
 										$record = "$rtype|$rstart|$rtime|$rsession|$rcookie|$rip|$rhead|$newapp";
 										$application = $newapp;
 									}
+
 									print $SESSION "$record\n"
 								}
+
 								close ($SESSION);
 							}
 						}
-						if ($file eq "/") {
+			
+						if ($file eq "/")
+						{
 							print "HTTP/1.0 200 OK\r\n";
-							if ($application eq "csf") {
+						
+							if ($application eq "csf")
+							{
 								open (my $IN, "<", "/etc/csf/version.txt") or die $!;
 								flock ($IN, LOCK_SH);
 								$myv = <$IN>;
@@ -10084,25 +10095,32 @@ EOF
 								$script = "/$session/";
 								$images = "/$session/images";
 								$config{THIS_UI} = 1;
+	
 								my $bootstrapcss = "<link rel='stylesheet' href='$images/bootstrap/css/bootstrap.min.css'>";
 								my $jqueryjs = "<script src='$images/jquery.min.js'></script>";
 								my $bootstrapjs = "<script src='$images/bootstrap/js/bootstrap.min.js'></script>";
 								my @header;
 								my @footer;
 								my $htmltag = "data-post='$FORM{action}'";
-								if (-e "/etc/csf/csf.header") {
+				
+								if (-e "/etc/csf/csf.header")
+								{
 									open (my $HEADER, "<", "/etc/csf/csf.header");
 									flock ($HEADER, LOCK_SH);
 									@header = <$HEADER>;
 									close ($HEADER);
 								}
-								if (-e "/etc/csf/csf.footer") {
+
+								if (-e "/etc/csf/csf.footer")
+								{
 									open (my $FOOTER, "<", "/etc/csf/csf.footer");
 									flock ($FOOTER, LOCK_SH);
 									@footer = <$FOOTER>;
 									close ($FOOTER);
 								}
-								unless ($config{STYLE_CUSTOM}) {
+
+								unless ($config{STYLE_CUSTOM})
+								{
 									undef @header;
 									undef @footer;
 									$htmltag = "";
@@ -10110,6 +10128,7 @@ EOF
 
 								print "Content-type: text/html\r\n";
 								print "\r\n";
+
 								unless ($FORM{action} eq "tailcmd" or $FORM{action} =~ /^cf/ or $FORM{action} eq "logtailcmd" or $FORM{action} eq "loggrepcmd") {
 									print <<EOF;
 <!doctype html>
@@ -10131,7 +10150,8 @@ display:none;
 display:block;
 }
 EOF
-									if ($config{STYLE_MOBILE}) {
+									if ($config{STYLE_MOBILE})
+									{
 	print <<EOF;
 \@media (max-width: 480px) {
 .mobilecontainer {
@@ -10143,6 +10163,7 @@ EOF
 }
 EOF
 									}
+
 									print "</style>\n";
 									print @header;
 									print <<EOF;
@@ -10153,14 +10174,28 @@ EOF
 <div class='container-fluid'>
 EOF
 								}
-								unless ($FORM{action} eq "tailcmd" or $FORM{action} =~ /^cf/ or $FORM{action} eq "logtailcmd" or $FORM{action} eq "loggrepcmd") {
+								unless ($FORM{action} eq "tailcmd" or $FORM{action} =~ /^cf/ or $FORM{action} eq "logtailcmd" or $FORM{action} eq "loggrepcmd")
+								{
+
 									print "<div class='pull-right' style='margin:8px'>\n";
-									if ($config{UI_CXS} or $config{UI_CSE}) {
+
+									if ($config{UI_CXS} or $config{UI_CSE})
+									{
 										print "<form action='$script' method='post'><select name='csfapp'><option>csf</option>";
-										if ($config{UI_CXS}) {print "<option>cxs</option>"}
-										if ($config{UI_CSE}) {print "<option>cse</option>"}
+
+										if ($config{UI_CXS})
+										{
+											print "<option>cxs</option>"
+										}
+
+										if ($config{UI_CSE})
+										{
+											print "<option>cse</option>"
+										}
+
 										print "<", "/select> <input class='btn btn-default' type='submit' value='Switch'></form>\n";
 									}
+
 									print " <a class='btn btn-default' href='/$session/?csfaction=csflogout'>csf Logout</a>\n";
 									print "</div>\n";
 									print <<EOF;
@@ -10170,7 +10205,9 @@ EOF
 </div>
 EOF
 								}
+
 								ConfigServer::DisplayUI::main(\%FORM, $script, 0, $images, $myv, $config{THIS_UI});
+
 								unless ($FORM{action} eq "tailcmd" or $FORM{action} =~ /^cf/ or $FORM{action} eq "logtailcmd" or $FORM{action} eq "loggrepcmd") {
 									print <<EOF;
 <a class='botlink' id='botlink' title='Go to top'><span class='glyphicon glyphicon-hand-up'></span></a>
