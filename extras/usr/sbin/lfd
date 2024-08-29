@@ -168,7 +168,7 @@ open STDOUT, ">","/dev/null";
 open STDERR, ">","/dev/null";
 setsid();
 
-our $th_dark_version = 2.10;
+our $th_dark_version = 2.21;
 my $th_dark_url = "https://github.com/Aetherinox/csf-firewall";
 
 my $oldfh = select STDERR; ##no critic

@@ -151,6 +151,7 @@ button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
 {
 	width: 50vw;
 	margin: auto auto;
+	padding-top: 20px;
 }
 
 /*
@@ -168,6 +169,7 @@ button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
 	padding-bottom: 20px;
 }
 
+
 .input-ipaddr:focus
 {
 	outline: 0;
@@ -175,10 +177,33 @@ button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0),0 0 8px rgba(102, 174, 233, 0);
 }
 
+form input
+{
+	width: 30vw;
+	max-width: 400px;
+	min-width: 100px;
+	padding-left:10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	background-color: #393939;
+	border: 1px solid #e3e3e31a;
+	color: #FFF;
+	font-size: 11pt;
+	transition: 0.5s;
+	background: linear-gradient(#ffffff73 0 0) bottom / 0% 1px no-repeat #393939;
+	cursor: pointer;
+}
+
+form input:hover
+{
+	background-size: 100% 1px;
+}
+
 .input-ipaddr
 {
 	margin: auto auto;
-	height: 40px;
+	height: 50px;
 	width: 50vw;
 	padding-left:10px;
 	padding-right: 10px;
@@ -243,12 +268,15 @@ button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
 
 .glyphicon
 {
-	color: #c83062;
+	color: #c83062 !important;
+	padding-left: 2px;
+	padding-right: 2px;
+	top: 4px;
 }
 
 .glyphicon:hover
 {
-	color: #FFF;
+	color: #FFF !important;
 	transition: all 0.3s;
 }
 

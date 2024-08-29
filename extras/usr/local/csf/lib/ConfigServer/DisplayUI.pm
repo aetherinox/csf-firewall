@@ -66,7 +66,7 @@ sub main
 	#	Dark Theme
 	# #
 
-	our $th_dark_version = 2.10;
+	our $th_dark_version = 2.21;
 	my $th_dark_url = "https://github.com/Aetherinox/csf-firewall";
 
 	$ipscidr6 = Net::CIDR::Lite->new;
