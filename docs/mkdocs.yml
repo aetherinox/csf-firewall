@@ -172,6 +172,9 @@ nav:
   - Patcher:
     - Download: 'patcher/download.md'
     - Configure: 'patcher/configure.md'
+  - Themes:
+    - Install: 'themes/install.md'
+    - Usage: 'themes/usage.md'
   - About:
     - License: 'about/license.md'
     - Conventions: 'about/conventions.md'
