@@ -551,48 +551,56 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 #               172.18.0.7
                 # #
 
-                bridge=$(docker inspect -f "{{with index .NetworkSettings.Networks \"${NETWORK_ADAPT_NAME}\"}}{{.NetworkID}}{{end}}" ${container} | cut -c -12)
-                DOCKER_NET_INT=`docker network inspect -f '{{"'br-$bridge'" | or (index .Options "com.docker.network.bridge.name")}}' $bridge`
+            # Loop Network
+            while IFS= read -r network; do
                 ipaddr=`docker inspect -f "{{with index .NetworkSettings.Networks \"${NETWORK_ADAPT_NAME}\"}}{{.IPAddress}}{{end}}" ${container}`
 
-                printf '\n%-17s %-35s %-55s' " " "${DEVGREY}(MANUAL) BRIDGE" "${FUCHSIA}${bridge}${NORMAL}"
+                printf '\n%-17s %-52s' " " "${DEVGREY}  │ ${NORMAL}"
                 printf '\n%-17s %-35s %-55s' " " "${DEVGREY}(MANUAL) DOCKER_NET" "${FUCHSIA}${DOCKER_NET_INT}${NORMAL}"
                 printf '\n%-17s %-35s %-55s' " " "${DEVGREY}(MANUAL) IP" "${FUCHSIA}${ipaddr}${NORMAL}"
                 echo -e
 
-                if [ "${OPT_DEV_ENABLE}" == "true" ]; then
+                bridge=$(docker inspect -f "{{with index .NetworkSettings.Networks \"${network}\"}}{{.NetworkID}}{{end}}" ${container} | cut -c -12)
                     echo -e "                  ${DEVGREY}docker inspect -f '{{with index .NetworkSettings.Networks \"${NETWORK_ADAPT_NAME}\"}}{{.NetworkID}}{{end}}' ${container} | cut -c -12${NORMAL}"
                     echo -e "                  ${DEVGREY}docker network inspect -f '{{\"'br-$bridge'\" | or (index .Options \"com.docker.network.bridge.name\")}}' ${bridge}${NORMAL}"
                     echo -e "                  ${DEVGREY}docker inspect -f '{{with index .NetworkSettings.Networks \"${NETWORK_ADAPT_NAME}\"}}{{.IPAddress}}{{end}}' ${container}${NORMAL}"
                 fi
 
                 # #
-                #   CHeck if containers IP is currently in CSF allow list /etc/csf/csf.allow
+                #   should return:
+                #       br-2e0fde4b0664
                 # #
 
-                if grep -q "\b${ipaddr}\b" ${CSF_FILE_ALLOW}; then
-                    echo -e
-                    echo -e "  ${BLUE}                ${GREEN}${ipaddr} already white-listed in ${CSF_FILE_ALLOW}${NORMAL}"
+                DOCKER_NET_INT=`docker network inspect -f '{{"'br-$bridge'" | or (index .Options "com.docker.network.bridge.name")}}' $bridge`
+
+                # here somewhere
                     echo -e
                 else
 
-                    # #
-                    #   Find CSF path on system
-                    # #
+                # #
+                #   should return:
+                #       172.18.0.7 (or any other IP)
+                # #
 
-                    csf_path=$(command -v csf)
+                ipaddr=`docker inspect -f "{{with index .NetworkSettings.Networks \"${network}\"}}{{.IPAddress}}{{end}}" ${container}`
+                
+                if [ -z "${bridge}" ]; then bridge="${RED}Not found${NORMAL}"; fi
+                if [ -z "${DOCKER_NET_INT}" ]; then DOCKER_NET_INT="${RED}Not found${NORMAL}"; fi
+                if [ -z "${ipaddr}" ]; then ipaddr="${RED}Not found${NORMAL}"; fi
 
                     # #
                     #   Found CSF binary, add container IP to allow list /etc/csf/csf.allow
-                    # #
+                printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  ├── ${DEVGREY}BRIDGE" "${GREEN}${bridge}${NORMAL}"
+                printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  ├── ${DEVGREY}DOCKER_NET" "${GREEN}${DOCKER_NET_INT}${NORMAL}"
+                printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  ├── ${DEVGREY}IP" "${GREEN}${ipaddr}${NORMAL}"
 
-                    if [[ $csf_path ]]; then
-                        echo -e "${YELLOW}[ OK ]: Adding ${ipaddr} to allow list${RESET} ${CSF_FILE_ALLOW}"
-                        $csf_path -a ${ipaddr} ${CSF_COMMENT}
-                    fi
+                if [ "${OPT_DEV_ENABLE}" == "true" ] || [ "${DEBUG_ENABLED}" == "true" ]; then
+                    echo -e "                                           ${DEVGREY}docker inspect -f \"{{with index .NetworkSettings.Networks \"${network}\"}}{{.NetworkID}}{{end}}\" ${container} | cut -c -12${NORMAL}"
+                    echo -e "                                           ${DEVGREY}docker network inspect -f '{{\"'br-$bridge'\" | or (index .Options \"com.docker.network.bridge.name\")}}' ${bridge}${NORMAL}"
+                    echo -e "                                           ${DEVGREY}docker inspect -f '{{with index .NetworkSettings.Networks \"${network}\"}}{{.IPAddress}}{{end}}' ${container}${NORMAL}"
                 fi
 
-            else
+            done <<< "$network"
 
                 # #
                 #   return all container info
