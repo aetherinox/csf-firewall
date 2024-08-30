@@ -46,8 +46,6 @@ END="\e[0m"
 #   Configs
 #
 #   DOCKER_INT                  : main docker network interface
-#   NETWORK_MANUAL_MODE         : set true if you are manually assigning the ip address for each docker container
-#   NETWORK_ADAPT_NAME          : the adapter name for Traefik
 #                                 can be created using the command:
 #                                   - `sudo docker network create --driver=bridge --subnet=172.18.0.0/16 --gateway=172.18.0.1 traefik``
 #   CSF_FILE_ALLOW              : the defined allow list file
@@ -57,11 +55,9 @@ END="\e[0m"
 # #
 
 DOCKER_INT="docker0"
-NETWORK_MANUAL_MODE="false"
-NETWORK_ADAPT_NAME="traefik"
 CSF_FILE_ALLOW="/etc/csf/csf.allow"
 CSF_COMMENT="Docker container whitelist"
-DEBUG_ENABLED="true"
+DEBUG_ENABLED="false"
 
 # #
 #   list > network ips
@@ -87,7 +83,7 @@ sys_code=$(lsb_release -cs)
 
 app_title="ConfigServer Firewall Docker Patch"
 app_about="Configures ConfigServer Firewall to work with Docker and Traefik"
-app_ver=("2" "0" "0")
+app_ver=("2" "2" "2")
 app_file_this=$(basename "$0")
 app_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
@@ -450,9 +446,9 @@ for bridge in $bridges; do
     DOCKER_NET_INT=`docker network inspect -f '{{"'br-$bridge'" | or (index .Options "com.docker.network.bridge.name")}}' $bridge`
     subnet=`docker network inspect -f '{{(index .IPAM.Config 0).Subnet}}' $bridge`
 
-	printf '\n%-17s %-35s %-55s' " " "${DEVGREY}BRIDGE" "${FUCHSIA}${bridge}${NORMAL}"
-	printf '\n%-17s %-35s %-55s' " " "${DEVGREY}DOCKER INTERFACE" "${FUCHSIA}${DOCKER_NET_INT}${NORMAL}"
-	printf '\n%-17s %-35s %-55s' " " "${DEVGREY}SUBNET" "${FUCHSIA}${subnet}${NORMAL}"
+	printf '\n%-17s %-35s %-55s' " " "${DEVGREY}BRIDGE" "${GREEN}${bridge}${NORMAL}"
+	printf '\n%-17s %-35s %-55s' " " "${DEVGREY}DOCKER INTERFACE" "${GREEN}${DOCKER_NET_INT}${NORMAL}"
+	printf '\n%-17s %-35s %-55s' " " "${DEVGREY}SUBNET" "${GREEN}${subnet}${NORMAL}"
 	echo -e
 
     add_to_nat ${DOCKER_NET_INT} ${subnet}
@@ -495,13 +491,14 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
 
         netmode=`docker inspect -f "{{.HostConfig.NetworkMode}}" ${container}`
         network=`docker inspect -f '{{range $net,$v := .NetworkSettings.Networks}}{{printf "%s\n" $net}}{{end}}' ${container}`
+        network_list=`docker inspect -f '{{range $net,$v := .NetworkSettings.Networks}}{{printf "%s " $net}}{{end}}' ${container}`
         network_simple=`docker inspect -f "{{json .NetworkSettings.Networks}}" ${container}`
         name=`docker inspect -f "{{.Name}}" ${container}`
 
-        printf '\n%-22s %-35s %-55s' "    ${GREEN}${name:0:15}" "${DEVGREY}NAME" "${FUCHSIA}${name}${NORMAL}"
-        printf '\n%-17s %-35s %-55s' " " "${DEVGREY}CONTAINER" "${FUCHSIA}${container}${NORMAL}"
-        printf '\n%-17s %-35s %-55s' " " "${DEVGREY}NETMODE" "${FUCHSIA}${netmode}${NORMAL}"
-        printf '\n%-17s %-35s %-55s' " " "${DEVGREY}NETWORK" "${FUCHSIA}${network}${NORMAL}"
+        printf '\n%-22s %-35s %-55s' "    ${GREEN}           " "${DEVGREY}NAME" "${YELLOW}${name}${NORMAL}"
+        printf '\n%-17s %-35s %-55s' " " "${DEVGREY}CONTAINER" "${GREEN}${container}${NORMAL}"
+        printf '\n%-17s %-35s %-55s' " " "${DEVGREY}NETMODE" "${GREEN}${netmode}${NORMAL}"
+        printf '\n%-17s %-35s %-55s' " " "${DEVGREY}NETWORK" "${GREEN}${network_list}${NORMAL}"
 
         # #
         #   Netmode > Default
@@ -522,49 +519,28 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
         else
 
             # #
-            #   Network > Manual Mode
-            #   This is for users who have manually defined an IP address for each docker container
-            #   Must set
-            #       - NETWORK_MANUAL_MODE=true
-            #       - NETWORK_ADAPT_NAME='network_adapter_name'
+            #   return all container info
+            #       sudo docker inspect -f '' badaaca1d5da
             # #
 
-            if [ "$NETWORK_MANUAL_MODE" = true ]; then
+            # #
+            #   network_adapter=$(docker container inspect -f '{{range $net,$v := .NetworkSettings.Networks}}{{printf "%s\n" $net}}{{end}}' ${container})
+            #
+            #   RETURNS:
+            #       'traefik'
+            # #
 
-                # #
-                #   Output:
-                #       (MANUAL) BRIDGE          2e0fde4b0664
-                #       (MANUAL) DOCKER_NET      br-2e0fde4b0664
-                #       (MANUAL) IP              172.18.0.7
-                #
-                #   Examples:
-                #       (MANUAL) BRIDGE
-                #           `docker inspect -f '{{with index .NetworkSettings.Networks "traefik"}}{{.NetworkID}}{{end}}' 74e633699d21 | cut -c -12`
-                #               2e0fde4b0664
-                #
-                #       (MANUAL) DOCKER_NET
-                #           `docker network inspect -f '{{"'br-2e0fde4b0664'" | or (index .Options "com.docker.network.bridge.name")}}' 2e0fde4b0664`
-                #               br-2e0fde4b0664
-                #
-                #       (MANUAL) IP
-                #           `docker inspect -f '{{with index .NetworkSettings.Networks "traefik"}}{{.IPAddress}}{{end}}' 74e633699d21`
-                #               172.18.0.7
-                # #
+            # #
+            #   should return:
+            #       2e0fde4b0664
+            # #
 
             # Loop Network
             while IFS= read -r network; do
-                ipaddr=`docker inspect -f "{{with index .NetworkSettings.Networks \"${NETWORK_ADAPT_NAME}\"}}{{.IPAddress}}{{end}}" ${container}`
 
                 printf '\n%-17s %-52s' " " "${DEVGREY}  │ ${NORMAL}"
-                printf '\n%-17s %-35s %-55s' " " "${DEVGREY}(MANUAL) DOCKER_NET" "${FUCHSIA}${DOCKER_NET_INT}${NORMAL}"
-                printf '\n%-17s %-35s %-55s' " " "${DEVGREY}(MANUAL) IP" "${FUCHSIA}${ipaddr}${NORMAL}"
-                echo -e
 
                 bridge=$(docker inspect -f "{{with index .NetworkSettings.Networks \"${network}\"}}{{.NetworkID}}{{end}}" ${container} | cut -c -12)
-                    echo -e "                  ${DEVGREY}docker inspect -f '{{with index .NetworkSettings.Networks \"${NETWORK_ADAPT_NAME}\"}}{{.NetworkID}}{{end}}' ${container} | cut -c -12${NORMAL}"
-                    echo -e "                  ${DEVGREY}docker network inspect -f '{{\"'br-$bridge'\" | or (index .Options \"com.docker.network.bridge.name\")}}' ${bridge}${NORMAL}"
-                    echo -e "                  ${DEVGREY}docker inspect -f '{{with index .NetworkSettings.Networks \"${NETWORK_ADAPT_NAME}\"}}{{.IPAddress}}{{end}}' ${container}${NORMAL}"
-                fi
 
                 # #
                 #   should return:
@@ -574,8 +550,6 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 DOCKER_NET_INT=`docker network inspect -f '{{"'br-$bridge'" | or (index .Options "com.docker.network.bridge.name")}}' $bridge`
 
                 # here somewhere
-                    echo -e
-                else
 
                 # #
                 #   should return:
@@ -588,8 +562,6 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 if [ -z "${DOCKER_NET_INT}" ]; then DOCKER_NET_INT="${RED}Not found${NORMAL}"; fi
                 if [ -z "${ipaddr}" ]; then ipaddr="${RED}Not found${NORMAL}"; fi
 
-                    # #
-                    #   Found CSF binary, add container IP to allow list /etc/csf/csf.allow
                 printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  ├── ${DEVGREY}BRIDGE" "${GREEN}${bridge}${NORMAL}"
                 printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  ├── ${DEVGREY}DOCKER_NET" "${GREEN}${DOCKER_NET_INT}${NORMAL}"
                 printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  ├── ${DEVGREY}IP" "${GREEN}${ipaddr}${NORMAL}"
@@ -601,51 +573,35 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 fi
 
             done <<< "$network"
+        fi
+
+        # #
+        #   CHeck if containers IP is currently in CSF allow list /etc/csf/csf.allow
+        # #
+
+        if [[ -n "${ipaddr}" ]] && [[ "$ipaddr" != "${RED}Not found${NORMAL}" ]]; then
+
+            if grep -q "\b${ipaddr}\b" ${CSF_FILE_ALLOW}; then
+                printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  └── ${DEVGREY}WHITELIST" "${YELLOW}${ipaddr} already white-listed in ${CSF_FILE_ALLOW}${NORMAL}"
+            else
 
                 # #
-                #   return all container info
-                #       sudo docker inspect -f '' badaaca1d5da
+                #   Find CSF path on system
                 # #
 
-                # #
-                #   network_adapter=$(docker container inspect -f '{{range $net,$v := .NetworkSettings.Networks}}{{printf "%s\n" $net}}{{end}}' ${container})
-                #
-                #   RETURNS:
-                #       'traefik'
-                # #
+                csf_path=$(command -v csf)
 
                 # #
-                #   should return:
-                #       2e0fde4b0664
+                #   Found CSF binary, add container IP to allow list /etc/csf/csf.allow
                 # #
 
-                bridge=$(docker inspect -f "{{with index .NetworkSettings.Networks \"${network}\"}}{{.NetworkID}}{{end}}" ${container} | cut -c -12)
-
-                # #
-                #   should return:
-                #       br-2e0fde4b0664
-                # #
-
-                DOCKER_NET_INT=`docker network inspect -f '{{"'br-$bridge'" | or (index .Options "com.docker.network.bridge.name")}}' $bridge`
-
-                # #
-                #   should return:
-                #       172.18.0.7 (or any other IP)
-                # #
-
-                ipaddr=`docker inspect -f "{{with index .NetworkSettings.Networks \"${network}\"}}{{.IPAddress}}{{end}}" ${container}`
-
-                printf '\n%-17s %-35s %-55s' " " "${DEVGREY}BRIDGE" "${FUCHSIA}${bridge}${NORMAL}"
-                printf '\n%-17s %-35s %-55s' " " "${DEVGREY}DOCKER_NET" "${FUCHSIA}${DOCKER_NET_INT}${NORMAL}"
-                printf '\n%-17s %-35s %-55s' " " "${DEVGREY}IP" "${FUCHSIA}${ipaddr}${NORMAL}"
-                echo -e
-
-                if [ "${OPT_DEV_ENABLE}" == "true" ]; then
-                    echo -e "                  ${DEVGREY}docker inspect -f '{{with index .NetworkSettings.Networks \"${netmode}\"}}{{.NetworkID}}{{end}}' ${container} | cut -c -12${NORMAL}"
-                    echo -e "                  ${DEVGREY}docker network inspect -f '{{\"'br-$bridge'\" | or (index .Options \"com.docker.network.bridge.name\")}}' ${bridge}${NORMAL}"
-                    echo -e "                  ${DEVGREY}docker inspect -f '{{with index .NetworkSettings.Networks \"${netmode}\"}}{{.IPAddress}}{{end}}' ${container}${NORMAL}"
+                if [[ $csf_path ]]; then
+                    printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  └── ${DEVGREY}WHITELIST" "${GREEN}Adding ${ipaddr} to allow list ${CSF_FILE_ALLOW}${NORMAL}"
+                    $csf_path -a ${ipaddr} ${CSF_COMMENT}
                 fi
             fi
+        else
+            printf '\n%-17s %-52s %-55s' " " "${DEVGREY}  └── ${DEVGREY}WHITELIST" "${RED}Invalid IP, cannot be added to ${CSF_FILE_ALLOW}${NORMAL}"
         fi
 
         # #
@@ -666,6 +622,7 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
         # #
 
         if [ `echo ${rules} | wc -c` -gt "1" ]; then
+
             for rule in ${rules}; do
 
                 # #
@@ -687,9 +644,10 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 #   PORT            22                                    
                 #   PROTOTYPE       tcp    
                 # #
-
-                printf '\n%-17s %-35s %-55s' " " "${DEVGREY}SOURCE" "${FUCHSIA}${src}${NORMAL}"
-                printf '\n%-17s %-35s %-55s' " " "${DEVGREY}DESTINATION" "${FUCHSIA}${dst}${NORMAL}"
+                
+                printf '\n%-17s %-52s' " " "${DEVGREY}      │ ${NORMAL}"
+                printf '\n%-17s %-52s %-55s' " " "${DEVGREY}      ├── ${DEVGREY}SOURCE" "${FUCHSIA}${src}${NORMAL}"
+                printf '\n%-17s %-52s %-55s' " " "${DEVGREY}      └── ${DEVGREY}DESTINATION" "${FUCHSIA}${dst}${NORMAL}"
                 # printf '\n%-17s %-35s %-55s' " " "${DEVGREY}PORT" "${FUCHSIA}${dst_port}${NORMAL}"
                 # printf '\n%-17s %-35s %-55s' " " "${DEVGREY}PROTOTYPE" "${FUCHSIA}${dst_proto}${NORMAL}"
                 echo -e
@@ -701,8 +659,8 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 ${PATH_IPTABLES} -A DOCKER -d ${ipaddr}/32 ! -i ${DOCKER_NET_INT} -o ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j ACCEPT
                 ${PATH_IPTABLES} -t nat -A POSTROUTING -s ${ipaddr}/32 -d ${ipaddr}/32 -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j MASQUERADE
 
-                echo -e "                  ${DEVGREY}+ RULE:                  ${FUCHSIA}-A DOCKER -d ${ipaddr}/32 ! -i ${DOCKER_NET_INT} -o ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j ACCEPT${NORMAL}"
-                echo -e "                  ${DEVGREY}+ RULE:                  ${FUCHSIA}-t nat -A POSTROUTING -s ${ipaddr}/32 -d ${ipaddr}/32 -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j MASQUERADE${NORMAL}"
+                echo -e "                  ${DEVGREY}          ├── + RULE:    ${DEVGREY}-A DOCKER -d ${ipaddr}/32 ! -i ${DOCKER_NET_INT} -o ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j ACCEPT${NORMAL}"
+                echo -e "                  ${DEVGREY}          ├── + RULE:    ${DEVGREY}-t nat -A POSTROUTING -s ${ipaddr}/32 -d ${ipaddr}/32 -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j MASQUERADE${NORMAL}"
 
                 # #
                 #   Support for IPv4
@@ -715,11 +673,12 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
 
                 if [[ ${src_ip} =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
                     ${PATH_IPTABLES} -t nat -A DOCKER ${iptables_opt_src}! -i ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${src_port} -j DNAT --to-destination ${ipaddr}:${dst_port}
-                    echo -e "                  ${DEVGREY}+ RULE:                  ${FUCHSIA}-t nat -A DOCKER ${iptables_opt_src}! -i ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${src_port} -j DNAT --to-destination ${ipaddr}:${dst_port}${NORMAL}"
+                    echo -e "                  ${DEVGREY}          └── + RULE:    ${DEVGREY}-t nat -A DOCKER ${iptables_opt_src}! -i ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${src_port} -j DNAT --to-destination ${ipaddr}:${dst_port}${NORMAL}"
                 fi
             done
         fi
 
+        echo -e
         echo -e
 
     done
