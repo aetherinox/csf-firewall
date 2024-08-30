@@ -789,8 +789,6 @@ The `/patch/docker.sh` file has a few configs you can adjust. Open it in a text 
 
 ```bash ignore
 DOCKER_INT="docker0"
-NETWORK_MANUAL_MODE="false"
-NETWORK_ADAPT_NAME="traefik"
 CSF_FILE_ALLOW="/etc/csf/csf.allow"
 CSF_COMMENT="Docker container whitelist"
 DEBUG_ENABLED="false"
@@ -806,8 +804,6 @@ Each setting is defined below:
 | Setting | Description |
 | --- | --- |
 | `DOCKER_INT` | <br>main docker network interface <br><br> |
-| `NETWORK_MANUAL_MODE` | <br>set `true` if you are manually assigning the ip address for each docker container <br><br> |
-| `NETWORK_ADAPT_NAME` | <br>requires `NETWORK_MANUAL_MODE="true"` <br>name of the adapter you are specifying <br><br> |
 | `CSF_FILE_ALLOW` | <br>Path to your `csf.allow` file <br><br> |
 | `CSF_COMMENT` | <br>comment added to each new whitelisted docker ip <br><br> |
 | `DEBUG_ENABLED` | <br>debugging / better logs <br><br> |
@@ -870,7 +866,7 @@ You can also find out what version you are running by appending `--version` to e
 <br />
 
 ```shell ignore
-ConfigServer Firewall Configuration - v2.0.0.0
+ConfigServer Firewall Configuration - v2.2.2.0
 https://github.com/Aetherinox/csf-firewall
 Ubuntu | 24.04
 ```
@@ -884,7 +880,7 @@ sudo /usr/local/include/csf/post.d/docker.sh --version
 <br />
 
 ```shell ignore
-ConfigServer Firewall Docker Patch - v2.0.0.0
+ConfigServer Firewall Docker Patch - v2.2.2.0
 https://github.com/Aetherinox/csf-firewall
 Ubuntu | 24.04
 ```
