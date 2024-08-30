@@ -15,7 +15,19 @@ tags:
 
 </p>
 
-### <!-- md:version stable- --> 2.2.1 <small>Aug 29, 2024</small> { id="2.1.1" }
+### <!-- md:version stable- --> 2.2.2 <small>Aug 30, 2024</small> { id="2.2.2" }
+
+- `change`: add header animations, app name returns user home
+- `change`: clicking app logo or name now returns user to home page
+- `change`: add favicon
+- `change`: silence curl in openvpn patch
+- `change`: removal of `NETWORK_MANUAL_MODE`, `NETWORK_ADAPT_NAME`
+- `fix`: docker inspect error when container has more than one network [#1](https://github.com/Aetherinox/csf-firewall/issues/1)
+- `docs`: removal of manual mode values no longer needed
+
+<br />
+
+### <!-- md:version stable- --> 2.2.1 <small>Aug 29, 2024</small> { id="2.2.1" }
 
 - `change`: new animated checkbox input for firewall profiles
 - `change`: clicking logo in header now re-directs user to home
