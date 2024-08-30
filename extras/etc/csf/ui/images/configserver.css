@@ -99,6 +99,54 @@ a.app-name:not(:hover)
 	color: #FFF;
 }
 
+/*
+	Quick > Allow
+*/
+
+.input-allow
+{
+	transition: 0.5s;
+	background-color: #26643db5 !important;
+}
+
+.input-allow:hover
+{
+	background: linear-gradient(#50b978d5 0 0) bottom / 0% 2px no-repeat #393939;
+	background-size: 100% 2px;
+	transition: all 0.3s;
+}
+
+.input-allow:focus
+{
+	background: linear-gradient(#f8f8f8d5 0 0) bottom / 0% 2px no-repeat #393939;
+	background-size: 100% 2px;
+	transition: all 0.3s;
+}
+
+/*
+	Quick > Deny
+*/
+
+.input-deny
+{
+	transition: 0.5s;
+	background-color: #99244bb5 !important;
+}
+
+.input-deny:hover
+{
+	background: linear-gradient(#f92574 0 0) bottom / 0% 2px no-repeat #393939;
+	background-size: 100% 2px;
+	transition: all 0.3s;
+}
+
+.input-deny:focus
+{
+	background: linear-gradient(#FFFFFF 0 0) bottom / 0% 2px no-repeat #393939;
+	background-size: 100% 2px;
+	transition: all 0.3s;
+}
+
 .login-body
 {
 	font-family:Arial, Helvetica, sans-serif;
@@ -146,7 +194,7 @@ a.app-name:not(:hover)
 
 .btn-deny
 {
-	background-color: #a81840 !important;
+	background-color: #d2195ef0 !important;
 	border: 1px solid #FFFFFF0A !important;
 }
 
@@ -252,10 +300,6 @@ button:not(button#fontminus-btn):not(button#CSFpauseID):not(button#fontplus-btn)
 
 form input[type=text], form input[type=password]
 {
-	padding-left:10px;
-	padding-right: 10px;
-	padding-top: 4px;
-	padding-bottom: 4px;
 	background-color: #393939;
 	border: 1px solid #e3e3e31a;
 	color: #FFF;
@@ -396,7 +440,7 @@ form input:hover
 
 .glyphicon
 {
-	color: #ffffff !important;
+	color: #d2195ef0 !important;
 	padding-left: 2px;
 	padding-right: 2px;
 	top: 4px;

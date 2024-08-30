@@ -9907,6 +9907,7 @@ sub ui {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://github.com/user-attachments/assets/ba005563-da8b-456c-8c4d-19f4ee31eb71">
 <style>
 
 \@-webkit-keyframes fade-in
@@ -10195,6 +10196,7 @@ EOF
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://github.com/user-attachments/assets/ba005563-da8b-456c-8c4d-19f4ee31eb71">
 <title>ConfigServer Security &amp; Firewall</title>
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -10262,7 +10264,7 @@ EOF
 									print <<EOF;
 <div class='panel panel-default panel-body'>
 <a href='/$session/'><img class='logo' align='absmiddle' src='https://github.com/user-attachments/assets/ba005563-da8b-456c-8c4d-19f4ee31eb71' alt='ConfigServer Firewall' style='float:left'></a>
-<h3>ConfigServer Firewall v$myv</h3>
+<h3><a class='app-name' href='/$session/'>ConfigServer Firewall v$myv</a></h3>
 </div>
 EOF
 								}
