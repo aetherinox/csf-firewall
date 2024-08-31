@@ -85,14 +85,12 @@ ConfigServer Security & Firewall (CSF) is a popular and powerful firewall soluti
   - [Step 3: Access and Use Web UI:](#step-3-access-and-use-web-ui)
 - [Install Docker Patch](#install-docker-patch)
   - [Clone](#clone)
-  - [Install](#install)
   - [Configure](#configure)
   - [Run Patch](#run-patch)
   - [Manual Run](#manual-run)
   - [Advanced Logs](#advanced-logs)
 - [Install OpenVPN Patch](#install-openvpn-patch)
   - [Clone](#clone-1)
-  - [Install](#install-1)
   - [Configure](#configure-1)
   - [Run Patch](#run-patch-1)
   - [Manual Run](#manual-run-1)
@@ -770,20 +768,6 @@ git clone https://github.com/Aetherinox/csf-firewall.git
 
 <br />
 
-### Install
-The Docker patch will automatically be installed if you run the `/patch/install.sh` script. It is the 2nd step in the process, right after it sets up the `pre` and `post` scripts.
-
-<br />
-
-If you wish to manually install it, you may run the following commands:
-```shell ignore
-sudo chmod +x /patch/docker.sh
-
-sudo ./patch/docker.sh
-```
-
-<br />
-
 ### Configure
 The `/patch/docker.sh` file has a few configs you can adjust. Open it in a text editor and change the values to your preference.
 
@@ -829,7 +813,8 @@ sudo ./install.sh
 
 <br />
 
-You can also try:
+On certain distros of Linux, you may need to use the following instead to run the patcher:
+
 ```shell
 sudo sh install.sh
 ```
@@ -844,15 +829,16 @@ The `docker.sh` file will be installed to `/usr/local/include/csf/post.d`
 You can manually run the `docker.sh` script. It will also allow you to specify arguments such as `--dev` to get more detailed logging as the firewall is set up. This should only be done if you know what you're doing.
 
 ```shell ignore
-sudo chmod +x /usr/local/include/csf/post.d/docker.sh
-sudo /usr/local/include/csf/post.d/docker.sh
+sudo chmod +x /patch/docker.sh
+sudo /patch/docker.sh
 ```
 
 <br />
 
 You can call arguments by running the file using:
+
 ```shell ignore
-sudo /usr/local/include/csf/post.d/docker.sh --dev
+sudo /patch/docker.sh --dev
 ```
 
 <br />
@@ -874,7 +860,7 @@ Ubuntu | 24.04
 <br />
 
 ```shell ignore
-sudo /usr/local/include/csf/post.d/docker.sh --version
+sudo /patch/docker.sh --version
 ```
 
 <br />
@@ -938,20 +924,6 @@ cd $HOME/Documents
 Clone the repo
 ```shell
 git clone https://github.com/Aetherinox/csf-firewall.git
-```
-
-<br />
-
-### Install
-The OpenVPN patch will automatically be installed when you run the `/patch/install.sh` script.
-
-<br />
-
-If you wish to manually install it, you may run the following commands:
-```shell ignore
-sudo chmod +x /patch/openvpn.sh
-
-sudo ./patch/openvpn.sh
 ```
 
 <br />
@@ -1021,7 +993,8 @@ sudo ./install.sh
 
 <br />
 
-You can also try:
+On certain distros of Linux, you may need to use the following instead to run the patcher:
+
 ```shell
 sudo sh install.sh
 ```
@@ -1036,15 +1009,15 @@ The `openvpn.sh` file will be installed to `/usr/local/include/csf/post.d`
 You can manually run the `openvpn.sh` script. It will also allow you to specify arguments such as `--dev` to get more detailed logging as the firewall is set up. This should only be done if you know what you're doing.
 
 ```shell ignore
-sudo chmod +x /usr/local/include/csf/post.d/openvpn.sh
-sudo /usr/local/include/csf/post.d/openvpn.sh
+sudo chmod +x /patch/openvpn.sh
+sudo /patch/openvpn.sh
 ```
 
 <br />
 
 You can call arguments by running the file using:
 ```shell ignore
-sudo /usr/local/include/csf/post.d/openvpn.sh --dev
+sudo /patch/openvpn.sh --dev
 ```
 
 <br />
@@ -1066,7 +1039,7 @@ Ubuntu | 24.04
 <br />
 
 ```shell ignore
-sudo /usr/local/include/csf/post.d/openvpn.sh --version
+sudo /patch/openvpn.sh --version
 ```
 
 <br />
