@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+
+$| = 1;
+
+print "HTTP/1.1 200 OK\n";
+print "Content-type: text/html\r\n\r\n";
+system ("/usr/local/directadmin/plugins/csf/exec/csf");

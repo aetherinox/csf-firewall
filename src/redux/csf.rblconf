@@ -1,0 +1,22 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# This file configures optional entries for the IP checking against RBLs within
+# csf
+#
+# There are 4 options available to enable/disable RBLs and IPs:
+#
+# To disable inbuilt RBLs or to enable other RBLs, e.g.:
+#
+# enablerbl:my.dnsrbl.net
+# disablerbl:bl.spamcop.net
+#
+# To disable local IPs or to enable other IPs, e.g.:
+# 
+# enableip:11.22.33.44
+# disableip:10.10.10.10
+#
+# There should be no spaces on any of the configuration lines. Lines beginning
+# with # are comments

@@ -1,0 +1,40 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of domains and partial domain that lfd process
+# tracking will ignore based on reverse and forward DNS lookups. An example of
+# its use is to prevent web crawlers from being blocked by lfd, e.g.
+# .googlebot.com and .crawl.yahoo.net
+#
+# You must use either a Fully Qualified Domain Name (FQDN) or a unique ending
+# subset of the domain name which must begin with a dot (wildcards are NOT
+# otherwise permitted)
+#
+# For example, the following are all valid entries:
+# www.configserver.com
+# .configserver.com
+# .configserver.co.uk
+# .googlebot.com
+# .crawl.yahoo.net
+# .search.msn.com
+#
+# The following are NOT valid entries:
+# *.configserver.com
+# *google.com
+# google.com (unless the lookup is EXACTLY google.com with no subdomain
+#
+# When a candidate IP address is inspected a reverse DNS lookup is performed on
+# the IP address. A forward DNS lookup is then performed on the result from the
+# reverse DNS lookup. The IP address will only be ignored if:
+#
+# 1. The results of the final lookup matches the original IP address
+# AND
+# 2a. The results of the rDNS lookup matches the FQDN
+# OR
+# 2b. The results of the rDNS lookup matches the partial subset of the domain
+#
+# Note: If the DNS lookups are too slow or do not return the expected results
+# the IP address will be counted towards the blocking trigger as normal
+#

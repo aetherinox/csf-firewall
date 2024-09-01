@@ -1,0 +1,82 @@
+###############################################################################
+# Copyright 2006-2019, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of executables (exe) command lines (cmd) and
+# usernames (user) that lfd process tracking will ignore.
+#
+# You must use the following format:
+#
+# exe:/full/path/to/file
+# user:username
+# cmd:command line
+#
+# Or, perl regular expression matching (regex):
+#
+# pexe:/full/path/to/file as a perl regex[*]
+# puser:username as a perl regex[*]
+# pcmd:command line as a perl regex[*]
+#
+# [*]You must remember to escape characters correctly when using regex's, e.g.:
+# pexe:/home/.*/public_html/cgi-bin/script\.cgi
+# puser:bob\d.*
+# pcmd:/home/.*/command\s\to\smatch\s\.pl\s.*
+#
+# It is strongly recommended that you use command line ignores very carefully
+# as any process can change what is reported to the OS.
+#
+# For more information see readme.txt
+
+exe:/bin/dbus-daemon
+exe:/sbin/ntpd
+exe:/usr/bin/dbus-daemon
+exe:/usr/bin/dbus-daemon
+exe:/usr/bin/dbus-daemon-1
+exe:/usr/bin/lsmd
+exe:/usr/lib/polkit-1/polkitd
+exe:/usr/libexec/dovecot/anvil
+exe:/usr/libexec/dovecot/imap
+exe:/usr/libexec/dovecot/imap-login
+exe:/usr/libexec/dovecot/pop3
+exe:/usr/libexec/dovecot/pop3-login
+exe:/usr/libexec/dovecot/stats
+exe:/usr/libexec/gam_server
+exe:/usr/libexec/hald-addon-acpi
+exe:/usr/libexec/hald-addon-keyboard
+exe:/usr/local/directadmin/dataskq
+exe:/usr/local/directadmin/directadmin
+exe:/usr/local/libexec/dovecot/imap
+exe:/usr/local/libexec/dovecot/imap-login
+exe:/usr/local/libexec/dovecot/pop3
+exe:/usr/local/libexec/dovecot/pop3-login
+exe:/usr/local/mysql-5.1.54-linux-x86_64/bin/mysqld
+exe:/usr/sbin/chronyd
+exe:/usr/sbin/exim
+exe:/usr/sbin/exim
+exe:/usr/sbin/hald
+exe:/usr/sbin/httpd
+exe:/usr/sbin/mysqld
+exe:/usr/sbin/mysqld_safe
+exe:/usr/sbin/named
+exe:/usr/sbin/nscd
+exe:/usr/sbin/ntpd
+exe:/usr/sbin/proftpd
+exe:/usr/sbin/sshd
+exe:/usr/sbin/apache2
+exe:/usr/sbin/mysqld
+exe:/lib/systemd/systemd-timesyncd
+exe:/usr/local/bin/freshclam
+exe:/sbin/rngd
+exe:/usr/sbin/mariadbd
+exe:/usr/bin/dbus-broker-launch
+exe:/usr/bin/dbus-broker
+
+# Some additional entries that you might want to ignore on DirectAdmin
+# servers.
+# However, be aware of the security implications under "Process Tracking" in
+# the csf readme.txt when using these:
+#
+#cmd:/bin/sh /usr/bin/mysqld_safe
+#cmd:/bin/sh /usr/bin/mysqld_safe --basedir=/usr
+#pcmd:MailScanner:.*

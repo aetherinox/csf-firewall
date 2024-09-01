@@ -1,0 +1,22 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following IP addresses will be allowed through iptables and ignored by
+# lfd to allow for unimpeded access to the cPanel license service
+#
+# Each IP address belongs to cPanel and is responsibly for authenticating
+# cPanel licenses
+#
+# Note: This file will be replaced when csf is upgraded - do NOT make any
+# changes to this file. If you do not want to whitelist these IP addresses you
+# need to remove the Include line from csf.ignore as this is only added there
+# once
+
+208.74.123.2 # cPanel Auth Server
+208.74.123.3 # cPanel Auth Server
+208.74.121.82 # cPanel Auth Server
+208.74.121.83 # cPanel Auth Server
+208.74.121.85 # cPanel Auth Server
+208.74.121.86 # cPanel Auth Server

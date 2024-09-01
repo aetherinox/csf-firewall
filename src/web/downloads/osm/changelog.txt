@@ -1,0 +1,149 @@
+2.06  - Added official release and full support on DirectAdmin for RHEL derived
+        and Ubuntu/Debian operating systems
+
+2.05  - Improved SSL update procedure
+
+        Implemented Net::Pcap v0.20 for cPanel on Ubuntu
+
+2.04  - Fixed issue with using Text::Wrap
+
+2.03  - Use Text::Wrap to ensure email line lengths are within specifications
+
+2.02  - Added support for cPanel on Ubuntu
+
+        Fixed changelog URL when new version available
+
+2.01  - Fixed issue with updating exim acl file permissions
+
+        Updated installation document to include the perl module perl-JSON-XS
+
+	Fixed issue where localhost SMTP mail sent on a single connection to
+	multiple recipients was being ignored
+
+2.00  - Added BETA support for DirectAdmin on RHEL/CentOS/CloudLinux/AlmaLinux
+        v7+ and v8+. BETA means that there may be bugs or missing features in
+	the DA installation before final release
+
+1.29   - Added workaround for iOS issue with bootstrap modals
+
+1.28   - Added new option to set the cPanel suspend reason text
+
+         Added new option to lock cPanel accounts on suspend to prevent
+	 resellers unsuspending them
+
+	 Added new feature to the ignore setting to ignore email Subject
+	 regexes for logline events
+
+         Modified docs to further emphasise that a trigger level must be
+         exceeded, not met
+
+1.27   - Fixed osmd startup condition that could lead to removal of the process
+         pid file if already running
+
+	 Ensure any Storable problems are captured rather than causing the
+	 process to die
+
+	 Ensure child processes do not remove pid file during process
+	 termination
+
+	 Fixed issue where main parent could terminate unexpectedly
+
+1.26   - Fixed issue where event buffering delayed detection of an
+         ongoing event
+
+         Convert embedded IPv4 addresses in /proc/net/tcp6 back to IPv4
+
+1.25   - Added configuration option for packet scanning ports. This can be
+         modified if desired, provided the implications are understood
+
+	 Fixed UI help html
+
+	 Added a read timeout to the pcap_open_live function to reduce timeout
+	 polling and to buffer multiple packets for processing
+
+	 Fixed issue with the UI upgrade not returning correctly leading to a
+	 blank page
+
+	 Convert UI to use the csget mechanism for checking new versions
+
+1.24   - Added hostname to osm report email Subject
+
+         Fixed issue where csf IP blocks within report UI were not being
+	 actioned
+
+	 Fixed issue with Report UI html output formatting
+
+	 Fixed issue with existing firewall IP blocks not being identified in
+	 Report UI
+
+1.23   - Fixed ability to ignore src and/or dst IP address during packet
+         inspection
+
+1.22   - Fixed gid group lookup during cwdcheck
+
+         Fixed UI typo
+
+	 Improved packet detection for outgoing connections by checking
+	 against local IP addresses only. This should improve packet inspection
+	 resource load issues on servers with high SMTP network traffic
+
+	 Normalise IPv4 and IPv6 addresses to ensure a match in the network
+	 protocol connection lists
+
+1.21   - Ensure /etc/osm/reports is created when needed
+
+1.20   - Fixed issues with %age event logging in osmd.log
+
+         Added new UI option "Monitor osmd Activity". This allows monitoring of
+	 the events that osmd is currently tracking
+
+1.16   - Fixed typo in documentation
+
+         Added UI option "View/Modify the current hold/disable (discard) status
+	 of accounts/email addresses"
+
+	 Added check for cPanel option email_outbound_spam_detect_enable and
+	 warn in osm that it should be disabled to avoid confusion
+
+1.15   - Modify osmd to rebuild Pcap.so on startup if the version of cPanel
+         provided perl changes
+
+1.14   - Fixed issue with localhost logfile tracking
+
+         Modified installer to use a separate script to build Net::Pcap
+
+1.13   - Fixed Preconfigured Profiles in UI to correctly set the number of
+         trigger levels for each profile
+
+1.12   - osm will now reprocess exim log line events for the total number of
+         recipients listed. This ensures that for this type of detection a
+	 single email sent to hundreds of recipients will not count as a single
+	 event, but the total number of recipients. This option can be disabled
+	 if each log line should be treated as a single event in the Main
+	 Configuration
+
+	 Improved parent/child pipe processing to avoid delays due to buffering
+
+1.11   - Added logging for every 10% of trigger level reached over 50%. Logged
+         once per minute for each user/trigger being tracked
+
+1.10   - Added support for multiple trigger levels for each event type
+
+         Added Preconfigured Profiles in Event Configuration to to provide a
+	 simple way of setting up the default event configuration
+
+1.00   - Initial production release
+
+         Improvements to Net::Pcap installation output
+
+0.92   - Added ipv6 option to UI Main Configuration for ipv6 licensing support
+
+         Added UI option to verify osm license
+
+0.91   - Added debug option to UI Main Configuration for detailed osm logging
+
+         Added support for IPv6 licensing
+
+         Added support for new licensing back end
+
+0.90   - Initial beta release

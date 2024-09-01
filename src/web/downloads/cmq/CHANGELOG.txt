@@ -1,0 +1,181 @@
+ChangeLog:
+
+v3.04  - Added workaround for exim v4.97 which uses longer message-id's
+
+v3.03  - Update to DA install procedure
+
+         Added workaround for iOS issue with bootstrap modals
+
+v3.02  - Fixed local domain detection on cPanel
+
+         Added support for Exim named queues method for MailScanner when using
+	 MSFE
+
+	 Added ignore SIGPIPE
+
+	 Improved DA session checking
+
+v3.01  - Fixed issue where uninstall.sh was not copied on cPanel servers to
+         /etc/cmq
+
+	 Fixed duplicate footer output in cPanel UI HTML
+
+v3.00  - Added DirectAdmin support
+
+         Move UI to Perl module to better support multiple control panels
+
+v2.09  - Added routine to select from multiple download servers for script
+         updates
+
+v2.08  - Updated license terms for GDPR compliance
+
+v2.07  - Configured UI to fully integrate with cPanel templates without using
+	 iframes
+	 
+	 Configured UI to display full cPanel breadcrumbs
+	 
+	 Configured UI to support cPanel v66 WHM UI changes
+
+v2.06  - Modified HTML to cater for major change in cPanel v66
+
+v2.05  - Fixed HTML in displaying To: field when there are multiple statuses
+
+v2.04  - Added delete confirmation modal for multi-delete buttons
+
+         Added option to open links in a new window/tab before entering View Emails
+
+	 Prevent overflow of View Emails table
+
+	 Scroll to top of page when displaying modal
+
+v2.03  - Improvements to use of cPanel templates for v64+
+
+v2.02  - Fixed issue with displaying Subject in queue
+
+         Fixed issue with identifying frozen messages and switched to using a glyphicon
+
+	 Modifications to queue key
+
+v2.01  - Fixed issue with search fields not working
+
+         Added ASC/DESC Age link
+
+	 Added application configuration target to display within frameset in
+	 cPanel v64+
+
+v2.00  - Modified queue display to provide pagination against a cached copy of
+         the current  queue
+
+         Rewritten queue query to improve memory usage
+
+	 Modify UI to use cPanel templates for v64+
+
+	 General code improvements
+
+v1.34  - Added missing images
+
+v1.33  - UI HTML changes 
+
+v1.32  - UI action message fix
+
+v1.31  - UI html fixes
+
+         Consolidate images, css and javascript
+
+	 Cleared mail action modal between views to avoid confusion
+
+v1.30  - Fixes to some UI issues
+
+v1.29  - Fixed Bootstrap font inclusion and reduced buttons to glyphicons in View Emails
+
+v1.28  - Redesigned UI based on Bootstrap
+
+v1.27  - Fixed Delivery/Pending mail queue selection
+
+v1.26  - Added missing form close tag which broke the "Mail Queue Runs" options
+
+v1.25  - Removed use of Cpanel::cPanelFunctions as it is now being withdrawn
+
+	 Updated common ConfigServer UI
+
+v1.24  - Added option to search /var/log/exim_mainlog using exigrep
+
+         Switched all system() calls to open3() and parameterised them
+
+v1.23  - Updated scripts to use https://download.configserver.com
+
+v1.22  - Updated scripts to use download.configserver.com
+
+v1.21  - Memory improvement processing large queues
+
+         css styling fixes
+
+v1.20  - UI updates
+
+v1.19  - UI button style modifications
+
+v1.18  - If /etc/csuibuttondisable exists then the UI buttons will revert for
+         those that cannot cope with the themed ones
+
+v1.17  - UI Changes
+
+v1.16  - Fixed selected queue run based on sender/recipient. Also fixed BCC
+         field email release
+
+v1.15  - Sanitised user data input to prevent running unauthorised commands via
+         the UI. A user would require root access to exploit this, so risk is
+	 low
+
+v1.14  - Fixed image location code
+
+v1.13  - Added support for cPanel v11.38.1+ AppConfig addon registration
+
+	 NOTE: In accordance with the new conventions for v11.38.1+ AppConfig
+	 the url to the cmq WHM plugin will change from /cgi/addon_cmq.cgi to
+	 /cgi/configserver/cmq.cgi. This will only happen with cmq v1.13+ and
+	 cPanel v11.38.1+. Older version of cmq will continue to use the old
+	 URL. This has no particular relevance to users accessing through WHM,
+	 but will affect direct URL access by users or third party
+	 applications
+
+v1.12  - Updated to use the new cPanel 11.36+ integrated perl binary if exists
+
+v1.11  - Modified to remove cPanel process limits when run
+
+         Modified from using backticks to open3
+
+	 Removed use of wget binary
+
+v1.10  - Updated cmq to use the latest cPanel v11 perl modules
+
+v1.09  - Added support for MailScanner option to only scan incoming email
+
+         Added option to Bcc selected queued email to a specific email address
+
+v1.06  - Added option to search queued email by header text match
+
+         Added option to search queued email by body text match
+
+v1.05  - Added option to view queued email subject
+
+         Added option to search queued email by subject text match
+
+         Added compatibility with cPanel v11 WHM theme
+
+v1.04  - Added version check and Upgrade button
+
+v1.03  - Modified queue entry regex to better identify broken spool messages
+
+         Added expand/collapse of additional email recipients in queue view so
+	 that each message is shown one per line unless expanded
+
+	 Top aligned cells in the queue view table
+
+v1.02  - Moved Size field to start of the record line
+
+         Added detection and removal of broken spool files as they are
+	 undeliverable
+
+v1.01  - Fixed Queue Run to/from selection only working for to
+
+v1.00  - Initial release

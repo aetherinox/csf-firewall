@@ -1,0 +1,9 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Account modification alert
+
+Time: [time]
+
+Reported Modifications:
+
+[report]

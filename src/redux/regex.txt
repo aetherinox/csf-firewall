@@ -1,0 +1,143 @@
+Dec 15 10:55:18 pegasus kernel: Firewall: *UDP_IN Blocked* IN=eth1 OUT= MAC=00:1a:4b:de:41:02:00:15:62:4a:39:80:08:00 SRC=7.6.5.4 DST=1.2.3.4 LEN=52 TOS=0x00 PREC=0x00 TTL=118 ID=42240 DF PROTO=UDP SPT=3708 DPT=53 WINDOW=17520 RES=0x00 ACK URGP=0 
+
+Apr 30 16:41:23 worg sshd[31378]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=2001:0:5ef5:73ba:204a:1a20:a83d:337c  user=root
+Apr 30 16:41:25 worg sshd[31378]: Failed password for root from 2604:a880:0800:0010:0000:0000:0970:a001 port 52182 ssh2
+
+193.168.254.89 - webumake [08/11/2014:20:12:19 -0000] "POST /login/?login_only=1 HTTP/1.1" FAILED LOGIN cpaneld: access denied for root, reseller, and user password
+
+Jun 15 17:19:38 test sshd[1]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=196.201.78.12 user=test
+
+Dec 1 03:27:28 mx sshd[743]: Failed none for mxadmin from 151.99.255.8 port 4321 ssh2 
+
+Sep 15 02:00:30 sol sshd[16364]: Failed password for invalid user test from ::ffff:61.167.1.1 port 53382 ssh2
+Oct 15 07:41:16 localhost sshd[15184]: Failed password for bob from 21.2.3.6 port 41501 ssh2
+Nov  4 18:40:28 localhost sshd[17588]: Failed password for illegal user admin from 210.127.243.85
+
+May 11 22:08:34 salle sshd[5543]: Failed keyboard-interactive/pam for invalid user abdukrahman from 62.206.22.124 port 50525 ssh2
+May 11 22:08:34 salle sshd[5543]: Failed keyboard-interactive for abdukrahman from 62.206.22.124 port 50525 ssh2
+
+Jan 27 04:02:48 localhost sshd[23914]: Invalid user jordan from 67.15.40.2
+
+Nov  4 18:40:28 localhost sshd[12424]: User root from 2607:f0d0:1002:81::2 not allowed because not listed in AllowUsers
+Nov  4 18:40:28 localhost sshd[12424]: User root from 1.2.3.4 not allowed because not listed in AllowUsers
+
+Nov  4 18:40:28 localhost sshd[17588]: Illegal user admin from 210.127.243.86
+Nov  4 18:40:28 localhost sshd[17588]: Illegal user admin from 210.127.243.87
+Nov  4 18:40:28 localhost sshd[17588]: Illegal user admin from 210.127.243.88
+Nov  4 18:40:28 localhost sshd[17588]: Illegal user admin from 210.127.243.89
+Nov  4 18:40:28 localhost sshd[17588]: Illegal user admin from 210.127.243.80
+
+Jul  6 14:57:00 tux sshd[19136]: error: PAM: Authentication failure for andrew from 1.2.3.4
+
+Apr 23 21:57:40 dns2 pop3d: LOGIN FAILED, user=info@mydomain.com, ip=[::ffff:99.2.33.4]
+Apr 23 21:57:40 dns2 imapd: LOGIN FAILED, user=info@mydomain.eu, ip=[::ffff:18.22.3.4]
+
+Nov 25 17:12:15 webmail ipop3d[4920]: Login failed user=mailuser auth=mailuser host=ntserver.domain.com [192.168.0.3]
+Nov 25 17:12:15 webmail imapd[4920]: Login failed user=mailuser auth=mailuser host=ntserver.domain.com [192.168.0.3]
+
+Jan 17 10:45:40 elct dovecot: pop3-login: Aborted login: user=<ismail>, method=PLAIN, rip=1.2.3.4, lip=127.0.0.1, secured
+Jan 17 10:45:40 elct dovecot: imap-login: Aborted login: user=<ismail>, method=PLAIN, rip=1.2.3.4, lip=127.0.0.1, secured
+
+Nov 01 06:43:09 pop3-login: Info: Aborted login (auth failed, 1 attempts): user=<administrator>, method=PLAIN, rip=110.234.127.52, lip=x.x.y.z
+Nov 01 06:43:09 imap-login: Info: Aborted login (auth failed, 1 attempts): user=<administrator>, method=PLAIN, rip=110.234.127.52, lip=x.x.y.z
+
+[04/Dec/2008 10:55:09] POP3: Invalid password for user joel<_a.t_>company.com. Attempt from IP address 76.235.150.55
+[04/Dec/2008 10:59:36] POP3: User company\joel<_a.t_>kerio.company.com doesn't exist. Attempt from IP address 10.17.28.50
+[04/Dec/2008 10:55:09] IMAP: Invalid password for user joel<_a.t_>company.com. Attempt from IP address 76.235.150.55
+[04/Dec/2008 10:59:36] IMAP: User company\joel<_a.t_>kerio.company.com doesn't exist. Attempt from IP address 10.17.28.50
+
+May  1 10:31:48 worg pure-ftpd: (?@2001_0_5ef5_73ba_204a_1a20_a83d_337c) [WARNING] Authentication failed for user [bob]
+Mar 28 09:06:31 homer pure-ftpd: (?@1.2.3.4) [WARNING] Authentication failed for user [bosshelp]
+
+May 31 10:53:14 mail proftpd[15302]: xxxxxxxxxx (2607:f0d0:1002:81::2[2607:f0d0:1002:81::2]) - no such user 'alpha'
+May 31 10:53:14 mail proftpd[15302]: xxxxxxxxxx (::ffff:192.168.0.213[::ffff:192.168.0.213]) - no such user 'alpha'
+May 31 10:53:14 mail proftpd[15302]: xxxxxxxxxx (::ffff:192.168.0.213[::ffff:192.168.0.213]) - USER alpha: no such user found from ::ffff:192.168.0.213 [::ffff:192.168.0.213] to ::ffff:192.168.0.210:21
+May 31 10:53:14 mail proftpd[15302]: xxxxxxxxxx (::ffff:192.168.0.213[::ffff:192.168.0.213]) - SECURITY VIOLATION
+May 31 10:52:54 mail proftpd[15302]: xxxxxxxxxx (::ffff:192.168.0.213[::ffff:192.168.0.213]) - USER lee (Login failed): Incorrect password.
+Apr 28 17:21:52 server1.local proftpd[53084] server1.local (118.244.187.123[118.244.187.123]): USER kitchenstewardship: no such user found from 118.244.187.123 [118.244.187.123] to 107.1.17.5:21
+
+May  1 12:43:17 vps vsftpd(pam_unix)[11377]: authentication failure; logname= uid=0 euid=0 tty= ruser= rhost=72.232.10.66  user=mysql
+
+[Sun Apr 25 17:51:52 2014] [error] [client 2607:f0d0:1002:81::2] user lowrian not found: /admin/file_manager.php
+[Mon Sep 24 17:48:41 2007] [error] [client 87.113.94.100] user lowrian not found: /admin/file_manager.php
+[Thu Feb 03 13:04:23 2005] [error] [client 12.34.56.78] user firstuser: authentication failure for "/svn/!svn/act/74436339-4e10-0930-acb9-a38e2fadb293": Password Mismatch
+[Tue Feb 25 15:51:13.383454 2014] [auth_basic:error] [pid 604443] [client 192.168.254.10:16381] AH01618: user bob not found: /pwd/
+
+[Tue Feb 25 08:54:26.294882 2014] [access_compat:error] [pid 12873] [client 188.143.234.4:3177] AH01797: client denied by server configuration: /home/conblog/public_html/wp-content/plugins/islidex
+
+[Tue Feb 25 16:27:36.533596 2014] [:error] [pid 6024] [client 24.238.73.15:35271] File does not exist: /home/webumake/public_html/external.php
+
+2010/09/09 19:46:46 [error] 5596#560: *3 user "aaa": password mismatch, client: 9.183.126.52, server: myserver, request: "GET /shortlog/d6b56cc4c6d1 HTTP/1.1", host: "myhost"
+2012/08/25 10:07:01 [error] 5866#0: *1 no user/password was provided for basic authentication, client: 196.5.5.6, server: localhost, request: "GET /pma HTTP/1.1", host: "localhost:81" 2012/08/25 10:07:04 [error] 5866#0: *1 user "ajfkla" was not found in "/etc/nginx/htpasswd", client: 127.0.0.1, server: localhost, request: "GET /pma HTTP/1.1", host: "localhost:81"
+2011/08/31 13:01:19 [error] 6541#0: *5 user "bob" was not found in "/etc/nginx/htpasswd", client: 196.5.5.5, server: myserver, request: "GET / HTTP/1.1", host: "myhost"
+
+[Sat May 01 10:52:46 2014] [error] [client 94.41.178.204] ModSecurity: Access denied with code 403 (phase 2). Pattern match "indy library" at REQUEST_HEADERS:User-Agent. [file "/usr/local/apache/conf/modsec/20_asl_useragents.conf"] [line "174"] [id "330036"] [rev "1"] [msg "Atomicorp.com - FREE UNSUPPORTED DELAYED FEED - WAF Rules: Suspicious User agent detected"] [severity "CRITICAL"] [hostname "forum.configserver.com"] [uri "/register.php"] [unique_id "S9v57lUNw@sAAFHNRgAAAAAE"]
+
+[Wed Feb 29 08:25:19 2014] [error] [client 178.137.167.112] ModSecurity: Access denied with code 406 (phase 2). File "/tmp/20140229-082519-T03g71UNwkgAAEH7pVAAAAAO-file-fnVKf3" rejected by the approver script "/etc/cxs/cxscgi.sh": 0 [file "/usr/local/apache/conf/modsec2.user.conf"] [line "6"] [id "1010101"] [severity "CRITICAL"] [hostname "www.kalyr.com"] [uri "/weblog//wp-content/plugins/1-flash-gallery/upload.php"] [unique_id "T03g71UNwkgAAEH7pVAAAAAO"]
+
+[Tue Jul 23 10:40:41.122319 2014] [:error] [pid 7199] [client 199.168.254.10] ModSecurity: Access denied with code 406 (phase 2). File "/tmp/20140723-104034-Ue5PksCo-jwAABwfei0AAAAA-file-v3XRcU" rejected by the approver script "/etc/cxs/cxscgi.sh": 0 [file "/usr/local/apache/conf/modsec2.user.conf"] [line "4"] [id "1010101"] [severity "CRITICAL"] [hostname "www.webumake.net"] [uri "/uptest/test.php"] [unique_id "Ue5PksCo-jwAABwfei0AAAAA"]
+
+[Wed Feb 29 09:13:30 2014] [error] [client 216.129.118.139] mod_qos(045): access denied, invalid request line: can't parse uri, c=216.129.118.139, id=T03sOlUNwkgAAFzhznAAAAAK
+
+May 23 17:26:43 dnsonly webmin[2317]: Invalid login as root from 199.168.254.10 
+May 23 17:26:51 dnsonly webmin[2319]: Successful login as root from 199.168.254.10 
+
+DA:
+2014:07:07-11:08:13: '6.6.6.6' 2 failed login attempts. Account 'admin'
+2014:05:08-01:40:09: '198.168.0.1' 15 failed login attempt on account 'test'
+
+Apr 30 13:34:12 server named[3100]: client 2607:f0d0:1002:81::2#3147: update 'configserver.org/IN' denied
+Apr 30 13:34:12 server named[3100]: client 66.98.212.33#3147: update 'configserver.org/IN' denied
+
+
+2009-03-25 15:59:33 fixed_login authenticator failed for localhost (domain.com) [1.2.3.4]: 535 Incorrect authentication data (set_id=user@domain.com)
+
+May  1 11:25:57 server pop3d-ssl: LOGIN, user=sales@waytotheweb.com, ip=[::ffff:82.10.53.229], port=[64420]
+May  1 11:25:57 server pop3d-ssl: LOGIN, user=sales@waytotheweb.com, ip=[2607:f0d0:1002:81::10], port=[64420]
+
+May  1 15:12:59 homer dovecot: pop3-login: Login: user=<sales@webumake.net>, method=PLAIN, rip=196.168.254.40, lip=196.168.254.71
+
+May  1 15:24:35 homer sshd[7155]: Accepted publickey for root from 192.168.254.4 port 57306 ssh2
+May  1 15:26:09 worg sshd[27196]: Accepted publickey for root from 2001:0:5ef5:73ba:204a:1a20:a83d:337c port 57415 ssh2
+
+Apr 14 05:40:32 worg kernel: Firewall: *TCP_IN Blocked* IN=eth1 OUT= MAC=00:30:48:5b:41:6f:00:1a:30:38:90:00:08:00 SRC=60.50.78.146 DST=75.126.194.219 LEN=60 TOS=0x00 PREC=0x00 TTL=51 ID=13875 DF PROTO=TCP SPT=4345 DPT=23 WINDOW=5808 RES=0x00 SYN URGP=0 
+Apr 30 16:00:20 worg kernel: Firewall: *TCP6_IN Blocked* IN=eth1 OUT= MAC=00:30:48:5b:41:6f:00:1a:30:38:90:00:86:dd SRC=2001:0000:5ef5:73ba:204a:1a20:a83d:337c DST=2607:f0d0:1002:0081:0000:0000:0000:0002 LEN=72 TC=0 HOPLIMIT=122 FLOWLBL=0 PROTO=TCP SPT=51117 DPT=8822 WINDOW=8192 RES=0x00 SYN URGP=0 
+
+
+Apr 21 16:48:33 homer pure-ftpd: (?@196.168.254.4) [INFO] webumake@webumake.net is now logged in
+Apr 21 16:16:29 da proftpd[2817]: da.webumake.net (::ffff:196.168.254.4[::ffff:192.168.254.4]) - USER webumake: Login successful. 
+
+
+Sep 11 09:11:47 homer kernel: Knock: *587_IN* IN=eth0 OUT= MAC=08:00:27:c7:3b:e5:00:26:18:ef:37:2e:08:00 SRC=192.168.254.4 DST=192.168.254.71 LEN=52 TOS=0x00 PREC=0x00 TTL=128 ID=28467 DF PROTO=TCP SPT=50756 DPT=587 WINDOW=8192 RES=0x00 SYN URGP=0 
+
+[Mon Mar 18 11:27:02 2014] [error] [client 5.79.3.49] Caught race condition abuser. attacker: 506, victim: 0 open file owner: 0, open file: /home/config/public_html/build/configserver
+[Tue Feb 25 11:17:19.971626 2014] [core:error] [pid 28127] [client 217.40.166.113:34338] Caught race condition abuser. attacker: 542, victim: 0 open file owner: 0, open file: /usr/local/cpanel/img-sys/bg.jpg
+
+2014-05-24 17:11:09 cwd=/home/webumake/public_html/has space 3 args: /usr/sbin/sendmail -t -i
+2014-05-15 10:54:19 1Ucfu7-0007IT-3b H=localhost (starfish.arvixe.com) [127.0.0.1]:48531 Warning: Mail From: 8mm\342\230\272 Network <support@8mmsmile.com> System user: guruayy This message was sent via script. The details are as follows: SCRIPT_FILENAME=/home/guruayy/public_html/live/index.php  REQUEST_URI=/index.php?do=/admincp/user/browse/view_pending/page_0/  PWD=/home/guruayy/public_html/live  REMOTE_ADDR=70.215.67.177
+
+
+2014-09-12 03:06:40 SMTP call from (zhuyuan.cn) [222.185.244.195]:59693 dropped: too many syntax or protocol errors (last command was "        by 222.222.222.2 with ESMTP")
+
+Courier IMAP
+Mar 10 09:19:32 web3 courier-imapd: LOGIN FAILED, user=user@example.com, ip=[::ffff:68.148.104.146]
+Mar 10 11:49:19 web3 courier-pop3d: LOGIN FAILED, user=user@example.com, ip=[::ffff:72.172.109.25]
+
+Qmail SMTP AUTH
+Mar 10 14:17:40 web1 smtp_auth: FAILED: user@example.com - password incorrect from host81-138-18-4.in-addr.btopenworld.com [81.138.18.4]
+
+Postfix SMTP_AUTH
+Mar 11 04:11:24 plesk115 postfix/smtpd[2520]: warning: unknown[192.168.1.113]: SASL PLAIN authentication failed: authentication failure
+Mar 11 04:11:24 plesk115 postfix/smtpd[2520]: warning: unknown[192.168.1.113]: SASL LOGIN authentication failed: authentication failure
+Sep 21 23:52:03 server01 postfix/smtpd[26732]: warning: dslb-088-073-067-2.pools.arcor-ip.net[88.73.67.12]: SASL LOGIN authentication failed
+Feb 11 12:11:34 hostname postfix/smtpd[113557]: warning: trusted[1.2.3.4]: SASL PLAIN authentication failed: authentication failure
+
+
+[18-Sep-2023 11:01:56 +0000]: IMAP Error: Login failed for martynas from 78.62.57.226. AUTHENTICATE PLAIN: Authentication failed. in /var/www/html/roundcubemail-1.0.2/program/lib/Roundcube/rcube_imap.php on line 184 (POST /roundcube/?_task=login?_task=login&_action=login)
+[18-Sep-2023 11:02:11 +0000]: IMAP Error: Login failed for jonathan@configserver.com from 78.62.57.226. AUTHENTICATE PLAIN: Authentication failed. in /var/www/html/roundcubemail-1.0.2/program/lib/Roundcube/rcube_imap.php on line 184 (POST /roundcube/?_task=login?_task=login&_action=login)
+09/18/2014 11:03:08 [LOGIN_ERROR] jonathan@configserver.com (martynas.it) from 78.62.57.226: Unknown user or password incorrect.
+Sep 18 11:03:58:: pma auth user='jonathan_whmcs' status='mysql-denied' ip='78.62.57.226'
+
+
+2014-06-04 17:05:35 dovecot_login authenticator failed for chirpy.configserver.com ([192.168.254.4]) [87.194.204.131]:63622: 535 Incorrect authentication data (set_id=sales@waytotheweb.com)
+2014-06-04 17:07:08 [16223] dovecot_plain authenticator failed for chirpy.configserver.com ([192.168.254.4]) [87.194.204.131]:63708 I=[85.13.195.235]:465: 535 Incorrect authentication data (set_id=sales@waytotheweb.com)

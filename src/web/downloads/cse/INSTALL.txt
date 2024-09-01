@@ -1,0 +1,22 @@
+To install or upgrade cse simply do the following from the root shell via SSH:
+
+cd /usr/src
+rm -fv /usr/src/cse.tgz
+wget https://download.configserver.com/cse.tgz
+tar -xzf cse.tgz
+cd cse
+sh install.sh
+rm -Rfv /usr/src/cse*
+
+Then login to WHM and scroll to the bottom of the left hand menu and you should see "ConfigServer Explorer"
+
+
+If you want to uninstall, simply:
+
+cd /usr/src
+rm -fv /usr/src/cse.tgz
+wget http://download.configserver.com/cse.tgz
+tar -xzf cse.tgz
+cd cse
+sh uninstall.sh
+rm -Rfv /usr/src/cse*

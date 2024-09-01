@@ -1,0 +1,284 @@
+.TH csf 1
+.SH NAME
+csf \- ConfigServer & Security Firewall
+.SH SYNOPSIS
+.B csf [OPTIONS]
+.SH DESCRIPTION
+This manual documents the csf command line options for the ConfigServer & Security Firewall. See /etc/csf/csf.conf and /etc/csf/readme.txt for more detailed information on how to use and configure this application.
+.SH OPTIONS
+.TP
+.B
+-h,  --help
+Show this message
+.TP
+.B
+-l,  --status
+List/Show the IPv4 iptables configuration
+.TP
+.B
+-l6, --status6
+List/Show the IPv6 ip6tables configuration
+.TP
+.B
+-s,  --start
+Start the firewall rules
+.TP
+.B
+-f,  --stop
+Flush/Stop firewall rules (Note: lfd may restart csf)
+.TP
+.B
+-r,  --restart
+Restart firewall rules (csf)
+.TP
+.B
+-q,  --startq
+Quick restart (csf restarted by lfd)
+.TP
+.B
+-sf, --startf
+Force CLI restart regardless of LFDSTART setting
+.TP
+.B
+-ra, --restartall
+Restart firewall rules (csf) and then restart lfd daemon. Both csf and then lfd should be restarted after making any changes to the configuration files
+.TP
+.B
+--lfd [\fIstop\fP|\fIstart\fP|\fIrestart\fP|\fIstatus\fP]
+Actions to take with the lfd daemon
+.TP
+.B
+-a,  --add \fIip\fP [\fIcomment\fP]
+Allow an IP and add to /etc/csf/csf.allow
+.TP
+.B
+-ar, --addrm \fIip\fP
+Remove an IP from /etc/csf/csf.allow and delete rule
+.TP
+.B
+-d,  --deny \fIip\fP [\fIcomment\fP]
+Deny an IP and add to /etc/csf/csf.deny
+.TP
+.B
+-dr, --denyrm \fIip\fP
+Unblock an IP and remove from /etc/csf/csf.deny
+.TP
+.B
+-df, --denyf
+Remove and unblock all entries in /etc/csf/csf.deny
+.TP
+.B
+-g,  --grep \fIip\fP
+Search the iptables and ip6tables rules for a match (e.g. IP, CIDR, Port Number)
+.TP
+.B
+-i,  --iplookup \fIip\fP
+Lookup IP address geographical information using CC_LOOKUPS setting in /etc/csf/csf.conf
+.TP
+.B
+-t,  --temp
+Displays the current list of temporary allow and deny IP entries with their TTL and comment
+.TP
+.B
+-tr, --temprm \fIip\fP
+Remove an IP from the temporary IP ban or allow list
+.TP
+.B
+-trd, --temprmd \fIip\fP
+Remove an IP from the temporary IP ban list only
+.TP
+.B
+-tra, --temprma \fIip\fP
+Remove an IP from the temporary IP allow list only
+.TP
+.B
+-td, --tempdeny \fIip\fP \fIttl\fP [-p \fIport\fP] [-d \fIdirection\fP] [\fIcomment\fP]
+Add an IP to the temp IP ban list. ttl is how long to blocks for (default:seconds, can use one suffix of h/m/d). Optional port. Optional direction of block can be one of: in, out or inout (default:in)
+.TP
+.B
+-ta, --tempallow \fIip\fP \fIttl\fP [-p \fIport\fP] [-d \fIdirection\fP] [\fIcomment\fP]
+Add an IP to the temp IP allow list (default:inout)
+.TP
+.B
+-tf, --tempf
+Flush all IPs from the temporary IP entries
+.TP
+.B
+-cp, --cping
+PING all members in an lfd Cluster
+.TP
+.B
+-cg, --cgrep \fIip\fP
+Requests the --grep output for IP from each member in an lfd Cluster
+.TP
+.B
+-cd, --cdeny \fIip\fP [\fIcomment\fP]
+Deny an IP in a Cluster and add to each remote /etc/csf/csf.deny
+.TP
+.B
+-ctd, --ctempdeny \fIip\fP \fIttl\fP [-p \fIport\fP] [-d \fIdirection\fP] [\fIcomment\fP]
+Add an IP in a Cluster to the temp IP ban list (default:in)
+.TP
+.B
+-cr, --crm \fIip\fP
+Unblock an IP in a Cluster and remove from each remote /etc/csf/csf.deny and temporary list
+.TP
+.B
+-ca, --callow \fIip\fP [\fIcomment\fP]
+Allow an IP in a Cluster and add to each remote /etc/csf/csf.allow
+.TP
+.B
+-cta, --ctempallow \fIip\fP \fIttl\fP [-p \fIport\fP] [-d \fIdirection\fP] [\fIcomment\fP]
+Add an IP in a Cluster to the temp IP allow list (default:in)
+.TP
+.B
+-car, --carm \fIip\fP
+Remove allowed IP in a Cluster and remove from each remote /etc/csf/csf.allow and temporary list
+.TP
+.B
+-ci, --cignore \fIip\fP [\fIcomment\fP]
+Ignore an IP in a Cluster and add to each remote /etc/csf/csf.ignore. Note: This will result in lfd being restarted
+.TP
+.B
+-cir, --cirm \fIip\fP
+Remove ignored IP in a Cluster and remove from each remote /etc/csf/csf.ignore. Note: This will result in lfd being restarted
+.TP
+.B
+-cc, --cconfig [\fIname\fP] [\fIvalue\fP]
+Change configuration option [name] to [value] in a Cluster
+.TP
+.B
+-cf, --cfile [\fIfile\fP]
+Send [file] in a Cluster to /etc/csf/
+.TP
+.B
+-crs, --crestart
+Cluster restart csf and lfd
+.TP
+.B
+--trace [\fIadd\fP|\fIremove\fP] \fIip\fP
+Log SYN packets for an IP across iptables chains. Note, this can create a LOT of logging information in /var/log/messages so should only be used for a short period of time. This option requires the iptables TRACE module and access to the raw PREROUTING chain to function
+.TP
+.B
+-m,  --mail [\fIemail\fP]
+Display Server Check in HTML or email to [email] if present
+.TP
+.B
+--rbl [\fIemail\fP]
+Process and display RBL Check in HTML or email to [email] if present
+.TP
+.B
+-lr, --logrun
+Initiate Log Scanner report via lfd
+.TP
+.B
+-p, --ports
+View ports on the server that have a running process behind them listening for external connections
+.TP
+.B
+--graphs [\fIgraph type\fP] [\fIdirectory\fP]
+Generate System Statistics html pages and images for a given graph type into a given directory. See ST_SYSTEM for requirements
+.TP
+.B
+--profile [\fIcommand\fP] [\fIprofile\fP|\fIbackup\fP] [\fIprofile\fP|\fIbackup\fP]
+Configuration profile functions for /etc/csf/csf.conf
+.br
+You can create your own profiles using the examples provided in /usr/local/csf/profiles/
+.br
+The profile reset_to_defaults.conf is a special case and will always be the latest default csf.conf
+.IP
+.B
+list
+.br
+Lists available profiles and backups
+.IP
+.B
+apply [\fIprofile\fP]
+.br
+Modify csf.conf with Configuration Profile
+.IP
+.B
+backup "\fIname\fP"
+.br
+Create Configuration Backup with optional "\fIname\fP" stored in /var/lib/csf/backup/
+.IP
+.B
+restore [\fIbackup\fP]
+.br
+Restore a Configuration Backup
+.IP
+.B
+keep [\fInum\fP]
+.br
+Remove old Configuration Backups and keep the latest [\fInum\fP]
+.IP
+.B
+diff [\fIprofile\fP|\fIbackup\fP] [\fIprofile\fP|\fIbackup\fP]
+.br
+Report differences between Configuration Profiles or Configuration Backups, only specify one [\fIprofile\fP|\fIbackup\fP] to compare to the current Configuration
+.TP
+.B
+--mregen
+MESSENGERV2 /etc/apache2/conf.d/csf_messenger.conf regeneration. This will also gracefully restart httpd
+.TP
+.B
+--cloudflare [\fIcommand\fP]
+Commands for interacting with the CloudFlare firewall. See /etc/csf/readme.txt and CF_ENABLE for more detailed information
+
+Note: target can be one of: An IP address; 2 letter Country Code; IP range CIDR. Only Enterprise customers can block a Country Code, but all can allow and challenge. IP range CIDR is limited to /16 and /24
+.IP
+.B
+list [\fIall\fP|\fIblock\fP|\fIchallenge\fP|\fIwhitelist\fP] [\fIuser1\fP,\fIuser2\fP,\fIdomain1\fP...]
+.br
+List specified type of CloudFlare Firewall rules for comma separated list of users/domains
+.IP
+.B
+add [\fIblock\fP|\fIchallenge\fP|\fIwhitelist\fP] \fItarget\fP [\fIuser1\fP,\fIuser2\fP,\fIdomain1\fP...]
+.br
+Add CloudFlare Firewall rule action for target for comma separated list of users/domains only
+.IP
+.B
+del \fItarget\fP [\fIuser1\fP,\fIuser2\fP,\fIdomain1\fP...]
+.br
+Delete CloudFlare Firewall rule for target for comma separated list of users/domains only
+.IP
+.B
+tempadd [\fIallow\fP|\fIdeny\fP] \fIip\fP [\fIuser1\fP,\fIuser2\fP,\fIdomain1\fP...]
+.br
+Add a temporary block for CF_TEMP seconds to both csf and the CloudFlare Firewall rule for ip for comma separated list of users/domains as well as any user set to "any"
+.TP
+.B
+-c,  --check
+Check for updates to csf but do not upgrade
+.TP
+.B
+-u,  --update
+Check for updates to csf and upgrade if available
+.TP
+.B
+-uf
+Force an update of csf whether and upgrade is required or not
+.TP
+.B
+-x,  --disable
+Disable csf and lfd completely
+.TP
+.B
+-e,  --enable
+Enable csf and lfd if previously disabled
+.TP
+.B
+-v,  --version
+Show csf version
+.SH FILES
+.I /etc/csf/csf.conf
+.RS
+The system wide configuration file
+.RE
+.I /etc/csf/readme.txt
+.RS
+Detailed information about csf and lfd
+.SH BUGS
+Report bugs on the forums at http://forum.configserver.com
+.SH AUTHOR
+(c)2006-2023, Way to the Web Limited (http://www.configserver.com)

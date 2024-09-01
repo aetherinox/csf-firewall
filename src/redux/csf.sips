@@ -1,0 +1,9 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The purpose of this file is to list any server configured IP addresses for
+# which you don't want to allow any incoming or outgoing traffic. This is
+# useful if you have IP addresses setup but do not yet wish to allow traffic
+# on them

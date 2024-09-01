@@ -1,0 +1,90 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of log files for the UI System Log Watch and Search
+# features. IF they exists they will apear in the drop-down lists
+#
+# File globbing is supported for logs listed below
+
+# All:
+/var/log/cron
+/var/log/cxswatch.log
+/var/log/lfd.log
+/var/log/maillog
+/var/log/messages
+/var/log/rkhunter.log
+/var/log/secure
+
+# Apache:
+/usr/local/apache/logs/apache_log
+/usr/local/apache/logs/error_log
+/usr/local/apache/logs/suexec
+/usr/local/apache/logs/suphp_log
+/usr/local/apache/logs/modsec_audit.log
+/var/log/httpd/access_log
+/var/log/httpd/error_log
+/var/log/httpd/suexec
+/var/log/httpd/suphp_log
+/var/log/httpd/modsec_audit.log
+
+# Nginx:
+/var/log/nginx/error_log
+
+# Webmin:
+/var/webmin/miniserv.error
+/var/webmin/miniserv.log
+/var/webmin/webmin.log
+
+# Exim:
+/var/log/exim/mainlog
+/var/log/exim/paniclog
+/var/log/exim/rejectlog
+/var/log/exim4/mainlog
+/var/log/exim4/paniclog
+/var/log/exim4/rejectlog
+/var/log/exim_mainlog
+/var/log/exim_paniclog
+/var/log/exim_rejectlog
+
+# Debian/Ubuntu:
+/var/log/auth.log
+/var/log/daemon.log
+/var/log/debug
+/var/log/kern.log
+/var/log/mysql.err
+/var/log/mysql.log
+/var/log/syslog
+/var/log/user.log
+/var/log/mail.err
+/var/log/mail.log
+
+# cPanel:
+/usr/local/cpanel/logs/access_log
+/usr/local/cpanel/logs/error_log
+/usr/local/cpanel/logs/stats_log
+/var/log/chkservd.log
+
+# DirectAdmin:
+/var/log/directadmin/error.log
+/var/log/directadmin/errortaskq.log
+/var/log/directadmin/security.log
+/var/log/directadmin/system.log
+
+# InterWorx
+/usr/local/interworx/var/log/iworx.log
+/usr/local/interworx/var/log/iworx-init.log
+/usr/local/interworx/var/log/error.log
+/usr/local/interworx/var/log/stack.log
+
+# CyberPanel
+/home/cyberpanel/error-logs.txt
+/usr/local/lscp/cyberpanel/logs/error.log
+/usr/local/lscp/cyberpanel/logs/access.log
+/usr/local/lscp/cyberpanel/logs/stderr.log
+
+# Litespeed/Openlitespeed
+/usr/local/lsws/logs/error.log
+/usr/local/lsws/logs/access.log
+/usr/local/lsws/logs/auditmodsec.log

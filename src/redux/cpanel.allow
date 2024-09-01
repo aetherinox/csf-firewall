@@ -1,0 +1,87 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following IP addresses will be allowed through iptables and ignored by
+# lfd to allow for unimpeded access to the cPanel license service
+#
+# Each IP address belongs to cPanel and is responsibly for authenticating
+# cPanel licenses
+#
+# Note: This file will be replaced when csf is upgraded - do NOT make any
+# changes to this file. If you do not want to whitelist these IP addresses you
+# need to remove the Include line from csf.allow as this is only added there
+# once
+
+tcp|in|d=4|s=208.74.123.2 # cPanel Auth Server
+tcp|in|d=8|s=208.74.123.2 # cPanel Auth Server
+tcp|in|d=10|s=208.74.123.2 # cPanel Auth Server
+tcp|in|d=14|s=208.74.123.2 # cPanel Auth Server
+tcp|in|d=16|s=208.74.123.2 # cPanel Auth Server
+tcp|in|d=40|s=208.74.123.2 # cPanel Auth Server
+tcp|in|d=1020|s=208.74.123.2 # cPanel Auth Server
+tcp|in|d=1021|s=208.74.123.2 # cPanel Auth Server
+tcp|in|d=1022|s=208.74.123.2 # cPanel Auth Server
+
+tcp|in|d=4|s=208.74.123.3 # cPanel Auth Server
+tcp|in|d=8|s=208.74.123.3 # cPanel Auth Server
+tcp|in|d=10|s=208.74.123.3 # cPanel Auth Server
+tcp|in|d=14|s=208.74.123.3 # cPanel Auth Server
+tcp|in|d=16|s=208.74.123.3 # cPanel Auth Server
+tcp|in|d=40|s=208.74.123.3 # cPanel Auth Server
+tcp|in|d=1020|s=208.74.123.3 # cPanel Auth Server
+tcp|in|d=1021|s=208.74.123.3 # cPanel Auth Server
+tcp|in|d=1022|s=208.74.123.3 # cPanel Auth Server
+
+tcp|in|d=4|s=208.74.121.82 # cPanel Auth Server
+tcp|in|d=8|s=208.74.121.82 # cPanel Auth Server
+tcp|in|d=10|s=208.74.121.82 # cPanel Auth Server
+tcp|in|d=14|s=208.74.121.82 # cPanel Auth Server
+tcp|in|d=16|s=208.74.121.82 # cPanel Auth Server
+tcp|in|d=40|s=208.74.121.82 # cPanel Auth Server
+tcp|in|d=1020|s=208.74.121.82 # cPanel Auth Server
+tcp|in|d=1021|s=208.74.121.82 # cPanel Auth Server
+tcp|in|d=1022|s=208.74.121.82 # cPanel Auth Server
+
+tcp|in|d=4|s=208.74.121.83 # cPanel Auth Server
+tcp|in|d=8|s=208.74.121.83 # cPanel Auth Server
+tcp|in|d=10|s=208.74.121.83 # cPanel Auth Server
+tcp|in|d=14|s=208.74.121.83 # cPanel Auth Server
+tcp|in|d=16|s=208.74.121.83 # cPanel Auth Server
+tcp|in|d=40|s=208.74.121.83 # cPanel Auth Server
+tcp|in|d=1020|s=208.74.121.83 # cPanel Auth Server
+tcp|in|d=1021|s=208.74.121.83 # cPanel Auth Server
+tcp|in|d=1022|s=208.74.121.83 # cPanel Auth Server
+
+tcp|in|d=4|s=208.74.121.85 # cPanel Auth Server
+tcp|in|d=8|s=208.74.121.85 # cPanel Auth Server
+tcp|in|d=10|s=208.74.121.85 # cPanel Auth Server
+tcp|in|d=14|s=208.74.121.85 # cPanel Auth Server
+tcp|in|d=16|s=208.74.121.85 # cPanel Auth Server
+tcp|in|d=40|s=208.74.121.85 # cPanel Auth Server
+tcp|in|d=1020|s=208.74.121.85 # cPanel Auth Server
+tcp|in|d=1021|s=208.74.121.85 # cPanel Auth Server
+tcp|in|d=1022|s=208.74.121.85 # cPanel Auth Server
+
+tcp|in|d=4|s=208.74.121.86 # cPanel Auth Server
+tcp|in|d=8|s=208.74.121.86 # cPanel Auth Server
+tcp|in|d=10|s=208.74.121.86 # cPanel Auth Server
+tcp|in|d=14|s=208.74.121.86 # cPanel Auth Server
+tcp|in|d=16|s=208.74.121.86 # cPanel Auth Server
+tcp|in|d=40|s=208.74.121.86 # cPanel Auth Server
+tcp|in|d=1020|s=208.74.121.86 # cPanel Auth Server
+tcp|in|d=1021|s=208.74.121.86 # cPanel Auth Server
+tcp|in|d=1022|s=208.74.121.86 # cPanel Auth Server
+
+tcp|in|d=80|s=52.51.23.204 # cPanel SaaS Server
+tcp|in|d=443|s=52.51.23.204 # cPanel SaaS Server
+tcp|in|d=8443|s=52.51.23.204 # cPanel SaaS Server
+
+tcp|in|d=80|s=52.213.169.7 # cPanel SaaS Server
+tcp|in|d=443|s=52.213.169.7 # cPanel SaaS Server
+tcp|in|d=8443|s=52.213.169.7 # cPanel SaaS Server
+
+tcp|in|d=80|s=34.254.37.129 # cPanel SaaS Server
+tcp|in|d=443|s=34.254.37.129 # cPanel SaaS Server
+tcp|in|d=8443|s=34.254.37.129 # cPanel SaaS Server

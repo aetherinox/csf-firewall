@@ -1,0 +1,34 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of port and/or IP address assignments to direct
+# traffic to alternative ports/IP addresses
+#
+# Requirements:
+#   nat tables
+#   ipt_DNAT iptables module
+#   ipt_SNAT iptables module
+#   ipt_REDIRECT iptables module
+#
+# The following are the allowed redirection formats
+#
+# DNAT (redirect from one IP address to a different one):
+# IPx|*|IPy|*|tcp/udp          - To IPx redirects to IPy
+# IPx|portA|IPy|portB|tcp/udp  - To IPx to portA redirects to IPy portB
+#
+# DNAT examples:
+# 192.168.254.62|*|10.0.0.1|*|tcp
+# 192.168.254.62|666|10.0.0.1|25|tcp
+#
+# REDIRECT (redirect from port to a different one):
+# IPx|portA|*|portB|tcp/udp    - To IPx to portA redirects to portB
+# *|portA|*|portB|tcp/udp      - To portA redirects to portB
+#
+# REDIRECT examples:
+# 192.168.254.60|666|*|25|tcp
+# *|666|*|25|tcp
+#
+# See readme.txt for more information
+#

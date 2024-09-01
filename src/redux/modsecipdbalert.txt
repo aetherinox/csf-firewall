@@ -1,0 +1,9 @@
+From: root
+To: root
+Subject: lfd on [hostname]: ModSecurity persistent IP database size alert
+
+Time:     [time]
+
+[text]
+
+This requires further investigation otherwise it will start to affect server performance.

@@ -1,0 +1,9 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Suspicious File Alert
+
+Time:   [time]
+File:   [file]
+Reason: [reason]
+Owner:  [owner]
+Action: [action]

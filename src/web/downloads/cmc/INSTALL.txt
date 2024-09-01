@@ -1,0 +1,24 @@
+1. Download and install cmc:
+
+cd /usr/src
+rm -fv /usr/src/cmc.tgz
+wget http://download.configserver.com/cmc.tgz
+tar -xzf cmc.tgz
+cd cmc
+sh install.sh
+rm -Rfv /usr/src/cmc*
+
+2. Login to WHM and scroll to the bottom of the left hand menu and you should see "ConfigServer ModSecurity Control"
+
+
+If you want to uninstall, simply:
+
+cd /usr/src
+rm -fv /usr/src/cmc.tgz
+wget http://download.configserver.com/cmc.tgz
+tar -xzf cmc.tgz
+cd cmc
+sh uninstall.sh
+rm -Rfv /usr/src/cmc*
+
+Note: This won't remove the mod_security files and rules which you will need to do manually within /usr/local/apache/conf/

@@ -1,0 +1,36 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of log files for the LOGSCANNER feature
+
+# All:
+/var/log/messages
+/var/log/lfd.log
+/var/log/cxswatch.log
+
+# RedHat:
+/var/log/secure
+
+# Debian/Ubuntu:
+/var/log/auth.log
+/var/log/daemon.log
+/var/log/syslog
+
+# cPanel:
+/usr/local/cpanel/logs/error_log
+/var/log/exim_paniclog
+
+# DirectAdmin:
+/var/log/directadmin/error.log
+/var/log/directadmin/security.log
+/var/log/exim/paniclog
+
+# InterWorx
+/usr/local/interworx/var/log/error.log
+
+# CyberPanel
+/home/cyberpanel/error-logs.txt
+/usr/local/lscp/cyberpanel/logs/error.log
+/usr/local/lscp/cyberpanel/logs/stderr.log
