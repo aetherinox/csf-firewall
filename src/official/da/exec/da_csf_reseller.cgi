@@ -38,7 +38,7 @@ foreach my $line (slurp("/etc/csf/csf.resellers")) {
 
 my %session;
 if ($ENV{SESSION_ID} =~ /^\w+$/) {
-	open (my $SESSION, "<", "/usr/local/directadmin/data/sessions/da_sess_".$ENV{SESSION_ID}) or die "Security Error: No valid session key for [$ENV{SESSION_ID}]";
+	open (my $SESSION, "<", "/usr/local/directadmin/data/sessions/da_sess_".$ENV{SESSION_ID}) or die "Security Error: No valid session ID for [$ENV{SESSION_ID}]";
 	flock ($SESSION, LOCK_SH);
 	my @data = <$SESSION>;
 	close ($SESSION);
@@ -48,7 +48,7 @@ if ($ENV{SESSION_ID} =~ /^\w+$/) {
 		$session{$name} = $value;
 	}
 }
-if (($session{key} eq "") or ($session{ip} eq "") or ($session{ip} ne $ENV{REMOTE_ADDR}) or ($session{key} ne $ENV{SESSION_KEY})) {
+if (($session{key} eq "") or ($session{ip} eq "") or ($session{key} ne $ENV{SESSION_KEY})) {
 	print "Security Error: No valid session key";
 	exit;
 }

@@ -1,5 +1,10 @@
 ChangeLog:
 
+14.22 - Removed session IP match check from DA login
+
+        Added example spamassassin temp file regex to csf.fignore for
+	new installations
+
 14.21 - Modified IP lookup to strip some missed quotes
 
         Added exe:/usr/bin/dbus-broker-launch and exe:/usr/bin/dbus-broker to
