@@ -34,18 +34,18 @@ ConfigServer Security & Firewall (CSF) is a popular and powerful firewall soluti
 <br />
 
 <p float="left">
-  <img style="padding-right:15px;" src="https://github.com/user-attachments/assets/de2c5a51-dccd-48a8-a45c-e3cb326f8f3b" width="300" />
-  <img src="https://github.com/user-attachments/assets/e07a4e64-88e2-45cd-b226-2adb76e24de2" width="300" /> 
+  <img style="padding-right:15px;" src="https://raw.githubusercontent.com/Aetherinox/csf-firewall/refs/heads/main/docs/images/readme/1.png" width="300" />
+  <img src="https://raw.githubusercontent.com/Aetherinox/csf-firewall/refs/heads/main/docs/images/readme/2.png" width="300" /> 
 </p>
 
 <p float="left">
-  <img style="padding-right:15px;" src="https://github.com/user-attachments/assets/e6ae4a21-f60e-4be7-b293-af40f7f8c32e" width="300" />
-  <img src="https://github.com/user-attachments/assets/8fc100a2-4c18-4c26-8218-de72333d67ad" width="300" /> 
+  <img style="padding-right:15px;" src="https://raw.githubusercontent.com/Aetherinox/csf-firewall/refs/heads/main/docs/images/readme/3.png" width="300" />
+  <img src="https://raw.githubusercontent.com/Aetherinox/csf-firewall/refs/heads/main/docs/images/readme/4.png" width="300" /> 
 </p>
 
 <p float="left">
-  <img style="padding-right:15px;" src="https://github.com/user-attachments/assets/62547e98-e1a9-4f46-b123-a44638d0eea5" width="300" />
-  <img src="https://github.com/user-attachments/assets/5fefed96-b3c2-4835-aa7c-e5f3ffc6512f" width="300" /> 
+  <img style="padding-right:15px;" src="https://raw.githubusercontent.com/Aetherinox/csf-firewall/refs/heads/main/docs/images/readme/4.png" width="300" />
+  <img src="https://raw.githubusercontent.com/Aetherinox/csf-firewall/refs/heads/main/docs/images/readme/6.png" width="300" /> 
 </p>
 
 </div>
