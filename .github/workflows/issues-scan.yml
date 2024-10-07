@@ -1,26 +1,29 @@
-# ---------------------------------------------------------------------------------------
+# #
 #   @parent     : github workflow
 #   @desc       : pull request autoscan
+#                 scans all of the files related to a particular pull request
+#                 if the code in the files being submitted contains code that is forbidden,
+#                 a report is generated and posted as a comment in the PR.
 #   @author     : Aetherinox
 #   @url        : https://github.com/Aetherinox
-# ---------------------------------------------------------------------------------------
+# #
 
 name: "🎫 Issues › Scan"
 run-name: "🎫 Issues › Scan"
 
-# ---------------------------------------------------------------------------------------
+# #
 #   triggers
-# ---------------------------------------------------------------------------------------
+# #
 
 on:
-    pull_request_target:
+    pull_request:
         branches:
             - main
             - master
 
-# ---------------------------------------------------------------------------------------
+# #
 #   environment variables
-# ---------------------------------------------------------------------------------------
+# #
 
 env:
     LABEL_CHECK_STATUS_FAILED:      AC › Failed
@@ -35,7 +38,6 @@ env:
     LABEL_TYPE_DEPENDENCY:          Type ◦ Dependency
     LABEL_TYPE_GITACTION:           Type ◦ Git Action
 
-    ASSIGN_USER:                    Aetherinox
     BOT_NAME_1:                     AdminServ
     BOT_NAME_2:                     AdminServX
     BOT_NAME_3:                     EuropaServ
@@ -43,70 +45,76 @@ env:
 
     LABELS_JSON: |
       [
-        { "name": "AC › Changes Made",           "color": "8F1784", "description": "Requested changes have been made and are pending a re-scan" },
-        { "name": "AC › Changes Required",       "color": "8F1784", "description": "Requires changes to be made to the package before being accepted" },
-        { "name": "AC › Failed",                 "color": "a61f2d", "description": "Autocheck failed to run through a complete cycle, requires investigation" },
-        { "name": "AC › Needs Rebase",           "color": "8F1784", "description": "Due to the permissions on the requesting repo, this pull request must be rebased by the author" },
-        { "name": "AC › Passed",                 "color": "146b4a", "description": "Ready to be reviewed" },
-        { "name": "AC › Review Required",        "color": "8F1784", "description": "PR needs to be reviewed by another person, after the requested changes have been made" },
-        { "name": "AC › Security Warning",       "color": "761620", "description": "Does not conform to developer policies, or includes potentially dangerous code" },
-        { "name": "AC › Skipped Scan",           "color": "8F1784", "description": "Author has skipped code scan" },
-        { "name": "Status 𐄂 Duplicate",          "color": "75536b", "description": "Issue or pull request already exists" },
-        { "name": "Status 𐄂 Accepted",            "color": "2e7539", "description": "This pull request has been accepted" },
-        { "name": "Status 𐄂 Autoclosed",          "color": "3E0915", "description": "Originally stale and was autoclosed for no activity" },
-        { "name": "Status 𐄂 Denied",              "color": "ba4058", "description": "Pull request has been denied" },
-        { "name": "Status 𐄂 Locked",              "color": "550F45", "description": "Automatically locked by AdminServ for a prolonged period of inactivity" },
-        { "name": "Status 𐄂 Need Info",           "color": "2E3C4C", "description": "Not enough information to resolve" },
-        { "name": "Status 𐄂 No Action",           "color": "030406", "description": "Closed without any action being taken" },
-        { "name": "Status 𐄂 Pending",             "color": "984b12", "description": "Pending pull request" },
-        { "name": "Status 𐄂 Released",            "color": "1b6626", "description": "Issues or PR has been implemented and is now live" },
-        { "name": "Status 𐄂 Reopened",            "color": "8a6f14", "description": "A previously closed PR which has been re-opened" },
-        { "name": "Status 𐄂 Review",              "color": "9e1451", "description": "Currently pending review" },
-        { "name": "Status 𐄂 Stale",               "color": "928282", "description": "Has not had any activity in over 30 days" },
-        { "name": "Type ◦ Bug",                   "color": "9a2c2c", "description": "Something isn't working" },
-        { "name": "Type ◦ Dependency",            "color": "243759", "description": "Item is associated to dependency" },
-        { "name": "Type ◦ Docs",                  "color": "0e588d", "description": "Improvements or modifications to docs" },
-        { "name": "Type ◦ Feature",               "color": "3c4e93", "description": "Feature request" },
-        { "name": "Type ◦ Git Action",            "color": "030406", "description": "GitHub Action / workflow" },
-        { "name": "Type ◦ Pull Request",          "color": "8F1784", "description": "Normal pull request" },
-        { "name": "Type ◦ Roadmap",               "color": "8F1784", "description": "Feature or bug currently planned for implementation" },
-        { "name": "Type ◦ Internal",              "color": "A51994", "description": "Assigned items are for internal developer use" },
-        { "name": "Build ◦ Desktop",              "color": "c7ca4a", "description": "Specific to desktop" },
-        { "name": "Build ◦ Linux",                "color": "c7ca4a", "description": "Specific to Linux" },
-        { "name": "Build ◦ MacOS",                "color": "c7ca4a", "description": "Specific to MacOS" },
-        { "name": "Build ◦ Mobile",               "color": "c7ca4a", "description": "Specific to mobile" },
-        { "name": "Build ◦ Web",                  "color": "c7ca4a", "description": "Specific to web" },
-        { "name": "Build ◦ Windows",              "color": "c7ca4a", "description": "Specific to Windows" },
-        { "name": "› API",                        "color": "F99B50", "description": "Plugin API, CLI, browser JS API" },
-        { "name": "› Auto-type",                  "color": "9141E0", "description": "Auto-type functionality in desktop apps" },
-        { "name": "› Browser",                    "color": "9141E0", "description": "Browser plugins and passing data to <=> from app" },
-        { "name": "› Customization",              "color": "E3F0FC", "description": "Customizations: plugins, themes, configs" },
-        { "name": "› Design",                     "color": "FA70DE", "description": "Design related queries" },
-        { "name": "› Dist",                       "color": "FA70DE", "description": "Installers and other forms of software distribution" },
-        { "name": "› Enterprise",                 "color": "11447a", "description": "Issues about collaboration, administration, and so on" },
-        { "name": "› Hardware",                   "color": "5a7503", "description": "YubiKey, other tokens, biometrics" },
-        { "name": "› Import/Export",              "color": "F5FFCC", "description": "Import from and export to different file formats" },
-        { "name": "› Performance",                "color": "006b75", "description": "Web and desktop performance issues" },
-        { "name": "› Plugin Request",             "color": "FCE9CA", "description": "Requested changes should be implemented as a plugin" },
-        { "name": "› Security",                   "color": "F75D39", "description": "Security issues" },
-        { "name": "› Self-Hosting",               "color": "fad8c7", "description": "Self-hosting installations and configs" },
-        { "name": "› Storage",                    "color": "5319e7", "description": "Storage providers: Dropbox, Google, WebDAV, etc." },
-        { "name": "› Updater",                    "color": "1BADDE", "description": "Auto-updater issues" },
-        { "name": "› UX",                         "color": "1BADDE", "description": "UX and usability" },
-        { "name": "› Website",                    "color": "fef2c0", "description": "Website related issues" },
-        { "name": "⚠ Urgent",                     "color": "a8740e", "description": "Requires urgent attention" },
-        { "name": "⚠ Announcement",               "color": "DB4712", "description": "Announcements" },
-        { "name": "📰 Progress Report",           "color": "392297", "description": "Development updates" },
-        { "name": "📦 Release",                   "color": "277542", "description": "Release announcements" },
-        { "name": "✔️ Poll",                      "color": "972255", "description": "Community polls" },
-        { "name": "❔ Question",                  "color": "FFFFFF", "description": "All questions" }
+            { "name": "AC › Changes Made",           "color": "8F1784", "description": "Requested changes have been made and are pending a re-scan" },
+            { "name": "AC › Changes Required",       "color": "8F1784", "description": "Requires changes to be made to the package before being accepted" },
+            { "name": "AC › Failed",                 "color": "a61f2d", "description": "Autocheck failed to run through a complete cycle, requires investigation" },
+            { "name": "AC › Needs Rebase",           "color": "8F1784", "description": "Due to the permissions on the requesting repo, this pull request must be rebased by the author" },
+            { "name": "AC › Passed",                 "color": "146b4a", "description": "Ready to be reviewed" },
+            { "name": "AC › Review Required",        "color": "8F1784", "description": "PR needs to be reviewed by another person, after the requested changes have been made" },
+            { "name": "AC › Security Warning",       "color": "761620", "description": "Does not conform to developer policies, or includes potentially dangerous code" },
+            { "name": "AC › Skipped Scan",           "color": "8F1784", "description": "Author has skipped code scan" },
+            { "name": "Status 𐄂 Duplicate",          "color": "75536b", "description": "Issue or pull request already exists" },
+            { "name": "Status 𐄂 Accepted",            "color": "2e7539", "description": "This pull request has been accepted" },
+            { "name": "Status 𐄂 Autoclosed",          "color": "3E0915", "description": "Originally stale and was autoclosed for no activity" },
+            { "name": "Status 𐄂 Denied",              "color": "ba4058", "description": "Pull request has been denied" },
+            { "name": "Status 𐄂 Locked",              "color": "550F45", "description": "Automatically locked by AdminServ for a prolonged period of inactivity" },
+            { "name": "Status 𐄂 Need Info",           "color": "2E3C4C", "description": "Not enough information to resolve" },
+            { "name": "Status 𐄂 No Action",           "color": "030406", "description": "Closed without any action being taken" },
+            { "name": "Status 𐄂 Pending",             "color": "984b12", "description": "Pending pull request" },
+            { "name": "Status 𐄂 Released",            "color": "1b6626", "description": "Issues or PR has been implemented and is now live" },
+            { "name": "Status 𐄂 Reopened",            "color": "8a6f14", "description": "A previously closed PR which has been re-opened" },
+            { "name": "Status 𐄂 Review",              "color": "9e1451", "description": "Currently pending review" },
+            { "name": "Status 𐄂 Stale",               "color": "928282", "description": "Has not had any activity in over 30 days" },
+            { "name": "Type ◦ Bug",                   "color": "9a2c2c", "description": "Something isn't working" },
+            { "name": "Type ◦ Dependency",            "color": "243759", "description": "Item is associated to dependency" },
+            { "name": "Type ◦ Docs",                  "color": "0e588d", "description": "Improvements or modifications to docs" },
+            { "name": "Type ◦ Feature",               "color": "3c4e93", "description": "Feature request" },
+            { "name": "Type ◦ Git Action",            "color": "030406", "description": "GitHub Action / workflow" },
+            { "name": "Type ◦ Pull Request",          "color": "8F1784", "description": "Normal pull request" },
+            { "name": "Type ◦ Roadmap",               "color": "8F1784", "description": "Feature or bug currently planned for implementation" },
+            { "name": "Type ◦ Internal",              "color": "A51994", "description": "Assigned items are for internal developer use" },
+            { "name": "Build ◦ Desktop",              "color": "c7ca4a", "description": "Specific to desktop" },
+            { "name": "Build ◦ Linux",                "color": "c7ca4a", "description": "Specific to Linux" },
+            { "name": "Build ◦ MacOS",                "color": "c7ca4a", "description": "Specific to MacOS" },
+            { "name": "Build ◦ Mobile",               "color": "c7ca4a", "description": "Specific to mobile" },
+            { "name": "Build ◦ Web",                  "color": "c7ca4a", "description": "Specific to web" },
+            { "name": "Build ◦ Windows",              "color": "c7ca4a", "description": "Specific to Windows" },
+            { "name": "› API",                        "color": "F99B50", "description": "Plugin API, CLI, browser JS API" },
+            { "name": "› Auto-type",                  "color": "9141E0", "description": "Auto-type functionality in desktop apps" },
+            { "name": "› Browser",                    "color": "9141E0", "description": "Browser plugins and passing data to <=> from app" },
+            { "name": "› Customization",              "color": "E3F0FC", "description": "Customizations: plugins, themes, configs" },
+            { "name": "› Design",                     "color": "FA70DE", "description": "Design related queries" },
+            { "name": "› Dist",                       "color": "FA70DE", "description": "Installers and other forms of software distribution" },
+            { "name": "› Enterprise",                 "color": "11447a", "description": "Issues about collaboration, administration, and so on" },
+            { "name": "› Hardware",                   "color": "5a7503", "description": "YubiKey, other tokens, biometrics" },
+            { "name": "› Import/Export",              "color": "F5FFCC", "description": "Import from and export to different file formats" },
+            { "name": "› Improvement",                "color": "185c98", "description": "Enhance an existing feature" },
+            { "name": "› Performance",                "color": "006b75", "description": "Web and desktop performance issues" },
+            { "name": "› Plugin Request",             "color": "FCE9CA", "description": "Requested changes should be implemented as a plugin" },
+            { "name": "› Security",                   "color": "F75D39", "description": "Security issues" },
+            { "name": "› Self-Hosting",               "color": "fad8c7", "description": "Self-hosting installations and configs" },
+            { "name": "› Storage",                    "color": "5319e7", "description": "Storage providers: Dropbox, Google, WebDAV, etc." },
+            { "name": "› Updater",                    "color": "1BADDE", "description": "Auto-updater issues" },
+            { "name": "› UX",                         "color": "1BADDE", "description": "UX and usability" },
+            { "name": "› Website",                    "color": "fef2c0", "description": "Website related issues" },
+            { "name": "⚠ Urgent",                     "color": "a8740e", "description": "Requires urgent attention" },
+            { "name": "⚠ Announcement",               "color": "DB4712", "description": "Announcements" },
+            { "name": "📰 Progress Report",           "color": "392297", "description": "Development updates" },
+            { "name": "📦 Release",                   "color": "277542", "description": "Release announcements" },
+            { "name": "✔️ Poll",                      "color": "972255", "description": "Community polls" },
+            { "name": "❔ Question",                  "color": "FFFFFF", "description": "All questions" }
       ]
 
-# ---------------------------------------------------------------------------------------
+# #
 #   jobs
-# ---------------------------------------------------------------------------------------
+# #
 
 jobs:
+
+    # #
+    #   Job [ Autoscan ]
+    # #
+
     pr-autoscan:
         runs-on: ubuntu-latest
         permissions:
@@ -117,11 +125,11 @@ jobs:
 
         steps:
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   action needed if using 'pull_request' and 'issue_comment'
             #   to get the pull request, you would normally use ${{ github.event.number }}
             #   however this isnt available for 'issue_comment'
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     🏷️ Verify Existing Labels
@@ -157,9 +165,9 @@ jobs:
                             }
                         }
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   set issue number
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     #️⃣ Issue number › Set
@@ -187,9 +195,9 @@ jobs:
                         }
                     result-encoding: string
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   print issue number
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     #️⃣ Issue number › Print
@@ -197,9 +205,9 @@ jobs:
                 run: |
                     echo '${{ steps.task_autocheck_issue_num_set.outputs.result }}'
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   checkout
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     ☑️ Checkout
@@ -211,23 +219,23 @@ jobs:
                     fetch-depth: 0
                     ref: "refs/pull/${{ steps.task_autocheck_issue_num_set.outputs.result }}/merge"
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   nodejs
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     ⚙️ Setup Node
                 id: task_autocheck_nodejs
                 uses: actions/setup-node@v4
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #     get list of changed files
             #
             #     Effortlessly track all changed files and directories relative to a target branch,
             #     the current branch (preceding commit or the last remote commit), multiple branches,
             #     or custom commits returning relative paths from the project root using this
             #     GitHub action.
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     📄 Get changed files
@@ -236,9 +244,9 @@ jobs:
                 with:
                     separator: ","
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   list of changed files
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     📄 List all added files
@@ -257,9 +265,9 @@ jobs:
                     COUNT_RENAMED:    ${{ steps.task_autocheck_changed_files_get.outputs.renamed_files_count }}
                     COUNT_COPIED:     ${{ steps.task_autocheck_changed_files_get.outputs.copied_files_count }}
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   List directories
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     📂 List Directories
@@ -267,9 +275,9 @@ jobs:
                 run: |
                     ls
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Run autocheck
-            # ---------------------------------------------------------------------------------------
+            # #
 
               - name: >-
                     ☑️ Run Autocheck
