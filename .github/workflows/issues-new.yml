@@ -1,8 +1,9 @@
 # #
-#   @parent     : github workflow
-#   @desc       : allows you to auto assign labels to new issues and pull requests
-#   @author     : Aetherinox
-#   @url        : https://github.com/Aetherinox
+#   @type               github workflow
+#   @desc               searches a new issues title and body for certain keywords and assigns a label
+#                           sets the assignee for the issue to the repository owner
+#   @author             Aetherinox
+#   @url                https://github.com/Aetherinox
 #
 #   requires the following labels to be created in your repo:
 #     - bug
@@ -133,8 +134,6 @@ jobs:
         name: >-
             🎫 Labels › Verify Existing
         runs-on: ubuntu-latest
-        environment:
-            name: Orion
         steps:
 
             # #
@@ -210,8 +209,6 @@ jobs:
             contents: 'read'
             id-token: 'write'
             issues: 'write'
-        environment:
-            name: Orion
         steps:
 
             # #
@@ -235,7 +232,7 @@ jobs:
             # #
             #   Labels > Bugs
             #
-            #   Title of issue is carried over from the previous step. 
+            #   Title of issue is carried over from the previous step.
             # #
 
             - name: >-
@@ -261,9 +258,9 @@ jobs:
 
                       const iss_title_lc            = iss_title.toLowerCase( );
 
-                      console.log( "Feat Title .................... " + iss_title )
-                      console.log( "Feat Output ................... " + `${{ steps.task_get_title.outputs.issue_title }}` )
-                      console.log( "Feat Payload .................. " + `${ context.payload.issue.title }` )
+                      console.log( "Bug Title ..................... " + iss_title )
+                      console.log( "Bug Output .................... " + `${{ steps.task_get_title.outputs.issue_title }}` )
+                      console.log( "Bug Payload ................... " + `${ context.payload.issue.title }` )
 
                       /*
                           Tags
@@ -283,7 +280,7 @@ jobs:
                       */
 
                       const words                   = [ "bug", "broke", "issue", "fail" ];
-                      const bIncWordT               = words.some( s => s.includes( iss_title_lc ) || iss_title_lc.includes( s ) );
+                      const bTriggerWordInTitle     = words.some( s => s.includes( iss_title_lc ) || iss_title_lc.includes( s ) );
 
                       /*
                           Find regex based phrases
@@ -308,7 +305,7 @@ jobs:
 
                       console.log( "Title Lowercase ............... " + iss_title_lc  )
                       console.log( "Startswith " + bug_tag.toLowerCase( ) + "................ " + iss_title_lc.startsWith( bug_tag.toLowerCase( ) ) )
-                      console.log( "Title Includes Keyword ........ " + bIncWordT  )
+                      console.log( "Title Includes Keyword ........ " + bTriggerWordInTitle  )
                       console.log( "Title Includes Regex .......... " + bFoundMatchTitle  )
                       console.log( "Body Includes Regex ........... " + bFoundMatchBody  )
                       console.log( "\n" )
@@ -318,7 +315,7 @@ jobs:
                           - Check if title contains word in words
                       */
 
-                      if ( iss_title_lc.startsWith( bug_tag.toLowerCase( ) ) || bIncWordT || bFoundMatchTitle || bFoundMatchBody )
+                      if ( iss_title_lc.startsWith( bug_tag.toLowerCase( ) ) || bTriggerWordInTitle || bFoundMatchTitle || bFoundMatchBody )
                       {
 
                           console.log( "⚠️ " + bug_tag + " ---------------------------------------" )
@@ -365,7 +362,7 @@ jobs:
             # #
             #   Labels > Features
             #
-            #   Title of issue is carried over from the previous step. 
+            #   Title of issue is carried over from the previous step.
             # #
 
             - name: >-
@@ -412,7 +409,7 @@ jobs:
                       */
 
                       const words                   = [ "feature", "request", "add support" ];
-                      const bIncWordT               = words.some( s => s.includes( iss_title_lc ) || iss_title_lc.includes( s ) );
+                      const bTriggerWordInTitle     = words.some( s => s.includes( iss_title_lc ) || iss_title_lc.includes( s ) );
 
                       /*
                           Find regex based phrases
@@ -437,7 +434,7 @@ jobs:
 
                       console.log( "Title Lowercase ............... " + iss_title_lc  )
                       console.log( "Startswith " + feat_tag.toLowerCase( ) + "............ " + iss_title_lc.startsWith( feat_tag.toLowerCase( ) ) )
-                      console.log( "Title Includes Keyword ........ " + bIncWordT  )
+                      console.log( "Title Includes Keyword ........ " + bTriggerWordInTitle  )
                       console.log( "Title Includes Regex .......... " + bFoundMatchTitle  )
                       console.log( "Body Includes Regex ........... " + bFoundMatchBody  )
                       console.log( "\n" )
@@ -448,7 +445,7 @@ jobs:
                       */
 
                       // change TAG per category
-                      if ( iss_title_lc.startsWith( feat_tag.toLowerCase( ) ) || bIncWordT || bFoundMatchTitle || bFoundMatchBody )
+                      if ( iss_title_lc.startsWith( feat_tag.toLowerCase( ) ) || bTriggerWordInTitle || bFoundMatchTitle || bFoundMatchBody )
                       {
 
                           console.log( "⚠️ " + feat_tag + " ---------------------------------------" )
@@ -497,7 +494,7 @@ jobs:
             # #
             #   Labels > Urgent
             #
-            #   Title of issue is carried over from the previous step. 
+            #   Title of issue is carried over from the previous step.
             # #
 
             - name: >-
@@ -543,7 +540,7 @@ jobs:
                       */
 
                       const words                   = [ "urgent", "urgency", "emergency", "important", "critical" ];
-                      const bIncWordT               = words.some( s => s.includes( iss_title_lc ) || iss_title_lc.includes( s ) );
+                      const bTriggerWordInTitle     = words.some( s => s.includes( iss_title_lc ) || iss_title_lc.includes( s ) );
 
                       /*
                           Find regex based phrases
@@ -568,7 +565,7 @@ jobs:
 
                       console.log( "Title Lowercase ............... " + iss_title_lc  )
                       console.log( "Startswith " + urgn_tag.toLowerCase( ) + "............. " + iss_title_lc.startsWith( urgn_tag.toLowerCase( ) ) )
-                      console.log( "Title Includes Keyword ........ " + bIncWordT  )
+                      console.log( "Title Includes Keyword ........ " + bTriggerWordInTitle  )
                       console.log( "Title Includes Regex .......... " + bFoundMatchTitle  )
                       console.log( "Body Includes Regex ........... " + bFoundMatchBody  )
                       console.log( "\n" )
@@ -579,7 +576,7 @@ jobs:
                       */
 
                       // change TAG per category
-                      if ( iss_title_lc.startsWith( urgn_tag.toLowerCase( ) ) || bIncWordT || bFoundMatchTitle || bFoundMatchBody )
+                      if ( iss_title_lc.startsWith( urgn_tag.toLowerCase( ) ) || bTriggerWordInTitle || bFoundMatchTitle || bFoundMatchBody )
                       {
 
                           console.log( "⚠️ " + urgn_tag + " ---------------------------------------" )
@@ -629,7 +626,7 @@ jobs:
             # #
             #   Labels > Roadmap
             #
-            #   Title of issue is carried over from the previous step. 
+            #   Title of issue is carried over from the previous step.
             # #
 
             - name: >-
@@ -675,7 +672,7 @@ jobs:
                       */
 
                       const words                   = [ "roadmap", "road map", "planned" ];
-                      const bIncWordT               = words.some( s => s.includes( iss_title_lc ) || iss_title_lc.includes( s ) );
+                      const bTriggerWordInTitle     = words.some( s => s.includes( iss_title_lc ) || iss_title_lc.includes( s ) );
 
                       /*
                           Find regex based phrases
@@ -701,7 +698,7 @@ jobs:
 
                       console.log( "Title Lowercase ............... " + iss_title_lc  )
                       console.log( "Startswith " + road_tag.toLowerCase( ) + "............ " + iss_title_lc.startsWith( road_tag.toLowerCase( ) ) )
-                      console.log( "Title Includes Keyword ........ " + bIncWordT  )
+                      console.log( "Title Includes Keyword ........ " + bTriggerWordInTitle  )
                       console.log( "Title Includes Regex .......... " + bFoundMatchTitle  )
                       console.log( "Body Includes Regex ........... " + bFoundMatchBody  )
                       console.log( "\n" )
@@ -712,7 +709,7 @@ jobs:
                       */
 
                       // change TAG per category
-                      if ( iss_title_lc.startsWith( road_tag.toLowerCase( ) ) || bIncWordT || bFoundMatchTitle || bFoundMatchBody )
+                      if ( iss_title_lc.startsWith( road_tag.toLowerCase( ) ) || bTriggerWordInTitle || bFoundMatchTitle || bFoundMatchBody )
                       {
 
                           console.log( "⚠️ " + road_tag + " ---------------------------------------" )
@@ -773,8 +770,6 @@ jobs:
             contents: 'read'
             id-token: 'write'
             issues: 'write'
-        environment:
-            name: Orion
         steps:
 
             # #
@@ -863,8 +858,6 @@ jobs:
             && !contains( needs.*.result, 'failure' )
         permissions:
             contents: write
-        environment:
-            name: Orion
         steps:
 
             # #

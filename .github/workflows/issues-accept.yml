@@ -1,8 +1,10 @@
 # #
-#   @parent     : github workflow
-#   @desc       : adds a label to a PR when the command "/accept" is typed in the issue comments
-#   @author     : Aetherinox
-#   @url        : https://github.com/Aetherinox
+#   @type               github workflow
+#   @desc               adds a label to a PR when the command "/accept" is typed in the issue comments
+#                           do not attempt to use env variables in if condition.
+#                           do not accept to change GITHUB_TOKEN.
+#   @author             Aetherinox
+#   @url                https://github.com/Aetherinox
 # #
 
 name: "🎫 Issue › Accept"
@@ -39,8 +41,8 @@ jobs:
     # #
 
     deploy:
+        if: contains(github.event.comment.body, '/accept') && github.event.comment.user.login == 'Aetherinox'
         runs-on: ubuntu-latest
-        if: github.event.issue.pull_request && contains(github.event.comment.body, '/accept') && github.event.comment.user.login == ${{ github.repository_owner }}
         steps:
 
             # #

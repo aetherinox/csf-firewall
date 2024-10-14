@@ -1,26 +1,12 @@
 # #
 #   @type               github workflow
-#   @desc               manually activated workflow to create issue labels
+#   @desc               cleans up the list of deployments in the environment history
 #   @author             Aetherinox
 #   @url                https://github.com/Aetherinox
-#
-#   This Github action must be activated manually.  This workflow script will do the
-#   following:
-#
-#       - Scan issues / pull requests and make sure they have properly assigned labels:
-#           - `Bug`
-#           - `Feature`
-#           - `Urgent`
-#           - `Roadmap`
-#
-#       - Workflow script will then scan each pr or issue and mark them as `Stale`
-#         if they haven't had any replies in 30 days.
-#
-#       - Workflow will `autoclose` pr or issues which haven't had action in `365 days`.
 # #
 
-name: "🎫 Labels › Create"
-run-name: "🎫 Labels › Create"
+name: "⚙️ Deploy › Clean"
+run-name: "⚙️ Deploy › Clean"
 
 # #
 #   triggers
@@ -105,78 +91,15 @@ env:
 # #
 
 jobs:
-
-    # #
-    #   Job [ Verify / Create Labels ]
-    #
-    #   This job will ensure you have labels already created in your repo.
-    #   All labels come from the JSON table LABELS_JSON.
-    # #
-
-    issues-labels-create:
-        name: >-
-            🎫 Labels › Create
+    cleanup:
         runs-on: ubuntu-latest
-        permissions:
-            contents: 'read'
-            id-token: 'write'
-            issues: 'write'
+        permissions: write-all
+  
         steps:
-
-            # #
-            #   [ Create Labels ] Start
-            # #
-
             - name: >-
-                  ✅ Start
-              id: task_label_create_start
-              run: |
-                  echo "Assigning labels and assignees"
-
-            # #
-            #   [ Create Labels ] Checkout
-            # #
-
-            - name: >-
-                  ☑️ Checkout
-              id: task_label_create_checkout
-              uses: actions/checkout@v4
+                ⚙️ Deployments › Clean
+              uses: strumwolf/delete-deployment-environment@v2
               with:
-                  fetch-depth: 0
-
-            # #
-            #   [ Create Labels ] Verify Existing Labels
-            # #
-
-            - name: >-
-                  🏷️ Verify Existing Labels
-              uses: actions/github-script@v7
-              with:
-                  github-token: ${{ secrets.ADMINSERV_TOKEN_CL }}
-                  script: |
-                      const labels = JSON.parse( process.env.LABELS_JSON );
-                      for ( const label of labels )
-                      {
-                          try
-                          {
-                              await github.rest.issues.createLabel(
-                              {
-                                  owner:        context.repo.owner,
-                                  repo:         context.repo.repo,
-                                  name:         label.name,
-                                  description:  label.description || '',
-                                  color:        label.color
-                              });
-                          }
-                          catch ( err )
-                          {
-                              if ( err.status === 422 )
-                              {
-                                  console.log( `Label '${label.name}' already exists. Skipping.` );
-                              }
-                              else
-                              {
-                                  console.error( `Error creating label '${label.name}': ${err}` );
-                              }
-                          }
-                      }
+                  token: ${{ secrets.SELF_TOKEN_CL }}
+                  environment: orion
+                  onlyRemoveDeployments: true
