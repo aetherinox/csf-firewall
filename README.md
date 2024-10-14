@@ -1340,6 +1340,10 @@ Want to help but can't write code?
 
 <br />
 
+![Alt](https://repobeats.axiom.co/api/embed/a968656a3592fa904ffbcc3abd666aa2d40b8648.svg "Repobeats analytics image")
+
+<br />
+
 The following people have helped get this project going:
 
 <br />
