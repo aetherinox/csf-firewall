@@ -852,7 +852,7 @@ You can also find out what version you are running by appending `--version` to e
 <br />
 
 ```shell ignore
-ConfigServer Firewall Configuration - v2.2.2.0
+ConfigServer Firewall Configuration - v14.22.0
 https://github.com/Aetherinox/csf-firewall
 Ubuntu | 24.04
 ```
@@ -866,7 +866,7 @@ sudo /patch/docker.sh --version
 <br />
 
 ```shell ignore
-ConfigServer Firewall Docker Patch - v2.2.2.0
+ConfigServer Firewall Docker Patch - v14.22.0
 https://github.com/Aetherinox/csf-firewall
 Ubuntu | 24.04
 ```

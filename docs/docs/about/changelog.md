@@ -15,7 +15,15 @@ tags:
 
 </p>
 
-### <!-- md:version stable- --> 2.2.2 <small>Aug 30, 2024</small> { id="2.2.2" }
+### <!-- md:version stable- --> 14.22.0 <small>Sep 20, 2024</small> { id="14.22.0" }
+
+- `build`: Updates ConfigServer Firewall to v14.22
+  - `remove`: session IP match check from DA login
+  - `added`: example spamassassin temp file regex to csf.fignore for new installations
+
+<br />
+
+### <!-- md:version stable- --> 14.21.1 <small>Aug 30, 2024</small> { id="14.21.1" }
 
 - `change`: add header animations, app name returns user home
 - `change`: clicking app logo or name now returns user to home page
@@ -27,7 +35,7 @@ tags:
 
 <br />
 
-### <!-- md:version stable- --> 2.2.1 <small>Aug 29, 2024</small> { id="2.2.1" }
+### <!-- md:version stable- --> 14.21.0 <small>Aug 29, 2024</small> { id="14.21.0" }
 
 - `change`: new animated checkbox input for firewall profiles
 - `change`: clicking logo in header now re-directs user to home
@@ -39,7 +47,7 @@ tags:
 
 <br />
 
-### <!-- md:version stable- --> 2.2.0 <small>Aug 28, 2024</small> { id="2.1.0" }
+### <!-- md:version stable- --> 14.20.2 <small>Aug 28, 2024</small> { id="14.20.2" }
 
 - `feat`: added new login page to dark theme
 - `change`: optimizations to load order
@@ -49,7 +57,7 @@ tags:
 
 <br />
 
-### <!-- md:version stable- --> 2.1.0 <small>Aug 27, 2024</small> { id="2.1.0" }
+### <!-- md:version stable- --> 14.20.1 <small>Aug 27, 2024</small> { id="14.20.1" }
 
 - `feat`: add dark theme
 - `feat`: add traefik integration
@@ -64,7 +72,7 @@ tags:
 
 <br />
 
-### <!-- md:version stable- --> 2.0.0 <small>Aug 07, 2024</small> { id="2.0.0" }
+### <!-- md:version stable- --> 14.20.0 <small>Aug 07, 2024</small> { id="14.20.0" }
 
 - `feat`: add new patch `openvpn`
 - `feat`: add new command-line arguments:
@@ -87,9 +95,13 @@ tags:
 
 <br />
 
-### <!-- md:version stable- --> 1.0.0 <small>Jun 06, 2024</small> { id="1.0.0" }
+### <!-- md:version stable- --> 14.19.0 <small>May 06, 2024</small> { id="14.19.0" }
 
-- Initial release
+- `change`: switch to using iptables-nft if it exists in `/usr/sbin/iptables-nft`
+- `added`: `IO::Handle::clearerr()` call before reading data from a log file
+- `added`: "Require all granted" to the MESSENGER .htaccess file
+- `added` UID/GID rules to IPv6 if enabled
+- `modified`: dovecot regex to look for "failed: Connection reset by peer"
 
 <br />
 

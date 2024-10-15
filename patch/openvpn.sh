@@ -95,7 +95,7 @@ sys_code=$(lsb_release -cs)
 
 app_title="ConfigServer Firewall OpenVPN Patch"
 app_about="Configures ConfigServer Firewall to allow traffic through an OpenVPN server"
-app_ver=("2" "0" "0")
+app_ver=("14" "22" "0")
 app_file_this=$(basename "$0")
 app_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
