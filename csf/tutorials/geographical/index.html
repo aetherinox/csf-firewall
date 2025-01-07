@@ -1669,17 +1669,17 @@ every time you start or restart CSF; and may cause CSF to take longer-than-norma
 </span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="c1">#</span>
 </span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="c1"># Each option is a comma separated list of CC&#39;s, e.g. &quot;US,GB,DE&quot;</span>
 </span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="hll"><span class="na">CC_DENY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-</span></span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="hll"><span class="s">CC_ALLOW = &quot;&quot;</span>
+</span></span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="hll"><span class="na">CC_ALLOW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </span></span></code></pre></div>
 <p><br /></p>
 <p>In our example, we will blacklist the country <strong>China</strong>, which uses the abbreviation <code>CN</code>. To do so; our config will look like the following:</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="na">CC_DENY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CN&quot;</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">CC_ALLOW = &quot;&quot;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">CC_ALLOW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </span></code></pre></div>
 <p><br /></p>
 <p>To specify multiple countries; add a comma <code>,</code> delimiter between each country.</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="na">CC_DENY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CN&quot;</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s">CC_ALLOW = &quot;US,GB,DE&quot;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="na">CC_ALLOW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;US,GB,DE&quot;</span>
 </span></code></pre></div>
 <p><br /></p>
 <p>Our rules above mean:</p>
@@ -1711,7 +1711,7 @@ every time you start or restart CSF; and may cause CSF to take longer-than-norma
 <p><br /></p>
 <p>We will add the following to each setting:</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="na">CC_DENY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CN&quot;</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s">CC_ALLOW = &quot;US,GB,DE&quot;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="na">CC_ALLOW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;US,GB,DE&quot;</span>
 </span></code></pre></div>
 <p><br /></p>
 <p>Below is an animated gif showing the steps.</p>
@@ -1752,7 +1752,7 @@ every time you start or restart CSF; and may cause CSF to take longer-than-norma
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-06T02:27:52+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-07T00:08:44+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-07</span>
   </span>
 
     
@@ -1768,7 +1768,7 @@ every time you start or restart CSF; and may cause CSF to take longer-than-norma
     </span>
     <nav>
       
-        <a href="mailto:adminservx@proton.me">AdminServ</a>
+        <a href="mailto:github-actions[bot]@users.noreply.github.com">github-actions[bot]</a>
     </nav>
   </span>
 
