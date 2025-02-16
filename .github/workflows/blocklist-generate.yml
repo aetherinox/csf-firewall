@@ -468,7 +468,7 @@ jobs:
 
             - name: "🧱 Geographical › GeoLite2 (Setup)"
               id: task_blocklist_geographical_generate_setup
-              if: (github.event_name == 'schedule' && github.event.schedule == '0 0 * * *') || ( github.event_name == 'workflow_dispatch' && inputs.RUN_ALL_ACTIONS == 'true' )
+              if: (github.event_name == 'schedule' && github.event.schedule == '0 0 * * *') || ( github.event_name == 'workflow_dispatch' && inputs.RUN_ALL_ACTIONS == true )
               run: |
                   echo "year_week=$(date +'%U_%Y')" >> $GITHUB_ENV
                   echo "year_day=$(date +'%j_%Y')" >> $GITHUB_ENV
