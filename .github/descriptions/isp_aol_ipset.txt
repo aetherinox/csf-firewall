@@ -1,0 +1,12 @@
+#   Historic AOL LLC (Internet Service Provider)
+#   Oath Holdings Inc.
+#
+#   Website 	          https://aol.com
+#   Parent organization:  Warner Bros. Discovery
+#   Founded               1985
+#   Registry		  RIPE
+#
+#   This ISP has slowly been winding down over the years, with less and less servers. This is
+#   especially true since the messenger service ICQ was shut down on June 26, 2024.
+#
+#   Be aware that this ASN may disappear in the future as less IP blocks are assigned.

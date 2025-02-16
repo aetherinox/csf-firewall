@@ -1,0 +1,171 @@
+ChangeLog:
+
+3.03  - Ensure UI errors are displayed in browser to avoid blank pages
+
+        Added workaround for iOS issue with bootstrap modals
+
+3.02  - Added routine to select from multiple download servers for script
+        updates
+
+3.01  - Updated license terms for GDPR compliance
+
+3.00  - Modified and simplified output to use both top-level and LocationMatch
+        wildcard SecRuleRemoveById statements to cover both types of rule.
+	Existing conf files are only updated once they have been changed via
+	the UI
+
+	Added warning to files that cmc creates to not modify them manually and
+	then use cmc, as they will be overwritten
+
+	Removed old migration code
+
+	Updated cPanel Documentation URL in Help to point to EA4 information
+
+2.13  - Configured UI to fully integrate with cPanel templates without using
+        iframes
+
+	Configured UI to display full cPanel breadcrumbs
+
+	Configured UI to support cPanel v66 WHM UI changes
+
+2.12  - Modified HTML to cater for major change in cPanel v66
+
+2.11  - Improvements to use of cPanel templates for v64+
+
+2.10  - Modify UI to use cPanel templates for v64+
+
+	Modified cmc ModSecurity blocks to no longer use <LocationMatch>
+	wrapper so that cmc rules apply through all ModSecurity phases. On
+	existing servers, this modification happens when a file is next updated
+
+	Modified <IfModule mod_security2.c> wrapper to always appear at the
+	start and then close at the end of the file. On existing servers, this
+	modification happens when a file is next updated
+
+	Removed link to modsec2.whitelist.conf in modsec2.user.conf on EA4
+	servers as it is now included via a wildcard entry in httpd.conf
+
+2.09  - UI HTML changes 
+
+2.08  - Fixed UI issue
+
+2.07  - Redesigned UI based on Bootstrap
+
+2.06  - Fixed bareword file handles causing duplicate entry data in
+        modsec2.user.conf
+
+2.05  - Removed use of Cpanel::cPanelFunctions as it is now being withdrawn
+
+	Updated common ConfigServer UI
+
+2.04  - Fixed incorrect shebang in install.sh
+
+2.03  - Modified location of modsec2.user.conf on EA4 as cPanel has moved some
+        files to a different directory 
+
+2.02  - Improved detection of ruid2_module and mpm_itk_module for reading the
+        correct ModSecurity logs
+
+2.01  - Code review - started addressing perl critic suggestions in all
+        scripts and modules
+
+	Ensure all file opens are properly flocked
+	
+	Removed Bareword file handles
+	
+	Localised SIGNALs
+
+	Enabled strict module
+
+	Newly modified modsec.conf files are now wrapped within
+	<IfModule mod_security2.c> </IfModule>
+
+	Installer checks existing modsec.conf files and wraps them as above
+
+	Updated cPanel documentation link in cmc help
+
+2.00  - Added Easyapache v4 support
+
+        Removed references to modsecparse.pl as it is no longer used by cPanel
+
+	Fixed modify file list to only list actual files
+
+1.18  - Removed redundant code
+
+        Modified to cater for /usr/local/apache/conf/userdata/(std|ssl)/2_4
+	paths when Apache v2.4 is used
+
+	Additional input validation from forms
+
+	Added Migrate button to move modsec.conf files from older Apache data
+	structures to the current valid one
+
+1.17  - Modified httpd graceful restarts to cater for systemd
+
+        Updated INSTALL.txt
+
+1.16  - Updated scripts to use https://download.configserver.com
+
+1.15  - Updated scripts to use download.configserver.com
+
+1.14  - Modified cmc map to only show users and domains with actual exceptions
+
+1.13  - Added support for Concurrent logs stored in the cPanel directory:
+        /usr/local/apache/logs/modsec_audit/
+
+	Added cmc user/domain configuration map
+
+1.12  - Fixes to feature to Enable/Disable modsecparse.pl
+
+1.11  - Fixes to feature to Enable/Disable modsecparse.pl
+
+	Added full pseudo-breadcrumbs to cPanel cmc UI
+
+1.10  - UI updates
+
+1.09  - Added new feature - Ability to use DirectoryMatch ModSecurity disabling
+        and whitelisting
+
+	Parameterise Open3 calls
+
+1.08  - UI button style modifications
+
+1.07  - If /etc/csuibuttondisable exists then the UI buttons will revert for
+        those that cannot cope with the themed ones
+
+1.06  - UI Changes
+
+1.05  - Added support for cPanel v11.38.1+ AppConfig addon registration
+
+	NOTE: In accordance with the new conventions for v11.38.1+ AppConfig
+	the url to the cmc WHM plugin will change from /cgi/addon_cmc.cgi to
+	/cgi/configserver/cmc.cgi. This will only happen with cmc v1.05+ and
+	cPanel v11.38.1+. Older version of cmc will continue to use the old
+	URL. This has no particular relevance to users accessing through WHM,
+	but will affect direct URL access by users or third party
+	applications
+
+1.04  - Ensure that modsec2.whitelist.conf is always included at the bottom of
+        modsec2.user.conf rather than at the top. This is done whenever the UI
+	is accessed via WHM
+
+1.03  - Updated to use the new cPanel 11.36+ integrated perl binary if exists
+
+1.02  - Create/modify /scripts/posteasyapache to rename the script
+        /etc/cron.hourly/modsecparse.pl out of the way if the option to Disable
+	it is used (you may need to enable and disable the option on existing
+	installations to create the /scripts/posteasyapache entry)
+
+	Added a timed refresh to the ModSecurity Log view
+
+1.01  - Fixed broken image icon in the WHM header
+
+        Switched to a proportional font to display the mod_security log entries
+	to better fit the browser window
+
+	Increased the lines per mod_security log lines to display from 40 to
+	200
+
+	Fixed a display formatting issue with the mod_security log entries
+
+1.00  - Initial public release

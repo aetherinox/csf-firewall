@@ -1,0 +1,7 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Port Knocking port opened by [ip]
+
+Time:    [time]
+IP:      [ip]
+Port:    [port]

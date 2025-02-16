@@ -1,0 +1,11 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Webmin login alert for user [account] from [ip]
+
+Time:    [time]
+IP:      [ip]
+Account: [account]
+
+Log line:
+
+[text]

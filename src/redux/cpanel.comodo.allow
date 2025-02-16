@@ -1,0 +1,43 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following IP addresses will be allowed through iptables and ignored by
+# lfd to allow for unimpeded access to cPanels free SSL certificate service
+# available in cPanel v58+
+#
+# Each IP address belongs to the Sectigo SSL provider (formerly Comodo)
+#
+# Note: This file will be replaced when csf is upgraded - do NOT make any
+# changes to this file. If you do not want to whitelist these IP addresses you
+# need to remove the Include line from csf.allow as this is only added there
+# once
+
+tcp|in|d=80|s=178.255.81.12 # Sectigo SSL Resolver
+tcp|in|d=443|s=178.255.81.12 # Sectigo SSL Resolver
+tcp|in|d=53|s=178.255.81.12 # Sectigo SSL Resolver
+
+tcp|in|d=80|s=178.255.81.13 # Sectigo SSL Resolver
+tcp|in|d=443|s=178.255.81.13 # Sectigo SSL Resolver
+tcp|in|d=53|s=178.255.81.13 # Sectigo SSL Resolver
+
+tcp|in|d=80|s=91.199.212.52 # Sectigo DCV Server
+tcp|in|d=443|s=91.199.212.52 # Sectigo DCV Server
+tcp|in|d=53|s=91.199.212.52 # Sectigo DCV Server
+
+tcp|in|d=80|s=91.199.212.132 # Sectigo DCV Server
+tcp|in|d=443|s=91.199.212.132 # Sectigo DCV Server
+tcp|in|d=53|s=91.199.212.132 # Sectigo DCV Server
+
+tcp|in|d=80|s=199.66.201.132 # Sectigo DCV Server
+tcp|in|d=443|s=199.66.201.132 # Sectigo DCV Server
+tcp|in|d=53|s=199.66.201.132 # Sectigo DCV Server
+
+tcp|in|d=80|s=2a02:1788:402:1c80::/64 # Sectigo DCV Server
+tcp|in|d=443|s=2a02:1788:402:1c80::/64 # Sectigo DCV Server
+tcp|in|d=53|s=2a02:1788:402:1c80::/64 # Sectigo DCV Server
+
+tcp|in|d=80|s=2a02:1788:400:1ce4::/64 # Sectigo DCV Server
+tcp|in|d=443|s=2a02:1788:400:1ce4::/64 # Sectigo DCV Server
+tcp|in|d=53|s=2a02:1788:400:1ce4::/64 # Sectigo DCV Server

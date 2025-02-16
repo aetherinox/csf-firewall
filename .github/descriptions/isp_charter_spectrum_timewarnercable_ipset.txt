@@ -1,0 +1,10 @@
+#   Time Warner Cable, Charter Communications, Spectrum (Internet Service Provider)
+#
+#   Website 	          https://spectrum.com
+#   Founded               Time Warner Cable (1973), Spectrum (2014)
+#   Status                Merged into Charter Spectrum as of 2016.
+#
+#   Time Warner Cable, Inc. was acquired by Charter Communications on May 18, 2016, which formed Charter Spectrum.
+#      - https://ir.charter.com/news-releases/news-release-details/charter-communications-merge-time-warner-cable-and-acquire
+#
+#   This list merges all three companies together to block the overall network.

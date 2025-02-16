@@ -1,0 +1,24 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/privacy/privacy_sony.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_sony.ipset
+#   @source         None
+#   @id             privacy_sony_ipset
+#   @uuid           ca40930d-3c47-3340-8286-70a1e3ad32a4
+#   @updated        Sat 15 Feb 2025 08:02:59 AM UTC
+#   @entries        24,616 ips
+#                   7 subnets
+#                   7 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+63.241.60.40/29
+63.241.6.48/29
+64.37.128.0/18
+69.153.161.16/28
+199.107.70.72/29
+199.108.0.0/20
+199.108.192.0/20

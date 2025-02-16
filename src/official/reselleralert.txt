@@ -1,0 +1,10 @@
+From: root
+To: root
+Subject: csf UI on [hostname]: reseller [reseller] - [action]
+
+Time:        [time]
+Reseller:    [reseller]
+Reseller IP: [rip]
+Action:      [action] [ip]
+
+[text]

@@ -1,0 +1,7 @@
+#   UptimeRobot is a service that monitors your website’s uptime and alerts you when it goes
+#   down. By integrating UptimeRobot with RunCloud, you can monitor all of your websites hosted
+#   on RunCloud servers, and access a number of features and benefits from both.
+#
+#   It achieves this by sending requests to your website at regular intervals and checking the
+#   response status code, response time, and keyword presence. If the response is not satisfactory,
+#   UptimeRobot will notify you via email, SMS, webhook, or other method of your choice.

@@ -1,0 +1,10 @@
+
+#   This list contains ip addresses associated with Fastly.
+#
+#   Fastly is classified as a "content delivery network" (CDN), much like Cloudflare. Fastly allows
+#   you to cache / store content such as css, javascript, static pages, and other cachable
+#   information within their servers.
+#
+#   This is not typically a service that you would wish to block from from your servers, as these
+#   IP addresses do not scan ports, attempt ssh bruteforces, and are only used to deliver content
+#   listed above.

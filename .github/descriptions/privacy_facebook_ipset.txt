@@ -1,0 +1,11 @@
+#   FacebookBot crawls public web pages to improve language models for our speech recognition technology.
+#   Facebook claims to use polite web crawling protocols that respect standard robots.txt rules.
+#   
+#   You can identify traffic originating from the FacebookBot, either via its User-Agent string, or
+#   its originating IP addresses:
+#
+#   FacebookBot uses the following user-agent string
+#       Mozilla/5.0 (compatible; FacebookBot/1.0; +https://developers.facebook.com/docs/sharing/webmasters/facebookbot/)
+#
+#   You may also obtain a list of IP blocks utilized by FacebookBot by executing:
+#       whois -h whois.radb.net -- '-i origin AS32934' | grep ^route

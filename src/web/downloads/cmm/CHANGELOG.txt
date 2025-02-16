@@ -1,0 +1,213 @@
+ChangeLog:
+
+v2.08  - Added workaround for iOS issue with bootstrap modals
+
+v2.07  - Ensure UI errors are displayed in browser to avoid blank pages
+
+         Fixed issue where mail accounts were not being displayed if there was
+	 no quota file (i.e. all accounts have always been unlimited)
+
+v2.06  - Added routine to select from multiple download servers for script
+         updates
+
+v2.05  - Updated license terms for GDPR compliance
+
+v2.04  - Modified cPanel output so that exceptions are displayed, e.g. when
+         changing a password that fails due to password strength settings
+
+v2.03  - Removed legacy use of safeopen in cmm to fix blank page in Manage Mail
+         Accounts
+
+v2.02  - Configured UI to fully integrate with cPanel templates without using
+         iframes
+
+	 Configured UI to display full cPanel breadcrumbs
+
+	 Configured UI to support cPanel v66 WHM UI changes
+
+v2.01  - Modified HTML to cater for major change in cPanel v66
+
+v2.00  - Modify UI to use cPanel templates for v64+
+
+	 General code improvements
+
+v1.37  - UI HTML changes 
+
+v1.36  - Redesigned UI based on Bootstrap
+
+v1.35  - Fixed typos and informational text
+
+	 Removed use of Cpanel::cPanelFunctions as it is now being withdrawn
+
+	 Updated common ConfigServer UI
+
+v1.34  - Fixed description text of GreyListing buttons
+
+         Sort "Bulk Show GreyListing" output by FQDN
+
+	 Added limited support for mdbox format accounts in cPanel v11.58+
+
+v1.33  - Added options to bulk show/enable/disable GreyListing, if WHM option
+         enabled
+
+         Added options to show/enable/disable GreyListing per domain, if WHM
+	 option enabled
+
+v1.32  - Updated scripts to use https://download.configserver.com
+
+v1.31  - Modified to cope with cPanel no longer defining "maildir" in the
+         cPanel configuration on 11.46+
+
+v1.30  - Updated scripts to use download.configserver.com
+
+v1.29  - UI updates
+
+v1.28  - Cater for UTF7 directory names
+
+v1.27  - UI button style modifications
+
+v1.26  - If /etc/csuibuttondisable exists then the UI buttons will revert for
+         those that cannot cope with the themed ones
+
+v1.25  - UI Changes
+
+v1.24  - Fixed location of sa-learn binary
+
+         Fixed directory check logic for sa-learn feature
+
+v1.23  - Fixed Up button
+
+         Fixed full email view on large messages
+
+	 Updated Install/Uninstall instructions
+
+v1.22  - Sanitised user data input to prevent running unauthorised commands via
+         the UI. A user would require root access to exploit this, so risk is
+	 low
+	 
+	 Changed backtick calls to use Open3
+
+v1.21  - Added support for cPanel v11.38.1+ AppConfig addon registration
+
+         Switched to using /etc/userdomains from /etc/localdomains + 
+	 /etc/remotedomains to give more accurate domain/account listings
+
+	 NOTE: In accordance with the new conventions for v11.38.1+ AppConfig
+	 the url to the cmm WHM plugin will change from /cgi/addon_cmm.cgi to
+	 /cgi/configserver/cmm.cgi. This will only happen with cmm v1.21+ and
+	 cPanel v11.38.1+. Older version of cmm will continue to use the old
+	 URL. This has no particular relevance to users accessing through WHM,
+	 but will affect direct URL access by users or third party
+	 applications
+
+v1.20  - Modified mailbox actions to use dropped process priveleges to user
+         instead of using "su" to avoid issues on systems using CageFS
+
+v1.19  - Updated to use the new cPanel 11.36+ integrated perl binary if exists
+
+v1.18  - For cPanel v11.32+ run /scripts/updateuserdomains instead of
+         /scripts/update_email_limits
+
+	 Added Javascript confirmation to "Empty Directory" button
+
+v1.17  - Fixed version module error in cPanel log
+
+v1.16  - When any delete/empty action is performed any local maildirsize file
+         is removed to force free maildir space rebuild
+
+	 Added SpamAssassin SA Learn button to learn spam against a directory
+	 if our MailScanner script is installed
+
+v1.15  - Updated "Manage Mail Hourly Limits" for the replacement new method in
+         cPanel v11.28.48+
+
+v1.14  - Updated "Manage Mail Hourly Limits" for the new method in cPanel
+         v11.28+
+
+	 Added Note regarding the changes in v11.28+, i.e. Mail Hourly Limits
+	 apply to all domains on an account, no longer per domain
+
+	 Include /etc/remotedomains in addition to /etc/localdomains in the
+	 list of available domains
+
+	 Fixed issue where "[truncated to 500 lines]" link was always displayed
+	 on emails even if they were less than 500 lines long
+
+	 Changed system calls to use open3 to trap messages
+
+	 Added retry timeout in WHM UI for checking www.configserver.com for
+	 new version information (to avoid repeated hangs when unreachable)
+
+v1.13  - Added new option "Manage Mail Hourly Limits" to modify per domain
+         outgoing email limit
+
+v1.12  - Modified Manage Mail Accounts to show column totals
+
+v1.11  - Modified cmm to remove cPanel process limits when run
+
+         Modified code to skip orphaned domains in /etc/localdomains
+
+v1.10  - Updated cmm to use the latest cPanel v11 perl modules
+
+v1.09  - Reduced max lines shown of email to 500 lines. Added option to view
+         the full email
+
+	 Speedup in directory listing of email
+
+v1.08  - Dramatically reduced memory overhead of listing mail directories by
+         only reading the first 200 lines of any email. Also speeds up
+	 directory listing greatly
+
+         Display only the first 1000 lines of any email to reduce memory
+	 overhead and speed up display
+
+	 Added new upgrade mechanism
+
+	 Removed use of the cat binary
+
+	 Added "Select by Search" JS code, thanks to rafaelfpviana on the forum
+	 for the code
+
+v1.07  - IMAP Trash folder included in quota/space/cleaning calculations
+
+         Added space used as a percentage of quota when listing accounts
+
+v1.06  - Modified to not follow symlinks introduced in cPanel v11 for any
+         actions which, if the main account is emptied, could lead to the
+	 emptying of all email accounts within the tree
+
+	 Added compatibility with cPanel v11 WHM theme
+
+	 Fixed issue where valiases/vfilters files were not being created with
+	 the correct file ownership
+
+v1.05  - Fixed bug in Go Back button showing account empty of emails, even
+         though it isn't - thus giving you a heart attack.
+
+v1.04  - UI changes when browsing a mailbox when within a directory only show
+         the current directory and emails. Added Go Up button to return to the
+	 top of the mailbox
+
+	 Added selected delete of files when browsing a mailbox
+
+	 Added empty directory when browsing a mailbox
+
+	 Added cPanel account quota check before allowing edit of filters or
+	 forwarders or adding a new mailbox to prevent data loss in the event
+	 of quota exceeded for the account
+
+v1.03  - Fixed bug where cmm was only checking for accounts on /home
+
+v1.02  - Added button key to Manage Mail Accounts
+
+         Fixed text in Delete Mailbox option
+
+	 Reworked domain check regex for listed domains to exclude the false
+	 rvskin domains but include .biz
+
+	 Added version check and Upgrade button
+
+v1.01  - Fixed bug where %age of space used report wasn't showing mailboxes in
+         excess if they had a quota set
+
+v1.00  - Initial release

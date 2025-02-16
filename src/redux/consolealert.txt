@@ -1,0 +1,5 @@
+From: root
+To: root
+Subject: lfd on [hostname]: console login alert
+
+[line]

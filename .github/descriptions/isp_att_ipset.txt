@@ -1,0 +1,10 @@
+#   AT&T Internet (Internet Service Provider)
+#
+#   Website 	          https://att.com/internet/
+#   Parent organization:  AT&T Communications
+#   Founded               September 19, 2016
+#
+#   AT&T Internet is an AT&T brand of broadband internet service. Previously, AT&T Internet was
+#   branded as U-verse Internet and bundled with U-verse TV, which was spun off into the newly
+#   independent DirecTV in 2021. AT&T Internet plans powered by fiber-optic cable use the AT&T
+#   Fiber brand. 

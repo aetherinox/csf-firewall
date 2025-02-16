@@ -1,0 +1,35 @@
+Listen 0.0.0.0:[PORT]
+Listen [::]:[PORT]
+
+# Virtualhost start - do not remove this line
+<VirtualHost *:[PORT]>
+	ServerName [SERVERNAME]
+	DocumentRoot [DOCUMENTROOT]
+	KeepAlive Off
+	<Directory "[DIRECTORY]">
+		AllowOverride All
+	</Directory>
+	<IfModule suphp_module>
+		suPHP_Engine On
+		suPHP_UserGroup [USER] [USER]
+	</IfModule>
+	<IfModule suexec_module>
+		<IfModule !mod_ruid2.c>
+			SuexecUserGroup [USER] [USER]
+		</IfModule>
+	</IfModule>
+	<IfModule ruid2_module>
+		RMode config
+		RUidGid [USER] [USER]
+	</IfModule>
+	<IfModule mpm_itk.c>
+		AssignUserID [USER] [USER]
+	</IfModule>
+	<IfModule mod_lsapi.c>
+		lsapi_user_group [USER] [USER]
+	</IfModule>
+	<FilesMatch "\.(inc|php)$">
+		[PHPHANDLER]
+	</FilesMatch>
+</VirtualHost>
+# Virtualhost end - do not remove this line

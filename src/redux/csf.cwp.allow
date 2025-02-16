@@ -1,0 +1,17 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following IP addresses will be allowed through iptables.
+# One IP address per line.
+# CIDR addressing allowed with a quaded IP (e.g. 192.168.254.0/24).
+# Only list IP addresses, not domain names (they will be ignored)
+#
+# Advanced port+ip filtering allowed with the following format
+# tcp/udp|in/out|s/d=port|s/d=ip
+# See readme.txt for more information
+#
+# Note: IP addressess listed in this file will NOT be ignored by lfd, so they
+# can still be blocked. If you do not want lfd to block an IP address you must
+# add it to csf.ignore

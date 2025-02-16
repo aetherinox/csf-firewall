@@ -1,0 +1,14 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following should be a list of directories and files that you want to be
+# alerted when they change. You must specify full paths for each entry.
+#
+# lfd uses a simple md5sum match from the output of:
+#	ls --full-time -lARt [dir]
+# on the entry and so will traverse directories if specified.
+#
+# An example where you might want to use this is /var/spool/cron
+#

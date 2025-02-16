@@ -1,0 +1,37 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/02_privacy_cloudflarecdn.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/02_privacy_cloudflarecdn.ipset
+#   @source         None
+#   @id             02_privacy_cloudflarecdn_ipset
+#   @uuid           a2f9b2a3-550e-3015-b4f9-abdbd1615baa
+#   @updated        Mon 04 Nov 2024 02:26:47 AM UTC
+#   @entries        1,523,712 ips
+#                   20 subnets
+#                   20 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+2a06:98c0::/29
+2c0f:f248::/32
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+104.16.0.0/13
+104.24.0.0/14
+108.162.192.0/18
+141.101.64.0/18
+162.158.0.0/15
+172.64.0.0/13
+173.245.48.0/20
+188.114.96.0/20
+190.93.240.0/20
+197.234.240.0/22
+198.41.128.0/17
+2405:8100::/32
+2405:b500::/32
+2606:4700::/32
+2803:f800::/32

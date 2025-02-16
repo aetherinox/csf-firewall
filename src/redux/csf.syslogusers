@@ -1,0 +1,66 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# This file contains the usernames which should be allowed to log via
+# syslog/rsyslog. All the users that exist on the server that are listed in
+# this file will be added to the system group defined in /etc/csf/csf.conf for
+# the option RESTRICT_SYSLOG_GROUP if RESTRICT_SYSLOG is set to "3"
+#
+# This WILL break user cron job logging in /var/log/cron for non-listed user
+# accounts
+#
+# Remove any accounts that do not apply to your server
+#
+# Add any accounts that log through syslog that are not listed that you need
+#
+# You should only add user accounts and/or the default apache account if
+# absolutely necessary, otherwise you are compromising the effectiveness of
+# this feature
+
+# OS application users:
+daemon
+dbus
+haldaemon
+messagebus
+mysql
+named
+nfsnobody
+ntp
+polkitd
+root
+rpc
+rpcuser
+smmsp
+statd
+
+# cPanel application users:
+cpanel
+cpses
+dovecot
+dovenull
+mailman
+mailnull
+
+# DirectAdmin application users:
+dovecot
+mail
+
+# InterWorx users:
+qmailq
+qmails
+qmailr
+qmailp
+qmaill
+qmaild
+alias
+iworx-horde
+iworx-roundcube
+iworx-pma
+iworx-backup
+iworx-web
+iworx
+vpopmail
+
+# Other users:

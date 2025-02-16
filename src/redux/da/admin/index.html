@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+
+print "<iframe scrolling='auto' name='myiframe' id='myiframe' src='index.raw' frameborder='0' width='100%' onload='resizeIframe(this);'></iframe>\n";
+print "<script>\n";
+print "function setupObserver(iframe) {\n";
+print "	const body = iframe.contentDocument.body;\n";
+print "	const updateDimensions = () => {\n";
+print "		iframe.style.height = iframe.contentDocument.body.offsetHeight + 'px';\n";
+print "	};\n";
+print "	const observer = new MutationObserver(updateDimensions);\n";
+print "	observer.observe(body, {\n";
+print "		attributes: true,\n";
+print "		childList: true,\n";
+print "		characterData: true,\n";
+print "		subtree: true,\n";
+print "	});\n";
+print "}\n";
+print "function resizeIframe(obj) {\n";
+print "  if (!obj) return;\n";
+print "	 setupObserver(obj);\n";
+print "  obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';\n";
+if ($ENV{SKIN_NAME} eq "enhanced") {
+	print "	obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';\n";
+} else {
+	print "	obj.style.width = '98vw';\n";
+}
+print "	window.scrollTo(0,0);\n";
+print "	window.parent.scrollTo(0,0);\n";
+print "	window.parent.parent.scrollTo(0,0);\n";
+print "}\n";
+print "</script>\n";

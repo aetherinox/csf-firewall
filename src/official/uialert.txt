@@ -1,0 +1,9 @@
+From: root
+To: root
+Subject: lfd on [hostname]: UI Alert [ip] [alert]
+
+Time:     [time]
+IP:       [ip]
+Alert:    [alert]
+
+[text]

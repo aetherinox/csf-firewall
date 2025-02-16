@@ -1,0 +1,22 @@
+###############################################################################
+# Copyright 2006-2023, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+
+
+Upgrade
+=======
+
+Upgrading is just a matter of following the installation instructions which are
+non-destructive, i.e. it won't overwrite any configuration files and will
+automagically add any new parameters to csf.conf for you. There is no need to
+uninstall csf first.
+
+Once done you should restart csf and lfd either in WHM, or:
+
+csf -r
+service lfd restart
+
+The installation will not overwrite any of your current configuration settings
+files.

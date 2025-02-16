@@ -1,0 +1,79 @@
+# #
+#   @type               github workflow
+#
+#   Clears the repository history
+# #
+
+name: "🧱 History › Clear"
+run-name: "🧱 History › Clear"
+
+# #
+#   triggers
+# #
+
+on:
+
+    # #
+    #   Trigger > Workflow Dispatch
+    # #
+
+    workflow_dispatch:  # Manually trigger the workflow
+
+    # #
+    #   Trigger > Cron Schedule
+    # #
+
+    schedule:
+        - cron: '0 0 * * *'
+
+# #
+#   environment variables
+# #
+
+env:
+    BOT_NAME_1:           EuropaServ
+    BOT_NAME_DEPENDABOT:  dependabot[bot]
+
+# #
+#   jobs
+# #
+
+jobs:
+    reset-history:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: "Checkout the current repository"
+          uses: actions/checkout@v2
+          with:
+                fetch-depth: 0  # Ensure that the entire history is fetched
+
+        - name: "Configure Git author identity"
+          run: |
+                git config --local user.email "github-actions[bot]@users.noreply.github.com"
+                git config --local user.name "github-actions[bot]"
+
+        - name: "Remove Git history"
+          run: |
+                # Create a new orphan branch
+                git checkout --orphan temp-branch
+
+                # Add all files to the new branch
+                git add -A
+
+                # Commit the files to the new branch
+                git commit -m "chore: daily cleanup"
+
+                # Delete the old main branch
+                git branch -D main
+
+                # Rename the new orphan branch to main
+                git branch -m main
+
+                # Force push the new main branch to the remote repository
+                git push -f origin main
+
+        - name: "Clean up references"
+          run: |
+                # Remove remote-tracking references to deleted branches (optional)
+                git fetch origin --prune

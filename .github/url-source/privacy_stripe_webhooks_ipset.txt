@@ -1,0 +1,1 @@
+https://stripe.com/files/ips/ips_webhooks.txt

@@ -1,0 +1,59 @@
+# #
+#   🧱 Firewall Blocklist - country_bouvet_island.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_bouvet_island.ipset
+#   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
+#   @id             country_bouvet_island_ipset
+#   @uuid           0fcc357a-3aef-3193-86cd-ba6866297396
+#   @updated        Sat 15 Feb 2025 12:20:43 AM UTC
+#   @entries        271 ips
+#                   37 subnets
+#                   37 lines
+#   @country        Bouvet Island (BV)
+#   @expires        24 hours
+#   @category       Geolocation
+#
+#   These geographical databases allow you to restrict which countries can gain access to
+#   your server. They are fully compatible with applications such as ConfigServer Firewall,
+#   Wireshark, Elastic Search, NGINX, Snowplow Analytics, Revive Adserver, OPNSense, etc.
+#   A more detailed list is available at:
+#       - https://dev.maxmind.com/geoip/docs/databases/#client-apis
+# #
+
+69.30.251.141/32
+104.28.8.236/31
+104.28.8.238/32
+136.23.6.122/32
+136.23.20.50/32
+140.248.56.33/32
+140.248.57.33/32
+140.248.58.33/32
+140.248.59.33/32
+140.248.60.33/32
+140.248.61.33/32
+140.248.62.33/32
+140.248.63.33/32
+185.193.124.0/24
+194.50.99.34/32
+2001:470:d:4e9::/64
+2001:470:19:7b2::/64
+2001:470:19:93b::/64
+2001:470:19:ec4::/64
+2001:470:26:7a0::/64
+2001:470:f8a8::/48
+2001:470:fadd::/48
+2606:40:1af0::/44
+2606:40:1b00::/44
+2a04:4e41:4012:1000::/52
+2a04:4e41:4022:1000::/52
+2a04:4e41:4032:1000::/52
+2a04:4e41:4042:1000::/52
+2a04:4e41:4052:1000::/52
+2a04:4e41:4062:1000::/52
+2a04:4e41:4072:1000::/52
+2a04:4e41:4082:1000::/52
+2a05:dfc1:5a2b::/48
+2a07:d887:2100::/40
+2a09:bac4:108::/45
+2a09:bac4:1108::/45
+2a0c:9a40:95b1:e000::/52

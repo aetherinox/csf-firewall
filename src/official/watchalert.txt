@@ -1,0 +1,10 @@
+From: root
+To: root
+Subject: lfd on [hostname]: [file] has changed
+
+Time:   [time]
+File:   [file] has changed
+
+Output:
+
+[output]

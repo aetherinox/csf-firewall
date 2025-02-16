@@ -1,0 +1,7 @@
+#   This list contains ip addresses associated with Amazon EC2 servers.
+#   
+#   Amazon Elastic Compute Cloud (Amazon EC2) allows for customers to rent and deploy a virtual
+#   machine (vm) which can sometimes attempt to access your server.
+#
+#   Illegal activities are against Amazon's Terms of Service, however, it does happen. This
+#   blocklist allows you to stop any communication between your server, and the Amazon EC2 servers.

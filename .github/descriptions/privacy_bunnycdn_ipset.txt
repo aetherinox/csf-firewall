@@ -1,0 +1,3 @@
+#   BunnyCDN is a Slovenia based company which is known as a Content Delivery Network (CDN) which
+#   offers a variety of tools which allows you to speed up loading times of your website. It is
+#   commonly compared to CloudflareCDN.

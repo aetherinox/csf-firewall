@@ -1,0 +1,1 @@
+https://developers.google.com/static/search/apis/ipranges/googlebot.json

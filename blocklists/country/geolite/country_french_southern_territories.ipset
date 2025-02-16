@@ -1,0 +1,59 @@
+# #
+#   🧱 Firewall Blocklist - country_french_southern_territories.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_french_southern_territories.ipset
+#   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
+#   @id             country_french_southern_territories_ipset
+#   @uuid           e91632fc-680a-3372-9d4b-fa4df3b3b847
+#   @updated        Sat 15 Feb 2025 12:22:09 AM UTC
+#   @entries        41 ips
+#                   37 subnets
+#                   37 lines
+#   @country        French Southern Territories (TF)
+#   @expires        24 hours
+#   @category       Geolocation
+#
+#   These geographical databases allow you to restrict which countries can gain access to
+#   your server. They are fully compatible with applications such as ConfigServer Firewall,
+#   Wireshark, Elastic Search, NGINX, Snowplow Analytics, Revive Adserver, OPNSense, etc.
+#   A more detailed list is available at:
+#       - https://dev.maxmind.com/geoip/docs/databases/#client-apis
+# #
+
+46.36.200.101/32
+46.36.200.102/31
+46.36.200.104/30
+46.36.200.108/31
+46.36.200.110/32
+46.243.208.15/32
+104.28.13.67/32
+104.28.13.68/31
+136.23.6.121/32
+136.23.20.49/32
+140.248.56.215/32
+140.248.57.215/32
+140.248.58.215/32
+140.248.59.215/32
+140.248.60.215/32
+140.248.61.215/32
+140.248.62.215/32
+140.248.63.215/32
+154.120.133.184/29
+154.120.133.192/29
+194.50.99.217/32
+2606:40:1ad0::/44
+2606:40:1ae0::/44
+2a04:4e41:401d:7000::/52
+2a04:4e41:402d:7000::/52
+2a04:4e41:403d:7000::/52
+2a04:4e41:404d:7000::/52
+2a04:4e41:405d:7000::/52
+2a04:4e41:406d:7000::/52
+2a04:4e41:407d:7000::/52
+2a04:4e41:408d:7000::/52
+2a05:dfc1:5ae1::/48
+2a07:d887:d600::/40
+2a09:bac4:6b0::/45
+2a09:bac4:16b0::/45
+2a0c:9a40:95b4:e000::/52
+2a13:b487:503a::/48

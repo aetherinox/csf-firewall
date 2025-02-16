@@ -1,0 +1,4 @@
+#   This list contains ip addresses associated with Yandex bots / crawlers.
+#   
+#   These are useful if you do not wish for search engines to grab content
+#   from your website.

@@ -1,0 +1,15 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Script Alert for [path]
+
+Time:  [time]
+Path:  [path]
+Count: [count] emails sent
+
+Sample of the first 10 emails:
+
+[emails]
+
+Possible Scripts:
+
+[scripts]

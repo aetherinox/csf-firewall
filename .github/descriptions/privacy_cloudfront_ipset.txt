@@ -1,0 +1,6 @@
+#   This list contains ip addresses associated with CloudFront.
+#
+#   Amazon CloudFront is a content delivery network operated by Amazon Web Services. The content
+#   delivery network was created to provide a globally-distributed network of proxy servers to
+#   cache content, such as web videos or other bulky media, more locally to consumers, to improve
+#   access speed for downloading the content.

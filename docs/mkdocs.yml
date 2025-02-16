@@ -1,0 +1,284 @@
+site_name: !!python/object/apply:os.getenv ["DOCS_NAME", "ConfigServer Firewall"]
+repo_url: https://github.com/Aetherinox/csf-firewall
+repo_name: Aetherinox/csf-firewall
+edit_uri: edit/main/docs/docs/
+site_author: Aetherinox
+
+markdown_extensions:
+  - markdown.extensions.extra
+  - toc:
+      permalink: true
+  - abbr
+  - admonition
+  - attr_list
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: Aetherinox
+      repo: mkdocs-link-embeds
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - material/overrides/.icons
+  - md_in_html
+  - def_list
+  - footnotes
+  - tables
+  - pymdownx.inlinehilite
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tabbed
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tilde
+  - pymdownx.blocks.html
+  - pymdownx.details
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: Aetherinox
+      repo: csf-firewall
+  - pymdownx.keys
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+      url_download: true
+  - pymdownx.arithmatex:
+      generic: true
+
+theme:
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - yml
+    - rust
+    - markdown
+  icon:
+    note: fontawesome/solid/note-sticky
+    abstract: fontawesome/solid/book
+    info: fontawesome/solid/circle-info
+    tip: fontawesome/solid/bullhorn
+    success: fontawesome/solid/check
+    question: fontawesome/solid/circle-question
+    warning: fontawesome/solid/triangle-exclamation
+    failure: fontawesome/solid/bomb
+    danger: fontawesome/solid/skull
+    bug: fontawesome/solid/robot
+    example: fontawesome/solid/flask
+    quote: fontawesome/solid/quote-left
+    annotation: material/arrow-right-circle
+    tag:
+      html: fontawesome/brands/html5
+      js: fontawesome/brands/js
+      css:  fontawesome/brands/css3
+    repo: fontawesome/brands/git-alt 
+  name: material
+  custom_dir: material/overrides
+  palette: 
+    # Palette toggle for light mode
+    - scheme: default
+      primary: custom
+      accent: indigo
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: main
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+  features:
+    - announce.dismiss
+    - toc.follow
+    - content.action.edit
+    - content.action.view
+    - content.tooltips
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.code.annotate 
+    - content.code.select
+    - content.code.copy
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.instant.prefetch
+    - navigation.instant.preview
+    - navigation.tracking
+    - navigation.path
+    - navigation.top
+
+# Hooks
+hooks:
+  - material/overrides/hooks/shortcodes.py
+  - material/overrides/hooks/translations.py
+
+extra_css:
+  - stylesheets/extra.css?v1.000
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
+nav:
+  - Home: 'home.md'
+  - About CSF: 'about_csf.md'
+  - About Patcher: 'about_patcher.md'
+  - Cheatsheet:
+    - Structure: 'cheatsheet/structure.md'
+    - Commands: 'cheatsheet/commands.md'
+    - Troubleshooting: 'cheatsheet/troubleshooting.md'
+    - Example csf.conf: 'cheatsheet/conf.md'
+  - ConfigServer Firewall:
+    - Install: 'csf/install.md'
+    - Configure: 'csf/configure.md'
+    - Install WebUI: 'csf/webui.md'
+    - Test Install: 'csf/testing.md'
+    - Uninstall: 'csf/uninstall.md'
+    - Tutorials:
+      - Geo Blocking: 'csf/tutorials/geographical.md'
+      - Traefik Integration: 'csf/tutorials/traefik.md'
+      - Authentik Integration: 'csf/tutorials/authentik.md'
+  - Patcher:
+    - Download: 'patcher/download.md'
+    - Configure: 'patcher/configure.md'
+  - Themes:
+    - Install: 'themes/install.md'
+    - Usage: 'themes/usage.md'
+  - About:
+    - License: 'about/license.md'
+    - Conventions: 'about/conventions.md'
+    - Tags: 'about/tags.md'
+    - Changelog: 'about/changelog.md'
+    - Backers: 'backers/index.md'
+
+plugins:
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - tags:
+      tags_file: about/tags.md
+  - group:
+      plugins:
+        - optimize
+        - minify
+  - git-committers:
+      repository: Aetherinox/csf-firewall
+      docs_path: docs/docs/
+      branch: main
+      token: !!python/object/apply:os.getenv [GH_TOKEN, "NULL"]
+  - blog:
+      authors: true
+      authors_file: .authors.yml
+  - encryptcontent:
+      title_prefix: '[🔒]'
+      summary: 'Access Restricted'
+      placeholder: 'Authentication Code'
+      placeholder_user: User
+      password_button: True
+      password_button_text: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" width="16px" height="16px"><!--! Font Awesome Pro 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><defs><style>.fa-secondary{opacity:.4}</style></defs><path class="fa-primary" d="M384 160L224 0V128c0 17.7 14.3 32 32 32H384zm80 80c17.7 0 32 14.3 32 32v48H432V272c0-17.7 14.3-32 32-32zm-80 32v48c-17.7 0-32 14.3-32 32V480c0 17.7 14.3 32 32 32H544c17.7 0 32-14.3 32-32V352c0-17.7-14.3-32-32-32V272c0-44.2-35.8-80-80-80s-80 35.8-80 80z"></path><path class="fa-secondary" d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384v33.6c-19.8 20.2-32 47.9-32 78.4v24.6c-19.1 11.1-32 31.7-32 55.4V480c0 11.4 3 22.2 8.3 31.5c-2.7 .3-5.5 .5-8.3 .5H64c-35.3 0-64-28.7-64-64V64z"></path></svg>'
+     # input_class: 'w3-input' # CSS class used for input username and password
+     # button_class: 'w3-button w3-theme-l1 w3-hover-theme' # CSS class for password_button
+      decryption_failure_message: 'Authentication code not correct.'
+      encryption_info_message: "This information is restricted to certain users with access."
+      password_inventory:
+        classified:
+          - !!python/object/apply:os.getenv [DOCS_SECRET_L1, "NULL"]
+        confidential:
+          - !!python/object/apply:os.getenv [DOCS_SECRET_L2, "NULL"]
+  - git-revision-date-localized:
+      type: timeago
+      enabled: true
+  - git-authors:
+      show_contribution: true
+      sort_authors_by: name
+      exclude:
+          - index.md
+      enabled: true
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: false
+      skip_classes:
+        - custom-skip-class-name
+      auto_caption: false
+      caption_position: bottom
+      background: black
+      shadow: false
+  - mike:
+      alias_type: symlink
+      redirect_template: null
+      deploy_prefix: ''
+      canonical_version: null
+      version_selector: true
+      css_dir: css
+      javascript_dir: js
+  - redirects:
+      redirect_maps:
+        docs/settings/summary.md: settings/summary.md
+  - link-embeds:
+      enabled: true
+      name_default: "Untitled Link"
+      desc_default: "No description found"
+      image_default: "https://github.com/Aetherinox/mkdocs-link-embeds/assets/118329232/c0298d98-0910-4235-a88f-0c3e2f704ba7"
+      image_disabled: false
+      favicon_default: "https://github.com/Aetherinox/mkdocs-link-embeds/assets/118329232/b37da9c6-6f17-4c3f-9c94-c346a6f31bfa"
+      favicon_disabled: true
+      favicon_size: 25
+      target: "blank"
+      accent: "FFFFFF1A"
+      verbose: true
+
+extra:
+  tags:
+    HTML5: html
+    JavaScript: js
+    CSS: css
+  generator: false
+  version:
+    default: stable
+    provider: mike
+  consent:
+    title: Cookie Consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+
+copyright: >
+  Copyright &copy; 2024 - Aetherinox

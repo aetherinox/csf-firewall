@@ -1,0 +1,6 @@
+#   Pingdom AB is a Swedish website monitoring software as a service company launched in Stockholm
+#   and later acquired by the Austin, Texas–based SolarWinds. is a website monitoring and performance
+#   optimization tool.
+#
+#   It allows users to monitor the uptime, availability, and performance of websites, servers, and
+#   online services from various locations globally.

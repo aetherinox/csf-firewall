@@ -1,0 +1,1162 @@
+9.26 -  Fixed end user mailcontrol stats not working
+
+9.25 -  Added exim requeue option to MSFE menu
+
+9.24 -  For DA add /var/lib/mysql/mysql.sock
+
+        Fixed issue when using "Release Resend" would include two "To:" fields
+
+	Fixed issue when using SQLite
+
+9.23 -  Fixed regression issues from v9.20, reapplied changes:
+
+        Remove 2 char restriction on locale for translated text. If you were
+        previously using only the first 2 chars of a longer locale you will
+	need to rename the mslang file accordingly
+
+	Fixed issue with SpamBox feature on DirectAdmin
+
+9.22 -  Fixed regression issue from v9.21 where an end-user could not view the
+        contents of an email in MailControl
+
+9.21 -  Fixed issue where end-users with MailControl access could see emails
+        from domains where their domain was a suffix to another domain
+
+9.20 -  Fixed issue in admin user settings for End-User settings not saving
+        when Store Messages wasn't enabled
+
+9.19  - Added workaround if MySQL socket access fails. Creating the following
+        file will force mailcontrol to use TCP access on 127.0.0.1 instead of
+	the unix socket:
+	/usr/msfe/mailcontrol/mysql.sock.disable
+
+	If /var/log/maillog does not exists but /var/log/mail.log does, then
+	use that for the tail maillog command in the UI
+
+9.17  - Ensure SQL tables are stored as utf8mb4
+
+9.16  - Added DA Ubuntu/Debian support
+
+9.15  - Improved SSL update procedure
+
+        Fixed issue downloading messages in the end-user cPanel UI
+
+	Fixed issue with end-user language file selection
+
+	Modified MSFE digest end-user URL for cPanel users to cater for
+	different themes
+
+9.14  - Fixed issue with using Text::Wrap
+
+9.13  - If "Display Client IP column with sort" is enabled in MailControl,
+        digest fields will show the Client IP under the From field
+
+	If "Always launch message View Details in new window" is enabled,
+	also launch "Search Messages > Email ID" in a new window
+
+	Use Text::Wrap to ensure email line lengths are within specifications
+	for digest emails
+
+	Switch from check_cpanel_rpms to check_cpanel_pkgs when checking rpms 
+	on cPanel servers
+
+9.12  - Fixed issue with processing Digest template leading to multiple emails
+
+9.11  - Fixed issue with bulk releasing emails to original recipients in
+        mailcontrol
+
+9.10  - Updated installation for the new jupiter theme in cPanel v98
+
+9.09  - Improved cPanel perl version checking on install to ensure cPanel perl
+        rpms are installed
+
+	Fixed issue on DA where PATH does not contain /usr/sbin/ preventing csf
+	blocking from within MailControl
+
+	Updated cPanel end-user UI config allowed_parents with the latest perl
+	version to fix message downloading
+
+9.08  - Added workaround for iOS issue with bootstrap modals
+
+9.07  - Improved cPanel perl version check for when cPanel update to
+        a new version of perl
+
+9.06  - If /etc/clamddisable exists, don't install, enable or start
+        clamavconnector on cPanel servers
+
+	Fixed issue with missing truncate when overwriting user files
+
+	Mute sa-learn cPanel perl module warnings in output
+
+9.05  - Fixed reporting of MySQL status errors in MailControl module
+
+        Changed MySQL characterset for tables from utf8 to utf8mb4 on new
+	installs
+
+	Ensure the exim custom template directory is created on DA while
+	installing
+
+	Fixed Search Reset button in end-user MailControl UI not working
+
+	Fixed Ham/Spam buttons in end-user MailControl UI when feature not
+	enabled
+
+	Added "View in Browser" action in MailControl email view for
+	html email bodies and other attachments for admin user
+
+9.04  - Make sure that the permissions on /usr/msfe are set to 755 on install
+
+	Fixed end user UI Bulk Actions where the database connection was
+	incorrectly closed after each iteration causing the operation to fail
+	after the first item
+
+	Fixed end user UI Bulk Actions where only the first item was
+	reported
+
+	Modified end user UI Bulk Actions to disable items that are no longer
+	in quarantine
+
+9.03  - Changed WHM/Admin UI "Modify User Settings" to "Access User Settings"
+        which now allows full access impersonating the chosen user
+
+9.02  - Added new BETA feature: Digest Emails. If enabled, users can configure
+        a Digest Email per domain within their account that includes a summary
+	of all Low Spam, High Spam, Blacklisted and Infected email. This is of
+	particular use to users using the SpamBox and/or MailControl features.
+	See the MSFE Front-End Settings page in the UI for more info
+
+        Add non-alphanumeric character to SQL db user password on new installs
+
+        Fixed issue with string escaping for URI's in MailControl. Uses the
+	perl module URI::Escape
+
+	Update mssql.pl with MySQL credentials code from dbadd.pl
+
+9.01  - Modified dbadd.pl to better determine MySQL credentials and prevent
+        exposing those credentials
+
+        Run /usr/msfe/msrules.pl at the end of the installation process
+
+	Convert MSFE UI to use the csget mechanism for checking new versions
+
+	On DirectAdmin add MailScanner to Service List
+
+	Fixed DirectAdmin admin UI display issues
+
+	Fixed end user UI display issues
+
+	Fixed end user UI perl module installation on DirectAdmin that could
+	use the incorrect package name
+
+9.00  - Added BETA support for DirectAdmin on RHEL/CentOS/CL v7 and v8. This
+        only uses the new Exim named queue method which requires Exim v4.93+
+
+        Added support for SpamBox delivery to <mailbox>.spam folder (SpamBox)
+	on cPanel and DirectAdmin
+
+        Added support for Exim named queue method for MailScanner. Targeted,
+	better use of resources, independent of cPanel configuration. Not all
+	outgoing email scanned or logged to mailcontrol. Requires Exim v4.93+
+
+	Added MySQL v8.0 support
+
+	RHEL/CentOS/CL v8.1 OS support
+
+	Removed use of Mail::Sender as it is now deprecated
+
+	Moved /usr/mscpanel to /usr/msfe (symlink added for backwards
+	compatibility) 
+
+	MailControl UI now performs to/from sorts by domain and then email
+	address rather than just email address
+
+8.29  - Added support for cPanel v86+ with the switch to perl v5.30
+
+        Improved locale detection
+
+8.28  - Modified MSFE installer to cater for changes in the WHM hooks in v84+
+
+8.27  - Modified post upcp hook to make sure cPanel perl modules are installed
+        (for cPanel v81+)
+
+8.26  - Fixed refresh auto starting when disabled in settings
+
+8.25  - Fixed race condition in MailControl on the session file when viewing
+        multiple emails
+
+	Fixed issue where Search and Batch processing restarted refresh while
+	paused
+
+	Fixed issue when refresh enabled but not honouring pause on page reload
+	or navigation within MailControl
+
+8.24  - Added post upcp hook to restart MailScanner to better copy with cPanel
+        perl upgrades
+
+	Added Pause/Resume button to MailControl
+
+	Added Spam Report as shown in headers (in addition to existing
+	breakdown)
+
+	Modified MailControl "View Details" in a separate window, to not show full
+	WHM template when main table is not in a separate window
+
+8.23  - Modified MailControl main menu row display behaviour
+
+        Fixed erroneous %rules-dir% substitution when enabling/disabling some
+	of the Performance Scanning Options
+
+8.22  - Added MailControl option "Always launch message View Details in new window"
+
+        Removed Subject field select and highlighting
+
+	Modified View Details button in Expanded View to make it clear that it
+	is a button link
+
+8.21  - Reinstated "Open in a new window" but added "Expanded view"/"Standard
+        View" as an option within that new window
+
+8.20  - Replaced "Open in new window" to "Expanded view" in MailControl which
+        fills the browser and compacts the search and button panels. Added
+	"Standard view" button to switch back. This no longer launches into a
+	new window
+
+        Button to Install MailWatch has now been removed, existing MailWatch
+	installs remain at users risk
+
+	Modified Mail::Sender SSL_version to be blank to allow IO::Socket::SSL
+	defaults to be used. This fixes a problem with older perl modules and
+	the latest exim configurations on cPanel when release forwarding email
+	from within MailControl
+
+	Added MailControl sort fields to: subject, from_address and to_address
+
+	Set default sort direction to ASCENDING in MailControl except for Date/
+	Time which defaults to DESCENDING
+
+	Modified MailControl table to make Subject link clickable to view email
+
+	Added "Block Client IP" to MailControl Bulk Actions
+
+	Fixed MailControl spinner/refresh behaviour
+
+	Added MailControl search for "All Headers (UTF-8)" which will search
+	for Quoted-Printable UTF-8 strings in the email headers (e.g. Subject).
+	Note: Only works with "CONTAINS" conditional and only on individual
+	words
+
+	Modify MailControl Search Reset button to clear any existing search and
+	refresh but then show the Search box
+
+8.19  - Fix string interpolation when processing domains in msbe.pl
+
+8.18  - MSFE upgrade improvements
+
+8.17  - Updated MSFE upgrade procedure to use msfeinstaller
+
+        Improvements to IPv6 licensing
+
+        Modifications for new licensing back end
+
+8.16  - Startup speed improvements on NAT'd servers
+
+	Added support for IPv6 licensing
+
+        Added support for new licensing back end
+
+	Added missing tail maillog loader gif
+
+	Ensure license error does not abort display until message is sent
+
+8.15  - Fixed missing external link icon for FontAwesome v5
+
+8.14  - Updated license terms for GDPR compliance
+
+8.13  - Updated UI to FontAwesome v5 (keeping v4 for cPanel versions < 70.29)
+
+8.12  - Fixed issue with cPanel MailControl not showing all user domains
+
+8.11  - Added White/Blacklist buttons in MailControl to action against email
+        address or email domain
+
+	Added ability to download an email in message/rfc822 format in both WHM
+	and cPanel MailControl
+
+	Fixed issue with bootstrap js not being loaded by the cPanel template
+	for cPanel MailControl
+
+8.10  - Fixed Forget and Block IP modals displaying framed output in
+        WHM MailControl
+
+        Ensure session is cleared after encountering an error in WHM
+	MailControl
+
+	Ensure offset is reset on new Search in WHM and cPanel MailControl
+
+	Prevent installer from overwriting mslang.txt
+
+	Added new feature  - multi-language support for the End-User UI.
+	By default, the end-user MSFE UI defaults to using 
+	/usr/mscpanel/mslang.txt. If language specific files are created using
+	/usr/mscpanel/mslang.cc.txt where cc is taken from the cPanel locale,
+	then that language file will be used instead. This way multiple
+	languages can be supported
+
+	Added Blacklist/Whitelist buttons to email view in WHM MailControl for
+	From address
+
+	Converted cPanel UI to use cPanel UAPI instead of the deprecated Api1
+
+	Added new MailControl setting to allow the Search Messages box to
+	always show at the top of the page
+
+	Added new MailControl setting to allow the Bulk Actions box to	always
+	show at the bottom of the page
+
+8.09  - Fixed issue with full-screen MailControl not setting charset to UTF-8
+
+8.08  - Configured UI to fully integrate with cPanel templates without using
+        iframes
+
+	Configured UI to display full cPanel breadcrumbs
+
+	Configured UI to support cPanel v66 WHM UI changes
+
+8.07  - Fixed loop in session security checking in UI
+
+        Modified HTML to cater for major change in cPanel v66
+
+8.06  - Changes for cPanel v64 template
+
+8.05  - Fixed issue with Release (resend) if the original email did not have a
+        To: field
+
+8.04  - Removed mysql_auto_reconnect, improved MailControl stability and added
+	more verbose logging in the MailControl driver
+
+8.03  - Fixed issue when upgrading from a server using the Asynchronous driver
+
+8.01  - Fixed issue when upgrading that could cause problems viewing MySQL data
+        when using the Asynchronous driver
+
+	Fixed issue where changing the DB driver to SQLite created an empty
+	file with no schema
+
+8.00  - Major New Feature: End-User cPanel MailControl. This feature enables
+        end-users access to a limited MailControl interface from within the
+	cPanel MSFE UI. See MSFE > Front-End Settings > End-User Settings > for
+	settings and more information
+
+	End-User settings are now controlled on an "inherit from default" basis
+	allowing more granular control of user settings
+
+        New MailControl setting: Mail Release (direct) allows emails to be
+        placed directly into the specified local email accounts INBOX on the
+	server, bypassing exim for instant delivery
+
+	Modified display Client IP column option in main table to work with 
+	SQLite driver, however column sort is not available unless using a
+	MySQL driver
+
+	Added clientip index to the SQLite schema
+
+	MailWatch Asynchronous MySQL replaced with a combined MailControl
+	Asynchronous MySQL driver. The forked process is now called 
+	"MailScanner: MailControl"
+
+7.39  - SECURITY: Fixed another issue with MailControl database password being
+        exposed
+        
+	Fix "No Scan" message listing and Daily Summary when using sqlite
+        driver
+
+	Support for deprecated cPanel themes (e.g. x3) has been removed
+
+7.38  - SECURITY: Fixed issue with MailControl database password being exposed
+
+        Added NOT REGEXP to the search condition list
+
+        Removed unnecessary settings lookup in MailControl table
+
+7.36  - Modified mssql.pl to trim the sqlite database if in use
+
+7.35  - MailControl: HTML fixes, improved rendering of html encoded text
+
+        MailControl: Improved header parsing for Received: and Subject: records
+
+	Logo change
+
+7.34  - Added error handling around Subject decoding for cases where the
+        MIME encoding format is not recognised
+
+7.33  - MailControl: Sigh. OK, last time  - Found a workaround for all these
+        pesky Subject lines that just works now. So removed the new setting.
+	Done
+
+7.32  - MailControl: Added another Subject line decoder and added an option in
+        MailControl Settings for Standard, Alternative and None
+
+7.31  - MailControl: Added new option in MailControl Settings to Modify
+        database when Learn as Ham/Spam is used. This will change the database
+	and how those messages and statistics are presented. The option is
+	disabled by default
+
+	MailControl: If subject found in database header record, use that and
+	decode any MIME subject. This helps with the display of non-Latin
+	characters
+
+7.30  - MailControl: Statistics html changes to remove excess white space
+
+        MailControl: Added Daily Totals table  and graph to Statistics
+
+	Added icon image for cPanel WHM plugin
+
+7.29  - MailControl: Added fail routine for ajax ip lookups and stability
+        improvement
+
+	Added Storable locking to session files
+
+7.28  - MailControl: Added new setting to configure Statistics ip lookups to be
+	via ajax, inline or disabled
+	
+	MailControl: Statistics ip lookups are now permformed via ajax by
+        default to speed up initial page load
+
+	MailControl: Modified Statistics for relay and spam IP's to use
+	clientip rather than extracting IP's from the header as only this is
+	guaranteed to be true and also speeds up the queries
+
+	MailControl: Added Search option for all Statistics results
+
+7.27  - Improve mail file detection
+
+	Removed redundant file slurps
+
+	Added a new option to MailControl Settings to attempt to fix bayes d/b
+	issues
+
+	Added a new option to MailControl Settings to create a new bayes d/b
+
+7.26  - MailControl added MailControl setting to change the "postmaster"
+        address to a different one for released emails. The procedure also
+	alters the relevant rules files as needed
+
+7.23  - MailControl: Blacklisted spam is no longer listed along with High
+        Scoring spam
+
+	MailControl: Added setting that uses a SpamCop reporting address which
+	adds additional bulk and email options to report an email directly to
+	your SpamCop accopunt if you have one
+
+	Code review  - started addressing perl critic suggestions in
+	mailscanner.cgi
+
+	Removed Bareword file handles in mailscanner.cgi
+
+7.22  - Fixed breakout links on main table modal
+
+        Improvement to Resend (forward) Mail::Sender usage
+
+7.21  - Moved setting "Keep x days of MySQL database entries" to the
+        MailControl Settings page
+
+	Added new setting "Keep x days of Quarantine entries" to the
+        MailControl Settings page. This updates /usr/mailscanner/etc/defaults
+	and is also used to modify that file whenever MSFE is upgraded to keep
+	the setting intact
+
+	Always show the Full Message button in the MailControl email view
+
+	Added feature that auto-selects all the text in Full Message view
+
+	Modified the way virus.scanning.rules works so that virus infected 
+	emails can be released from quarantine
+
+	Ensure msbe.pl is run on upgrade to regenerate rules files
+
+7.20  - Default database driver now set to the MailControl Synchronous MySQL
+        driver on new installations and old (pre-MailControl) upgrades
+
+	Reduced banner padding
+
+7.19  - MailControl: Ensure all external items that are non-standard and unsafe
+        (for display) ASCII characters are displayed as HTML entities
+
+	MailControl: Fix IP Block modal html
+
+	MailControl: Prevent improper wrapping of From/To addresses in table
+
+	MailControl: Correctly align sacore in Statistics table
+
+	MailControl: Fix for locating messages in Quarantine
+
+	MailControl: Fix for batch messages being remembered between processing
+
+7.18  - MailControl: Fix for external breakout link on main page
+
+        MailControl: fix location of IP binary on pre RHEL/CentOS/CL v7 boxes
+
+7.17  - MailControl: Detect local IP's and do not offer them for blocking
+
+        MailControl: Added intermediate page in blocking process to provide
+	more IP address detail and for confirmation and specific reason text
+
+	MailControl: Added breakout button to main table view
+
+	MailControl: Remove port number from IPv6 addresses
+
+7.16  - MailControl: Fix IP lookup in stats not showing
+
+7.15  - MailControl: Added icon next to IP addresses to block in csf
+
+        MailControl: Added MailControl setting for the csf block reason text
+
+	MailControl: Added custom header records to released emails to easily
+	identify them:
+	X-MailControl: release forward
+	X-MailControl: release resend
+
+	MailControl: Add report line for spam RBL hits
+
+	MailControl: Client IP in Email view clickable to Search
+
+7.14  - MailControl: Always show table row total at the top of the table
+
+	MailControl: Modified the low contrast colours
+
+	MailControl: Selecting "More Options > Bulk Actions" auto stops the
+	refresh timer (click refresh icon to restart)
+
+	MailControl: Added Whole Email search option to allow finding text in
+	email files stored in quarantine
+
+7.13  - MailWatch is no longer installed by default with MSFE. There is an
+        option in the MailControl Settings to install it for those that still
+	want to use it while it still works, as well as an uninstall option for
+	existing installations that no longer need it. The install/upgrade
+	process does not remove or alter any existing MailWatch installations
+
+	MailControl: Darkended the low contrast Infected colour
+
+7.12  - Deprecated MailWatch. This will remain available for a while but
+	without any support or development.
+
+	Removed now redundant script
+
+7.11  - Fixed issue of paperclip icon vanishing from relevant emails
+
+        Modified table columns for better dynamic spacing
+
+7.10  - MailControl: Added REGEXP search condition
+
+        MailControl: Fixed issue with MySQL errors not being shown in the
+	browser
+
+	MailControl: The number of search conditions allowed is now
+	configurable in the MailControl Settings
+
+	MailControl: Ensure spaces are respected when showing the Subject field
+
+	Added link from Front-End settings page to MailControl Settings
+
+	MailControl: Added SA and MS lint tests to MailControl menu
+
+	MailControl: Added sortable numeric fields to table
+
+	MailControl: Added new database drivers in addition to the asynchronous
+	MailWatch driver for MySQL. We have add a synchronous MailControl
+	driver for MySQL and a synchronous driver for SQLite. Details can be
+	found in the MailControl Settings. We will be keeping all 3 options
+	available with the ability to switch between them
+
+	MailControl: Added Database Tools to the MailControl Settings that
+	provide: Copy MySQL to SQLite; copy SQLite to MySQL; MySQL
+	backup; SQLite backup; Fix common database problems
+
+	MailControl: Reordered the More Options menu
+
+	MailControl: Added new option to display Client IP column in main table
+	with sort. This option is only available when using a MySQL driver
+
+	MailControl: Added Client IP to search form
+
+7.09  - MailControl: Fixed SQL for retrieving only Clean emails
+
+        MailControl: Fixed issue with Release (resend) where original recipient
+	fields were wrapped
+
+7.08  - Fix for permission by installer
+
+7.07  - Security update for file permissions
+
+	MailControl: Added two more conditions to the search form: NOT EQUALS
+        and NOT CONTAINS
+
+	MailControl: Added breakout button to all modals
+
+7.06  - MailControl: Added Spam Sender Domains and Spam Relay IPs to Statistics
+
+        MailControl: Make Statistics date pickers dropdowns
+
+	MailControl: Better wrapping logic added to the main table, with title
+	set for overflow elements
+
+	MailControl: Fixed spelling of Attachment
+
+	MailControl: Added Save, Load and Delete Searches
+
+	MailControl: Perform local rDNS IP lookups
+
+	MailControl: Added new setting to configure the number of rows per page
+
+	MailControl: Added date selectable Daily Summary from "More Options"
+
+7.05  - MailControl: Moved MailControl settings to a separate page accessed
+        from "More Options"
+
+	MailControl: Added a selection of table palettes: Low, Medium and High
+	contrast
+
+	MailControl: Fixed the type button colors and actions
+
+	MailControl: Added table palette setting
+
+	MailControl: Added Release (forward) inline text setting
+
+	MailControl: Added Release (forward) subject setting
+
+7.04  - Renamed MSFE settings button to "Front-End Settings"
+
+        New Icon
+
+	MailControl: Refactored MailControl to use sessions to allow for more
+	form complexity and retain conditions throughout the whole WHM session
+
+	MailControl: Added multi-select search options
+
+	MailControl: Added more searchable fields
+
+	MailControl: Added FROM and TO conditions for DATE searches
+
+	MailControl: Added "More Options > No Pagination" option
+
+	MailControl: Selecting "More Options > Search Messages" auto stops the
+	refresh timer (click refresh icon to restart)
+
+	MailControl: Do not attempt to lookup private IP addresses
+
+	MailControl: Added more Statistics together with %age Spam and Ham
+
+	MailControl: Make the coloured backgrounds a more vivid to help
+	differentiate them
+
+7.03  - Fixed issue with Release (resend) and downloading of Spam attachments
+
+7.02  - MailControl: Move Refresh button so that it is always visible on the
+        main page
+
+	MailControl: Added refresh timer setting and option to stop the timer
+	in "More Settings". Setting in:
+	WHM > ConfigServer MailScanner FE > MailScanner Front-End
+
+	MailControl: Check for mail "too large" reports
+
+	MailControl: Added some statistics via "More Settings"
+
+	Added MSFE version to page header
+
+	Added upgrade note to the top of the main page if available
+
+7.01  - Remove duplicate entries in MailControl virus report
+
+        Added to MailControl ability to download message attachments in
+	"View Details"
+
+	Added to MailControl a paperclip to show attachements on emails
+
+	Added to MailControl a special listing in the "More options" to list
+	messages with attachments
+
+7.00  - Introducing our in house front-end to the MailScanner log and
+        quarantine: MailControl (BETA). This will soon replace MailWatch. If
+	there are any features that you currently use in MailWatch that you
+	would like to see in MailControl, please let us know
+
+        Other UI improvements
+
+6.05  - SECURITY: Removed the FILE privilege from the mailwatch MySQL user to
+        avoid potential issues with CVE-2016-6662 MySQL vulnerability.
+
+	All users are encouraged to upgrade to this release of MSFE immediately
+
+6.04  - Redesigned cPanel and WHM UI based on Bootstrap
+
+6.03  - Removed use of Cpanel::cPanelFunctions as it is now being withdrawn
+
+	Updated common ConfigServer UI
+
+6.02  - Improvement to backported exim hook
+
+6.01  - Fixed to new "Store Messages" option
+
+        Ensure clamavconnector is not previously forcibly disabled
+
+6.00  - NEW: A new hook has been added to v58 of cPanel and backported by us to
+        previous versions to allow the use of cPanels Clamavconnector
+
+	NEW: All existing installations will automatically migrate to using
+	Clamavconnector when upgraded to v6+ of MSFE. The old custom ClamAV
+	installation is removed
+
+	NEW: Clamavconnector will be automatically installed on new
+	installations MSFE
+
+	Complete rework of all perl scripts to cater for MailScanner v5 and
+        use of Clamavconnector via MSFE. Initiated improved coding standards in
+	all scripts
+
+	Updated WHM UI
+
+	Added UI options to use Clamavconnector
+
+	Added /usr/mscpanel/EximHook.pl to perform ClamAV migration
+
+	Updates required for MailScanner v5
+
+	Add MailWatch Tools link to perform MailScanner Lint test
+
+	Added new option MSFE > MailScanner Performance > Store Messages
+
+	Removed Advanced option "Enable email storing in quarantine" in favour
+	of the new option
+
+5.00  - Upgraded MailWatch to v1.2.0
+
+4.62  - Disable ability to switch MailScanner working if clamd is not running.
+        This is now always the case (see msinstall v2.94)
+
+4.61  - Fix for MailScanner init.d issues in UI introduced in v4.60
+
+4.60  - Added systemd support
+
+4.59  - Relaxed black/whitelist entry checking to cater for new TLDs and IDNs
+
+4.58  - Reverted to manual ClamAV builds due to problems with the configserver
+        repository. You will now have to go into the WHM MailScanner UI to
+	upgrade ClamAV when new versions are released
+
+4.57  - Fixed problem with debug code in Paper Lantern theme integration
+        breaking plugin installation
+
+4.56  - Ensure /usr/local/cpanel/base/frontend/x3/dynamicui/ exists on
+        installation
+
+	Statically modify the Paper Lantern dynamicui configuration so that it
+	adheres to the Feature Manager
+
+4.55  - Updated scripts to use https://download.configserver.com
+
+        Updated WHM front-end to use the new ConfigServer yum repository for ms-clamav
+
+	Have msbe.pl check for split spool dirs and recreate if necessary
+
+4.54  - Fix a problem with theme integration caused by cPanel breaking things
+        in v11.46 and not bothering to release code to EDGE first for testing
+
+4.53  - Updated theme integration for cPanel Paper Lantern
+
+4.52  - Updated scripts to use download.configserver.com
+
+4.51  - Installation update for new cPanel Paper Lantern theme
+
+4.50  - Installation update for new cPanel Paper Lantern theme
+
+        In MSFE UI configuration, autoexpand input text box sizes
+
+	Incorporated the configserver ajax log tailer for /var/log/maillog
+
+        Added full pseudo-breadcrumbs to WHM UI
+
+	Fixed more deprecated PHP errors in MailWatch
+
+4.49  - UI updates
+
+4.48  - Modify MailWatch install to cater for usage of either pass or password
+        in /root/.my.cnf
+
+4.47  - UI button style modifications
+
+4.46  - If /etc/csuibuttondisable exists then the UI buttons will revert for
+        those that cannot cope with the themed ones
+
+4.45  - UI Changes
+
+4.44  - Security  - Restricted access to MailScanner Configuration options that
+        could be exploited on a compromised server
+
+4.43  - Fixed location of msfe.div in WHM UI
+
+        Sanitised user data input to prevent running unauthorised commands via
+	the UI. A user would require root access to exploit this, so risk is
+	low
+	 
+	Changed backtick calls to use Open3
+
+4.42  - Added support for cPanel v11.38.1+ AppConfig addon registration
+
+	NOTE: In accordance with the new conventions for v11.38.1+ AppConfig
+	the url to the msfe WHM plugin will change from
+	/cgi/addon_mailscanner.cgi to /cgi/configserver/mailscanner.cgi. This
+	will only happen with msfe v4.41+ and cPanel v11.38.1+. Older version
+	of msfe will continue to use the old URL. This has no particular
+	relevance to users accessing through WHM, but will affect direct URL
+	access by users or third party applications. The URL to MailWatch will
+	remain the same
+
+4.41  - SECURITY FIX  - Prevent unauthorised access to Mailwatch scripts
+
+        Fixed some more Deprecation issues for PHP in cPanel v11.36+ in mailwatch
+
+4.40  - Fixed Deprecation issues for PHP in cPanel v11.36+ in mailwatch
+
+4.39  - Modified mailwatch to cater for new binary locations in cPanel v11.36+
+
+        Reinstall Razor2::Client::Agent if running cPanel v11.36+ and not
+	installed in the new perl /opt location
+
+        Removed long defunct "Update SpamAssasin Rule Descriptions" link from
+	mailwatch
+
+4.38  - Updated to use the new cPanel 11.36+ integrated perl binary if exists
+
+4.37  - Fixed issue when disabling/enabling some of MailScanner
+        Performance settings causing configuration errors
+
+4.36  - Fixed /etc/cron.d/mscpanel.sh for servers running anacron
+        (i.e. RHE/CentOS v6)
+
+4.35  - Include new MailWatch database creation SQL to cope with changes in 
+        MySQL v5.5 which are not backwards compatible
+
+4.34  - Fixed issue with licensing introduced in v4.33
+
+4.33  - Modified MailWatch.pm to silence the spurious "commit ineffective with
+        AutoCommit enabled" message on MailScanner restart
+
+	Added virtual pagination to MailScanner Configuration WHM UI
+
+	Modified the WHM UI presentation
+
+	Added new option to WHM UI which allows you to toggle whether
+	MailScanner stops (loops) or continues if clamd is not running
+
+	Removed the need to go into MSFE WHM UI and save settings on install
+
+4.31  - Removed use of SafeFile in mssql.pl to fix MailWatch database cleanup
+
+        Added support for CIDR's in White/Blacklist in WHM and cPanel UI's
+
+	Disable In Only scanning option in UI
+
+	Added improvements to ClamAV upgrade procedure to UI
+
+4.30  - Include clamd init script which will be copied and initialised if
+        missing from /etc/init.d/ and clamd exists in /usr/local/sbin/clamd on
+	entry into WHM UI. (init script copy in /usr/mscpanel/clamd)
+
+	Include clamd init script on ClamAV upgrade in UI
+
+	Set clamd init script ulimit to 100M to cope with increasing virus
+	database sizes
+
+	Updated cPanel UI front-end display
+
+4.29  - Moved mailwatch from:
+        /usr/local/cpanel/whostmgr/docroot/3rdparty/mailwatch
+	to:
+	/usr/local/cpanel/whostmgr/docroot/cgi/mailwatch
+	Made mailwatch cPanel 11.25 Security Token aware
+
+	Added new option "MailScanner Update Rules" to front-end which will
+	force an update of the MailScanner rules with end-user settings
+
+	"Access Mailwatch" will now launch into the _blank target rather than a
+	specified name to allow for multiple windows
+
+4.28  - Removed unecessary steps in UI ClamAV Update
+
+        Improved mailwatch mysql database creation stability
+
+	Modified msbe.pl script to skip invalid domain entries in localdomains
+	and secondarymx
+
+	Upgraded msbe.pl use of Cpanel::SafeFile
+
+4.27  - Fixed problem where the action for spam_action_deliver was being used
+        by spamhigh_action_deliver instead of its own setting
+
+4.26  - Modified the mailwatch sql data structure import file to cope with a
+        bug with interpreting comments in the latest versions of MySQL v5
+
+	Modified addon_mailscanner.cgi to remove cPanel process limits when run
+
+4.25  - Updated msfe to use the latest cPanel v11 perl modules
+
+4.24  - Changed chkservd restart from using the init script to using
+	/scripts/restartsrv_chkservd
+
+4.23  - Modified cPanel Msfe.pm to use the new Cpanel::SafeFile module
+        otherwise it fails within cPanel with:
+	[a fatal error or timeout occurred while processing this directive] 
+
+4.22  - Modified MailWatch to better cope with a remote MySQL database
+
+        Removed Dynaloader from Msfe.pm as cPanel no longer provide it in their
+        perl distribution
+
+4.21  - Fixed bug in mailwatch for clamd report statistics
+
+        Added common LWP procedure which provides progress reporting for
+	downloads
+
+4.20  - Added a workaround for a bug in older /usr/local/etc/clamd.conf files.
+        If MailScanner errors with "Cannot find Socket (/tmp/clamd) Exiting!"
+	then upgrade to this version of MSFE and select the new option:
+	"Force ClamAV Update"
+
+4.19  - MSFE now configures MailScanner to use the ClamAV Daemon and installs
+        ClamAV to run clamd
+
+4.18  - Added back the "SA Score" column in the Mailwatch mail list reports
+
+4.17  - Added improved mysql maintenance of the mailwatch database
+
+	Updated Mailwatch to v1.04 (fixes PHP v5 compatibility problems)
+
+	Fixed problem with MailWatch and GeoIP (fixes MySQL v5 compatibility
+	problems)
+
+	Added MailScanner version display in the WHM UI
+
+4.16  - Rewritten license module to remove all reliance on perl versions
+
+4.15  - Modified licensing code to better cope with compiled perl library
+        problems
+
+4.14  - Removed the use of wget
+
+        Modified to use pgrep instead of pidof which is broken on some systems
+
+4.13  - Added fix for the latest cPanel branding changes for the new x3 API
+        which broke the end-user UI for MSFE
+
+4.12  - Added support for MailScanner option to only scan incoming email. The
+        new option can be enabled or disabled in the MailScanner Performance
+	section of MSFE in WHM
+
+4.11  - Modified to work with cPanel v11 new theme API and new WHM theme style.
+        This version will only work with cPanel v11 and cannot be upgraded to
+	from cPanel v10. Third party themes need to properly support the new
+	v11 theme API to work. If MailScanner doesn't appear then you need to
+	contact your third party theme developer and ask them to fully support
+	the cPanel v11 API (i.e. including cPanel Plugins)
+
+	Fixed issue with saving cPanel User Settings in WHM for the alternative
+	email address for the spam forwarder
+
+4.01  - Modified installation routines to better support old OS's (only applies
+        to updates v4.01+)
+
+        Set Virus Scanning default to To: instead of FromOrTo: for new
+	installations
+
+	Added Performance tweak to enable/disable outgoing virus scanning
+
+	Added note to Performance tweak  - if Dangerous Content scanning is
+	disabled, File Attachment checking is also disabled
+
+4.0  - Installation no longer attempts to recreate mailscanner database or
+       update the MailScanner configuration settings if the mailscanner MySQL
+       database already exists
+
+       Added whitelisting to virus.scanning.rules for mails released from
+       quarantine (i.e. sent locally and from the postmaster@hostname address)
+
+       Moved to a simpler installer script using the license server
+
+       Timeout version checks incase version server is unavailable
+
+       Added check for incorrect ClamAV (or clamavconnector) installation which
+       causes MailScanner to be disabled
+
+       Improved support for remote MySQL database servers
+
+3.9  - Fixed problem with installer where Msfe.pm wasn't being copied on
+       installation
+
+       Added new IP licensing scheme. You will need to email your order details
+       and servers IP address to sales@waytotheweb.com to be able to upgrade
+       MSFE in future releases
+
+       Updated post-upgrade message to reflect the new route to the MSFE WHM UI
+
+       Added link to MSFE changelog if an upgrade is available
+
+3.8  - Added new feature allowing you to set cPanel user MailScanner settings
+       from within the WHM UI
+
+       Moved a selection of settings from the MSFE Advanced settings to the
+       main settings display
+
+       Added option to MailScanner Performance to allow disabling of Message
+       Scanning. This can help to process a backlog of email very quickly as no
+       spam or virus scanning is done at all and the queued email is simply
+       handed to exim for delivery
+
+       Changed option to Edit rules to View rules instead for stability reasons
+       since the MSFE jobs wiil overwrite any changes
+
+3.7  - Fixed file permissions mode on MailScanner cron.d job
+
+3.6  - Fixed file ownership issue that affected /etc/cron.d/mscpanel.sh
+
+       Added In/Outgoing Queue View
+
+3.5  - Corrected versioning system
+       Flattened installation procedure
+       Complete rewrite of the WHM MailScanner Front-End
+       
+3.4  - Added MSFE version to the WHM UI
+
+       Added notification in MSFE when a new version becomes available and a
+       link to the download manager
+
+       Changed language file for new installs for "Not set=Default Setting"
+
+       Change Spam white/blacklisting default setting in WHM UI to From:
+       instead of FromOrTo:
+
+       All cPanel UI settings will now take effect whether the Individual
+       Domain Settings have been saved or not (previously they had to be saved
+       before the additional settings would take effect)
+
+3.3  - Fixed problem with the MailScanner front-end cronjob that introduces
+       user changes not reloading MailScanner on some servers
+
+3.2  - Fixed problem with upgrading MailScanner and ClamAV in /tmp by building
+       all source in /usr/src/ and using interactive shell commands
+
+3.1  - Added upgrade buttons for MailScanner and ClamAV if available to WHM
+       Fixed language issue with "Not Set" string translation
+       Modified advice text
+       Setting low/high scoring default now actually changes the default
+       setting in the configuration files  - previously it only changed the
+       default option for end-users
+
+3.0  - Added Advanced Settings to toggle setting for FromOrTo:/From: for both
+       black and white listed entries
+       Modified treatment of black and whitelisted IP entries so that they're
+       always configured as From: in the rulesets (MailScanner requirement)
+
+2.9  - Modified theme pages to play nice with xcontroller
+
+2.8  - Removed some erronious text
+       Changed black/whitelist functions to allow for more free use of
+       wildcards (*) in email addresses as well as allowing users to use IPs
+
+2.7  - Changed black/whitelist functions to act on FromOrTo instead of From
+       listed addresses to help with yahoogroups.com
+
+2.6  - Added an new argument -a to msbe.pl to allow complete rebuilding of all
+       domains on all accounts. mscpanel.pl now calls msbe.pl -a when it runs
+       so that all user defaults are correctly set. This helps with cPanel
+       account restores in the event of transfer or server restore to reset
+       users MailScanner settings without them having to save their settings to
+       do so
+       Added a check in msbe.pl for all domains in that they exist in
+       /etc/localdomains so that rules are not regenerated for domains where
+       the email is off server
+       Added the default setting for non-configured user domains to msbe.pl
+       such that the defaults are used from the WHM MailScanner settings when
+       all rules are regenerated
+       Modified actions when not all users have MailScanner access such that
+       users that are disabled when the list is saved have any MailScanner
+       settings removed and the defailt WHM settings saved instead in the
+       rulesets
+
+       Note: This release requires the MailScanner Script v2.23
+
+2.5  - Removed mailscanner MySQL drop on installation
+       Removed remaining commands linked to msfe.pl (which has been replaced)
+
+
+2.4  - Added restart to crond to ensure that /etc/cron.d/mscpanel.sh is loaded
+       Changed the interaction with cPanel for users from being a perl script
+       to a perl module inline with how cPanel actually functions  - this is to
+       overcome a "feature" that cPanel introduced that broke the old msfe.pl
+       in an EDGE release (since fixed)
+       Enabled some SpamAssassin Tools/Links and message display lines that
+       were missing due to a bug in MailWatch
+
+2.3  - Added creation of the /cells theme subdirectory as a workaround for
+       cPanel not doing it correctly when Cpanel Pro is installed
+       Added warning regarding the use of the dictionary attack ACL for high
+       scoring spam and virus senders
+       Added workaround if using MySQL 4.1 and old passwords
+       Modified WHM front-end to make setting changes simpler
+       Modified WHM front-end to hide advanced settings
+       Added option that will block virus senders using exim_deny
+       Added option to clear down the MailWatch MySQL database every x days,
+       this is done via an updated cron job within /etc/cron.d/mscpanel.sh
+       Allow ip addresses in the server-wide white and blacklists
+       Upgraded MailWatch to v1.0.1
+       Installation of MSFE now results in any existing MailWatch mailscanner
+       database being dropped and recreated empty
+
+       Note: The user account features of MailWatch v1.0.1 have been disabled
+       as they do not apply with the WHM implementation of MSFE
+
+2.2  - Modified SA Exim Deny Blocking to any mail identified on an RBL
+
+2.1  - Added option "Minimum score for Exim Deny blocking" which allows you to
+       automatically add high scoring spam senders to the exim_deny ACL
+       blocking
+
+2.0  - Set default not to store all spam, just normal quarantines items
+
+1.9  - Removed dependence on DBD::mysql v2.1028
+
+1.8  - Added option to enable the cPanel front-end for all accounts (disables
+       per account enabling)
+       Added server-wide black and whitelists
+       Added MailWatch into the distribution
+
+       Note: at least V2.7 of the MailScanner install/upgrade script is
+       required for this release
+
+1.7  - Added block to not allow unprivileged resellers access to MailScanner
+       configuration in WHM
+
+1.6  - Added <pre> tag to MailScanner restart to make it better to see
+       Added support for MailWatch
+
+1.5  - Added configurable front-end deliver option similar to forward
+
+1.4  - Fixed duplicate read open statements
+       Added configuration of MailScanner.conf to WHM interface
+       Moved to separate and new language and configuration files
+       Added front-end settings configuration to WHM interface
+       Added user configurable low/high score settings
+       Added user configurable alternative forward email address for spam
+       Added "Name of the theme file in x/cells/mailscanner/" option in WHM
+
+1.3  - Added per account blacklist and whitelist
+       Added whm add-on to allow enabling and disabling of access to the
+       MailScanner front-end on a per cPanel account basis.
+
+1.2  - Integrated product with init script
+
+1.1  - Modified msbe.pl to silently skip over accounts without home directories
+       Modified msbe.pl to check that MailScanner has restarted
+
+1.0  - Initial Release, nothing more to report

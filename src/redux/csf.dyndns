@@ -1,0 +1,18 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following FQDN's will be allowed through the firewall. This is controlled
+# by lfd which checks the DNS resolution of the FQDN and adds the ip address
+# into the ALLOWDYNIN and ALLOWDYNOUT iptables chains. lfd will check for IP
+# updates every DYNDNS seconds if set.
+#
+# If the FQDN has multiple A records then all of the IP addresses will be
+# processed. If IPV6 is enabled and the perl module Socket6 from cpan.org is
+# installed, then all IPv6 AAAA IP address records will also be allowed.
+#
+# Only list fully qualified domain names (FQDN's) in this file, either on their
+# own to allow full access, or using Advanced Allow/Deny Filters (see
+# readme.txt)
+#

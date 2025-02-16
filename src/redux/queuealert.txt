@@ -1,0 +1,7 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Email queue size alert
+
+Time:     [time]
+
+[text]

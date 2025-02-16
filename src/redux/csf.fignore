@@ -1,0 +1,28 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of files that lfd directory watching will ignore. You
+# must specify the full path to the file
+#
+# You can also use perl regular expression pattern matching, for example:
+# /tmp/clamav.*
+# /tmp/.*\.wrk
+#
+# Remember that you will need to escape special characters (precede them with a
+# backslash) such as \. \?
+#
+# Pattern matching will only occur with strings containing an asterix (*),
+# otherwise full file path matching will be applied
+#
+# You can also add entries to ignore files owner by a particular user by
+# preceding it with user:, for example:
+# user:bob
+#
+# Note: files owned by root are ignored
+
+#/tmp/\.horde
+#/tmp/\.horde/.*
+
+/tmp/yarn--[\d\-\.]+/(node|yarn)

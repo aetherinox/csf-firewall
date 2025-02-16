@@ -1,0 +1,55 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/02_privacy_stripe_armada_gator.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/02_privacy_stripe_armada_gator.ipset
+#   @source         None
+#   @id             02_privacy_stripe_armada_gator_ipset
+#   @uuid           1f48a5d3-df14-3927-b0be-106b86c13083
+#   @updated        Mon 04 Nov 2024 02:26:41 AM UTC
+#   @entries        548 ips
+#                   2 subnets
+#                   38 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+3.104.99.60
+3.114.158.108
+3.114.81.222
+3.224.33.77
+3.94.14.82
+13.113.237.213
+13.115.27.220
+13.228.40.76
+13.236.164.101
+18.136.179.41
+18.138.166.37
+18.141.119.41
+18.180.10.245
+23.22.133.111
+34.233.255.214
+34.247.101.32
+35.72.84.177
+44.235.152.108
+44.236.89.158
+44.240.26.72
+50.19.26.15
+52.210.46.219
+52.64.208.186
+52.64.98.19
+54.151.226.211
+54.163.195.10
+54.169.250.228
+54.170.183.1
+54.187.175.68
+54.191.201.88
+54.194.97.239
+54.203.175.79
+54.206.239.65
+54.228.85.11
+54.66.89.9
+176.34.78.115
+198.137.150.0/24
+198.202.176.0/24

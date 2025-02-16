@@ -1,0 +1,25 @@
+#   the master list is the primary list available in this repository.
+#   it is what most people should choose when looking to stop bad actors
+#   from accessing your servers, as it includes various online services
+#   mixed into one, and with validation in place to ensure that each
+#   ip is indeed associated to a system that has performed actions such
+#   as port sniffing / scanning, ssh brute force attacks, ddos attacks,
+#   dns poisoning, fraud, exploited hosts, email spam, etc.
+#
+#   By using this list, you should not block off access to legitimate
+#   servers such as Cloudflare, Amazon, Microsoft, etc, unless that
+#   server has been rented by an outside party who utilized it to
+#   commit nefarious acts.
+#
+#   auto-generated list which contains the following:
+#       - AbuseIPDB 100% Confidence
+#       - IPThreat.net 70% Confidence
+#       - Port scanners / sniffers
+#	- DDoS Attacks
+#	- Brute-force Attacks (SSH, FTP, etc)
+#	- Web Bots
+#	- Spoofing
+#	- DNS Poisoning
+#	- IoT Target
+#	- Fraudulent activities
+#	- Web App Attacks

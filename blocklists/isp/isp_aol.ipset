@@ -1,0 +1,31 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/isp/isp_aol.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/isp/isp_aol.ipset
+#   @source         https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/isp/isp_aol.ipset
+#   @id             isp_aol_ipset
+#   @uuid           a97ea50e-08b1-3984-a6a4-2cce03dfc7dc
+#   @updated        Sat 15 Feb 2025 08:03:08 AM UTC
+#   @entries        106,496 ips
+#                   3 subnets
+#                   2 lines
+#   @expires        7 days
+#   @category       Internet Service Provider (ISP)
+#
+#   Historic AOL LLC (Internet Service Provider)
+#   Oath Holdings Inc.
+#
+#   Website 	          https://aol.com
+#   Parent organization:  Warner Bros. Discovery
+#   Founded               1985
+#   Registry		  RIPE
+#
+#   This ISP has slowly been winding down over the years, with less and less servers. This is
+#   especially true since the messenger service ICQ was shut down on June 26, 2024.
+#
+#   Be aware that this ASN may disappear in the future as less IP blocks are assigned.
+# #
+
+62.51.0.0/16
+62.78.0.0/19
+195.93.0.0/17

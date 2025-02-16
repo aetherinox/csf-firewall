@@ -1,0 +1,98 @@
+ChangeLog:
+
+v2.05 - Added routine to select from multiple download servers for script
+        updates
+
+v2.04 - Updated license terms for GDPR compliance
+
+v2.03 - Fixed issue with missing bootstrap glyphicons
+
+        Added a few more line feeds in HTML output
+
+v2.02 - Configured UI to fully integrate with cPanel templates without using
+        iframes
+
+	Configured UI to display full cPanel breadcrumbs
+
+	Configured UI to support cPanel v66 WHM UI changes
+
+v2.01 - Modified HTML to cater for major change in cPanel v66
+
+v2.00 - Modify UI to use cPanel templates for v64+
+
+	General code improvements
+
+v1.18 - UI HTML changes 
+
+v1.17 - Redesigned UI based on Bootstrap
+
+        Added upgrade check and button to cse main menu
+
+v1.16 - Removed use of Cpanel::cPanelFunctions as it is now being withdrawn
+
+	Updated common ConfigServer UI
+
+v1.15 - UI updates
+
+v1.14 - Security fix: prevent XSS due to malicious directory/file names
+
+v1.13 - UI button style modifications
+
+v1.12 - If /etc/csuibuttondisable exists then the UI buttons will revert for
+        those that cannot cope with the themed ones
+
+v1.11 - Updated uninstall information
+
+        UI Changes
+
+v1.10 - Added support for cPanel v11.38.1+ AppConfig addon registration
+
+	NOTE: In accordance with the new conventions for v11.38.1+ AppConfig
+	the url to the csf WHM plugin will change from /cgi/addon_cse.cgi to
+	/cgi/configserver/cse.cgi. This will only happen with cse v1.10+ and
+	cPanel v11.38.1+. Older version of cse will continue to use the old
+	URL. This has no particular relevance to users accessing through WHM,
+	but will affect direct URL access by users or third party
+	applications
+
+	Improvements to the Virtual Console output
+
+v1.9 - Updated to use the new cPanel 11.36+ integrated perl binary if exists
+
+v1.8 - Modified cse to remove cPanel process limits when run
+
+       Modified view file routine to allow for large files and limit memory
+       requirements
+
+v1.7 - Updated cse to use the latest cPanel v11 perl modules
+
+       Fixed spurious export errors in the Virtual Console reported in the
+       cPanel error log
+
+v1.6 - Modification to upload file procedure after another change by cPanel
+
+       Improved file viewing when clicking on the file name in the browser
+       window
+
+v1.5 - Modification to upload file procedure for cPanel v11
+
+       Improved the display output on the command console
+
+v1.4 - Modification to work correctly current EDGE
+
+v1.3 - Renamed to ConfigServer Explorer
+
+       Added a PATH declaration for better compatibility in the Console
+
+       Added error and output redirection for better output display in Console
+
+       Increased CHMOD octal from 3 to 4 characters to include the sticky bit
+
+       First free release
+
+v1.2 - Added a workaround for a bug in cPanel's form processing library that
+       prefixes non-IE browser files uploads with "file-"
+
+v1.1 - Added file download by clicking on file name
+
+v1.0 - Initial release

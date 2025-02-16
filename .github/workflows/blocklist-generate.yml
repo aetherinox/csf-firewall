@@ -1,0 +1,603 @@
+# #
+#   @usage              https://github.com/Aetherinox/csf-firewall
+#   @type               github workflow
+#
+#   generates a list of ipsets which can then be used within host files, config server firewall, and various other apps
+#
+#   📄 bl-master.sh               generate master ipset | URLs: VARARG
+#   📄 bl-plain.sh                generate ipset from online plain-text url / page | URLs: VARARG
+#   📄 bl-json.sh                 generate ipset from json formatted web url. requires url and jq query | URLs: SINGLE
+#   📄 bl-htmlip.sh               generate ipset by fetching HTML in web url, pulls only ips with grep rule (cant be changed) | URLs: SINGLE
+#   📄 bl-html.sh                 generate ipset by fetching HTML in web url, does not run its own grep, must be specified in command | URLs: VARARG
+#   📄 bl-block.sh                generate ipset by fetching locally specified file in /blocks/ repo folder
+#   📄 bl-format.sh               generate ipset by from an existing list of IPs. does not generate ips itself. only validates a list provided
+#   📄 bl-spf.sh                  generate ipset by fetching _spf ips from domain
+#
+#   local test requires the same structure as the github workflow
+#       📁 .github
+#           📁 blocks
+#               📁 bruteforce
+#                   📄 01.ipset
+#               📁 privacy
+#                   📄 01.ipset
+#           📁 scripts
+#               📄 bl-master.sh
+#               📄 bl-plain.sh
+#               📄 bl-json.sh
+#               📄 bl-htmlip.sh
+#               📄 bl-html.sh
+#               📄 bl-block.sh
+#               📄 bl-format.sh
+#               📄 bl-spf.sh
+#           📁 workflows
+#               📄 blocklist-generate.yml
+# #
+
+name: "🧱 Blocklist › Generate"
+run-name: "🧱 Blocklist › Generate"
+
+# #
+#   triggers
+# #
+
+on:
+
+    # #
+    #   Trigger > Workflow Dispatch
+    # #
+
+    workflow_dispatch:
+      inputs:
+
+        # #
+        #   true:     runs all actions, even ones not scheduled
+        #   false:    only scheduled tasks will run
+        # #
+  
+        RUN_ALL_ACTIONS:
+          description:  "📑 Run All Actions"
+          required:     true
+          default:      false
+          type:         boolean
+
+    # #
+    #   Trigger > Cron Schedule
+    # #
+
+    schedule:
+        - cron: '0 2,8,14,20 * * *'
+        - cron: '0 0 * * *'
+
+# #
+#   environment variables
+# #
+
+env:
+    BOT_NAME_1:           EuropaServ
+    BOT_NAME_DEPENDABOT:  dependabot[bot]
+
+# #
+#   jobs
+# #
+
+jobs:
+
+    # #
+    #   Job > Setup
+    # #
+
+    blocklist-setup:
+        name: >-
+          📦 Setup
+        runs-on: apollo-x64
+        steps:
+
+            - name: "✅ Start"
+              id: task_setup_start
+              run: |
+                echo "Starting blocklist build script"
+
+            # #
+            #   Job > Checkout
+            # #
+
+            - name: "☑️ Checkout"
+              id: task_setup_checkout
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+
+            # #
+            #   Generate > Install Packages
+            # #
+
+            - name: "🧱 Install Packages"
+              id: task_setup_install
+              run: |
+                  sudo apt-get install -y ipcalc ed html2text whois uuid-runtime autoconf
+
+            # #
+            #   Generate > Cache Packages
+            # #
+
+            - name: "🧱 Cache Packages"
+              uses: awalsh128/cache-apt-pkgs-action@latest
+              with:
+                packages: ipcalc ed html2text whois uuid-runtime
+                version: 1.0
+
+    # #
+    #   Job > Blocklist > Master
+    # #
+
+    blocklist-generate:
+        name: >-
+          📋 Generate › Blocklist
+        runs-on: apollo-x64
+        needs: [ blocklist-setup ]
+        steps:
+
+            # #
+            #   Generate > Checkout
+            # #
+
+            - name: "☑️ Checkout"
+              id: task_blocklist_generate_checkout
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+
+            # #
+            #   Generate > Configure
+            #
+            #   this step installs packages we need to manage ipsets.
+            #       - iprange
+            #         this package allows us to convert ip ranges into a CIDR formatted ip
+            #         10.10.0.1-10.10.0.9  =>   10.10.0.1
+            #                                   10.10.0.2/31
+            #                                   10.10.0.4/30
+            #                                   10.10.0.8/31
+            #       https://github.com/firehol/iprange
+            # #
+
+            - name: "⚙️ Configure"
+              id: task_blocklist_generate_configure
+              run: |
+                  git clone https://github.com/firehol/iprange.git ./.temp/iprange
+                  cd .temp/iprange
+                  ./autogen.sh
+                  ./configure --disable-man
+                  sudo make && make install
+
+            # #
+            #   Generate > Set Template Permissions
+            # #
+
+            - name: "☑️ Set Permissions"
+              id: task_blocklist_generate_perms
+              run: |
+
+                  #   Set Permissions
+                  chmod +x ".github/scripts/bl-master.sh"
+                  chmod +x ".github/scripts/bl-format.sh"
+                  chmod +x ".github/scripts/bl-htmlip.sh"
+                  chmod +x ".github/scripts/bl-html.sh"
+                  chmod +x ".github/scripts/bl-block.sh"
+                  chmod +x ".github/scripts/bl-json.sh"
+                  chmod +x ".github/scripts/bl-plain.sh"
+                  chmod +x ".github/scripts/bl-spf.sh"
+                  chmod +x ".github/scripts/bl-whois.sh"
+                  chmod +x ".github/scripts/bt-transmission.sh"
+                  chmod +x ".github/scripts/update-readme.sh"
+                  chmod +x ".github/scripts/tool-range-iprange.sh"
+
+            # #
+            #   Generate > Set Env Variables
+            # #
+
+            - name: "📦 Set Env Variables"
+              id: task_commit_pre
+              run: |
+                  useragent="${{ vars.API_USERAGENT }}"
+                  echo "USERAGENT=$(echo $useragent)" >> $GITHUB_ENV
+
+            # #
+            #   Generate > Master
+            # #
+
+            - name: "🧱 Generate › Master"
+              id: task_blocklist_generate_master
+              run: |
+                  run_master=".github/scripts/bl-master.sh blocklists/master.ipset ${{ secrets.API_01_FILE_01 }} ${{ secrets.API_01_FILE_02 }} ${{ secrets.API_01_FILE_03 }} ${{ secrets.API_01_FILE_04 }} ${{ secrets.API_01_FILE_05 }} ${{ secrets.API_01_FILE_06 }} ${{ secrets.API_01_FILE_07 }} ${{ secrets.API_01_FILE_08 }} ${{ secrets.API_01_FILE_09 }}"
+                  eval "./$run_master"
+
+                  run_highrisk=".github/scripts/bl-htmlip.sh blocklists/highrisk.ipset ${{ secrets.API_01_HIGHRISK_URL }} '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'"
+                  eval "./$run_highrisk"
+
+            # #
+            #   Generate > Privacy
+            # #
+
+            - name: "🧱 Generate › Privacy"
+              id: task_blocklist_generate_privacy
+              run: |
+
+                  #   Privacy › General
+                  run_general=".github/scripts/bl-block.sh blocklists/privacy/privacy_general.ipset privacy"
+                  eval "./$run_general"
+
+                  #   Privacy › Google
+                  run_google=".github/scripts/bl-json.sh blocklists/privacy/privacy_google.ipset https://developers.google.com/search/apis/ipranges/googlebot.json '.prefixes | .[] |.ipv4Prefix//empty,.ipv6Prefix//empty'"
+                  eval "./$run_google"
+
+                  #   Privacy › Cloudfront
+                  run_cloudfront=".github/scripts/bl-json.sh blocklists/privacy/privacy_cloudfront.ipset https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips 'map(.[]) | sort | .[]'"
+                  eval "./$run_cloudfront"
+
+                  #   Privacy › Bing
+                  run_bing=".github/scripts/bl-json.sh blocklists/privacy/privacy_bing.ipset https://bing.com/toolbox/bingbot.json '.prefixes | .[] |.ipv4Prefix//empty,.ipv6Prefix//empty'"
+                  eval "./$run_bing"
+                
+                  #   Privacy › Fastly
+                  run_fastly=".github/scripts/bl-json.sh blocklists/privacy/privacy_fastly.ipset https://api.fastly.com/public-ip-list 'map(.[]) | .[]'"
+                  eval "./$run_fastly"
+
+                  #   Privacy › Amazon AWS
+                  run_amz_aws=".github/scripts/bl-json.sh blocklists/privacy/privacy_amazon_aws.ipset https://ip-ranges.amazonaws.com/ip-ranges.json '.prefixes[] | select(.service==\"AMAZON\") | .ip_prefix'"
+                  eval "./$run_amz_aws"
+
+                  #   Privacy › Amazon EC2
+                  run_amz_ec2=".github/scripts/bl-json.sh blocklists/privacy/privacy_amazon_ec2.ipset https://ip-ranges.amazonaws.com/ip-ranges.json '.prefixes[] | select(.service==\"EC2\") | .ip_prefix'"
+                  eval "./$run_amz_ec2"
+
+                  #   Privacy › Facebook
+                  run_facebook=".github/scripts/bl-whois.sh blocklists/privacy/privacy_facebook.ipset AS32934"
+                  eval "./$run_facebook"
+
+                  #   Privacy › Ahrefs
+                  curl -sSL -A "${{ env.USERAGENT }}" https://api.ahrefs.com/v3/public/crawler-ips | jq -r '.ips[].ip_address | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_ahrefs.ipset
+
+                  #   Privacy › DuckDuckGo
+                  curl -sSL -A "${{ env.USERAGENT }}" https://raw.githubusercontent.com/duckduckgo/duckduckgo-help-pages/master/_docs/results/duckduckbot.md | grep "^\- " | awk '{gsub("-",""); print}' | awk '{gsub(/ /,""); print}' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_duckduckgo.ipset
+
+                  #   Privacy › Telegram
+                  curl -sSL -A "${{ env.USERAGENT }}" https://core.telegram.org/resources/cidr.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_telegram.ipset
+
+                  #   Privacy › Uptime Robot
+                  curl -sSL -A "${{ env.USERAGENT }}" https://uptimerobot.com/inc/files/ips/IPv4andIPv6.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_uptimerobot.ipset
+
+                  #   Privacy › Pingdom
+                  PINGDOM_IPv4=$(curl -sSL -A "${{ env.USERAGENT }}" https://my.pingdom.com/probes/ipv4)
+                  PINGDOM_IPv6=$(curl -sSL -A "${{ env.USERAGENT }}" https://my.pingdom.com/probes/ipv6)
+                  PINGDOM_LIST="${PINGDOM_IPv4} ${PINGDOM_IPv6}"
+                  echo "$PINGDOM_LIST" | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_pingdom.ipset
+
+                  #   Privacy › Stripe › API
+                  curl -sSL -A "${{ env.USERAGENT }}" https://stripe.com/files/ips/ips_api.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_stripe_api.ipset
+
+                  #   Privacy › Stripe › Webhooks
+                  curl -sSL -A "${{ env.USERAGENT }}" https://stripe.com/files/ips/ips_webhooks.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_stripe_webhooks.ipset
+
+                  #   Privacy › Stripe › Armada Gator
+                  curl -sSL -A "${{ env.USERAGENT }}" https://stripe.com/files/ips/ips_armada_gator.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_stripe_armada_gator.ipset
+
+                  #   Privacy › RSS API
+                  curl -sSL -A "${{ env.USERAGENT }}" https://rssapi.net/ips.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_rssapi.ipset
+
+                  #   Privacy › WebPageTest
+                  curl -sSL -A "${{ env.USERAGENT }}" https://www.webpagetest.org/addresses.php?f=json | jq -r '.data[].addresses[] | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_webpagetest.ipset
+
+                  #   Privacy > Bunny CDN
+                  BUNNYCDN_IPv4=$(curl -sSL -A "${{ env.USERAGENT }}" https://api.bunny.net/system/edgeserverlist/plain)
+                  BUNNYCDN_IPv6=$(curl -sSL -A "${{ env.USERAGENT }}" https://api.bunny.net/system/edgeserverlist/ipv6 | jq -r '.[] | select( . != null )')
+                  BUNNYCDN_LIST="${BUNNYCDN_IPv4} ${BUNNYCDN_IPv6}"
+                  echo "$BUNNYCDN_LIST" | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_bunnycdn.ipset
+
+                  #   Privacy › Cloudflare CDN
+                  CLOUDFLARE_IPv4=$(curl -sSL -A "${{ env.USERAGENT }}" https://www.cloudflare.com/ips-v4)
+                  CLOUDFLARE_IPv6=$(curl -sSL -A "${{ env.USERAGENT }}" https://www.cloudflare.com/ips-v6)
+                  CLOUDFLARE_LIST="${CLOUDFLARE_IPv4} ${CLOUDFLARE_IPv6}"
+                  echo "$CLOUDFLARE_LIST" | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_cloudflarecdn.ipset
+
+                  #   Privacy › AppleBot
+                  curl -sSL -A "${{ env.USERAGENT }}" https://search.developer.apple.com/applebot.json | jq -r '.prefixes | .[] |.ipv4Prefix//empty,.ipv6Prefix//empty' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_applebot.ipset
+
+                  # Privacy › Blizzard
+                  run_blizzard=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_blizzard.ipset http://list.iblocklist.com/?list=ercbntshuthyykfkmhxc 'at&t'"
+                  eval "./$run_blizzard"
+
+                  # Privacy › Activision
+                  run_activision=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_activision.ipset http://list.iblocklist.com/?list=gfnxlhxsijzrcuxwzebb"
+                  eval "./$run_activision"
+
+                  # Privacy › Electronic Arts & IGN
+                  run_ea_ign=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_electronicarts_ign.ipset http://list.iblocklist.com/?list=ejqebpcdmffinaetsvxj"
+                  eval "./$run_ea_ign"
+
+                  # Privacy › Nintendo
+                  run_nintendo=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_nintendo.ipset http://list.iblocklist.com/?list=pevkykuhgaegqyayzbnr"
+                  eval "./$run_nintendo"
+
+                  # Privacy › Pandora
+                  run_pandora=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_pandora.ipset http://list.iblocklist.com/?list=aevzidimyvwybzkletsg"
+                  eval "./$run_pandora"
+
+                  # Privacy › Sony Entertainment
+                  run_sony=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_sony.ipset http://list.iblocklist.com/?list=tukpvrvlubsputmkmiwg"
+                  eval "./$run_sony"
+
+                  # Privacy › Punkbuster
+                  run_punkbuster=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_punkbuster.ipset http://list.iblocklist.com/?list=zvwwndvzulqcltsicwdg"
+                  eval "./$run_punkbuster"
+
+                  # Privacy › Riot Games
+                  run_riot_games=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_riot_games.ipset http://list.iblocklist.com/?list=sdlvfabdjvrdttfjotcy"
+                  eval "./$run_riot_games"
+
+                  # Privacy › Pirate Bay
+                  run_piratebay=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_piratebay.ipset http://list.iblocklist.com/?list=nzldzlpkgrcncdomnttb"
+                  eval "./$run_piratebay"
+
+                  # Privacy › Steam
+                  run_steam=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_steam.ipset http://list.iblocklist.com/?list=cnxkgiklecdaihzukrud"
+                  eval "./$run_steam"
+
+                  # Privacy › Unisoft
+                  run_ubisoft=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_ubisoft.ipset http://list.iblocklist.com/?list=etmcrglomupyxtaebzht"
+                  eval "./$run_ubisoft"
+
+                  # Privacy › Xfire
+                  run_xfire=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_xfire.ipset http://list.iblocklist.com/?list=ppqqnyihmcrryraaqsjo"
+                  eval "./$run_xfire"
+
+            # #
+            #   Generate > Spam
+            # #
+
+            - name: "🧱 Generate › Spam"
+              id: task_blocklist_generate_spam
+              run: |
+                  run_spamhaus=".github/scripts/bl-plain.sh blocklists/spam/spam_spamhaus.ipset ${{ secrets.API_03_SPAM_SPAMHAUS_URL }}"
+                  eval "./$run_spamhaus"
+
+            # #
+            #   Generate > Spam > Forums
+            #
+            #   only updated once per day (at 1am UTC)
+            # #
+
+            - name: "🧱 Generate › Spam › Forums (1/day)"
+              id: task_blocklist_spam_generate_forums
+              if: (github.event_name == 'schedule' && github.event.schedule == '0 0 * * *') || inputs.RUN_ALL_ACTIONS
+              run: |
+                  chmod +x ".github/scripts/bl-plain.sh"
+                  run_forums=".github/scripts/bl-plain.sh blocklists/spam/spam_forums.ipset https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/stopforumspam_7d.ipset"
+                  eval "./$run_forums"
+
+            # #
+            #   Generate > Internet Service Provider
+            #
+            #   @resources      https://ftp.arin.net/info/asn.txt
+            #                   https://networksdb.io
+            #                   https://rapidapi.com
+            #                   https://ip.guide/
+            #                   https://2ip.io
+            #                   https://ip2location.com
+            #                   https://ipqualityscore.com
+            #                   https://ipinfo.io
+            #                   https://radb.net
+            #                   https://bgpview.io
+            #   @info           script on another server is responsible for ensuring this workflow list is kept up to date with the correct ASN.
+            #                   we use numerous resources to compare ASNs to see which ones are active and which ones have been migrated.
+            # #
+
+            - name: "🧱 Generate › ISP"
+              id: task_blocklist_generate_isp
+              run: |
+                  # ISP › AOL
+                  run_isp_aol=".github/scripts/bl-block.sh blocklists/isp/isp_aol.ipset isp/aol.ipset"
+                  eval "./$run_isp_aol"
+
+                  # ISP › ATT
+                  run_isp_att=".github/scripts/bl-whois.sh blocklists/isp/isp_att.ipset AS7018"
+                  eval "./$run_isp_att"
+
+                  # ISP › Cablevision | Later merged with Suddenlink
+                  run_isp_cablevision=".github/scripts/bl-whois.sh blocklists/isp/isp_cablevision.ipset AS6128 AS13490 AS19720"
+                  eval "./$run_isp_cablevision"
+
+                  # ISP › Suddenlink / Altice / Optiumum
+                  run_isp_suddenlink_optimum=".github/scripts/bl-json.sh blocklists/isp/isp_suddenlink_altice_optimum.ipset https://ip.guide/AS19108 '.routes | .v4//empty,.v6//empty | .[]'"
+                  eval "./$run_isp_suddenlink_optimum"
+
+                  # ISP › Frontier Communications | https://networksdb.io/ip-addresses-of/cox-communications-inc
+                  run_isp_frontier=".github/scripts/bl-whois.sh blocklists/isp/isp_frontier_communications.ipset AS3593 AS5650 AS7011 AS26127 AS30064 AS32587"
+                  eval "./$run_isp_frontier"
+
+                  # ISP › Charter & Spectrum (Previously Time Warner Cable)
+                  run_isp_charter_spectrum=".github/scripts/bl-whois.sh blocklists/isp/isp_charter_spectrum_timewarnercable.ipset AS7843 AS11351 AS12271 AS20001 AS20115 AS3456 AS63365"
+                  eval "./$run_isp_charter_spectrum"
+
+                  # ISP › Comcast
+                  run_isp_comcast=".github/scripts/bl-whois.sh blocklists/isp/isp_comcast.ipset AS7922 AS7015 AS36732 AS36196 AS33651 AS33650 AS33542 AS33491 AS33490 AS33489 AS33351 AS33287 AS23266 AS23253 AS22909 AS22258 AS21508 AS20214 AS16748 AS14668 AS14042 AS13385 AS13367 AS11025"
+                  eval "./$run_isp_comcast"
+
+                  # ISP › Embarq
+                  run_isp_embarq=".github/scripts/bl-whois.sh blocklists/isp/isp_embarq.ipset AS22186 AS32855 AS2379 AS3447 AS4212 AS5778 AS6222 AS6367 AS11398 AS11530 AS13787 AS14905 AS14910 AS14921 AS16718 AS17402 AS18494 AS22186 AS32855"
+                  eval "./$run_isp_embarq"
+
+                  # ISP › Qwest
+                  run_isp_qwest=".github/scripts/bl-whois.sh blocklists/isp/isp_qwest.ipset AS3908 AS3909 AS3910 AS3951 AS4015 AS4911 AS6225 AS6226 AS6227 AS394190"
+                  eval "./$run_isp_qwest"
+
+                  # ISP › Sprint
+                  run_isp_sprint=".github/scripts/bl-whois.sh blocklists/isp/isp_sprint.ipset AS1239 AS150389 AS1789 AS1790 AS1791 AS1792 AS1793 AS1794 AS1795 AS197226 AS2014 AS2050 AS2053 AS206963 AS21288 AS2938 AS2942 AS2959 AS2981 AS3647 AS3648 AS3649 AS3650 AS3651 AS3652"
+                  eval "./$run_isp_sprint"
+
+                  # ISP › Verizon | https://networksdb.io/search/org/verizon
+                  run_isp_verizon=".github/scripts/bl-whois.sh blocklists/isp/isp_verizon.ipset AS701 AS702 AS1321 AS2125 AS7021 AS8385 AS6066 AS6167 AS9055 AS12367 AS22521"
+                  eval "./$run_isp_verizon"
+
+                  # ISP › Cox Communications | https://networksdb.io/ip-addresses-of/cox-communications-inc
+                  run_isp_cox=".github/scripts/bl-whois.sh blocklists/isp/isp_cox_communications.ipset AS31771 AS22773 AS13432 AS6298 AS12064 AS13493 AS15218 AS22318 AS25904 AS26204"
+                  eval "./$run_isp_cox"
+
+                  # ISP › SpaceX Starlink
+                  run_isp_starlink=".github/scripts/bl-whois.sh blocklists/isp/isp_spacex_starlink.ipset AS14593 AS397763 AS27277 AS142475"
+                  eval "./$run_isp_starlink"
+
+            # #
+            #   Generate > Geographical > Geolite2 > Setup
+            #
+            #   this step should only be ran once per day (at 1am UTC).
+            #   The vars defined below are used for caching. The current day of the year + year are calculated, this allows
+            #   the same cached files to be used in a 24 hour period. When the day of the year changes, a new set of geo files will
+            #   be updated.
+            #
+            #   CACHE VARS:           year_week       outputs the current week of the year, and year
+            #                                         51_2024
+            #
+            #                         year_day        outputs the current day of the year, and year
+            #                                         308_2024
+            # #
+
+            - name: "🧱 Geographical › GeoLite2 (Setup)"
+              id: task_blocklist_geographical_generate_setup
+              if: (github.event_name == 'schedule' && github.event.schedule == '0 0 * * *') || ( github.event_name == 'workflow_dispatch' && inputs.RUN_ALL_ACTIONS == 'true' )
+              run: |
+                  echo "year_week=$(date +'%U_%Y')" >> $GITHUB_ENV
+                  echo "year_day=$(date +'%j_%Y')" >> $GITHUB_ENV
+
+            # #
+            #   Generate > Geographical > Geolite2 > Cache
+            #
+            #   uses the same cache in a 24 hour period.
+            #
+            #   @output               cache-hit
+            #                         only run step if cache hit found
+            #                         if: steps.task_blocklist_geographical_generate_cache.outputs.cache-hit == 'true'
+            # #
+
+            - name: "🧱 Geographical › GeoLite2 (Cache)"
+              id: task_blocklist_geographical_generate_cache
+              uses: actions/cache@v4
+              if: steps.task_blocklist_geographical_generate_setup.outcome == 'success'
+              with:
+                  path: .github/.temp
+                  key: cache-${{ runner.os }}-geolite2-${{ env.year_week }}
+
+            # #
+            #   Generate > Geographical > Geolite2 > Build
+            # #
+
+            - name: "🧱 Geographical › GeoLite2 (1/day)"
+              id: task_blocklist_geographical_generate_geolite2
+              if: steps.task_blocklist_geographical_generate_setup.outcome == 'success'
+              run: |
+                  chmod +x ".github/scripts/bl-geolite2.sh"
+                  run_geolite2=".github/scripts/bl-geolite2.sh -l ${{ secrets.API_GEOLITE2_KEY }}"
+                  eval "./$run_geolite2"
+
+            # #
+            #   Generate > Transmission
+            # #
+
+            - name: "🧱 Generate › Transmission"
+              id: task_blocklist_generate_transmission
+              run: |
+                  run_bt=".github/scripts/bt-transmission.sh"
+                  eval "./$run_bt"
+
+            # #
+            #   Generate  > Artifact > Upload
+            # #
+
+            - name: "🎁 Generate › Upload Artifact"
+              id: task_blocklist_generate_artifact_upload
+              uses: actions/upload-artifact@v4
+              with:
+                  name: blocklist-latest
+                  path: ./
+                  retention-days: 1
+
+    # #
+    #   Job > Commit
+    # #
+
+    blocklist-commit:
+      name: >-
+        📋 Commit
+      runs-on: apollo-x64
+      needs: [ blocklist-setup, blocklist-generate ]
+      steps:
+
+            # #
+            #   Generate > Checkout
+            # #
+
+            - name: "☑️ Commit › Checkout"
+              id: task_blocklist_master_checkout
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+
+            # #
+            #   Generate  > Artifact > Download
+            # #
+
+            - name: "🎁 Commit › Download Artifact"
+              id: task_commit_artifact_download
+              uses: actions/download-artifact@v4
+              with:
+                  name: blocklist-latest
+                  path: ./
+
+            # #
+            #   Commit > Precommit
+            # #
+
+            - name: "📦 Commit › Pre-commit"
+              id: task_commit_pre
+              run: |
+                  now=$(date -u '+%m/%d/%Y %H:%M')
+                  commit_label="Sync" >> $GITHUB_ENV
+                  commit_message="\`️️🔒 $commit_label 🔒\` \`$now UTC\`" >> $GITHUB_ENV
+                  echo "COMMIT_MESSAGE=$(echo $commit_message)" >> $GITHUB_ENV
+                  echo "NOW=$(echo $now)" >> $GITHUB_ENV
+
+            # #
+            #   Update README
+            # #
+
+            - name: "📄 Update README"
+              id: task_commit_readme_update
+              run: |
+                  chmod +x ".github/scripts/update-readme.sh"
+                  run_readme=".github/scripts/update-readme.sh README.md"
+                  eval "./$run_readme"
+
+            # #
+            #   GPG Key
+            # #
+
+            - name: "📦 Commit › GPG Key"
+              id: task_commit_gpg
+              uses: crazy-max/ghaction-import-gpg@v6
+              with:
+                  gpg_private_key: ${{ secrets.ADMINSERV_GPG_KEY_ASC }}
+                  passphrase: ${{ secrets.ADMINSERV_GPG_PASSPHRASE }}
+                  git_user_signingkey: true
+                  git_commit_gpgsign: true
+
+            # #
+            #   Commit > Commit
+            # #
+
+            - name: "📦 Commit › Execute"
+              id: task_commit_execute
+              uses: stefanzweifel/git-auto-commit-action@v5
+              with:
+                  commit_message: ${{ env.COMMIT_MESSAGE }}
+                  commit_author: "${{ steps.task_commit_gpg.outputs.name }} <${{ steps.task_commit_gpg.outputs.email }}>"
+                  commit_user_name: ${{ steps.task_commit_gpg.outputs.name }}
+                  commit_user_email: ${{ steps.task_commit_gpg.outputs.email }}

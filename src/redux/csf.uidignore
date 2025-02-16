@@ -1,0 +1,9 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of user ID's (UID) that are ignored by the User ID
+# Tracking feature - UID_INTERVAL
+#
+# For example, to ignore all root connections add 0 on a line by itself

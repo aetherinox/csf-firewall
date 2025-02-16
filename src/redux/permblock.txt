@@ -1,0 +1,10 @@
+From: root
+To: root
+Subject: lfd on [hostname]: [ip] blocked permanently
+
+Time:            [time]
+IP:              [ip]
+Temporary Blocks: [count]
+
+Temporary blocks that triggered the permanent block:
+[blocks]

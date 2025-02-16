@@ -1,0 +1,1 @@
+https://core.telegram.org/resources/cidr.txt

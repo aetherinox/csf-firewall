@@ -1,0 +1,3 @@
+#   This list contains ip addresses associated with Apple bots / crawlers.
+#   
+#   These are useful if you do not wish for Apple to crawl your data.

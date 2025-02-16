@@ -1,0 +1,11 @@
+From: root
+To: root
+Subject: lfd on [hostname]: [ip] blocked for port scanning
+
+Time:    [time]
+IP:      [ip]
+Hits:    [count]
+Blocked: [temp]
+
+Sample of block hits:
+[blocks]

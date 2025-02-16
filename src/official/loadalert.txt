@@ -1,0 +1,55 @@
+From: root
+To: root
+Subject: lfd on [hostname]: High [loadavg] minute load average alert - [reportload]
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="------------[boundary]"
+
+This is a multi-part message in MIME format.
+--------------[boundary]
+Content-Type: text/plain;
+Content-Transfer-Encoding: 7bit
+
+Time:                    [time]
+1 Min Load Avg:          [loadavg1]
+5 Min Load Avg:          [loadavg5]
+15 Min Load Avg:         [loadavg15]
+Running/Total Processes: [totprocs]
+
+--------------[boundary]
+Content-Type: text/plain;
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename="ps.txt"
+
+Output from ps:
+[processlist]
+
+--------------[boundary]
+Content-Type: text/plain;
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename="vmstat.txt"
+
+Output from vmstat:
+[vmstat]
+
+--------------[boundary]
+Content-Type: text/plain;
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename="netstat.txt"
+
+Output from netstat:
+[netstat]
+
+--------------[boundary]
+Content-Type: text/html;
+ name="apachestatus.html"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename="apachestatus.html"
+
+[apache]
+
+--------------[boundary]--

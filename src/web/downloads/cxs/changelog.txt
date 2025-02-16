@@ -1,0 +1,3217 @@
+ChangeLog:
+
+13.09  - Added 50% speedup for the Universal decoder
+
+         Improvements to the Universal decoder ability to detect encoded
+	 scripts
+
+	 Added check for /public_html dir on Plesk for migrated cPanel accounts
+         when using --www
+
+13.08  - Added SHA256 support
+
+         Added support for a significantly large database of SHA256
+	 fingerprints
+
+13.07  - Implemented an improved email wrapper
+
+         Improved SSL update procedure
+
+	 Remove InterWorx restrictions on viewing the UI in NodeWorx
+
+	 Added official release and full support on DirectAdmin Ubuntu/Debian
+
+	 Fixed version checking for Plesk
+
+13.06  - Fixed issue with using Text::Wrap
+
+13.05  - Use Text::Wrap to ensure email line lengths are within specifications
+
+13.04  - Added new advanced PHP decoder
+
+13.03  - Fixed issue with full scan reports failing to be produced when
+         multiple full scans are run
+
+13.02  - Improved thread report generation stability
+
+         Improvements to sversionscan matching
+
+	 Fingerprint Database refresh
+
+13.01  - Added command to remove pure-ftpd configuration from local pure-ftpd
+         cPanel config file. This will only affect upgrades from pre v13.0.
+	 If the upgrade to 13.00 has already been done, then this will have to
+	 be done manually using the root shell command:
+         sed -i "/^CallUploadScript/d" /var/cpanel/conf/pureftpd/local
+
+	 Fixed --threads [auto] calculation on servers with 4 or fewer CPUs
+
+13.00  - NOTICE: Removed the long deprecated cxs integration with pure-ftpd.
+	 If this option was still installed and enabled, then this version of
+	 cxs will automatically stop and uninstall the pure-ftpd integration
+	 with cxs and cannot be re-enabled
+
+         Fixed issue with missing Account Creation Hook with cPanel install
+         which prevented cxswatch detecting newly created cPanel accounts
+
+	 Released a new and improved Bayesian database
+
+	 Added new probability level of "veryhigh" which is now the default
+	 level for --paction [level] if B is added to quarantine/delete options
+
+         Renamed --[no]bayes to --[no]probability
+	 Renamed --breport [level] to --preport [level]
+	 Renamed --baction [level] to --paction [level]
+	 Note: the old commands continue to work as synonyms so no changes to
+	 existing installations is needed
+
+	 Added Probability results to the Scan Summary if enabled
+
+12.06  - Improved memory overhead when processing tarballs
+
+         Improved memory overhead when processing zip files
+
+	 Ensure /etc/cxs/sessions is created
+
+	 Allow "--threads 1" to help memory footprint
+
+	 Modified --threads [num] to add an "auto" option, i.e.
+	 --threads auto. This will calculate an optimum number of threads on
+	 servers with more than 4 CPUs. See docs for more information
+
+	 Updated documentation to specify processor threads, not cores
+
+	 Fixed --threads [num] report post-processing sorting
+
+12.05  - Added CWP ModSecurity integration via UI
+
+         DBI finish added before disconnect to discard any active fetches
+
+	 Added workaround for iOS issue with bootstrap modals
+
+12.04  - Modified cxs on DA to set defapache to "webapps" by default
+
+         Improve handling of corrupt database and exit cleanly
+
+	 Modified behaviour of --cgi to force enable --qlocal if mod_security
+	 run as a user other than --defapache [user]
+
+	 Fixed issue where os.pl was not running to check for perl modules on
+	 install
+
+	 Added diagnostic information for --cgi issues
+
+12.03  - DirectAdmin moved from BETA to RELEASE for RHEL/CentOS/CL
+
+	 Added new option --vmmax [kB]. This will abort a scan if the VmRSS
+         size of the process exceeds this value to prevent memory exhaustion.
+	 By default it is set to 2000000 kB = 2GB
+
+	 Modified cxs reputation reporting to prevent overloading
+
+	 Improved DA session checking
+
+	 Added -u to unzip UI commands
+
+	 Protect from logarithm divide by 0 error
+
+	 Improved DA UI display
+
+12.02  - Fixed issue using +/- in --options causing the UI wizard to fail
+
+         Fixed issue with --cgi depending on the directory location of the
+	 ModSecurity SecTmpDir setting
+
+12.01  - Indepth performance profiling and code review
+
+	 Performance improvements to scanning code can now reduce overall scan
+	 times by up to 20%-80% depending on type and amount of data scanned
+
+	 Improvements to the the Universal Decoder including base64 mapping and
+	 significant performance improvements
+
+	 The option --voptions [] has been removed as it provided little
+	 performance benefit with reduced efficacy
+
+	 Improved plesk user detection based on the hosting and sys_user tables
+	 in the psa D/B
+
+	 Updated documentation
+
+         NOTICE: We are deprecating support for Virtuozzo/OpenVZ servers.
+         Future	releases will not take into consideration those platforms which
+	 have become onerous to support. The software application may continue
+	 to work but support and functionality is no longer guaranteed
+
+11.14  - Modified CyberPanel installation to support move to python3
+
+11.13  - Fixed issue with master fingerprint ignore
+
+11.12  - Fixed issue with HTML report output sanitisation which caused cxs
+         Watch child to die and break HTML email report rendering
+
+	 Additional improvements to HTML report output sanitisation
+
+11.11  - Advanced PHP decoder improvements and speedups for select decoders
+
+         Updates for RHEL/CL/CentOS v8 support
+
+	 Improved HTML report output sanitisation
+
+11.10  - Added new advanced PHP decoder
+
+11.09  - Added official BETA CyberPanel support. While this should now
+         integrate and work on CyberPanel, there may be bugs which should be
+	 reported and features either missing or not working correctly. We do
+	 not offer free installation on CyberPanel until it is out of BETA
+	 (only tested on CentOS v7). Note: Support is ONLY for non-EOL
+	 RHEL/CentOS/CloudLinux and CyberPanel v1.9.1+
+
+	 Added alternative path check for systemctl and the cron service for
+         some Debian versions
+
+	 Modified systemd service to cater for RHEL/CentOS v7.7 pidfile symlink
+	 check changes
+
+11.08  - Corrected pdir examples in cxs.ignore.example
+
+         Fixed service restart via UI for RHEL/CentOS v6 servers
+
+11.07  - On DirectAdmin, enabled UI support for OpenLiteSpeed/LiteSpeed
+         configuration
+
+	 Updated --test to include cxscgi configuration on non-cPanel servers
+
+	 Modified install.txt to make it even clearer that the EPEL is needed
+	 on most systems for the required perl modules
+
+	 Improved domain document root lookups for Plesk when using --www
+
+11.06  - Fixed issue with Plesk installer and confirmed Obsidian BETA support
+
+11.05  - InterWorx support is now out of beta and fully supported for the latest
+         InterWorx on RHEL/CentOS/CL v6.* and v7.*
+
+         Removed redundant piping in various panel polling children
+
+         Fixed issue with IPv6 and retrieving the bayes database
+
+	 Main decoder regex improvements
+
+	 Include additional perl modules in the install.txt as well as sqlite
+
+	 Successfully tested on CentOS v8.0
+
+11.04  - Moved cxs in InterWorx to the Advanced section in Plugins UI
+
+         Improved system binary location checks
+
+	 Deprecated pure-ftpd integration. The system provided for by pure-ftpd
+	 introduces excessive performance limitations and is of limited use
+	 compared to using cxs watch
+
+	 Added cxs information option to UI for support purposes (it runs
+	 cxs --test)
+
+11.03  - Modified Plesk Onyx installation to check for supported OS and Plesk
+         version for UI extension. If you want to disable installation of the
+	 Plesk UI extension, you can create a touch file as:
+	 /etc/cxs/cxs.disableui
+
+	 Improvements to PHP string decoding
+
+	 Updated control panel dependent install.txt files
+
+	 Improvements to submitting exploits using --wttw (version check)
+
+11.02  - Added official BETA Plesk support. While this should now integrate
+         and work on Plesk, there may be bugs which should be reported and
+	 features either missing or not working correctly. We do not offer free
+	 installation on Plesk until it is out of BETA (only tested on
+	 CentOS v7). Note: Support is ONLY for non-EOL RHEL/CentOS/CloudLinux
+	 and Plesk Onyx v17.8.10+
+
+         Added official BETA VestaCP support. While this should now integrate
+         and work on VestaCP, there may be bugs which should be reported and
+	 features either missing or not working correctly. We do not offer free
+	 installation on VestaCP until it is out of BETA (only tested on
+	 CentOS v7). Note: Support is ONLY for non-EOL RHEL/CentOS/CloudLinux
+	 and VestaCP v0.9.8+
+
+         Added official BETA CentOS Web Panel (CWP) support. While this should
+	 now integrate and work on CWP, there may be bugs which should be
+	 reported and features either missing or not working correctly. We do
+	 not offer free installation on CWP until it is out of BETA (only
+	 tested on CentOS v7). Note: Support is ONLY for non-EOL
+	 RHEL/CentOS/CloudLinux and CWP v0.9.8+
+
+	 Improvements to Universal Decoder
+
+	 Improvements to InterWorx and DirectAdmin BETA integration
+
+11.01  - Improved UI display in DirectAdmin
+
+         Added alternative clamd location to UI for DirectAdmin
+
+	 Added ModSecurity hook configuration to UI for DirectAdmin
+
+	 Updated POD to reflect support for DirectAdmin and InterWorx
+
+	 Created cronjob to check for new product versions for the UI
+	 (/etc/cron.daily/csget). A manual check is still available if needed.
+	 This does not affect the daily upgrade check if enabled
+
+         Fixed PATH issue in DirectAdmin installer when used from within the UI
+	 to upgrade
+
+11.00  - Added official BETA InterWorx support. While this should now integrate
+         and work on InterWorx, there may be bugs which should be reported and
+	 features either missing or not working correctly. We do not offer free
+	 installation on InterWorx until it is out of BETA (only tested on
+	 CentOS v7). Note: Support is ONLY for non-EOL RHEL/CentOS/CloudLinux
+
+         Added official BETA DirectAdmin support. While this should now integrate
+         and work on DirectAdmin, there may be bugs which should be reported and
+	 features either missing or not working correctly. We do not offer free
+	 installation on DirectAdmin until it is out of BETA (only tested on
+	 CentOS v7). Note: Support is ONLY for non-EOL RHEL/CentOS/CloudLinux
+
+	 Fixed issue with base64 encoding of entries for the database queueing 
+	 mechanism that made the db update process fail via the cron job and
+	 when entering cxs Control
+
+	 Improved error trapping in SQL command execution
+
+         Fixed issue with ajax calls not always returning completely
+
+	 Removed deprecated Quarantine view in UI
+
+	 Reworked DirectAdmin UI to display within the parent template
+
+	 Install install.txt if perl module checks fail for installation
+	 details
+
+	 Ensure Linux::Inotify2 perl module is installed
+
+	 Updated install.txt information with more detailed instructions
+
+10.07  - Fixed potential loop in one type of decoder
+
+10.06  - Ensure UI errors are displayed in browser to avoid blank pages
+
+         Decoder improvements: Improve exploit detection
+
+	 Decoder improvements: Added decoding of $GLOBALS[] exploits
+
+	 Decoder improvements: Added variable value replacement for quoted
+	 alphanumeric values
+
+	 Decoder improvements: Improvements to --YTIDY output
+
+10.05  - Speed and resource improvements to universal decoder
+
+         Improved resilience of universal decoder when attempting to detect
+	 encoded data source
+
+10.04  - Improvements to detection of comment code obfuscation exploits
+
+10.03  - Modified reputation system to not report distributed attacks
+
+10.02  - Remove the internal --downloadserver command from the CLI scan reports
+
+10.01  - Added new option --threads [num]. This advanced option allows cxs to
+         utilise multiple CPU cores when performing a scan under specific
+	 conditions. See the documentation for more information
+
+	 Improved detection when clamd is not running which forced cxs to abort
+	 with a socket error
+
+10.00  - Added new option to allow in-place quarantine by renaming file.
+         --qrename renames a file based on the new --qroptions [] list. The
+	 file remains within the users directory but with a new file extension.
+	 See the documentation for more information
+
+         Added new option to allow in-place quarantine by chmoding file.
+         --qchmod [perms] changes the file permissions provided based on the
+	 new --qcoptions [] list. The file remains within the users directory
+	 but with the new file permissions. See the documentation for more
+	 information
+
+         Improved detection of corrupt license file. If the license file is
+         corrupt it will be removed and a new one retrieved next time cxs is
+	 invoked under the root account
+	 
+         Added routine to select from multiple download servers for script
+	 updates
+
+	 Fixed bug with empty string for --qoptions and --doptions
+
+9.26   - Fixed issue with internal fingerprint ignore
+
+9.25   - Create /var/log/cxsreports/ on installation/upgrade
+
+         Change documentation to use /var/log/cxsreports/ for --report [file]
+
+	 Change cxs-cron for new installations to create logs in
+	 /var/log/cxsreports/
+
+	 Added direct link to Scan Reports in the UI for previous scan reports
+	 if logged in the database
+
+	 Fixed FA5 HTML icon
+
+9.24   - Improvements to Magento v2 version matching
+
+         Fix for SupportPal version matching
+
+	 Replace non-ascii characters in decoder output to improve readability
+
+9.23   - Modifications to Magento v2 version matching
+
+9.22   - Improvements to PHP decoding and Universal decoder
+
+9.21   - Reworked storage and retrieval of fingerprints from database
+
+         Fixed cxs cron and improved diagnostic output for support
+
+9.20   - Modified cPanel account creation detection for cxswatch to use a
+         cPanel hook rather than scanning /var/cpanel/users/
+
+9.19   - Universal decoder improvements
+
+9.18   - Updating improvements
+
+9.17   - Improvements to IPv6 licensing
+
+9.16   - Startup speed improvements on NAT'd servers
+
+         Added alarm timeout on process termination to ensure that it does exit
+
+	 Ensure --comment "" is used when using submitting an exploit using
+	 --force
+
+         Added support for IPv6 licensing
+
+         Added support for new licensing back end
+
+9.14   - Improvements to the universal decoder
+
+9.13   - Improved Magento2 detection
+
+         Improved diagnostic output for support
+
+9.12   - Updated license terms for GDPR compliance
+
+9.11   - Added references to the cxs IP Reputation System license addendum
+         regarding the Data Processing Agreement:
+         https://download.configserver.com/cxs/license.txt
+
+9.10   - File type detection improvements
+
+         Added version detection of Magento v1.*
+
+	 Increased default --sizemax [size] to 1000000 to cater for larger
+	 exploits
+
+9.09   - Modified privilege drop code to use defapache user setting before
+         trying "nobody"
+
+	 Removed redundant code from features not implemented
+
+	 Fixed UI weekly scan description
+
+	 Updated UI to FontAwesome v5 (keeping v4 for cPanel versions < 70.29)
+
+9.08   - Fixed issue on cPanel servers where the shebang on cxsdbupdate.pl was
+         incorrect which prevented it running on some systems
+
+9.07   - Added new option to cxsControl settings for statistics collection.
+         This provides the ability to enable or disable the collection of
+	 statistical information for the cxsControl graphs. Existing and new
+	 installations will default to DISABLED to improve scanning performance
+
+	 Database updates are now batch processed via cron (and when accessing
+	 the cxsControl UI) to improve scanning performance. The cronjob runs
+	 every 10 minutes from /etc/cron.d/cxsdb-cron
+
+	 Added a check for Wnotify filechange to force flush the event buffer
+	 if it grows excessively
+
+	 Modified --dbreport to be ignored if used in cxscgi.sh, cxsftp.sh and
+	 cxs Watch, updated docs to reflect the change
+
+9.06   - Added prevention routines to stop corrupt fingerprint and regex
+         entries from being loaded
+
+	 Reduced memory footprint when handling fingerprints
+
+         Reduced memory footprint of cxs Watch controlling process
+
+	 Fixed issue with cxs installation/upgrade sometimes restarting cxs
+	 Watch whether it was running or not
+
+	 Modified eval+use+module checks to use bundled Module::Installed::Tiny
+	 instead
+
+	 Fixed perl memory leak when using regexes in cxs.ignore. This fix can
+	 significantly reduce the memory overhead of cxs processes, especially
+	 with cxs Watch and --allusers scans
+
+9.05   - Fixed cxs process title incorrectly using "cxswatch - database update"
+         when running a normal scan
+
+9.04   - Fixed spurious DBI error when rescanning a quarantine directory in the
+         UI
+
+	 When running/viewing scans or configurations through the UI, ensure
+	 any configured quarantine directory is created if missing
+
+9.03   - Modified database reporting to a subprocess to only fork in cxs Watch
+
+9.02   - Fixed issue with cxswatch startup improperly triggering database
+         statistics update
+
+9.01   - Offload database reporting to a subprocess
+
+         Prevent the same exploit (md5sum) being repeatedly reported through
+	 -wttw [file]
+
+9.00   - Added new --Wnotify [system]. This option specifies which filesystem
+         notification API to use with cxs Watch. Defaults to [inotify]
+
+	 Added EXPERIMENTAL support for RHEL v7.* fanotify and CloudLinux v7.*
+	 File Change API (direct and via SQLite API). See the cxs documentation
+	 for information, restrictions, requirements, advantages and
+	 disadvantages of each notification system
+
+	 Modified Universal Decoder to run an all scripts, not just PHP
+
+8.11   - New --options [I]. This option will trigger a match for Ioncube files.
+         As Ioncube files cannot be decoded by cxs, this option can be used to
+	 block uploads of Ioncube files in cxscgi.sh. Otherwise, the script
+	 will have to be detected using --xtra [file] and the MD5SUM of the
+	 script
+
+	 Modified option -wttw [file] to prevent reporting of Ioncube files as
+	 we cannot decode them and so cannot determine their function
+
+	 Option for Ioncube trigger added to UI wizards
+
+8.10   - Modified UI display of the current configuration for the various cxs
+         commands so that it shows a quarantine error if present
+
+	 Added buttons to UI to display the current configuration for the
+         Daily and Weekly cxs commands
+
+	 Added golang file detection for exploit fingerprints
+
+8.09   - Fixed UI not allowing Save Wizard Defaults if in Restricted Mode
+
+         Fixed Save Wizard Defaults when --www, --smtp or --dbreport disabled
+
+8.08   - Added buttons to UI to display the current configuration for the
+         various cxs commands
+
+	 Added timeout to d/b connect to prevent hanging processes waiting for
+	 a d/b lock
+
+	 Improved efficiency of /etc/cxs/cxscgi.queue processing
+
+	 Improved efficiency of quarantine scan processing in UI
+
+8.07   - Fixed issue where cxsWatch was needlessly updating the SQLite D/B on
+         each scanned file which was causing some performance problems
+
+8.06   - Fixed bug when using --config [file] in /etc/cxs/cxsftp.sh
+
+8.05   - Added new option --cutcgimail. This option suppresses emails sent by
+         cxs for ModSecurity hits from /etc/cxs/cxscgi.sh where the reported
+	 web script does not exist on the server. Any configured quarantine or
+	 delete operations will still be performed. Note: This option is the
+	 synonymous with the unsupported --YSKIPCGI option which will continue
+	 to work in the same way
+
+	 Added --cutcgimail to the cxs ModSecurity Wizard as "Reduce the number
+	 of emails from ModSecurity hits"
+
+	 Changed the wording in the email sent where the reported web
+	 script does not exist on the server
+
+	 Improvements to the saving logic in the various UI Wizards
+
+8.04   - Decoder improvements
+
+8.03   - Fix issue using stat() after abs_path() on an orphaned symlink
+
+	 NOTE: If you received error "Use of uninitialized value $arg in stat"
+	 during a a cron job scan, that scan will still have completed
+	 successfully and this fixes that issue
+
+         Ensure d/b is closed after processing dbreport
+
+	 Ensure crond is restarted after making changes to cxs-cron
+
+8.02   - Fix for new cxs Daily/Weekly scan symlink issue
+
+8.01   - Ensure sessions directory is created before it is needed
+
+8.00   - Added new cxs Setup Wizard to the UI for easy first-time configuration
+
+         Added new cxs Command Wizard to help create effective scan commands
+	 
+	 Manual scans via the UI now run detached from the control panel
+	 interface so that the need to keep the browser open is no longer
+	 required
+
+	 Added a completely new quarantine interface via an SQLite database
+
+	 Added statistics to provide information at a glance as to what cxs has
+	 been doing
+
+         Added new option --dbreport. This will store reports within the SQLite
+	 database
+
+	 Added command Wizards to help configure cxs Watch, Modsecurity and FTP
+
+	 Added cxs Daily/Weekly Scan Wizard, to create and modify cron jobs in
+	 /etc/cron.d/cxs-cron
+
+	 Added an option to rerun the new cxs Setup Wizard if you want a fresh
+	 start
+
+	 Added an option to rescan a quarantine directory to populate the
+	 SQLite database
+
+         Added new option --config [file]. Instead of listing arguments on the
+	 cxs command line, a file containing key value pairs can be used
+	 instead. This is a requirement for configuring cxs Watch, cxs FTP and
+	 cxs ModSecurity scanning via the UI
+
+	 Move cxs POD to separate files and use pre-generated text and html
+	 files to remove the need for perldoc binary
+
+	 Updated install.txt documentation
+
+	 New requirements: SQLite v3, DBI and DBD::SQLite perl modules for the
+	 new quarantine/scan database. These are all included in the cPanel
+	 environment, but may need to be installed in other environments before
+	 cxs will upgrade
+
+         Ignore cPanel temporary files in /var/cpanel/users/
+
+	 Improvements to WordPress plugin version checks
+
+	 Fixed glob scan stats
+
+7.03   - Remove the need for URI::Escape
+
+         Added restart of csf/lfd on upgrade if cxs Reputation System is
+	 enabled
+
+	 Restrict the scope of perl shebang replacement when installing on 
+	 cPanel servers
+
+7.02   - Restored reporting of errors/restrictions in cPanel UI which had been
+         blocked by the move to WHM Templates
+
+7.01   - Fix to ensure only web upload script triggers with a defined remote IP
+         are submitted to the IP Reputation System, if enabled
+
+7.00   - New feature: IP Reputation System. The system provides a variety of IP
+         blocklists gathered from information that is submitted by 
+	 participating servers. This dual aspect provides the information to
+	 help protect the server using the reputation from active attacks. See
+	 POD under "IP Reputation System" for more information
+
+	 Added IP Reputation System to cxs UI
+
+	 Major update to Script Version Scanning. cxs --[no]sversionscan now
+	 scans for more than 200 individual applications, more than 200
+	 WordPress plugins and more than 200 Joomla Extensions. Over 700 in
+	 total!
+
+	 Double fork external commands in DA UI to work around DA mod_perl
+	 restrictions, allowing full functionality
+
+6.991  - Fixed issue when using a cxs.bayes.local database which caused
+         cxswatch to reload the bayes database repeatedly
+
+	 Additions to Script Version Scanning
+
+6.99   - New BETA feature: IP Reputation System. The system provides a variety
+         of IP blocklists gathered from information that is submitted by
+	 participating servers. This dual aspect provides the information to
+	 help protect the server using the reputation from active attacks. See
+	 POD under "IP Reputation System" for more information
+
+         Added URI::Escape as a required module
+
+6.39   - Decoder improvements
+
+6.38   - Configured UI to fully integrate with cPanel templates without using
+         iframes
+
+	 Configured UI to display full cPanel breadcrumbs
+
+	 Configured UI to support cPanel v66 WHM UI changes
+
+6.37   - Changed --force into a boolean, i.e. --[no]force
+
+         Ensure --upgrade ignores force=1 in /etc/cxs/cxs.defaults unless
+	 --force used on CLI
+
+	 Prevent upgrade loop if force=1 in /etc/cxs/cxs.defaults
+
+6.36   - Modified HTML to cater for major change in cPanel v66
+
+6.35   - Added support for scanning a space separated list of files,
+	 directories and globs. See POD for RESOURCE for more information
+	 
+	 Updated POD to remove line splitting for sample commands
+
+	 Improvements to Universal decoder
+
+	 Modified Universal decoder to report bayes score (--[no]bayes)
+
+         New --options [r]. This will trigger a match for the universal decoder
+	 regex used by --options [D] when decoding scripts. This is now added
+	 to the default --options [options] string. This reports as "r" during
+	 a scan
+
+	 Modified reporting behaviour where --options [R] was reporting during
+	 a scan as "m" so that it now reports as "R"
+
+	 Note: If you are using --script [script] then the above two changes may
+	 require modifications to your [script] file
+
+6.34   - Changes for cPanel v64 template
+
+6.33   - Added workaround for cPanel users with non-standard characters in
+         addon domain documentroot
+
+6.32   - Ensure that empty decoded text and the md5sum for an empty file is
+         always ignored
+
+6.31   - Suppress Compress::Zlib informational message that appears on some
+         versions of perl
+
+6.30   - Added a new Universal decoder. This attempts brute-force against
+         scripts containing base64 data and can greatly improve decoding
+	 performance over other included decoders
+
+         Improved recent advanced decoder
+
+	 Perl module Compress::Zlib added to requirements (should be installed
+	 by default with perl)
+
+6.29   - Added new advanced PHP decoders
+
+6.28   - Correct POD documentation regarding --Wmaxchild
+
+         Ensure that original self-contained inline PHP zip file is quarantined
+	 rather than zip file member
+
+6.27   - Modified to unzip and scan self-contained inline PHP zip files
+
+	 Exploit fingerprint definitions database additions
+
+6.26   - Modified quarantine directory structure detection to fail (i.e.
+         disable --quarantine [dir]) if using an invalid directory instead of
+	 attempting to convert it
+
+6.25   - Modify adding entry to /etc/chkservd/chkservd.conf when that file is
+         missing a trailing linefeed on the last record
+
+	 Exploit fingerprint definitions database additions
+
+6.24   - Logo change
+
+6.23   - Reduced banner padding
+
+         Default the initial clamd socket check to /var/clamd
+
+	 Modified UI to show if cxs watch is currently restarting
+
+	 New logo added and configured for cPanel plugins 
+
+	 Exploit fingerprint definitions database additions
+
+6.22   - Added new option [no]unofficial. This option ignores unofficial ClamAV
+         signatures by default. This has been brought in to tackle the
+	 increasing number of false-positives in unofficial virus signatures
+
+	 WARNING: Due to the new --[no]unofficial the unsupported option
+	 --YSKIPUNCLAM has been removed and will have no effect if used
+
+	 Modified UI to always try contacting the clamd socket to ensure it is
+	 installed, configured and running
+
+6.21   - Increased size of data retrieved to determine file type to improve
+         detection of exploits hiding in image files
+
+6.20   - Added Scroll to Top/Bottom buttons
+
+         Added back the warning regarding the UI ModSecurity enable option
+
+	 Consolidate images, css and javascript into a common directory in the
+	 installer
+
+	 Fixed cxs version display in UI footer
+
+6.19   - Modified UI to use container-fluid to improve whitespace use
+
+	 Modified pre tags to wrap on whitespace
+
+	 Added upgrade note to the top of the UI if available
+
+	 Exploit fingerprint definitions database additions
+
+6.18   - Fixed Bootstrap font inclusion
+
+6.17   - Redesigned UI based on Bootstrap
+
+6.16   - Removed use of Cpanel::cPanelFunctions as it is now being withdrawn
+
+         Check pid rather than using pidof for cxswatch UI status
+
+	 Updated common ConfigServer UI
+
+6.15   - Fixed issue with ignoring Fingerprints
+
+	 Exploit fingerprint definitions database additions
+
+6.14   - Modified ModSecurity integration Install/Remove options in cxs UI for
+	 EA4 as cPanel has moved files to a different directory 
+
+6.13   - Fixed some incorrect file locks
+
+	 Removed Bareword file handles
+
+6.11   - Ensure all file opens are properly flocked
+
+	 Switch to using require instead of eval/use to load runtime modules
+	 where possible
+
+	 Code review - started addressing perl critic suggestions in all
+	 scripts and modules
+
+	 Fixed incorrect --summary when subdomains outside of public_html while
+	 using --www
+
+	 Memory and CPU optimisations
+
+	 PHP script decoding up to 15% faster
+
+	 PHP fingerprint regex matching up to 50% faster
+
+	 postftpup converted to a cPanel Hook
+
+	 Exploit fingerprint definitions database additions
+
+6.10   - On cPanel servers, ensure all document roots are scanned when using
+         --www not just ~/public_html/ (i.e. domains, SSL, addons, subdomains)
+
+	 Fix pure-uploadscript init script to exit with appropriate status code
+
+	 Exploit fingerprint definitions database additions
+
+6.09   - Fixed quarantine store of file group ownership used for display
+         purposes only. The problem manifests when a users uid != gid and the
+	 incorrect group is used for display purposes
+
+	 Fixed Wmonitor display of file group ownership. The problem manifests
+	 when a the users uid != gid and the incorrect group is used for
+	 display purposes
+
+6.08   - Replace /etc/cxs/test/ files with a single non-threatening script that
+         will test trigger cxs and can be used to check the cxs ModSecurity 
+	 rule is working. See /etc/cxs/install.txt for details
+
+	 Modified ModSecurity integration Install/Remove options in cxs UI for
+	 EA4
+
+	 Exploit fingerprint definitions database additions
+
+6.07   - Added text field in UI for PureFTPd/ModSecurity to indicate whether
+         the options is currently enabled or disabled
+
+6.06   - Fixed crond restart in UI on RHEL/CentOS/CloudLinux v7 which left
+         pages blank
+
+	 Exploit fingerprint definitions database additions
+
+6.05   - Added version detection for Drupal v8
+
+         Added PureFTPd integration Enable/Disable/Restart options to cxs UI
+
+         Added ModSecurity integration Install/Remove options to cxs UI
+
+	 Mute perl lc UTF-16 warnings where necessary
+
+         New --options [U]. This option will match PHP scripts that allow
+	 uploading files to the server via the HTTP POST method. This option
+	 requires that --options [m] is also specified
+
+	 Added --options [U] to the Restricted Mode UI options
+
+	 UI updates and improvements
+
+	 Exploit fingerprint definitions database additions
+
+6.04   - Ensure CallUploadScript is disabled in /etc/pure-ftpd.conf on cPanel
+         servers on uninstall
+
+	 Exploit fingerprint definitions database additions
+
+6.03   - Fixed UI issue where --soptions [as] were not being set
+
+	 Exploit fingerprint definitions database additions
+
+6.02   - Fixed issues with DA UI quarantine restore
+
+         Improved DA UI POD display
+
+6.01   - Added unsupported option --YSKIPUNCLAM. See POD for more information
+
+	 Exploit fingerprint definitions database additions
+
+6.00   - Added new major feature for cxs Watch: --Wmonitor [file]
+         This option allows you to monitor and report on changes to a list of
+	 resources in [file]. See cxs POD for more information
+
+	 Added option --Wmonignore [file] to use instead of --ignore [file] for
+	 use with --Wmonitor [file]
+
+         Added IO::Select as a required perl module (a core perl module so
+         should always be present)
+
+         Improvements to php file detection
+
+	 Improvements to deobfuscation routines
+
+	 Fixed bug in display of atime for some quarantined files
+
+	 Fix BCC header replacement field in email reports
+
+	 Exploit fingerprint definitions database additions
+
+5.33   - POD corrections and additions
+
+	 Exploit fingerprint definitions database additions
+
+5.32   - Force email Date: field incase the MTA fails to add one
+
+         Modified all report timestamps to use the same format
+
+	 Exploit fingerprint definitions database additions
+
+5.31   - Ensure only root can attempt to download the bayes corpus
+
+         Fixed POD reference to --bforget
+
+	 Fixed POD formatting of long example commands
+
+	 Updated Software Version Checking
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+5.30   - Modify cPanel install.txt to add the ConfigServer ModSecurity Vendor
+         option
+
+	 Added new advanced PHP decoders
+
+	 Exploit fingerprint definitions database additions
+
+5.29   - Modified documentation to address changes in ModSecurity v2.9 that
+         requires the following is set as part of the ModSecurity config:
+	 SecUploadKeepFiles RelevantOnly
+	 
+	 Exploit fingerprint definitions database additions
+
+5.28   - Added new option --[no]ssl. When enabled (the default) all cxs URL
+         functions, such as updating, bayes corpus retrieval and license
+	 checking will be done over an SSL connection to ConfigServer servers
+
+	 Added /var/run/clamd.scan/clamd.sock as another default clamd socket
+	 location for --clamdsock [socket]
+
+	 Added unsupported option --YSKIPCGI. See POD for more information
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+5.27   - Fixed call for the now removed cxswatch.pm from --Wstop
+
+5.26   - Added /scripts/postftpup to restart pure-uploadscript after an ftp
+         server upgrade
+
+5.25   - Trigger pure-uploadscript restart
+
+5.24   - Added new advanced PHP decoders
+	 
+	 Exploit fingerprint definitions database additions
+
+5.23   - Added the ability to use positive --options [+][], i.e. the default
+	 list of options is used in addition to those listed when prefixed with
+	 a plus
+
+         Improvements to --decode ([D])
+
+	 Added atime, ctime and mtime to newly quarantined file descriptions
+	 viewable from the UI and the CLI via --qview [file].restore4
+
+	 Ensure /var/log/cxswatch.log ownership and permissions are set on each
+	 update in case of rotation
+
+	 File md5sum added to cgi and ftp alert email
+
+5.22   - Ensure timestamp and cxs command are prepended to --report [file]
+
+         Fix cxs Watch Timestamp in report emails
+
+	 When using --options W ensure that resource is a directory and not a
+	 symlink or socket
+
+5.21   - Fixed issue in cxs Watch when --www is used and a new account is
+         created through restore on cPanel servers
+
+	 cxs Watch now tracks the parent directories for all users when
+	 --allusers is used and will add them back if they disappear and are
+	 recreated
+
+5.20   - Fixed systemd cxs watch UI commands
+	 
+	 Exploit fingerprint definitions database additions
+
+5.19   - Re-added POSIX Locale after changes in v5.16
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+5.18   - Added white-space pre-wrapping to HTML emails
+
+         UI HTML updates and fixes
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+5.17   - Fixed --qcreate POD text
+
+         Added systemd support for pure-uploadscript
+
+5.16   - WARNING: The report format has changed in this version. If you are
+	 parsing cxs reports, they now show the filename and then all hits
+	 reported against that file before reporting the next file. Previously
+	 each reported hit was shown separately with the filename following
+
+	 Renamed cxs cron job in /etc/cron.d/ from cxs.cron to cxs-cron to
+         cater for non-LSB compliant Linux cron managers
+
+	 New option --[no]html. With --[no]html enabled (default), emails will
+	 be sent in both plain-text and HTML formats. The option does not apply
+	 if --template [file] is used
+
+	 Fixed cxs Watch to remove rateignore data for a file if it is deleted
+
+	 Fixed rateignore hash array lookup and unneccessary rateignore removal
+	 causing files to be skipped
+
+	 Added unsupported option --YRATEIGN. See POD for more information
+
+	 Improvement to PHP script detection
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+5.15   - Fix for POD cron jobs RECOMMENDATIONS text
+
+5.14   - Modified --Wrateignore [secs] so that ignored resources are rescanned
+         once [sec] expires
+
+	 Modified cxs watch so that resource attribute changes only trigger an
+	 inotify event if --options [w] or [W] are used
+
+	 cxswatch.sh now disables the world writable directory check options
+	 on new installations (--options -wW)
+
+	 Removed options --Wsymlink [script], --Wsymlinkmax [num] and 
+	 --Wsymlinksec [secs]. These options provided ineffective control of
+	 such exploits and caused performance isses with cxs Watch. The options
+	 will no longer function, but cxs commands will not fail if they are
+	 used
+
+	 Updated cxs RECOMMENDATIONS section
+
+5.13   - Ensure --Wrateignore [secs] has default values set in cxs Watch if
+         --Wsleep [num] is set to 0
+
+	 Added unsupported options --YRATECNT [num] and YRATESEC [secs]. See
+	 POD for more information
+
+ 	 Exploit fingerprint definitions database additions
+
+5.12   - Implemented native systemd support for startup and shutdown of cxs
+         Watch
+
+	 Added version detection for Fancybox for Wordpress
+
+ 	 Exploit fingerprint definitions database additions
+
+5.11   - Updated license servers
+
+ 	 Exploit fingerprint definitions database additions
+
+5.10   - Disable --xtra [file] when using --wttw [file]
+
+         Display error on license retrieval failure
+
+	 Added check for perl modules LWP::Protocol::https and Linux::Inotify2
+	 on installation and upgrade
+
+	 Added new advanced PHP decoders
+
+ 	 Exploit fingerprint definitions database additions
+
+5.09   - Fix for issues where license file became corrupted after update to
+         v5.08
+
+5.08   - Fixed a rare potential issue with fingerprint processing in
+         --xtra [file]
+
+	 Added new advanced PHP decoders
+
+         Updated scripts to use https://download.configserver.com
+
+	 Revert to using LWP::UserAgent instead of HTTP::Tiny for SSL support
+ 
+	 Exploit fingerprint definitions database additions
+
+5.07   - Modified new installs to better initially update to the latest
+         fingerprints
+
+	 Ignore and Xtra files can now use an Include statement to include
+	 additional files. If cxswatch is running then it will also watch the
+	 included files for changes and reload if necessary
+
+	 Added new quarantine option --qignore [method] which used when
+	 restoring a file using --qrestore [file] will create an entry in
+	 --ignore [file] before restoring the file. See POD for more info
+
+	 Optimised fingerprint database to remove duplicates and old entries of
+	 no value reducing the size without reducing effectiveness
+ 
+	 Exploit fingerprint definitions database additions
+
+5.06   - HTTP::Tiny upgraded to v0.050
+
+         Modified use of BSD::Resource to be silent on failure
+	 
+	 Exploit fingerprint definitions database additions
+
+5.05   - Updated installer to fix generic installs on some Redhat/CentOS setups
+
+         Fixed issue with fingerprint database and a corrupt regex
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+5.04   - Improvements to .htaccess fingerprint P0216 -> P0767
+
+         Modify installer to always perform an update on installation to ensure
+	 the latest definitions are always available
+
+	 cxswatch will now scan a directories permissions if any of its
+	 attributes are changed and --options [w] and/or --options [W] is
+	 enabled
+
+	 Updated scripts to use download.configserver.com
+	 
+	 Exploit fingerprint definitions database additions
+
+5.03   - Removed a false-postitive fingerprint definition
+
+	 Exploit fingerprint definitions database additions
+
+5.02   - Ensure --ignore [file] is always loaded last
+
+         Allow ignoring of Fingerprints
+
+         New master bayes corpus generated
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+5.01   - Raised bayes low/medium/high thresholds
+
+         New master bayes corpus generated
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+5.00   - New feature --[no]bayes taken out of BETA and is the basis of v5
+
+	 Added --[no]bayes to the UI
+
+         New master bayes corpus generated
+
+         Added warning in UI for --[no]fallback option regarding potential
+	 performance impact
+
+	 Exploit fingerprint definitions database additions
+
+4.28   - Fixed cxs Watch loading the bayes database whether --bayes was in use
+         or not
+
+4.27   - Modified cxs Watch so that watches are updated/created if the
+         alternative configuration file reload method is used
+
+	 Exploit fingerprint definitions database additions
+
+	 BETA: Added a local bayes corpus so that learning and forgetting can
+	 be implemented locally
+
+	 BETA: Added new option --blearn [X|C] so that new files can be added
+	 to the local corpus as either an exploit (X) or as a clean file (C)
+
+	 BETA: Added new option --bforget [X|C] so that new files can be
+	 removed from the local corpus as either an exploit (X) or as a clean
+	 file (C). Only files previously learned should be forgotten
+
+         BETA: Modified cxs Watch to reload the master bayes corpus on change
+
+         BETA: Modified cxs Watch to reload the local bayes corpus, if one
+	 exists, on change
+
+	 BETA: When cxs is upgraded and the master bayes corpus exists, the
+	 latest master corpus will be automatically downloaded
+
+         BETA: New master bayes corpus generated
+
+	 BETA: Raised bayes low/medium/high thresholds
+
+4.26   - A situation where Fingerprint P0452 persists was missed and is now
+         removed
+
+4.25   - Fingerprint P0452 removed as it appears some legitimate scripts are
+         using the same obfuscation technique commonly used in exploits
+
+         BETA: Bayes corpus size decreased by a further 28% but with increased
+	 accuracy
+
+	 Exploit fingerprint definitions database additions
+
+4.24   - BETA: Bayes corpus format improved - if you are using this feature,
+	 download the new corpus using "cxs --bget"
+
+         BETA: Bayes corpus memory footprint decreased by a further 20%
+
+         BETA: Bayes corpus loading speed improvements
+
+4.23   - Improvements to the main decoder regex
+
+         Improvements to decoder string extraction
+
+	 Fixed formatting of --qlocal documentation
+
+         BETA: New Bayes corpus generated - if you are using this feature,
+	 download the new corpus using "cxs --bget"
+
+         BETA: Bayes corpus size decreased by 25% but with increased accuracy
+
+	 Exploit fingerprint definitions database additions
+
+4.22   - Added option --qlocal which provides quarantine support when using
+	 mod_ruid2 by storing quarantined files within a users account. See
+	 documentation for more information and caveats
+
+         BETA: Bayes learning improvements (speed, memory)
+
+	 BETA: Bayes reporting improvements (speed, memory)
+
+         BETA: New Bayes corpus generated - if you are using this feature,
+	 download the new corpus using "cxs --bget"
+
+	 Improvements to PHP decoded script scanning efficiency
+
+4.21   - BETA: Bayes corpus loading speed improved by 100%
+
+         BETA: Bayes corpus memory footprint decreased by 20%
+
+	 BETA: Increased minimum score size for Bayes reporting to help reduce
+	 false-positives
+
+4.20   - New option --[no]bayes (currently in BETA). Naive Bayesian
+         probabability scanning of script files. This option uses an enhanced
+	 Naive Bayes algorithm to report a probability that a scanned script is
+	 an exploit. This is achieved through a trained corpus (database). See
+	 the cxs documentation for more details.
+
+	 Additions to main decoder regex
+
+	 Exploit fingerprint definitions database additions
+
+4.19   - Additions to main decoder regex
+
+         Modified option --template [file]. You can now use this to email the
+	 end user when performing --allusers and --user [user] scans. See the
+	 cxs Documentation for --template [file] for more information
+
+	 Output improvements to --qview [file] and more information provided in
+	 the POD
+
+	 Exploit fingerprint definitions database additions
+
+4.18   - HTTP::Tiny reverted to v0.041 as it breaks on some installations
+
+4.17   - Unsupported option --YSKIPWMAIL added. Using this, If --options [W] or
+         --options [wW] is triggered, then the directory will be chmod as
+	 normal but no email will be sent. If any other option is triggered for
+	 the same scan, the email will still be sent. This option only applies
+	 to cxs Watch
+
+	 Added full pseudo-breadcrumbs to cPanel UI
+
+         HTTP::Tiny upgraded to v0.042
+
+	 On cPanel servers, use cPanel provided perldoc binary in UI if present
+
+	 Exploit fingerprint definitions database additions
+
+4.16   - Updated POD to reflect --[no]fallback being disabled by default
+
+         Changed default value of --Wsymlinkmax to 1000
+
+	 Changed default value of --Wsymlinksec to 10
+
+	 Added performance note about using --Wsymlink [script] to POD
+
+	 Modified cxswatch restart routine to run /etc/cxs/cxswatch.sh directly
+
+	 Modified cxswatch to more quickly detect restart requests on busy
+	 systems
+
+	 Exploit fingerprint definitions database additions
+
+4.15   - Memory usage improvements and general speedups
+
+         Added the ability to use negative --options [-][], i.e. the default
+	 list of options is used apart from those listed when prefixed with a
+	 minus
+
+	 --[no]fallback now defaults to --nofallback due to performance
+	 concerns which should be noted before enabling the option
+
+	 Exploit fingerprint definitions database additions
+
+4.14   - Force cxs into a detached process if running --upgrade as a CRON job
+         to fix upgrade hanging issue
+
+4.13   - Significant speedups in regex (up to 300% faster) and FP matching
+
+	 Exploit fingerprint definitions database additions
+
+4.12   - Code regression to prevent overloading update server during upgrades
+
+4.11   - New feature: --[no]fallback. If clamd produces an error or is
+         unavailable after a scan starts, this option will attempt to use
+	 clamscan to scan files until clamd is available again. This option is
+	 enabled by default
+
+	 Additional minor updates to the POD documentation
+
+	 Modify cxsdaily.sh to fork jobs to prevent hanging on new installs
+
+	 Added timeout (5 mins) to cxs upgrade routine
+
+	 Improvements to --wttw [file]
+
+4.10   - Check file size against --sizemax [size] when using --wttw to ensure
+         ignored files are not being submitted incorrectly
+
+	 Exploit fingerprint definitions database additions
+
+4.09   - UI Fixes and updates
+
+         Fixed issue with default perl binary on non-cPanel servers
+	 
+	 Use raw UI plugin on DA servers when generating cxs commands/scans to
+	 overcome buffering issues
+
+	 Exploit fingerprint definitions database additions
+
+4.08   - Removed redundant v3 quarantine code
+
+         Removed displaying "i" during scan if file ignored as it is not
+	 particularly helpful
+
+	 Updates to Piwik and ownCloud version detection
+
+	 Form design elements added
+
+	 Change to --sizemax [bytes] behaviour. In the past a file > [bytes] in
+	 size was ignored, now the file will be scanned but only the initial
+	 [bytes] of the file will be scanned
+
+	 Added decoding of octal as well as hex encoded characters for PHP
+	 scripts
+
+	 Exploit fingerprint definitions database additions
+
+4.07   - Display "i" during scan if file ignored due to sizemax [bytes] being
+         exceeded
+
+         HTTP::Tiny upgraded to v0.039
+
+	 Translate ampersand for HTML output
+
+	 Fixed cxs UI not adding files to the ignore file after using the
+	 Ignore link
+
+	 Additional checks for ignore, xtra and new detections updates for cxs
+	 watch daemon to reload the relevant files if necessary
+
+	 Exploit fingerprint definitions database additions
+
+4.06   - Parameterise all calls to system() and Open3()
+
+         Only list viewable files in UI "Other Files" option
+
+	 Fixed issue with ignoring user: and puser: with web scanning
+
+	 Added new --ignore [file] option ip: - ignore IP address for web and
+	 ftp uploads. This may or may not have any impact on performance with
+	 ftp uploads as the IP address will need to be established from the
+	 message log for each file
+
+	 Removed DNS lookup on FTP IP addresses to improve performance
+
+	 Exploit fingerprint definitions database additions
+
+4.05   - Fixed POD display in UI
+
+4.04   - Fixed issue with cxs Watch not reporting running state correctly
+
+4.03   - Fixed issue with reporting boolean CLI options
+
+4.02   - Fixed issue with creation of new quarantine directory for new installs
+
+	 Improved quarantine directory detection for conversion on upgrade to
+	 v4
+
+4.01   - Introducing a new Quarantine system. This new version creates a more
+         secure method of quarantining suspicious files in cxs. It removes the
+	 need for a directory with 1777 permissions. It also makes the layout
+	 and maintenance of the quarantine directory much simpler
+
+	 Automatically rename old quarantine directory to [dir].(timestamp)
+	 and create new quarantine structure. An email is sent to root with a
+	 reminder to remove the old directory
+	 
+	 Any pre v4 old quarantine directory can still be viewed and restored
+	 from through the UI if required, though this functionality (for old
+	 quarantine directories) will be removed in the future
+
+	 New option --qcreate. This option is used to create a new quarantine
+	 directory structure. It will rename any pre-existing directory to
+	 [name].(timestamp)
+
+	 New option --qclean [days]. This option is used to clean a quarantine
+	 directory specificed with --quarantine [dir], retaining the last
+	 [days] worth of files
+
+	 New option --qrestore [file]. This option is used to restore a
+	 quarantine file via the CLI to the original file location (v4
+	 quarantined files only)
+
+	 New option --qview [file]. This option is used to view a quarantined
+	 file via the CLI
+
+	 Modified cxs UI to cater for new quarantine layout and provide some
+	 additional information on quarantined files
+
+	 Added new file /etc/cxs/cxsdaily.sh as an example file to symlink
+	 from /etc/cron.daily/ to perform daily tasks and added to
+	 RECOMMENDATIONS in the docs
+
+         Modified cxs Watch scanning to automatically scan newly created
+         directories for exploits to help overcome an issue where files are
+	 created before a new directory is watched
+
+	 Support for running cxs through suhosin has been removed
+
+	 Fixed issue with --defapache [user]
+
+	 Modified recommendations on file ownership and permissions when using
+	 --logfile [file]
+
+         HTTP::Tiny upgraded to v0.037
+
+	 POD documentation tidy
+
+	 Exploit fingerprint definitions database additions
+
+3.27   - NOTE: Support for using suhosin is deprecated and will be removed in
+	 the near future - use ModSecurity instead. If you are unable to use
+	 ModSecurity, you will have to rely on either cxs Watch or manual scans
+
+	 New option added: --defapache [user]. This is the default account
+	 under which apache runs. This will be set to "apache" by default
+	 except on cPanel servers where it is set to "nobody" by default
+
+	 Make cxs watch restart reason more verbose
+
+	 Improved file type detection for files within archives
+
+	 Improvements to the main decoder regex
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+3.26   - Fixed issue with cxs process termination due to scanning timeouts
+
+         Prevent regex hangs due to some exploit tactics
+
+	 Fixed quarantine UI not restoring file permissions correctly
+
+3.25   - Extended fingerprint checks for alternative linefeeds in scripts
+
+         Fixed functionality of the included test.cgi upload test script
+
+	 Enforce stricter permissions on /var/log/cxswatch.log
+
+	 Disable option to upgrade cxs in DA UI and instruct to use CLI
+
+	 Added use of --force to --upgrade to redo upgrade to latest version if
+	 required
+
+	 Additional checks to terminate php child process if timeout occurs
+
+	 Exploit fingerprint definitions database additions
+
+3.24   - Added the following to Script Version Scanning:
+         Joomla XCloner Ext, WP XCloner Ext
+
+	 Added new advanced PHP decoders
+
+	 Exploit fingerprint definitions database additions
+
+3.23   - Added the following to Script Version Scanning:
+         CubeCart
+
+	 Fixed cxs Watch in DA where new account creation was not automatically
+	 detected
+
+         HTTP::Tiny upgraded to v0.036
+
+3.22   - Added the following to Script Version Scanning:
+         AbanteCart, AEF, b2evolution, CMS Made Simple, CodeIgnitor, Concrete5,
+	 Dotclear, e107, Elgg, Feng Office, HESK, Jcow CE, MODX Evolution,
+	 MODX Revolution, Noahs Classifieds, OSClass, ownCloud, Oxwall, Piwigo,
+	 Piwik, Seo Panel, Serendipity, StatusNet, TomatoCart, Xoops, ZenPhoto,
+	 Zikula
+
+	 Added the following popular Wordpress extensions to Script Version
+	 Scanning:
+	     WP Sociable
+	     WP Share This
+	     WP WP Super Cache
+	     WP All In One WP Security & Firewall
+	     WP BulletProof Security
+	     WP FD Feedburner
+	     WP Google Adsense Plugin
+	     WP WordPress Simple Paypal Shopping Cart
+	     WP WordPress eShop
+	     WP WordPress s2Member
+	     WP UpdraftPlus
+	     WP BackUpWordPress
+
+	 Added the following popular Joomnla extensions to Script Version
+	 Scanning:
+	     Joomla Akeeba
+	     Joomla AllVideos
+	     Joomla CDN for Joomla
+	     Joomla Community Builder
+	     Joomla JEvents
+	     Joomla Jomsocial
+	     Joomla K2
+	     Joomla Kunena
+	     Joomla Phoca Gallery
+	     Joomla sh404SEF
+	     Joomla Simple Image Gallery
+	     Joomla Xmap
+
+	 Exploit fingerprint definitions database additions
+
+3.21   - Disable Script Version Scanning for web script scanning (cxscgi.sh) as
+	 it does not apply
+
+	 Perl module Storable added to the required list
+
+         Added ten of the most popular Wordpress extensions to Script Version
+	 Scanning:
+	     WP Akismet Ext v2
+	     WP Better WP Security Ext v3
+	     WP Contact Form 7 Ext v3
+	     WP Facebook Ext
+	     WP Google XML Sitemaps Ext v3
+	     WP Jetpack Ext v2
+	     WP NextGEN Gallery Ext v2
+	     WP Seo Ext
+	     WP W3 Total Cache Ext
+	     WP WooCommerce Ext v2
+
+         Added ten of the most popular Joomla extensions to Script Version
+	 Scanning:
+	     Joomla Advanced Module Manager Ext v4
+	     Joomla JCE Ext v2
+	     Joomla RAntiSpam Ext v3
+	     Joomla Joomla LiveHelpNow Chat Ext v2
+	     Joomla Rapid Contact Ext
+	     Joomla Asynchronous Google Analytics Ext v2
+	     Joomla Google Maps Ext v3
+	     Joomla Sourcerer Ext v4
+	     Joomla Tabs Ext v3
+	     Joomla Modules Anywhere Ext v3
+
+	 Added the following to Script Version Scanning:
+	 OpenCart, Nucleus CMS, Open Classifieds, LimeSurvey, ClipBucket,
+	 WHMCS, Coppermine Photo Gallery
+
+	 Exploit fingerprint definitions database additions
+
+3.20   - Changed --options [s] to be --[no]sversionscan (Script Version
+         Scanning) to make it independent of --[no]exploitscan, allowing a fast
+	 scan for old script installs. This option is enabled by default. Use
+	 --nosversionscan to disable
+
+         Added the following to Script Version Scanning:
+	 Typo3, Invision Power Board, WebCalendar, MyBB, Dolphin, SMF, OpenX
+	 Source, SugarCRM Community Edition, Contao CMS, PrestaShop,
+	 PHP-Fusion, phpPgAdmin, SquirrelMail, Roundcube, Kayako, osTicket
+
+	 Added new --soptions [a] for --[no]sversionscan to report all versions
+	 of found scripts, not just old versions
+
+	 Added new --soptions [d] for --[no]sversionscan to report the
+	 directory containing the script, not the trigger file
+
+	 Exploit fingerprint definitions database additions
+
+3.13   - UI button style modifications
+
+	 Added phpList, Moodle, Magento Community Edition and MediaWiki version
+	 checking to --options [s]
+
+	 Modified POD to screen wrap HTML code more effectively
+
+3.12   - Fixed cxs uninstaller removing csf UI files on cPanel installs
+
+	 Added phpBB, phpMyAdmin, Zen Cart, osCommerce and VirtueMart version
+	 checking to --options [s]
+
+3.11   - Added to RECOMMENDATIONS to still run a regular scan without --ctime
+         [hours] to ensure new scan techniques and exploit signatures are used
+	 to check all existing files
+
+	 Fixed directory creation on installation for unofficial DA plugin
+
+	 Improved performance of file slurping and therefore scanning
+
+	 Added new --options [s] that will search for a few common web script
+	 installations and report if older than the latest version on record.
+	 See documentation for more information
+
+	 Exploit fingerprint definitions database additions
+
+3.10   - Changed --throttle [num] to prevent throttling triggering a
+         --timemax [secs] timeout
+
+	 Added detection for some PHP JPEG and TIFF EXIF exploits
+
+	 Improvements to image and zip file type detection
+
+	 Exploit fingerprint definitions database additions
+
+3.09   - Improvements to Virtuozzo/OpenVZ system detection where
+         /proc/vz/veinfo does not exist
+
+	 Added TimeStamp to the top of the scan report
+
+	 If /etc/csuibuttondisable exists then the UI buttons will revert for
+	 those that cannot cope with the themed ones
+
+3.08   - Implemented new cxswatch log tail code
+
+	 UI display changes
+
+	 Exploit fingerprint definitions database additions
+
+3.07   - Allow (limited) scans via UI in restricted mode
+
+         Added Change Time (--ctime [hours]) option to UI
+
+	 If --quarantine has been disabled, ensure all reports contain a
+	 warning message with explanation
+
+3.06   - Fixed bug with broken --cgi option (cxscgi.sh) from v3.05
+
+         Fixed UI configurable lines display for cxswatch.log
+
+         Remove immutable and append-only flags from files when moving files to
+	 quarantine or deleting
+
+	 Fixed supplied test/test.php for newer PHP versions
+
+3.05   - Added /etc, /sys and /proc to directories requiring --force to be used
+         when scanning
+
+	 Added additional checks that any specified quarantine directory is
+	 valid
+
+	 Added new option --ctime [hours]. If you run regular full system scans
+	 then you can use --ctime [hours] to only scan files changed in the 
+	 intervening hours. This can speed up scan times dramatically
+
+	 Apply hfile:, hdir: and hsym: ignores to FTP upload scanning
+
+	 Exploit fingerprint definitions database additions
+
+3.04   - Fixed file view from quarantine - reported by Rack911
+
+         Further improved UI form data sanitisation
+
+	 Bolstered the UI warning with regard to disabling Restricted Mode
+
+3.03   - Fixed broken UI items
+
+         Improvements to the ignore logic
+
+         Improved UI form data sanitisation
+
+	 Exploit fingerprint definitions database additions
+
+3.02   - Security - Added UI Restricted Mode which is enabled by default. This
+         disables features in the UI that could allow abritrary commands to be
+	 run as root and system files to be overwritten. To enable unrestricted
+	 access to the UI remove /etc/cxs/cxs.restricted
+
+	 Added UI option to completely disable the UI by creating the file
+	 /etc/cxs/cxs.disableui
+
+3.01   - Implement slurp routine for configuration files to cater for incorrect
+         linefeeds
+
+	 Improvements to forced quarantine feature within --xtra [file] and
+	 updated instructions provided in cxs.xtra.example
+
+	 Security - Quarantine improvements
+
+	 Exploit fingerprint definitions database additions
+
+3.00   - Implemented hfile ignoring for ratelimiting in cxs Watch
+
+         Implemented ignore caching in cxs Watch for ratelimited files
+
+         HTTP::Tiny upgraded to v0.033
+
+	 Exploit fingerprint definitions database additions
+
+2.99   - Fix --wttw [file] successful submission text
+
+2.98   - Added check for clamd when using --wttw [file]
+
+         Added check for script files when using --wttw [file]
+
+         HTTP::Tiny upgraded to v0.031
+
+	 Removed a false-postitive fingerprint definition
+
+	 Exploit fingerprint definitions database additions
+
+2.97   - Added support for cPanel v11.38.1+ AppConfig addon registration
+
+	 NOTE: In accordance with the new conventions for v11.38.1+ AppConfig
+	 the url to the cxs WHM plugin will change from /cgi/addon_cxs.cgi to
+	 /cgi/configserver/cxs.cgi. This will only happen with cxs v2.97+ and
+	 cPanel v11.38.1+. Older version of cxs will continue to use the old
+	 URL. This has no particular relevance to users accessing through WHM,
+	 but will affect direct URL access by users or third party
+	 applications
+
+         Added new option --comment "text" which can be used to add a short
+	 comment to files submitted using --wttw [file]
+
+	 Modified --wttw [file] to ensure that it is not already detected as a
+	 Virus or Fingerprint (now requires --force to report a false-positive)
+
+	 Fixed packed hex advanced decoder regex
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.96   - Fixed --xtra [file] detection for regfile: and file: entries
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.95   - Internal version
+
+2.94   - Removed a false-postitive fingerprint definition
+
+2.93   - New features: --prenice [num], --pionice [num]. These options allow
+         you to control the nice and ionice priorities of the running process.
+	 This can, for example, help even out the load on heavy IO servers or
+	 increase the speed of the scan on busy servers
+
+	 Exploit fingerprint definitions database additions
+
+2.92   - Improvements to the main decoder regex
+
+         Improvements to error reporting on UI restore
+
+	 Fixed typo in documentation regarding cxs.xtra :quarantine feature
+
+	 Added IP, where available, to --script [script] parameters passed to
+	 external script
+
+	 Exploit fingerprint definitions database additions
+
+2.91   - Ensure cxswatch is stopped, disabled and removed on cxs uninstall
+
+         Added cleaned script code scanning to text match and decoder regex
+	 detection to improve exploit script detection
+
+	 Modified --help to use the POD paginated viewer
+ 
+	 Exploit fingerprint definitions database additions
+
+2.90   - Added alternative php binary locations for generic installations
+
+         Improvements to --decode ([D])
+
+	 Added new advanced PHP decoder
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.89   - Improvements to --decode ([D])
+
+         Repurposed --options [u] to specifically highlight scripts only within
+	 directories deemed suspicious, rather than general directories such as
+	 /image/ or /upload(s)/. This should make the option more useful and
+	 help avoid false-positives
+
+	 Exploit fingerprint definitions database additions
+
+2.88   - Include gzdecode() detection for PHP scripts
+
+         Switched from using LWP to HTTP::Tiny to reduce memory footprint and
+         reliance on the LWP perl module. The HTTP::Tiny module is included in
+	 the distribution, so no further action is necessary
+
+	 Modified cxs watch daemon to use POSIX::setsid()
+
+	 Modified cxs quarantine routine to reduce memory footprint
+
+	 Modified loading of Pod::Usage only if necessary to reduce memory
+	 footprint
+
+	 Modified cxs watch to not fail startup if new watch resource
+	 disappears before completion
+	 
+	 Exploit fingerprint definitions database additions
+
+2.87   - Improvements to the main decoder regex
+
+         Reverted to using temporary files during PHP file decoding due to a
+	 major bug in PHP v5.4.* which produces "Ran out of opcode space!" in
+	 interactive mode
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.86   - Improvements to installer on initial fresh cPanel v11.36 installations
+
+         Added a 20 second timeout for running --Wsymlink [script] and switched
+	 from using system call to open3
+
+         Added a 20 second timeout for running --script [script] and improve
+	 output printing from [script]
+
+	 Modified --options [u] to include more suspicious locations
+ 
+	 Exploit fingerprint definitions database additions
+
+2.85   - Moved suspicious script location detection to its own option within:
+         --options [u], --doptions [u], --voptions [u] and --qoptions [u]
+	 The option is included in the default setting for --options [options].
+	 If you specify a list in any of these options and want to include this
+	 in them, then you need to add [u] to the list of options
+
+	 Separate dangerous quarantine options in the UI
+
+2.84   - New feature: cxs watch daemon Symlink attack detection. This option
+         will try and detect a symlink attack against the server. If
+	 --Wsymlinkmax [num] symlinks are created with one directory within
+	 --Wsymlinksec [secs] seconds then --Wsymlink [script] will be run. An
+	 example is provided for this script in
+	 /etc/cxs/symlinkdisable.example.pl
+
+	 Enable --Wsymlink /etc/cxs/symlinkdisable.example.pl on new installs
+	 in /etc/cxs/cxswatch.sh for email notifications
+
+         Detect as suspicious, scripts found within /images/ and /upload(s)/
+         directories
+
+	 Fixed --Wadd [file] not working correctly in cxs watch
+
+	 Fixed --www not being adhered to for new users while cxs watch running
+
+	 Modified --www location on DA servers to the domains/ subdirectory of
+	 users account for cxs watch daemon and single user scans
+
+	 Improvements to file ownership detection in cxs watch. If a file is
+	 owned by "nobody" cxs will compare user home directories in
+	 /etc/passwd to the file location to try and determine a unique owner
+
+	 Fixed UI saving default "smtp" setting incorrectly (again)
+
+2.83   - Updated to use the new cPanel 11.36+ integrated perl binary if exists
+
+	 Fixed UI saving default "smtp" setting incorrectly
+
+	 Modified --www location on DA servers to the domains/ subdirectory of
+	 users account as public_html/ is ignored as it is a symlink
+
+2.82   - Added new advanced PHP decoder
+
+         Impovements to detection of PHP script file type
+
+	 Added new functionality to --xtra [file] to force quarantine of a file
+	 with a matching regex if using --quarantine[dir]. See documentation or
+	 the latest /etc/cxs/cxs.xtra.example for information
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.81   - Fixed a false-positive with the main .htaccess regex
+
+         Fixed UI not correctly saving --MD5 to cxs.defaults if set
+
+	 Fixed issue with temp file cleanup not reinitialising between scans
+
+2.80   - Add scan type to Quarantine output for each entry
+
+         Added timezone offset to cxs --mail emails
+
+	 Improvements to the main decoder regex
+
+	 Improvements to advanced PHP decoders to --decode ([D])
+ 
+	 Exploit fingerprint definitions database additions
+
+2.79   - Improved settings initialisation when scanning multiple files
+
+         Added xtra supplied md5sum values to the report to help with match
+	 identification
+
+	 Removed the instructions for installing unofficial ClamAV databases as
+	 we don't support them
+
+2.78   - Improvements to various advanced PHP decoders
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.77   - Ensure htaccess fingerprints only apply to .htaccess files
+
+         On cPanel servers hide the Support icon introduced by cPanel in v11.34
+
+	 Added unsupported feature --YSKIPFPREGEX to ignore inbuilt fingerprint
+	 regular expression matching when using --options [M], --xtra [file]
+	 contents will still match
+
+	 Added scanning for jsp scripts
+
+	 Added scanning for asp and aspx scripts
+
+	 Added scanning for java scripts
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.76   - Update to one of the main decoder regexes
+
+2.75   - Added multiple new advanced PHP decoders
+
+         Improvements to the main decoder regex
+	 
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.74   - Improvements to the daily update mechanism
+
+         Fixed a false-positive with the main .htaccess regex
+
+2.73   - Fixed a problem where compressed file depth was not being reset
+         between files causing subsequent compressed files to be skipped from
+	 scanning
+
+	 Fixed problem where multi-depth compressed files were not being
+	 identified by their original filename correctly
+
+	 Added compressed file depth to output when matches found
+
+2.72   - Added PNG and JPEG filetypes for hidden script scanning
+
+         Fixed an issue where cxs was sometimes leaving temporary files in /tmp
+	 after compressed file expansion
+
+2.71   - cxs will now treat .htaccess files as script files and fingerprints
+         have been added for common exploits
+
+	 Added more information about existing csf anf cxs integration options
+	 (i.e. UI, ModSecurity, pure-ftpd)
+
+	 Added information that restores from quarantine must be done through
+	 the UI
+
+	 Exploit fingerprint definitions database additions
+
+2.70   - Improvements to cxs Watch daemon ignore/xtra and new update reloading
+         without restart
+
+	 Switched to using Sys::Hostname in cxs Watch daemon
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.69   - Switched to using Sys::Hostname to determine hostname as CloudLinux
+         restricts access to /proc/sys/kernel/hostname for some reason
+
+2.68   - Modified POD and UI to show full rather than abbreviated commands
+
+         Added new option --template [file]. When using --mail [email] a
+	 standard email format is used. To customise this format an email
+	 template file can be used instead. You can now use this to email the
+	 Linux owner of the affected script under certain circumstances. See
+	 the cxs Documentation for more information
+
+	 Added new advanced PHP decoder for --decode ([D])
+
+	 Improvements to advanced PHP decoders to --decode ([D])
+
+	 Fixed PHP decoder issue that could restrict decoder depth under
+	 certain circumstances
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.67   - NOTE: If you are using the cxs ModSecurity hook and ModSecurity v2.6,
+	 you must now specify the ModSecurity configuration setting SecTmpDir.
+	 If you have not set SecTmpDir in your ModSecurity configuration, then
+	 you need to add the following on its own line before or after the
+	 ModSecurity cxs line: "SecTmpDir /tmp" and then restart httpd. The
+	 file you need to add this to, if not already present, on a cPanel
+	 server is: /usr/local/apache/conf/modsec2.user.conf
+
+         Unless specified, --qoptions now defaults to [Mv] when
+         --quarantine [dir] is used. Any existing installations using
+	 --quarantine [dir] will now have --qoptions [Mv] enabled, unless
+	 otherwise specified on the command line or in cxs.defaults
+
+	 Added unsupported feature --YSKIPREG to ignore inbuilt regex matching
+	 when using --options [m], --xtra [file] contents will still match
+
+	 Added unsupported feature --YSKIPMD5 to ignore inbuilt fingerprint
+	 matching when using --options [M], --xtra [file] contents will still
+	 match
+
+	 Added a new option, --doptions [mMfSGchexTEv]. This defaults to [Mv]
+	 when --delete is used. Any existing installations using --delete will
+	 now have --doptions [Mv] enabled, unless otherwise specified on the
+	 command line or in cxs.defaults
+
+	 Fixed an issue where, under certain circumstances, files contained
+	 within an archive were ignored for scanning
+
+2.66   - Improvements to string detection in --decode ([D])
+
+	 Added new advanced PHP decoder for --decode ([D])
+
+	 Removed a false-positive fingerprint detection
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.65   - Added new advanced PHP decoder for --decode ([D])
+
+         Improvements made to md5sum ignore procedure
+
+	 Fixed problem when using md5sum ignore within archives
+
+2.64   - Improvements to --decode ([D]) variable detection
+
+	 Added new advanced PHP decoder for --decode ([D])
+	 
+	 Exploit fingerprint definitions database additions
+
+2.63   - Additional reasons for scan skipping added for --debug output
+
+         Reload ignore file in cxs watch parent as well as children for rate
+	 limit warning
+
+	 New feature added --Wrateignore [secs]. To help prevent excessive
+	 resource usage, cxs Watch will ignore files for [secs] seconds if the
+	 rate limit warning is issued. Scanning will then resume. Set this to 0
+	 to disable the ignore feature. This option is set to 300 (i.e. 5 mins)
+	 for new installations
+
+2.62   - Removed extraneous / in the cgi email notification for the "Web upload
+         script URL"
+
+	 Added cxs Watch logging for Inotify IN_Q_OVERFLOW events with a
+	 recommendation to increase /proc/sys/fs/inotify/max_queued_events if
+	 this occurs
+
+	 Added file check before invoking Inotify to confirm it exists to avoid
+	 spurious errors on VPS servers
+
+	 Allow files as well as directories in --Wadd [file]
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+2.61   - Improvements to hidden script file detection
+
+	 Added formatting to cgi and ftp email reports
+
+	 Added new fields to the cgi email report
+
+	 Change POD Examples section to use full command line options
+
+	 Improvements to ignoring any files based on md5sum (including those
+	 identified as exectuables, viruses, etc)
+
+	 Remove extraneous spaces from ignore and xtra md5sum entries
+
+	 Improvements to --MD5 so that all reported files displays the md5sum
+
+	 Changed the way md5sum values are displayed if --MD5 is used
+
+	 Improvements to the main decoder regex
+
+	 Exploit fingerprint definitions database additions
+
+2.60   - Ensure that an account name is only passed to --script [script] when
+         performing a manual scan using --user or --all
+
+	 Ignore adobe-xap-filters when detecting hidden script files
+
+	 Exploit fingerprint definitions database additions
+
+2.59   - Improvements to quarantine procedure
+
+2.58   - Fixed a problem in the UI where the selections for --options were
+         applied from /etc/cxs/cxs.defaults, if set, rather than the selections
+	 in the UI if all the standard selections were ticked
+
+	 UI improvements
+
+	 Change file name check behaviour so that it still detects with empty
+	 files
+
+	 Include all item sizes in --summary report
+
+	 Include all ignored files in --summary report
+
+	 Improvements to hidden script file detection
+
+	 Exploit fingerprint definitions database additions
+
+2.57   - Fixed problem with quarantine move failing - introduced in v2.56
+
+         Implement ignores for rate limit warnings in cxs Watch daemon
+
+         Allow a value of 0 for --filemax [num] which disables the feature
+
+	 Set --filemax [num] to 0 in cxswatch.sh for new installs
+
+2.56   - Improvements to quarantine move failure message
+
+         Implement ignores in compressed files
+
+	 Added a rate limit warning to cxs Watch daemon. If a file is scanned
+	 more then (2 * Wsleep) times in (10 * Wsleep) seconds then a warning
+	 is logged. This is to help identify frequently scanned files that you
+	 might want to ignore (e.g. if they are very frequently updated log
+	 files)
+
+	 Improved installation procedure for checking required perl modules
+
+	 Exploit fingerprint definitions database additions
+
+2.55   - Changes to htaccessdisable.pl example script
+
+         Increased default value for --filemax [num] in cxswatch.sh for new
+	 installs
+
+	 If necessary, log license error to cxs Watch daemon log
+
+2.54   - Added logrotate configuration for cxswatch
+
+         Include an example perl script that will disable directory access with
+	 a .htaccess file if a match is found using the --script [script] 
+	 option: /etc/cxs/htaccessdisable.pl
+
+	 Modifications to cxs Watch daemon so that it no longer needs to
+         completely restart when new daily detections are downloaded
+
+	 Always log if skipping directories in cxs Watch daemon due to
+	 --filemax [num]
+
+	 Fixed a problem with a false-positive in the php interpreter timeout
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.53  - Timeout added for php interpreter during --decode ([D])
+
+         Do not disable --viruscan if clamd not running in cxs Watch
+
+	 Exploit fingerprint definitions database additions
+
+v2.52  - cxs Watch will now fail to start or will terminate on VPS servers if
+         /proc/sys/fs/inotify/max_user_watches is set too low
+
+	 Added error reporting if clamd fails to respond, but stop reporting
+	 clamd errors if too many consecutive errors occur
+
+	 Updated POD regarding the new csf option: LF_CXS
+
+v2.51  - Improved temporary file cleanup
+
+         Change cxs UI to use /sbin/pidof to determine if the Watch daemon is
+	 stopped, starting or running. If /sbin/pidof does not exist, no
+	 status is shown
+
+	 Modification to prevent scan failure if FTP is down and --options [P]
+	 used
+
+	 Exploit fingerprint definitions database additions
+
+v2.50  - Improvements to the Fingerprint Matching system
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.49  - Use temporary files when performing a virus scan during --decode ([D])
+
+	 Change all clamd STREAM to SCAN scanning
+
+	 Use a robust routine for creating random temporary files during 
+	 --options [Z] (scanning within archives)
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.48  - Allow a value of 0 for --Wrefresh which disables the functionality in
+         the cxs Watch daemon
+
+	 Added new advanced PHP decoder for --decode ([D])
+
+	 Stop cxs Watch from following symlinks
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.47  - Added new advanced PHP decoders for --decode ([D])
+
+         Change main cxs Watch process name during startup while still starting
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.46  - Added two new advanced PHP decoders for --decode ([D])
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.45  - Modification to quarantine to ensure unique filenames
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.44  - Added new --ignore [file] option pscript: - regex of web script to
+         ignore
+
+	 Set --options [P] ftp timeout to 10 seconds
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.43  - SECURITY FIX. Anyone running cxs on a DirectAdmin server should
+         upgrade to this release immediately
+
+         Add check for successful open of admin.list on DA servers to avoid a
+	 segfault, which could lead to a buffer overflow
+
+v2.42  - Fixed problem where dir: ignores where not being fully implemented in
+         single file scans
+
+	 Fixed problem where dir: and hdir: ignores where not being fully
+	 implemented by the cxs Watch daemon when auto-reloading an ignore file
+
+	 Exploit fingerprint definitions database additions
+
+v2.41  - Developed another new advanced PHP decoder for --decode ([D])
+
+         Fixed advanced decoder output formatting when using --decode [file]
+
+	 Exploit regex definitions database additions
+
+v2.40  - Modifications to cxs Watch daemon so that it no longer needs to
+         completely restart if changes to --xtra [file] are detected
+
+	 Added detection and decoding of Hex encoding to advanced PHP decoders
+
+	 Exploit fingerprint definitions database additions
+
+v2.39  - Memory management and speedup improvements for cxs Watch Daemon
+
+         Improvements to advanced PHP decoders to --decode ([D])
+
+	 Corrected cxs POD to read --upgrade instead of --update
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.38  - Added more advanced PHP decoders to --decode ([D])
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.37  - cxs Watch - report error if unable to increase
+         /proc/sys/fs/inotify/max_user_watches
+
+	 Further improvements to --timemax [secs] reports
+
+	 Further improvements to error reporting during scans
+
+	 Exploit fingerprint definitions database additions
+
+v2.36  - cxs Watch will now restart if a change to a specific --xtra [file] is
+         made. This triggers a full restart of cxs Watch
+
+	 Improvements to --timemax [secs]
+
+	 Improvements to error reporting during scans
+
+	 Added more advanced PHP decoders to --decode ([D])
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.35  - Added new option --timemax [secs]. Scan timeout per file in seconds to
+         prevent looping. Default is 30 seconds
+
+         Additional logging on cxs watch startup to show the progress of user
+	 account inotify setup
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.34  - Modifications to the UI
+
+         Updates to the failure detection of the quarantine procedure
+
+         New option --force. If --force is not used then cxs will refuse to
+         scan within restricted directories: /usr /var /bin /lib /lib64 /boot
+
+	 Modified daily update check to only restart cxs Watch if updates are
+	 actually new
+
+	 Modified cxs Watch to no longer require a /scripts/postwwwacct entry
+	 (which is now ignored) as it now monitors /var/cpanel/users/ for new
+	 users on cPanel servers
+
+	 Exploit fingerprint definitions database additions
+
+v2.33  - Redesigned cxs UI, included functions for controlling cxs Watch
+
+         Added TERM logging to the cxs Watch daemon to signify termination
+
+v2.32  - Added init script for cxswatch daemon on cPanel servers. This is
+         instead of using /etc/rc.local to start the daemon and can also be
+	 used to stop/start/restart/status the daemon. See the cxs 
+	 documentation for more information
+
+	 Added entry to chkserv.d on cPanel servers so that cPanel will monitor
+	 the cxswatch daemon using tailwatchd. See the cxs documentation for
+	 more information
+
+v2.31  - Fixed issue with tarball and zip file contents checking
+
+         Further improvements to the Fingerprint matching system
+
+	 Exploit fingerprint definitions database additions
+
+v2.30  - Significant speedups for pattern matching
+
+         Improvements to the Fingerprint matching system which includes
+         speedups and additional identification methods
+
+	 Fixed error message for scanning an non-existent file
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.29  - Fixed problem with quarantine file naming convention causing duplicate
+         file names under certain circumstances and failing to quarantine the
+	 second instance
+
+	 Fixed spurious Cpanel::Version::gettree() warning in cPanel error log
+
+	 Exploit regex definitions database additions
+
+v2.28  - Fixed problem with cxs Watch daemon restart introduced in v2.2.27. You
+         will have to manually restart any running cxs Watch daemon after this
+	 upgrade
+
+	 If BSD::Resource perl module is installed, double the configured
+	 process stack size to help avoid Segmentation Faults
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.27  - New --options [P]. This option will search standard web application
+         configuration files for MySQL database passwords. It will then attempt
+	 to login via FTP on localhost with the username of the account being
+	 processed and the detected password (it will attempt up to two
+	 password hits per configuration file). If the login is successful, the
+	 option will trigger a match. See CLI documentation for more info
+
+	 Separated and highlighted advanced Exploit Scan options in the UI that
+	 can affect user data and/or produce false-positives in the vain hope
+	 it will stop some people just ticking everything and then wondering
+	 where their files have gone
+
+	 Added Net::FTP to the perl module requirements (this is a core perl
+	 module so should already be installed)
+
+	 New options --uidmin [uid] and --uidmax [uid] for the GENERIC install
+	 when used with --allusers. These have no effect on cPanel and DA
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.26  - Added new option for --xtra [file]: regfile: which is a regular
+         expression match for a file or directory name
+
+	 Added new CLI option --smtp. This will send emails generated by --mail
+	 [email] via localhost SMTP instead of sendmail
+
+	 Added MIME::Base64 and Net::SMTP to the perl module requirements (both
+	 are core perl modules so should already be installed)
+
+v2.25  - Fix for UI version processing issue
+
+v2.24  - Allow binary submissions via --wttw
+
+	 Improvements to --decode ([D]) option
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.23  - Improved cxs Watch daemon scanning to include moved files to detect
+         files uploaded by the cPanel File Manager
+
+	 Fixed bug where --cleanlog [file] was not logging the filename for
+	 cxsftp.sh scanning
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.22  - Exploit regex definitions database correction
+
+v2.21  - Speedups to --decode ([D]) option
+
+         Improvements to decode regex
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.20  - Fixed issue with MD5 setting via UI when saving to defaults
+
+         Improvements to regex validation to any specified --ignore or --xtra
+	 files
+
+	 Improvements to decode regex
+
+	 Improvements to --decode ([D]) option
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.19  - Added regex validation to any specified --ignore or --xtra files
+
+         Added quarantine failure reason to messages
+
+	 Improvements to --decode ([D]) option to no longer use temporary files
+
+	 If [Fingerprint Match] found also perform a Virus Scan
+
+	 Automatically ignore --quarantine [dir] during scans
+
+	 Improvements to fingerprint matching
+
+	 Added new option --MD5 to display a matched file md5sum. See docs for
+	 more information
+
+	 Added new option md5sum: to --ignore [file]. See docs for more
+	 information
+
+	 Added new option md5sum: to --xtra [file]. See docs for more
+	 information
+
+	 Added new option "Ignore MD5" to cxs Quarantine UI for ftp, web and
+	 scan entries
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.18  - Further improvements to Filetype detection
+
+v2.17  - Added hdir:/quarantine_clamavconnector to the csf.ignore.example file
+
+         Improvements to php script detection where extension is not .php
+
+	 Filetype detection speedups
+
+	 Filetype differentiation between MS-DOS and MS Windows executables
+
+	 Added new option --Wrefresh. To keep the cxs Watch daemon up to date,
+	 it will restart every 7 days by default. To change this interval, you
+	 can set B<--Wrefresh [days]>
+
+	 Improvements to the decode regex
+
+	 Exploit regex definitions database additions
+	 
+	 Exploit fingerprint definitions database additions
+
+v2.16  - Further improvements to the check for PHP code hidden in GIF image
+         files for "hidden script file", regex matching and decode scanning
+
+v2.14  - Improvements to the check for PHP code hidden in GIF image files for
+         "hidden script file", regex matching and decode scanning
+
+	 Add link to the Changelog when cxs is upgraded
+
+	 If an ignore file us used with cxs Watch daemon and the ignore file is
+	 modified, cxs Watch will reload the ignore file and restart the child
+	 processes. However, after making a large number of changes to the
+	 ignore file or if adding puser: or user: to the ignore file, the cxs
+	 Watch daemon should be manually restarted
+
+	 Improved cxs Watch logging when suspicious file found and --Wloglevel
+	 set to 0
+
+	 Exploit fingerprint definitions database additions
+
+v2.13  - During cxs Watch startup default to the POSIX locale to avoid error
+         message ambiguity for intotify from the kernel
+
+	 Improvements to --decode ([D]) option
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v2.12  - Improvements to --decode ([D]) option
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v2.11  - Further SECURITY improvements to Quarantine functionality
+
+	 All cxs users should upgrade to this release immediately
+
+v2.10  - Fixed a SECURITY BUG in Quarantine file restore which could result in
+         root privilege escalation. The destination restore file must not now
+	 exist before restoring will work. Our thanks to Jeff Petersen for
+	 reporting this issue
+
+	 All cxs users should upgrade to this release immediately
+
+v2.09  - New --options [R]. It will trigger a match for the inbuilt regex used
+         by --options [D] when decoding PHP encoded (base64, etc) scripts
+
+	 Improvements to --decode ([D]) option so that both the last and the
+	 penultimate decode level are both scanned
+
+	 Added improved code for dropping privileges to the "nobody" user while
+	 running the interactive php interpreter as root
+
+	 Ensure Quarantine only works on files
+
+	 Updated UI text for options
+
+	 Removed duplicated regex definitions from the database now that
+	 --options [R] has been added. Be sure to add R to your --options lists
+	 if you specify them if you still want to trap these.
+
+v2.08  - Removed code that dropped privileges to the "nobody" user while
+         running the interactive php interpreter as it broke subsequent
+	 scanning at depth
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v2.07  - Improvements to --decode ([D]) option
+
+         New Feature - Added daily check for new Exploit Fingerprints. If cxs
+	 is scheduled to check for a new version daily, an additional check for
+	 new Exploit Fingerprints released since the last cxs version is
+	 performed. These will be downloaded and used on subsequent scans
+
+	 Exploit fingerprint definitions database additions
+
+v2.06  - Fixed bug in application type detection introduced in v2.04 which
+         restricted script specific regex detection from working correctly
+
+	 Exploit fingerprint definitions database additions
+
+v2.04  - Added Quarantine UI option to block FTP IP addresses in csf
+
+         Fixed Quarantine UI display problems
+
+         Added option --tscripts [list] which is a comma separated list of
+	 scripts that --options [T] will detect if you want to restrict which
+	 types are checked
+
+	 Exploit fingerprint definitions database additions
+
+v2.03  - Improvements to --decode [file] - don't process ignore file
+
+         Speedups for --options [D]
+
+	 Speedups for cxs Watch daemon startup
+
+	 Fixes to cxs Watch daemon when processing new and --Wadd [file] 
+	 directories where --ignore [file] and --filemax [num] were not
+	 applied
+
+	 Improvements to hdir, hfile and hsym processing for --ignore [file]
+
+	 Adjustments to --Wloglevel [num]
+
+	 Improvements to FTP IP detection 
+
+v2.02  - Fixed bugs in --decode [file] output report and improved content of
+         the report
+
+	 Exploit fingerprint definitions database additions
+
+v2.01  - Modified --decode [file] and --options [D] to drop privileges to the
+         "nobody" user while running the interactive php interpreter and
+	 on the ownership of the decoded file while processing it
+	 
+v2.00  - Added new scanning option: cxs Watch. This is an alternative to ftp
+         and web script upload scanning. The cxs Watch daemon uses a separate
+	 process to watch entire user accounts for new and modified files and
+	 scans them immediately. The scanning children use up significantly
+	 fewer resources than the ftp and web script upload scanning methods.
+	 This new feature requires:
+		Redhat/CentOS v5+ (i.e. a kernel that supports inotify)
+		Linux::Inotify2 Perl module
+	 Systems that do not meet these requirements can continue to use the
+	 ftp and web script upload scanning methods. See the documentation for
+	 more information about this new option under --Wstart
+
+	 --options [D] now enabled by default to improve exploit detection
+	 rates (default options:mMOLfSGchexdnwZD)
+
+	 Updated POD documentation, including a new RECOMMENDATIONS section
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.56  - Reinstated the Scan Report header for the --all option lost in v1.55
+
+         Added new option --www to only scan within the public_html/ directory
+	 when using --allusers or --user [user]
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.55  - Modified FTP IP Address lookup code to only read the last 64K of the
+         relevant log file, improving lookup speed and resource usage
+
+	 Made /etc/init.d/pure-uploadscript LSB compliant
+
+	 Exploit fingerprint definitions database additions
+
+v1.54  - Added a note to the CGI alert email for ModSecurity false-positives
+         where the request body is inspected before Apache has a chance to
+	 determine whether the called script exists (i.e. a 404)
+
+	 Added new option --wttw [file] which is available for submitting text
+	 exploits (i.e. PHP, Perl, Shell) to ConfigServer if cxs fails to
+	 detect it. The file is sent as an attachment via email. Please be sure
+	 to read the documentation before using this option
+
+	 Exploit fingerprint definitions database additions
+
+v1.53  - Sort File::Find directory traversal/files alphabetically
+
+         Multiple scanning performance and resource usage improvements
+
+	 --voptions [M] removed as it serves no function
+
+	 Added text for --options [M] (Known exploit) where we have it
+
+	 Improvements to relative path file/directory scanning
+
+	 Exploit fingerprint definitions database additions
+
+v1.52  - Ignore SIGPIPE when using --decode (--options [D]) while running
+         interactive php interpreter, which caused scans to abort
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.51  - Sort Quarantine UI users
+
+         If --quarantine or --delete fails (e.g. an immutable file), report
+	 failure to do so. Failure to quarantine will no longer attempt removal
+	 of the original file
+
+	 Only "View" quarantine files in UI if they are text files
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.50  - Fixed a problem with the use of File::Copy and the quarantine system
+	 where files that are moved across file systems do not retain the
+	 correct permissions
+
+v1.49  - Display complete cxs command options at the top of reports, not just
+         the CLI command (i.e. include defaults and cxs.default entries)
+
+	 Added a "View Quarantine" button at the bottom of the "View Quarantine
+	 User" UI page to return to the quarantine view
+
+	 Added default clamd rpm and apt-get socket location detection
+	 (/var/run/clamav/clamd.sock and /var/run/clamav/clamd.ctl)
+
+	 DirectAdmin development work (not currently supported)
+	 (RedHat Enterprise v3+/CentOS v3+/Debian v5+)
+
+	 Added code for future multiple license servers
+
+	 Fixed a problem with the use of File::Copy and the quarantine system
+	 where files that are moved across file systems do not retain the
+	 correct ownership
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.48  - Modified FTP scanning to honour hfile: ignore file entries
+
+         Fixed problem with --qoptions [] sending all scan result matches to
+	 quarantine after a single legitimate match was found, regardless of
+	 the --qoptions [] specified
+
+v1.47  - Fixed problem with UI upgrade sleeping before upgrading (as introduced
+         for cron jobs). Upgrading to this version will still sleep through the
+	 UI, but subsequent versions should be fine. Instead of using the UI,
+	 using the CLI will avoid this problem for this upgrade, i.e.: cxs -U
+
+v1.46  - Restore from quarantine in UI now preserves file ownership of the
+         restored file
+
+	 Prefill UI Quarantine directory if set in cxs.defaults
+
+	 Added new option to Quarantine UI to bulk Restore files in the same
+	 way as bulk Delete works
+
+	 Exploit fingerprint definitions database additions
+
+v1.45  - Added new option --qoptions [mMOLfSGchexdnwTEv]. By default
+         --quarantine [dir]> will move all file matches. If --qoptions [] is
+	 also used then only the selected file types will be moved
+
+	 Added --qoptions [mMOLfSGchexdnwTEv] to UI
+
+	 Improvements to --decode ([D]) option
+
+	 Added --upgrade timer to sleep for up to 1800 seconds when running as
+	 a cron job to avoid overloading the license server
+
+	 Added the the --jumpfrom [user] and --jumpto [user] options to the UI
+
+	 Exploit fingerprint definitions database additions
+
+v1.44  - Added Quarantine option to UI
+
+         Modified the --jumpfrom [user], --jumpto [user] options so a special
+	 value can be used for the from and to [user] using a single letter
+	 then a plus sign to scan those users whose name begins with the letter
+	 specified (not case sensitive). Again, this is inclusive. For example,
+	 to scan all accounts beginning with k through to g use:
+	 --jumpfrom k+ --jumpto g+
+
+	 Improvements to --decode ([D]) option
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.43  - Improvements to --decode ([D]) option. If the final decode depth
+         results in a php Parse error, the previous depth is scanned instead.
+	 This improves the likelihood of a successful decode and scan
+
+	 Improvements to --decode ([D]) option. Decode PHP scripts in memory
+	 using the interactive php interpreter instead of using temporary files
+
+	 Improvements to --decode ([D]) option. Add timeout to php interpreter
+	 to avoid decoding hangs
+
+	 Exploit fingerprint definitions database additions
+
+v1.42  - Suppress error output from Archive::Zip
+
+v1.41  - Enabled option --options [Z] by default for scanning within compressed
+         archives
+
+	 Suppress error output from Archive::Tar
+
+	 Exploit fingerprint definitions database additions
+
+v1.40  - Improved detection of ruby and c exploits
+
+         Added the ability to use --quarantine and --delete when performing a
+	 manual or scheduled scan. However, since the likelihood of a
+	 false-positive is relatively high, this is not recommended without
+	 care and understanding of the implications
+
+	 Added test for existence of --quarantine [dir]. If it does not exist
+	 an error will be shown and the scan will continue with the quarantine
+	 directive disabled
+
+	 New --options [Z]. This option decompresses archives (i.e. zip, tar,
+	 tar.gz and tar.bz2 files) and scans each file within the archive
+	 using the same options provided to the original scan
+
+	 Added --options [Z] to WHM UI
+
+	 Updated perl modules requirements to now include: Archive::Zip and
+	 Archive::Tar
+
+	 Cater for single quotes in cron jobs in the WHM UI
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.39  - Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.38  - Improvements to --decode ([D]) option
+
+         Added [D] option to WHM UI
+
+	 Fixed typo in WHM UI
+
+	 More detailed message for when --filemax reached in a directory
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.37  - Fixed bug in --options [D] when running under a non-root account
+
+         Modified --script [script] execution to prevent stray output from
+	 [script] when --quiet used
+
+	 Added retry timeout in WHM UI for checking www.configserver.com for
+	 new version information (to avoid repeated hangs when unreachable)
+
+	 Included additional instructions in install.txt to install additional
+	 unofficial ClamAV databases from Sanesecurity
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.36  - Significant Improvements to --decode ([D]) option
+
+         Added verbose switch to example cPanel Account Suspend perl script
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.35  - Optimised fingerprint definitions database
+
+         Removed fingerprint definitions database false-positive
+
+v1.34  - Fixed licensing issue with v1.33
+
+v1.33  - Updated example cPanel Account Suspend perl script to be verbose
+
+         cxs startup speedups
+
+	 Add support to --script to pass the username when using --user [user]
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.32  - Include an example cPanel Account Suspend perl script for use with
+         --script /etc/cxs/cpanelsuspend.pl
+
+	 Exploit fingerprint definitions database additions
+
+v1.31  - Always exit if ftp/cgi user is listed in a specified ignore file
+
+         Disable pure-uploadscript if /etc/cxs/ftpddisable exists (in addition
+	 to /etc/ftpddisable)
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.30  - Added new option --script [script] which runs an external script
+         whenever a match is detected against a file. See documentation for
+	 more information
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.29  - Significant improvements to --decode [file]
+
+         Increased LWP timeout to cater for servers with slow connections to
+	 the license server
+
+	 Added total Viruses and Fingerprint Matches to the --mail Subject
+
+	 Added total Fingerprint Matches to the --summary
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.28  - If ftp is disabled in cPanel do not start pure-uploadscript
+
+         New --options [E]. This option will match scripts that send out email
+	 using sendmail, exim or via SMTP. This option requires that --options
+	 [m] is also specified
+
+         Improvement to --decode [file] variable detection
+
+	 Improvements to various eval() regex matches
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.27  - Fixed issue introduced in v1.26 that prevented ignoring of hdir and
+         hfile options in an ignore file
+
+v1.26  - Allow the use of --background (-B) in cxsftp.sh
+
+         Skip processing a home directory of / when using --all
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.25  - Improved handling of --decode failures
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.24  - Improvements to --decode [file]
+
+         Add the cxs command line to a report even if the scan report is empty
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.23  - Fixed a false-positive detection of c/c++ source files
+
+         Added filename legend to View option UI in Other Files
+
+	 For single or multiple user scans, Symlinks within the homedir will
+	 now be ignored
+
+	 Removed [\;\|\`\\] regex checks from the [f] and [d] --options, as it
+	 appears to be of little value (you could always add back such a check
+	 using a similar regex entry in an xtra file)
+
+	 Modified hidden text in image file check to only report if the text is
+	 script code
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.22  - Fixed --options [D] output not going to a --report [file]
+
+         Improvement to --decode [file] variable detection
+
+	 Exploit fingerprint definitions database additions
+
+v1.21  - Added UID check to ensure updates are only performed by root (UID=0)
+
+         New --options [D]. This is an experimental option that puts any PHP
+	 scripts containing an eval() function that decodes base64 and rot13
+	 data through the (experimental) --decode [file] option during a scan.
+	 This will then highlight the decoded result if it hits any regex,
+	 fingerprint or virus scan matches
+
+	 Added eval(str_rot13 to --decode [file]
+
+	 Fixed --decode [file] not scanning final decoded result with regex
+	 definitions and fingerprints
+
+	 Improvements to --decode [file] detection and processing
+
+	 Modified pure-uploadscript init file to cope with multiple pure-ftpd
+	 pids on restart and to stop pure-ftpd more cleanly
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.20  - Improvements to regex definitions database
+
+         Added new ignore options for sym:, psym: and hsym: to allow ignoring
+	 of symlinks
+
+	 Modified --generate to add sym: for symlinks to ignore file
+
+	 All UI user selections modified to be dropdown lists
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.19  - Fixed bug preventing csf from blocking FTP IP addresses when --block
+         used
+
+	 Added failure message from csf to FTP email if deny fails
+
+         Added new exploit scanning option W to be used with --option (must be
+	 explicitly added to the options list - the same way as the C option).
+	 The W option will chmod all world writable directories found to 755.
+	 Use this option with care as it could prevent web scripts from
+	 functioning on non-suPHP or non-SUEXEC enabled systems
+
+v1.18  - Scanning speedup when using --voptions
+
+         Improvements to --decode performance and effectiveness
+
+	 New optimised fingerprint database. This new database, though with
+	 fewer entries, is better targetted at detecting relevant exploits that
+	 ClamAV misses (the majority!)
+
+	 Changed "Match for fingerprint of an exploit" to
+	 "Known exploit = [Fingerprint Match]"
+
+	 Changed "Match for regular expression (regex)" to
+	 "Regular expression match = [regex]"
+
+v1.17  - Fixed email " (Hits:nn)" not totalling all accounts hits
+
+v1.16  - Removed spurious "set to skip" message text
+
+	 Added " (Hits:nn)" to the Subject line of email reports
+
+	 Added new option --ulist [file] for use with the --all option to
+	 perform scans of only those users listed in [file]
+
+	 Regex scanning improvements
+
+	 Disable default deep scanning on FTP and web script uploads to help
+	 avoid false-positives. If you want to continue deep scanning add
+	 --deep to cxsftp.sh and/or cxscgi.sh
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.15  - Added breakout if --decode [file] depth is > 250 to prevent looping
+
+         Fixed problem with quarantine UI to cope with a trailing slash on the
+	 --quarantine [dir] statement
+
+	 Improved detection of the quarantine directory in UI
+
+	 Added DNS lookups on FTP IP address reports
+
+	 Allow the use of floating point numbers with --throttle [num]
+
+	 Added "Ignore" option for FTP quarantines files to Quarantine UI to
+	 add a file: ignore statement to a relevant ignore file if configured
+
+	 Added new options --jumpfrom [user] and --jumpto [user] for use with
+	 the --all option to perform scans of only those user between the two
+	 points, both of which are inclusive
+
+	 Added jumpfrom and jumpto to UI resource choice
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.14  - Added new experimental options --decode [file] and --depth [num]. See
+         the perldoc documentation for more information
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.13  - Modified FrontPage extensions check to be case-insensitive
+
+         Use of --all --mail [email] and --nosummary will now only report
+	 suspicious accounts instead of all accounts. --report [file] will
+	 still contain the full report
+
+	 Updated cxs perldoc help
+
+	 Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.12  - New option (-X, --xtra [file]) to allow custom regular expression
+         matches and filenames that cxs will additionally scan for
+
+	 Exploit fingerprint definitions database additions
+
+v1.11  - Modified hidden image text file to exclude most FrontPage extensions
+         files
+
+         Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.10  - Added new check to suspicious file routine to detect text files hiding
+         as image files
+
+	 Made file extension checks case-insensitive
+
+	 Exploit fingerprint definitions database additions
+
+v1.09  - Improved licensing code tolerance on network failure for web and ftp
+         scanning on servers that are behind NAT
+
+         Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+	 Ftp and web scanning speedups
+
+v1.08  - Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.07  - Exploit regex definitions database additions
+
+	 Exploit fingerprint definitions database additions
+
+v1.06  - Fixed issue with pure-uploadscript restart on cron job cxs upgrade
+
+	 Exploit fingerprint definitions database additions
+
+v1.05  - Improved UI detection of the quarantine directory in cxsftp.sh and
+         cxscgi.sh if used
+
+v1.04  - Fixed duplicate virus scan on script files with regex matches
+
+	 Exploit fingerprint definitions database additions
+
+v1.03  - Added quotes around the $1 parameter in cxscgi.sh and cxsftp.sh to
+         cope with files with spaces in their names. Existing scripts will be
+	 fixed on upgrade
+
+v1.02  - Added initial FreeBSD (v7.2) support - currently no UI cron job
+         support has been implemented, jobs will have to be added to
+	 /etc/crontab manually on FreeBSD
+
+         Fixed UI quarantine restore to always use correct uid and gid
+
+	 Exploit fingerprint definitions database additions
+
+	 Added some more examples to the POD and reference the examples in
+	 cxsftp.sh and cxscgi.sh
+
+v1.01  - Added new exploit scanning option M to be used with --option (enabled
+         by default) and --voption. The M option scans a fingerprint lookup
+	 table of over 4500 known exploit scripts. If you cron jobs or have
+	 modified cxsftp.sh or cxscgi.sh that use an --options list, you might
+	 want to add M to the list to use this new feature
+
+	 Digest::MD5 added to required perl modules
+
+         Added extra check in UI where alternative clamdsock is ticked but none
+         entered in the textbox
+
+	 Exploit regex definitions database additions
+
+	 Don't show user in quarantine UI if empty
+	 
+v1.00  - Initial release

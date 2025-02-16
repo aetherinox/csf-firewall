@@ -1,0 +1,29 @@
+[%
+USE Whostmgr;
+USE JSON;
+ 
+WRAPPER 'master_templates/master.tmpl'
+	header = 'ConfigServer Security & Firewall'
+	skipsupport = 1
+	skipheader = 1
+	hide_license_warnings = 1
+	theme='bootstrap'
+	breadcrumbdata = {
+		previous = [
+		{
+			name = "Home",
+			url  = "/scripts/command?PFILE=main",
+		},
+		{
+			name = "Plugins",
+			url  = "/scripts/command?PFILE=Plugins",
+		}
+		],
+		name = 'ConfigServer Security & Firewall',
+		url = '/cgi/configserver/csf.cgi',
+	};
+%]
+ 
+[% csf_output %]
+
+[% END %]

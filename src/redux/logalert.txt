@@ -1,0 +1,5 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Log Scanner Report for [hour], (lines:[lines])
+
+[text]

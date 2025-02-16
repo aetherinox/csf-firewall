@@ -1,0 +1,7 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of usernames that are ignored during the LF_EXPLOIT
+# SUPERUSER check

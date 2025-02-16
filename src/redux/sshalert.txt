@@ -1,0 +1,12 @@
+From: root
+To: root
+Subject: lfd on [hostname]: SSH login alert for user [account] from [ip]
+
+Time:    [time]
+IP:      [ip]
+Account: [account]
+Method:  [method] authentication
+
+Log line:
+
+[text]

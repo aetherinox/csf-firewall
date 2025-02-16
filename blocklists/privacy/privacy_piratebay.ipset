@@ -1,0 +1,22 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/privacy/privacy_piratebay.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_piratebay.ipset
+#   @source         None
+#   @id             privacy_piratebay_ipset
+#   @uuid           65a124a5-fb37-319e-90de-713055602f0a
+#   @updated        Sat 15 Feb 2025 08:03:02 AM UTC
+#   @entries        323 ips
+#                   2 subnets
+#                   5 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+85.17.40.33
+91.191.138.0/26
+109.201.131.4
+194.71.107.0/24
+217.75.120.120

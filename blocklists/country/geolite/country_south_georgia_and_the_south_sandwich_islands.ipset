@@ -1,0 +1,52 @@
+# #
+#   🧱 Firewall Blocklist - country_south_georgia_and_the_south_sandwich_islands.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_south_georgia_and_the_south_sandwich_islands.ipset
+#   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
+#   @id             country_south_georgia_and_the_south_sandwich_islands_ipset
+#   @uuid           78f7d2c5-303a-3058-b5ed-6380b00f1389
+#   @updated        Sat 15 Feb 2025 12:21:15 AM UTC
+#   @entries        271 ips
+#                   30 subnets
+#                   30 lines
+#   @country        South Georgia and the South Sandwich Islands (GS)
+#   @expires        24 hours
+#   @category       Geolocation
+#
+#   These geographical databases allow you to restrict which countries can gain access to
+#   your server. They are fully compatible with applications such as ConfigServer Firewall,
+#   Wireshark, Elastic Search, NGINX, Snowplow Analytics, Revive Adserver, OPNSense, etc.
+#   A more detailed list is available at:
+#       - https://dev.maxmind.com/geoip/docs/databases/#client-apis
+# #
+
+104.28.10.101/32
+104.28.10.102/31
+128.90.30.0/32
+136.23.1.142/32
+136.23.21.42/32
+140.248.56.89/32
+140.248.57.89/32
+140.248.58.89/32
+140.248.59.89/32
+140.248.60.89/32
+140.248.61.89/32
+140.248.62.89/32
+140.248.63.89/32
+154.65.48.0/24
+194.50.99.91/32
+2606:40:1260::/43
+2a04:4e41:4015:9000::/52
+2a04:4e41:4025:9000::/52
+2a04:4e41:4035:9000::/52
+2a04:4e41:4045:9000::/52
+2a04:4e41:4055:9000::/52
+2a04:4e41:4065:9000::/52
+2a04:4e41:4075:9000::/52
+2a04:4e41:4085:9000::/52
+2a05:dfc1:5a66::/48
+2a07:d887:5900::/40
+2a09:bac4:2c8::/45
+2a09:bac4:12c8::/45
+2a0c:9a40:95bc:d000::/52
+2a13:b487:5034::/48

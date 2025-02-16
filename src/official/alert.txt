@@ -1,0 +1,13 @@
+From: root
+To: root
+Subject: lfd on [hostname]: blocked [ip]
+
+Time:     [time]
+IP:       [ip]
+Failures: [ipcount]
+Interval: [iptick] seconds
+Blocked:  [block]
+
+Log entries:
+
+[text]

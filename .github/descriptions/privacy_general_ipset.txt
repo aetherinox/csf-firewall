@@ -1,0 +1,4 @@
+#   This is a static list of abusive IP addresses provided by https://github.com/Aetherinox/csf-firewall
+#
+#   This list contains IP addresses to servers that frequently scan websites in order to obtain information. 
+#   This can include crawlers and research groups.

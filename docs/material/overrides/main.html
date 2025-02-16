@@ -1,0 +1,24 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% extends "base.html" %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{{ 'assets/stylesheets/custom.00c04c01.min.css' | url }}">
+{% endblock %}
+
+{% block announce %}
+  Documentation currently under development
+{% endblock %}
+
+{% block outdated %}
+  You're not viewing the latest version.
+  <a href="{{ '../' ~ base_url }}"> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ 'assets/javascripts/custom.129bd6ad.min.js' | url }}"></script>
+{% endblock %}

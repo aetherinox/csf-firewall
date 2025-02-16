@@ -1,0 +1,18 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/privacy/privacy_pandora.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_pandora.ipset
+#   @source         None
+#   @id             privacy_pandora_ipset
+#   @uuid           4ecaa598-16b1-361f-b556-774eecbd9da9
+#   @updated        Sat 15 Feb 2025 08:02:57 AM UTC
+#   @entries        2,048 ips
+#                   1 subnets
+#                   1 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+208.85.40.0/21

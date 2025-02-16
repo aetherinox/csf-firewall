@@ -1,0 +1,11 @@
+From: root
+To: root
+Subject: lfd on [hostname]: [ip] blocked with too many connections
+
+Time:        [time]
+IP:          [ip]
+Connections: [ipcount]
+Blocked:     [temp]
+
+Connections:
+[iptext]

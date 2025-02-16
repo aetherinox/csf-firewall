@@ -1,0 +1,23 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/privacy/privacy_riot_games.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_riot_games.ipset
+#   @source         None
+#   @id             privacy_riot_games_ipset
+#   @uuid           74e5b291-25e6-31df-8c51-391ec716fc65
+#   @updated        Sat 15 Feb 2025 08:03:01 AM UTC
+#   @entries        1,792 ips
+#                   6 subnets
+#                   6 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+64.7.194.0/24
+66.150.148.0/24
+162.64.169.0/24
+192.64.168.0/24
+192.64.170.0/23
+216.133.234.0/24

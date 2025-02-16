@@ -1,0 +1,6 @@
+#   Contains a list of IP addresses which are responsible for
+#   spam on forums, as well as blogs and wikis. 
+#
+#   IPs within this ipset are no older than 7 days, but updated
+#   more frequently to add additional IP addresses which have
+#   been involved in such activities.

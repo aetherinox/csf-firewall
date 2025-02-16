@@ -1,0 +1,103 @@
+# ---------------------------------------------------------------------------------------
+#   @parent     : github workflow
+#   @desc       : build documentation
+#   @author     : Aetherinox
+#   @url        : https://github.com/Aetherinox
+# ---------------------------------------------------------------------------------------
+
+name: "📒 Docs › Build"
+run-name: "📒 Docs › Build"
+
+# ---------------------------------------------------------------------------------------
+#   environment variables
+# ---------------------------------------------------------------------------------------
+
+env:
+    ASSIGN_USER:                  Aetherinox
+    BOT_NAME_1:                   AdminServ
+    BOT_NAME_2:                   AdminServX
+    BOT_NAME_3:                   EuropaServ
+    BOT_NAME_DEPENDABOT:          dependabot[bot]
+
+# ---------------------------------------------------------------------------------------
+#   triggers
+# ---------------------------------------------------------------------------------------
+
+on:
+  release:
+    types:
+      - published
+  push:
+    paths:
+      - docs/**
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */12 * * *"
+
+# ---------------------------------------------------------------------------------------
+#   jobs
+# ---------------------------------------------------------------------------------------
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+    environment:
+      name: Orion
+
+    steps:
+
+      # ---------------------------------------------------------------------------------------
+      #   Checkout
+      # ---------------------------------------------------------------------------------------
+
+      - name: "☑️ Checkout"
+        uses: actions/checkout@v4
+
+      # ---------------------------------------------------------------------------------------
+      #   Setup Python
+      # ---------------------------------------------------------------------------------------
+
+      - name: "🐍 Setup Python"
+        id: task_build_python_setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      # ---------------------------------------------------------------------------------------
+      #   Build Documentation
+      # ---------------------------------------------------------------------------------------
+
+      - name: >-
+          📕 Build Documentation
+        id: task_build_docs
+        run: |
+          export DOCS_NAME=${{ secrets.DOCS_NAME }}
+          export DOCS_SECRET_L1=${{ secrets.DOCS_SECRET_L1 }}
+          export DOCS_SECRET_L2=${{ secrets.DOCS_SECRET_L2 }}
+          export GH_TOKEN=${{ secrets.ADMINSERV_TOKEN }}
+
+          pip install mkdocs
+          pip install mkdocs-material
+          pip install mike
+          pip install mkdocs-git-committers-plugin-2
+          pip install mkdocs-encryptcontent-plugin
+          pip install mkdocs-redirects mkdocs-glightbox pymdown-extensions mkdocs-git-revision-date-localized-plugin mkdocs-git-authors-plugin mkdocs-link-embeds-plugin
+          cd docs
+          mkdocs build
+          dir
+        env:
+          GH_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
+
+      # ---------------------------------------------------------------------------------------
+      #   Deploy
+      # ---------------------------------------------------------------------------------------
+
+      - name: "💽 Deploy"
+        id: task_build_deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.ADMINSERV_TOKEN_CL }}
+          publish_dir: ./docs/site

@@ -1,0 +1,38 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/02_privacy_fastly.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/02_privacy_fastly.ipset
+#   @source         None
+#   @id             02_privacy_fastly_ipset
+#   @uuid           5b71e872-3baf-37c9-80b6-4ae7e750dd6a
+#   @updated        Mon 04 Nov 2024 02:26:25 AM UTC
+#   @entries        304,128 ips
+#                   21 subnets
+#                   21 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+2a04:4e40::/32
+2a04:4e42::/32
+23.235.32.0/20
+43.249.72.0/22
+103.244.50.0/24
+103.245.222.0/23
+103.245.224.0/24
+104.156.80.0/20
+140.248.128.0/17
+140.248.64.0/18
+146.75.0.0/17
+151.101.0.0/16
+157.52.64.0/18
+167.82.0.0/17
+167.82.128.0/20
+167.82.160.0/20
+167.82.224.0/20
+172.111.64.0/18
+185.31.16.0/22
+199.232.0.0/16
+199.27.72.0/21

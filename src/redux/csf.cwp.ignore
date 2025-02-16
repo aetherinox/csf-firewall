@@ -1,0 +1,12 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following IP addresses will be ignored by all lfd checks
+# One IP address per line
+# CIDR addressing allowed with a quaded IP (e.g. 192.168.254.0/24)
+# Only list IP addresses, not domain names (they will be ignored)
+#
+
+127.0.0.1

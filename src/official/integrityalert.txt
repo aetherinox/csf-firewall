@@ -1,0 +1,9 @@
+From: root
+To: root
+Subject: lfd on [hostname]: System Integrity checking detected a modified system file
+
+Time:     [time]
+
+The following list of files have FAILED the md5sum comparison test. This means that the file has been changed in some way. This could be a result of an OS update or application upgrade. If the change is unexpected it should be investigated:
+
+[text]

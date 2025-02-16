@@ -1,0 +1,582 @@
+Way to the Web Product License
+
+LICENCE TERMS AND CONDITIONS
+
+1.	LICENCE
+
+	1.1	Way to the Web  Limited of 73, Donaldson Way, Woodley, 
+		Reading, Berkshire, RG5 4XL ("Way to the Web")  hereby grants 
+		you a non-exclusive, non-transferable licence to download and 
+		use (the "Product") and the accompanying documentation (the 
+		"Documentation") on the following terms.
+
+	1.2	The copyright and all other rights in the Product and the 
+		 Documentation remain with Way to the Web.
+
+2.	ACCEPTANCE
+
+	You are deemed to have accepted the terms and conditions of this 
+	Licence by downloading the Product.
+
+3.	SCOPE OF LICENCE
+
+	3.1	You shall not:
+
+		3.1.1	modify, adapt, merge, translate, decompile, 
+		disassemble, or reverse engineer the Product, except as 
+		permitted by law; or
+
+		3.1.2	sell, assign, rent, sub-license, loan, mortgage, 
+		charge or otherwise deal in any way in the Product or 
+		Documentation or any interest in them except as expressly 
+		provided in this Licence.
+
+4.	DURATION OF LICENCE
+
+	4.1	This Licence  shall commence on the date hereof and, subject 
+	to other terms of this Licence,  shall continue thereafter for as 
+	long as you continue to use the Product.
+
+	4.2	This Licence shall terminate automatically if you fail to 
+	abide by any of its terms.
+
+	4.3	Upon termination of this Licence you shall destroy the 
+	Product and the Documentation and shall erase all copies of the 
+	Product under your control and stored on any medium.
+
+5.	WARRANTIES AND REMEDIES
+
+	5.1	Way to the Web warrants that for a period of 90 days from the 
+	date that the Product is downloaded, it will provide the facilities 
+	and functions set out in the Documentation when properly used and 
+	further, that the Documentation will provide adequate instruction to 
+	enable you to make proper  use of such facilities and functions.
+
+	5.2	The said warranty shall be subject to you complying with  
+	your obligations hereunder and to there having been made no 
+	alterations to the Product by any person other than Way to the Web. 
+	When notifying a defect or error  you shall  (so far as you are able) 
+	provide Way to the Web with a documented example of such defect or 
+	error.
+
+	5. 3	Way to the Web shall have no liability or obligations under 
+	the said warranty other than to remedy breaches thereof  by the 
+	provision of materials and services within a reasonable time and 
+	without charge to you.  If Way to the Web shall fail to comply with 
+	such obligations its liability for such failure shall be limited as 
+	specified in Clause 6. The foregoing states the entire liability of 
+	Way to the Web, whether in contract or tort, for defects and errors 
+	in the Products and the Documentation.
+
+	5.4	You acknowledge that the Products have not been prepared to 
+	meet your individual requirements and that it is therefore your 
+	responsibility to ensure that the facilities and functions described 
+	in the Documentation meet your requirements. Way to the Web shall not 
+	be liable for any failure of the Products to provide any facility or 
+	function not specified in the Documentation
+
+	5.5	Way to the Web does not warrant that the operation of the 
+	Products will be uninterrupted or error free or that all errors will 
+	be remedied.
+
+	5.6	Except as expressly provided in this Licence, no warranty, 
+	condition, undertaking or term, express or implied, statutory or 
+	otherwise, as to the condition, quality, performance or fitness for 
+	purpose of the Products or the Documentation is given or assumed by 
+	Way to the Web and all such warranties, conditions, undertakings and 
+	terms are hereby excluded to the fullest extent permitted by law.
+
+6.  	LIABILITY
+
+	6.1	Way to the Web will indemnify you and keep you fully and 
+	effectively indemnified against any loss of or damage to any property 
+	or injury to or death of any person caused by any negligent act or 
+	omission or wilful misconduct of  Way to the Web, its employees, 
+	agents or sub-contractors or by any breach of its contractual 
+	obligations arising out of this Licence.
+
+	6.2	Except in respect of injury to or death of any person caused
+	 by negligence (for which no limit applies) Way to the Web's 
+	liability to you under sub-clause 6.1 above in respect of each event 
+	or series of connected events shall not exceed one and a half times 
+	the price you paid to licence the Product.
+
+	6.3	Notwithstanding anything else contained in this Licence, Way 
+	to the Web shall not be liable to you for loss of profits or 
+	contracts or indirect or consequential loss or damage whether arising 
+	from negligence, breach of contract or howsoever caused
+
+	6.4	 Way to the Web shall not be liable to you for any loss 
+	arising out of  your failure to keep full and up-to-date security 
+	copies of the computer programs and data you use.
+
+7.	CONFIDENTIAL INFORMATION
+
+	7.1	You undertake   to treat as confidential and keep secret all 
+	information contained or embodied in the Products and the 
+	Documentation  which,  by its nature has the necessary quality of 
+	confidence about it ("Confidential Information"), provided that this 
+	clause shall not extend to any information which is already public 
+	knowledge or becomes so at a future date (otherwise than as a result 
+	of a breach of this clause).
+
+	7.2	You shall not without the prior written consent of Way to the 
+	Web divulge any part of the Confidential Information to any person 
+	except to:
+
+		7.2.1	your own employees and then only to those employees 
+		who need to know the same;
+
+		7.2.2	your auditors and any other persons or bodies having 
+		a right duty or obligation to know your business and then 
+		only in pursuance of such right duty or obligation;
+
+		7.2.3	any person who is from time to time appointed by you 
+		to maintain your network, website  or  the equipment upon 
+		which the Product is being used (in accordance with the terms 
+		of the Licence) and then only to the extent necessary to 
+		enable such person properly to maintain such network, website 
+		or equipment.
+
+	7.3	You undertake to ensure that the persons and bodies mentioned 
+	in paragraphs 7.2.1, 7.2.2 and 7.2.3 are made aware prior  to the 
+	disclosure of any part of the Confidential Information that the same 
+	is confidential and that they owe a duty of confidence to Way to the 
+	Web. You shall indemnify Way to the Web against any loss or damage 
+	which Way to the Web may sustain or incur as a result of  your 
+	failing to comply with such undertaking
+
+	7.4	You shall promptly notify Way to the Web if you become aware 
+	of any breach of confidence by any person to whom you  divulge all or 
+	any part of the Confidential Information and shall give Way to the 
+	Web all reasonable assistance in connection with any proceedings 
+	which Way to the Web may institute against such person for breach of 
+	confidence.
+
+	7.5	The foregoing obligations as to confidentiality shall remain 
+	in full force and effect notwithstanding any termination of this  
+	Licence.
+
+8.  	INDEMNITIES
+
+	8.1	Way to the Web shall indemnify you against any claim that the 
+	normal use or possession of the Products and/or Documentation 
+	infringes the intellectual property rights of any third party 
+	provided that Way to the Web is given immediate and complete control 
+	of such claim, that  you do not prejudice  Way to the Web's defence 
+	of such claim, that you give  Way to the Web all reasonable 
+	assistance with such claim and that the claim does not arise as a 
+	result of the use of the Products and/or Documentation in combination 
+	with any equipment or programs not supplied or approved by  Way to 
+	the Web. Way to the Web shall have the right to replace or change all 
+	or any part of the Products and/or Documentation in order to avoid 
+	any infringement. The foregoing states the entire liability of Way to 
+	the Web to you in respect of the infringement of the intellectual 
+	property rights of any third party
+
+	8.2	Except to the extent caused by  Way to the Web's breach of 
+	its obligations hereunder, or its negligent or wilful misconduct in 
+	connection with this Licence, and without limiting Way to the Web's 
+	obligations in sub-clause 8.1 above, you shall indemnify and hold  
+	Way to the Web harmless from any and all liability, loss and damage  
+	Way to the Web may suffer as a result of claims demands or judgments 
+	by any third party arising out of  your use or operation of the 
+	Products,  the Documentation and related output. You shall, at your 
+	expense, defend any such action, suit or claim against  Way to the 
+	Web.
+
+9.	SUPPORT
+
+	Way to the Web's technical support staff will, between the hours of 
+	9.00 and 17.30 UK time Monday to Friday inclusive (except on bank and 
+	public holidays), endeavour to answer on-line or by email any queries 
+	you may have about the Product. For support please either use the 
+	on-line support desk or the on-line support forum given on our 
+	Website or in the Documentation.  Any Product updates that may be 
+	made available by Way to the Web from time to time will be supplied 
+	at Way to the Web's then prevailing charges and subject to Way to the 
+	Web's then prevailing terms and conditions. Way to the Web does not 
+	guarantee backward compatibility with previous versions of the 
+	Product as it retains the right to add, remove or modify any feature 
+	or function in previous versions, at its sole discretion.
+
+10.	OTHER SERVICES
+
+	Way to the Web may also provide you with, at its option and subject 
+	to its then prevailing charges and terms and conditions, other 
+	services in relation to the Product, such as installation and 
+	consultancy  services. Please contact Way to the Web at the number 
+	given on our Website or in the Documentation for more information 
+	about such services.
+
+11.	CONSUMERS
+
+	If you deal as a consumer as defined in the Unfair Contract Terms Act 
+	1977, your statutory rights remain unaffected.
+
+12.	PERSONAL INFORMATION CONTROL
+
+	You agree to comply with all applicable laws, regulations, rulings and
+	orders of the EU, US and other countries (including but not limited to
+	the EU's GDPR) in which you have operations relating to the protection,
+	use, and distribution of personal information of your users or
+	visitors on any devices which have the Program installed or stored. 
+	Further, you shall indemnify Way to the Web for any and all claims 
+	resulting from your violation of any such laws, regulations, rulings,
+	or orders.
+
+13.	LAW
+
+	This Licence constitutes the entire agreement between you and Way to 
+	the Web relating to the Product and the Documentation and is governed 
+	by and construed in accordance with  the laws of England. The courts 
+	of England shall have exclusive jurisdiction. 
+
+
+ADDENDUM: DATA PROCESSOR AGREEMENT
+
+1. Introduction 
+
+     1.1 This agreement re processing of personal data (the "Data 
+     Processor Agreement") regulates Way to the Web Ltd's (the 
+     "Data Processor") processing of personal data on behalf of the 
+     client (the "Data Controller") and is attached as an addendum 
+     to the Software License Terms and Conditions and Specific cxs 
+     Software Documentation in which the parties have agreed the 
+     terms for the Data Processor's delivery of services to the Data 
+     Controller.
+
+2. Legislation
+
+     2.1 The Data Processor Agreement shall ensure that the Data 
+     Processor complies with the applicable data protection and 
+     privacy legislation (the "Applicable Law"), including in 
+     particular The General Data Protection Regulation (GDPR) 
+     (Regulation (EU) 2016/679)
+
+3. Processing of personal data 
+
+     3.1 Purpose: The purpose of the processing under this 
+     Agreement is the provision of the Main Services by the Data 
+     Processor as specified here.  The Data Controller submits the 
+     data to the Data Processor so that the Data Processor can 
+     provide the service of providing to all clients a block list of IP 
+     addresses that have been reported by all clients using the 
+     software. The data provided as a block list does not contain 
+     any personally identifiable information. 
+
+     3.2 In connection with the Data Processor's delivery of the 
+     Main Services to the Data Controller, the Data Processor will 
+     process certain categories and types of the Data Controller's 
+     personal data on behalf of the Data Controller. 
+
+     3.3 "Personal data" includes "any information relating to an 
+     identified or identifiable natural person" as defined in GDPR, 
+     article 4 (1) (1) (the "Personal Data"). The categories and types 
+     of Personal Data processed by the Data Processor on behalf of 
+     the Data Controller are listed in sub-appendix A. The Data 
+     Processor only performs processing activities that are 
+     necessary and relevant to perform the Main Services. The 
+     parties shall update sub-appendix A whenever changes occur 
+     that necessitates an update. 
+
+     3.4 The Data Processor shall have and maintain a register of 
+     processing activities in accordance with GDPR, article 32 (2). 
+
+4. Instruction 
+
+     4.1 The Data Processor may only act and process the Personal 
+     Data in accordance with the documented instruction from the 
+     Data Controller (the "Instruction"), unless required by law to 
+     act without such instruction. The Instruction at the time of 
+     entering into this Data Processor Agreement (DPA) is that the 
+     Data Processor may only process the Personal Data with the 
+     purpose of delivering the Main Services as described in the 
+     Main Service Level Agreement. Subject to the terms of this 
+     DPA and with mutual agreement of the parties, the Data 
+     Controller may issue additional written instructions consistent 
+     with the terms of this Agreement. The Data Controller is 
+     responsible for ensuring that all individuals who provide 
+     written instructions are authorised to do so. 
+
+     4.2 The Data Controller guarantees to process Personal Data in 
+     accordance with the requirements of Data Protection Laws and 
+     Regulations. The Data Controller's instructions for the 
+     processing of Personal Data shall comply with Applicable Law. 
+     The Data Controller will have sole responsibility for the 
+     accuracy, quality, and legality of Personal Data and the means 
+     by which it was obtained. 
+
+     4.3 The Data Processor will inform the Data Controller of any 
+     instruction that it deems to be in violation of Applicable Law 
+     and will not execute the instructions until they have been 
+     confirmed or modified. 
+
+5. The Data Processor's obligations 
+
+     5.1 Confidentiality 
+
+          5.1.1 The Data Processor shall treat all the Personal Data as 
+          strictly confidential information. The Personal Data may 
+          not be copied, transferred or otherwise processed in 
+          conflict with the Instruction, unless the Data Controller in 
+          writing has agreed. 
+
+          5.1.2 The Data Processor's employees shall be subject to 
+          an obligation of confidentiality that ensures that the 
+          employees shall treat all the Personal Data under this DPA 
+          with strict confidentiality. 
+
+          5.1.3 Personal Data will only be made available to 
+          personnel that require access to such Personal Data for the 
+          delivery of the Main Services and this Data Processor 
+          Agreement. 
+
+     5.2 The Data Processor shall also ensure that employees 
+     processing the Personal Data only process the Personal Data in 
+     accordance with the Instruction.
+
+     5.3 Security 
+
+          5.3.1 The Data Processor shall implement the appropriate 
+          technical and organizational measures as set out in this 
+          Agreement and in the Applicable Law, including in 
+          accordance with GDPR, article 32. The security measures 
+          are subject to technical progress and development. The 
+          Data Processor may update or modify the security 
+          measures from time-to-time provided that such updates 
+          and modifications do not result in the degradation of the 
+          overall security.
+
+     5.4 The Data Processor shall provide documentation for the 
+     Data Processor's security measures if requested by the Data 
+     Controller in writing. 
+
+     5.5 Data protection impact assessments and prior consultation 
+
+          5.5.1 If the Data Processor's assistance is necessary and 
+          relevant, the Data Processor shall assist the Data 
+          Controller in preparing data protection impact 
+          assessments in accordance with GDPR, article 35, along 
+          with any prior consultation in accordance with GDPR, 
+          article 36. 
+
+     5.6 Rights of the data subjects 
+
+          5.6.1 If the Data Controller receives a request from a data 
+          subject for the exercise of the data subject's rights under 
+          the Applicable Law and the correct and legitimate reply to 
+          such a request necessitates the Data Processor's 
+          assistance, the Data Processor shall assist the Data 
+          Controller by providing the necessary information and 
+          documentation. The Data Processor shall be given 
+          reasonable time to assist the Data Controller with such 
+          requests in accordance with the Applicable Law. 
+
+          5.6.2 If the Data Processor receives a request from a data 
+          subject for the exercise of the data subject's rights under 
+          the Applicable Law and such request is related to the 
+          Personal Data of the Data Controller, the Data Processor 
+          must immediately forward the request to the Data 
+          Controller and must refrain from responding to the person 
+          directly. 
+
+     5.7 Personal Data Breaches 
+
+          5.7.1 The Data Processor shall give immediate notice to 
+          the Data Controller if a breach occurs, that can lead to the 
+          accidental or unlawful destruction, loss, alteration, 
+          unauthorized disclosure of or access to, personal data 
+          transmitted, stored or otherwise processed re the 
+          Personal Data processed on behalf of the Data Controller 
+          (a "Personal Data Breach"). 
+
+          5.7.2 The Data Processor shall make reasonable efforts to 
+          identify the cause of such a breach and take those steps as 
+          they deem necessary to establish the cause, and to 
+          prevent such a breach from reoccurring.
+
+     5.8 Documentation of compliance and Audit Rights
+
+          5.8.1 Upon request by a Data Controller, the Data 
+          Processor shall make available to the Data Controller all 
+          relevant information necessary to demonstrate 
+          compliance with this DPA, and shall allow for and 
+          reasonably cooperate with audits, including inspections by 
+          the Data Controller or an auditor mandated by the Data 
+          Controller. The Data Controller shall give notice of any 
+          audit or document inspection to be conducted and shall 
+          make reasonable endeavours to avoid causing damage or 
+          disruption to the Data Processors premises, equipment 
+          and business in the course of such an audit or inspection. 
+          Any audit or document inspection shall be carried out with 
+          reasonable prior written notice of no less than 30 days, 
+          and shall not be conducted more than once a year. 
+
+          5.8.2 The Data Controller may be requested to sign a non-
+          disclosure agreement reasonably acceptable to the Data 
+          Processor before being furnished with the above.
+
+     5.9 Data Transfers 
+
+          5.9.1 Ordinarily, the Data Processor will not transfer your 
+          data to countries outside the European Economic Area. In 
+          some cases, personal data will be saved on storage 
+          solutions that have servers outside the European 
+          Economic Area (EEA). Only those storage solutions that 
+          provide secure services with adequate relevant safeguards 
+          will be employed.
+
+6. Sub-Processors
+
+     6.1 The Data Processor is given general authorisation to engage 
+     third-parties to process the Personal Data ("Sub-Processors") 
+     without obtaining any further written, specific authorization from 
+     the Data Controller, provided that the Data Processor notifies the 
+     Data Controller in writing about the identity of a potential Sub-
+     Processor (and its processors, if any) before any agreements are 
+     made with the relevant Sub-Processors and before the relevant 
+     Sub-Processor processes any of the Personal Data. If the Data 
+     Controller wishes to object to the relevant Sub- Processor, the 
+     Data Controller shall give notice hereof in writing within ten (10) 
+     business days from receiving the notification from the Data 
+     Processor. Absence of any objections from the Data Controller 
+     shall be deemed consent to the relevant Sub-Processor. 
+
+     6.2 In the event the Data Controller objects to a new Sub-
+     Processor and the Data Processor cannot accommodate the Data 
+     Controller's objection, the Data Controller may terminate the 
+     Services by providing written notice to the Data Processor. 
+
+     6.3 The Data Processor is accountable to the Data Controller for 
+     any Sub-Processor in the same way as for its own actions and 
+     omissions. 
+
+     6.4 The Data Processor is at the time of entering into this Data 
+     Processor Agreement using the Sub- Processors listed in sub-
+     appendix B. If the Data Processor initiates sub-processing with a 
+     new Sub-Processor, such new Sub-Processor shall be added to the 
+     list in sub-appendix B under paragraph 2. 
+
+7. Remuneration and costs
+
+     7.1 The Data Controller shall remunerate the Data Processor based 
+     on time spent to perform the obligations under section 5.5, 5.6, 
+     5.7 and 5.8 of this Data Processor Agreement based on the Data 
+     Processor's hourly rates. 
+
+     7.2 The Data Processor is also entitled to remuneration for any 
+     time and material used to adapt and change the processing 
+     activities in order to comply with any changes to the Data 
+     Controller's Instruction, including implementation costs and 
+     additional costs required to deliver the Main Services due to the 
+     change in the Instruction. The Data Processor is exempted from 
+     liability for non-performance with the Main Agreement if the 
+     performance of the obligations under the Main Agreement would 
+     be in conflict with any changed Instruction or if contractual 
+     delivery in accordance with the changed Instruction is impossible. 
+     This could for instance be the case; (i) if the changes to the 
+     Instruction cannot technically, practically or legally be 
+     implemented; (ii) where the Data Controller explicitly requires 
+     that the changes to the Instruction shall be applicable before the 
+     changes can be implemented; and (iii) in the period of time until 
+     the Main Agreement is changed to reflect the new Instruction and 
+     commercial terms thereof. 
+
+8. Limitation of Liability 
+
+     8.1 The total aggregate liability to the Client, of whatever nature, 
+     whether in contract, tort or otherwise, of the Data Processor for 
+     any losses whatsoever and howsoever caused arising from or in 
+     any way connected with this engagement shall be subject to the 
+     "Limitation of Liability" clause set out in the Main Service Level 
+     Agreement.
+
+     8.2 Nothing in this DPA will relieves the processor of its own direct 
+     responsibilities and liabilities under the GDPR.
+
+9. Duration
+
+     9.1 The Data Processor Agreement shall remain in force until the 
+     Main Service Level Agreement is terminated. 
+
+10. Data Protection Officer
+
+     10.1 The Data Processor will appoint a Data Protection Officer 
+     where such appointment is required by Data Protection Laws and 
+     Regulations.
+
+11. Termination 
+
+     11.1 Following expiration or termination of the Agreement, the 
+     Data Processor will delete or return to the Data Controller all 
+     Personal Data in its possession as provided in the Agreement 
+     except to the extent the Data Processor is required by Applicable 
+     law to retain some or all of the Personal Data (in which case the 
+     Data Processor will archive the data and implement reasonable 
+     measures to prevent the Personal Data from any further 
+     processing). The terms of this DPA will continue to apply to such 
+     Personal Data. 
+
+12. Contact
+
+     12.1 The contact information for the Data Processor and the Data 
+     Controller is provided in the Main Service Level Agreement. 
+
+
+Sub-appendix A
+
+1. Personal Data 
+
+     1.1 The Data Processor processes the following types of Personal 
+     Data in connection with its delivery of the Main Services: 
+
+          1. Information on persons or entities which have been 
+          reported to the service by the data controllers' servers. 
+          Namely:
+
+               1. Date and time of the report
+               2. Reported affected service, for example 
+               mod_security rule
+               3. IP address being reported
+               4. IP address of the server submitting the report
+               5. The actions of the reported IP address that led to 
+               the report being generated
+
+     1.2 The Data Processor retains the Personal Data for a period not 
+     exceeding 24 hours. The Data Controller can request removal of 
+     the personal data using the tools provided with the software. Such 
+     requests will be processed within reasonable time.
+
+2. Categories of data subjects 
+
+     2.1 The Data Processor processes personal data about the 
+     following categories of data subjects on behalf of the Client: 
+
+          1. Persons or entities which have been reported by the Data 
+          Controllers' servers via the cxs reputation system.
+
+
+Sub-appendix B
+
+1. Approved Sub-Processors
+
+     1.1 Way to the Web Ltd owns or controls access to the 
+     infrastructure that it uses to host data submitted to the 
+     Services. The following Infrastructure Sub-Processors shall 
+     be considered approved by the Data Controller at the time 
+     of entering into this Agreement: 
+
+          i. Server Provider: Coreix Limited, Fourth Floor, 
+          Refuge House, 9-10 River Front, Enfield EN1 3SZ, 
+          United Kingdom
+          ii. Server Provider: Hetzner Online GmbH, 
+          Industriestr. 25, 91710 Gunzenhausen, Germany
+
+2. New Sub-Processors
+
+     2.1 The following Sub-Processors have been added and 
+     communicated to the Data Controller prior to the relevant 
+     sub-processing: 
+
+          i. N/A

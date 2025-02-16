@@ -1,0 +1,46 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/privacy/privacy_cloudflarecdn.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_cloudflarecdn.ipset
+#   @source         https://www.cloudflare.com/ips-v4 | https://www.cloudflare.com/ips-v6
+#   @id             privacy_cloudflarecdn_ipset
+#   @uuid           5e2f5e8d-c63b-33f3-999a-9e8c97213acf
+#   @updated        Sat 15 Feb 2025 08:02:51 AM UTC
+#   @entries        1,523,712 ips
+#                   20 subnets
+#                   20 lines
+#   @expires        6 hours
+#   @category       Privacy
+#
+#   Cloudflare is known as a Content Delivery Network (CDN) which offers a variety of tools which
+#   allows you to speed up loading times of your website. Adding your domain to the Cloudflare CDN
+#   means that your site becomes part of the Cloudflare network. This network routes web site
+#   traffic through Cloudflare's global network of data centers. 
+#   
+#   Cloudflare optimizes web content delivery by storing duplicates of static content (such as CSS,
+#   JavaScript and image files) on its servers. Your web site content is served from the Cloudflare
+#   server located nearest to your visitors, which decreases page load times. If a server in
+#   Cloudflare's network is very busy, web traffic is automatically routed to the next server nearest
+#   to your visitors.
+# #
+
+2a06:98c0::/29
+2c0f:f248::/32
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+104.16.0.0/13
+104.24.0.0/14
+108.162.192.0/18
+141.101.64.0/18
+162.158.0.0/15
+172.64.0.0/13
+173.245.48.0/20
+188.114.96.0/20
+190.93.240.0/20
+197.234.240.0/22
+198.41.128.0/17
+2405:8100::/32
+2405:b500::/32
+2606:4700::/32
+2803:f800::/32

@@ -1,0 +1,7 @@
+#   Ahrefs is known primarily as a backlink authority checker, however, it also is an SEO software
+#   suite that contains tools for link building, keyword research, competitor analysis, rank tracking
+#   and site audits. Most of the features inside Ahrefs are designed for marketing professionals.
+#
+#   Ahrefs is known for its backlink checker because it has one of the largest databases of live
+#   links. It uses crawling software to recreate your site how a search engine sees it. This helps
+#   you understand your site better so you can optimize it for search engines.

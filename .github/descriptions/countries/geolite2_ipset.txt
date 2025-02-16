@@ -1,0 +1,5 @@
+#   These geographical databases allow you to restrict which countries can gain access to
+#   your server. They are fully compatible with applications such as ConfigServer Firewall,
+#   Wireshark, Elastic Search, NGINX, Snowplow Analytics, Revive Adserver, OPNSense, etc.
+#   A more detailed list is available at:
+#       - https://dev.maxmind.com/geoip/docs/databases/#client-apis

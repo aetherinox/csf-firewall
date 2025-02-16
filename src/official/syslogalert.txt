@@ -1,0 +1,8 @@
+From: root
+To: root
+Subject: lfd on [hostname]: SYSLOG Check Failed
+
+Time:  [time]
+Error: Failed to detect code [[code]] in SYSLOG_LOG [[log]]
+
+SYSLOG may not be running correctly on [hostname]

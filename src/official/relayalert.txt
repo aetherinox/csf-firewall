@@ -1,0 +1,12 @@
+From: root
+To: root
+Subject: lfd on [hostname]: [check] Alert for [ip]
+
+Time:  [time]
+Type:  [type] - [ip]
+Count: [count] emails relayed
+Blocked: [block]
+
+Sample of the first 10 emails:
+
+[emails]

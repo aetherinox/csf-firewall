@@ -1,0 +1,75 @@
+###############################################################################
+# Copyright 2006-2018, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of regular expressions for the LOGSCANNER feature.
+# If a log line matches it will be ignored, otherwise it will be reported
+
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ kernel:\s(\[[^\]]+\]\s)?Firewall:
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ suhosin\[\d+\]: ALERT - script tried to increase memory_limit
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: client .* view internal
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: client .* view external
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: client .* view localhost_resolver
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: connection refused resolving
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: lame server resolving
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: network unreachable resolving
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: unexpected RCODE
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: zone .* loaded serial
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: zone .* sending notifies
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: FORMERR resolving
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: checkhints: view localhost_resolver:
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: error \(unexpected RCODE REFUSED\) 
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: error \(unexpected RCODE SERVFAIL\)
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: error \(host unreachable\)
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: error \(network unreachable\)
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: error \(connection refused \) resolving
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ named\[\d+\]: error \(FORMERR\) resolving
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ pure-ftpd: \([\w\?\@\+\%\.]+\@\d+\.\d+\.\d+\.\d+\) \[(INFO|NOTICE)\]
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ Cp-Wrap\[\d+\]:
+^\[\S+\s\S+\s\S+\] info
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ gconfd
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Started Session
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Starting Session
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Failed to mark scope
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd-logind(\[\d+\])?: New session
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd-logind(\[\d+\])?: Removed session
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Created slice
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Removed slice user
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Starting user
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Stopping user
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Reloading
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Starting User Slice
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Stopping User Slice
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Removed slice User
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Stopped target
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Reached target
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ nscd(\[\d+\])?: \d+\ monitor
+
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ dbus-daemon: dbus\[\d+\]: \[system\] Activating via systemd
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ dbus-daemon: dbus\[\d+\]: \[system\] Successfully activated
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ dbus\[\d+\]: \[system\] Activating via systemd
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ dbus\[\d+\]: \[system\] Successfully activated
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Starting Time
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ systemd(\[\d+\])?: Started Time
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ dovecot\[\d+\]:
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ dovecot:
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ CRON\[\d+\]:
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ MailScanner:
+^(\S+|\S+\s+\d+\s+\S+) [^\s\.]+ clamd\[\d+\]: SelfCheck: Database status OK
+
+==> cpsrvd \S+ started
+==> cpsrvd: loading security policy....Done
+==> cpsrvd: Setting up SSL support ... Done
+==> cpsrvd: transferred port bindings
+==> cpsrvd: bound to ports
+

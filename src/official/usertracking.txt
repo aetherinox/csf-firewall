@@ -1,0 +1,11 @@
+From: root
+To: root
+Subject: lfd on [hostname]: Excessive processes running under user [user]
+
+Time:          [time]
+Account:       [user]
+Process Count: [count]
+
+Process Information:
+
+[text]

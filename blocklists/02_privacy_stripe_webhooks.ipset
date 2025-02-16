@@ -1,0 +1,29 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/02_privacy_stripe_webhooks.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/02_privacy_stripe_webhooks.ipset
+#   @source         None
+#   @id             02_privacy_stripe_webhooks_ipset
+#   @uuid           5fd655c5-3039-3ab7-887b-ca4bf89b5b32
+#   @updated        Mon 04 Nov 2024 02:26:40 AM UTC
+#   @entries        12 ips
+#                   0 subnets
+#                   12 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+3.130.192.231
+3.18.12.63
+13.235.122.149
+13.235.14.237
+18.211.135.69
+35.154.171.200
+52.15.183.38
+54.187.174.169
+54.187.205.235
+54.187.216.72
+54.88.130.119
+54.88.130.237

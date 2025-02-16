@@ -1,0 +1,27 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/privacy/privacy_ubisoft.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_ubisoft.ipset
+#   @source         None
+#   @id             privacy_ubisoft_ipset
+#   @uuid           4bae542d-2c29-3dff-9e3c-a130b273c35a
+#   @updated        Sat 15 Feb 2025 08:03:04 AM UTC
+#   @entries        5,308 ips
+#                   10 subnets
+#                   10 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+62.190.6.0/29
+66.199.164.248/30
+80.231.18.0/24
+84.14.118.0/25
+193.138.66.0/24
+194.169.249.0/24
+194.2.155.0/24
+211.157.127.0/28
+213.208.241.192/27
+216.98.48.0/20

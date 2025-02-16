@@ -1,0 +1,20 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/privacy/privacy_xfire.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_xfire.ipset
+#   @source         None
+#   @id             privacy_xfire_ipset
+#   @uuid           2649c3de-e79c-3f08-a604-55d9e790a4d4
+#   @updated        Sat 15 Feb 2025 08:03:06 AM UTC
+#   @entries        3,328 ips
+#                   3 subnets
+#                   3 lines
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+204.71.190.0/24
+206.220.40.0/22
+208.88.176.0/21

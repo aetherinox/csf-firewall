@@ -1,0 +1,45 @@
+From: root
+To: root
+Auto-Submitted: auto-generated
+X-XARF: PLAIN
+Content-Type: multipart/mixed;
+ boundary="csf-[boundary]"
+MIME-Version: 1.0
+Subject: abuse report about [ip] - [RFC3339]
+
+This is a multi-part message in MIME format.
+--csf-[boundary]
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+
+The IP address [tip] was found attacking [service] on [hostname] [ipcount] times in the last [iptick] seconds.
+
+Attached is an X-ARF report (see http://www.xarf.org/specification.html) and the original log report that triggered this block.
+
+[abuseip]
+
+--csf-[boundary]
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="report.txt"
+Content-Type: text/plain; charset=utf8; name="report.txt";
+
+Reported-From: [reportedfrom]
+Report-ID: [reportedid]
+Category: abuse
+Report-Type: login-attack
+Service: [service]
+User-Agent: csf v[csfversion]
+Date: [RFC3339]
+Source: [ip]
+Source-Type: [iptype]
+Attachment: text/plain
+Schema-URL: https://download.configserver.com/abuse_login-attack_0.2.json
+
+--csf-[boundary]
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="logfile.log"
+Content-Type: text/plain; charset=utf8; name="logfile.log";
+
+[text]
+
+--csf-[boundary]--

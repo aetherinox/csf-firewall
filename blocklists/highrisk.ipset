@@ -1,0 +1,28 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/highrisk.ipset
+#
+#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/highrisk.ipset
+#   @source         https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/01_highrisk.ipset
+#   @id             highrisk_ipset
+#   @uuid           036a7f19-6a5a-3109-af90-7e946d57b164
+#   @updated        Sat 15 Feb 2025 08:02:18 AM UTC
+#   @entries        0 ips
+#                   0 subnets
+#                   0 lines
+#   @expires        15 days
+#   @category       Master
+#
+#   The IP addresses contained within this list are classified as the highest risk to your network
+#   and have a possibility that the activity which comes from them are going to be fraudulent.
+#
+#   Users should always import this list into your firewall rules to ensure that these addresses
+#   can never reach your network.
+#
+#   Several data-points are taken into consideration when generating this list, including the
+#   IP addresses overall history in the last year, as well as how many times each IP address
+#   has been reported to numerous online abuse reporting services.
+#
+#   After these points are obtained, the IP address is averaged against a master list to compare
+#   the activity against all other IP addresses that have been reported over the last year.
+# #
+
