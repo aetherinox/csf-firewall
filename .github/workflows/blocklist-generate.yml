@@ -303,52 +303,52 @@ jobs:
                   curl -sSL -A "${{ env.USERAGENT }}" https://search.developer.apple.com/applebot.json | jq -r '.prefixes | .[] |.ipv4Prefix//empty,.ipv6Prefix//empty' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_applebot.ipset
 
                   # Privacy › Blizzard
-                  run_blizzard=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_blizzard.ipset http://list.iblocklist.com/?list=ercbntshuthyykfkmhxc 'at&t'"
-                  eval "./$run_blizzard"
+                  #run_blizzard=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_blizzard.ipset http://list.iblocklist.com/?list=ercbntshuthyykfkmhxc 'at&t'"
+                  #eval "./$run_blizzard"
 
                   # Privacy › Activision
-                  run_activision=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_activision.ipset http://list.iblocklist.com/?list=gfnxlhxsijzrcuxwzebb"
-                  eval "./$run_activision"
+                  #run_activision=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_activision.ipset http://list.iblocklist.com/?list=gfnxlhxsijzrcuxwzebb"
+                  #eval "./$run_activision"
 
                   # Privacy › Electronic Arts & IGN
-                  run_ea_ign=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_electronicarts_ign.ipset http://list.iblocklist.com/?list=ejqebpcdmffinaetsvxj"
-                  eval "./$run_ea_ign"
+                  #run_ea_ign=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_electronicarts_ign.ipset http://list.iblocklist.com/?list=ejqebpcdmffinaetsvxj"
+                  #eval "./$run_ea_ign"
 
                   # Privacy › Nintendo
-                  run_nintendo=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_nintendo.ipset http://list.iblocklist.com/?list=pevkykuhgaegqyayzbnr"
-                  eval "./$run_nintendo"
+                  #run_nintendo=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_nintendo.ipset http://list.iblocklist.com/?list=pevkykuhgaegqyayzbnr"
+                  #eval "./$run_nintendo"
 
                   # Privacy › Pandora
-                  run_pandora=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_pandora.ipset http://list.iblocklist.com/?list=aevzidimyvwybzkletsg"
-                  eval "./$run_pandora"
+                  #run_pandora=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_pandora.ipset http://list.iblocklist.com/?list=aevzidimyvwybzkletsg"
+                  #eval "./$run_pandora"
 
                   # Privacy › Sony Entertainment
-                  run_sony=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_sony.ipset http://list.iblocklist.com/?list=tukpvrvlubsputmkmiwg"
-                  eval "./$run_sony"
+                  #run_sony=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_sony.ipset http://list.iblocklist.com/?list=tukpvrvlubsputmkmiwg"
+                  #eval "./$run_sony"
 
                   # Privacy › Punkbuster
-                  run_punkbuster=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_punkbuster.ipset http://list.iblocklist.com/?list=zvwwndvzulqcltsicwdg"
-                  eval "./$run_punkbuster"
+                  #run_punkbuster=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_punkbuster.ipset http://list.iblocklist.com/?list=zvwwndvzulqcltsicwdg"
+                  #eval "./$run_punkbuster"
 
                   # Privacy › Riot Games
-                  run_riot_games=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_riot_games.ipset http://list.iblocklist.com/?list=sdlvfabdjvrdttfjotcy"
-                  eval "./$run_riot_games"
+                  #run_riot_games=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_riot_games.ipset http://list.iblocklist.com/?list=sdlvfabdjvrdttfjotcy"
+                  #eval "./$run_riot_games"
 
                   # Privacy › Pirate Bay
-                  run_piratebay=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_piratebay.ipset http://list.iblocklist.com/?list=nzldzlpkgrcncdomnttb"
-                  eval "./$run_piratebay"
+                  #run_piratebay=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_piratebay.ipset http://list.iblocklist.com/?list=nzldzlpkgrcncdomnttb"
+                  #eval "./$run_piratebay"
 
                   # Privacy › Steam
-                  run_steam=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_steam.ipset http://list.iblocklist.com/?list=cnxkgiklecdaihzukrud"
-                  eval "./$run_steam"
+                  #run_steam=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_steam.ipset http://list.iblocklist.com/?list=cnxkgiklecdaihzukrud"
+                  #eval "./$run_steam"
 
                   # Privacy › Unisoft
-                  run_ubisoft=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_ubisoft.ipset http://list.iblocklist.com/?list=etmcrglomupyxtaebzht"
-                  eval "./$run_ubisoft"
+                  #run_ubisoft=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_ubisoft.ipset http://list.iblocklist.com/?list=etmcrglomupyxtaebzht"
+                  #eval "./$run_ubisoft"
 
                   # Privacy › Xfire
-                  run_xfire=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_xfire.ipset http://list.iblocklist.com/?list=ppqqnyihmcrryraaqsjo"
-                  eval "./$run_xfire"
+                  #run_xfire=".github/scripts/tool-range-iprange.sh blocklists/privacy/privacy_xfire.ipset http://list.iblocklist.com/?list=ppqqnyihmcrryraaqsjo"
+                  #eval "./$run_xfire"
 
             # #
             #   Generate > Spam
