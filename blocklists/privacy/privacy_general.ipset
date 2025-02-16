@@ -5,8 +5,8 @@
 #   @source         https://raw.githubusercontent.com/Aetherinox/dev-kw/main/blocklists/02_privacy_general.ipset
 #   @id             privacy_general_ipset
 #   @uuid           6a2bb2a1-edca-33d8-9dd5-75c3ec3c6ef7
-#   @updated        Sat 15 Feb 2025 08:02:19 AM UTC
-#   @entries        115,586 ips
+#   @updated        Sun Feb 16 06:01:45 UTC 2025
+#   @entries        115586 ips
 #                   27 subnets
 #                   141 lines
 #   @expires        6 hours
@@ -20,18 +20,18 @@
 
 
 #
-# #
-#   and different physical locations.
-#   a wide variety of bots come from this company (or customers of the company),
-#   but vulnerable devices on the internet. To set up this index and to keep
 #   CariNet, Inc.
+#   InternetArchive
+#   Project25499.com
+#   Shodan is a search engine which does not index web sites or web contents,
+#   a wide variety of bots come from this company (or customers of the company),
+#   and different physical locations.
+#   but vulnerable devices on the internet. To set up this index and to keep
 #   https://raw.githubusercontent.com/cbuijs/ipasn/master/asn/as10439.list
 #   https://search.censys.io
 #   including scrapers, brute-forcing, email spam, data collection, etc.
-#   InternetArchive
 #   it up to date, Shodan uses at least 16 scanners with different AS numbers
-#   Project25499.com
-#   Shodan is a search engine which does not index web sites or web contents,
+# #
 64.227.90.185
 66.240.192.0/18
 66.240.192.138

@@ -5,7 +5,7 @@
 #   @source         https://uptimerobot.com/inc/files/ips/IPv4andIPv6.txt
 #   @id             privacy_uptimerobot_ipset
 #   @uuid           0dc165b7-5bfc-32de-ab69-c4b8b99332dc
-#   @updated        Sat 15 Feb 2025 08:02:39 AM UTC
+#   @updated        Sun Feb 16 06:01:54 UTC 2025
 #   @entries        244 ips
 #                   33 subnets
 #                   277 lines
@@ -147,8 +147,8 @@
 78.47.173.76
 78.47.98.55
 88.99.80.227
-99.80.173.191
 99.80.1.74
+99.80.173.191
 104.131.107.63
 122.248.234.23
 128.140.106.114
