@@ -65,8 +65,9 @@ on:
     # #
 
     schedule:
-        - cron: '0 2,8,14,20 * * *'
-        - cron: '0 0 * * *'
+    # - cron: '0 2,8,14,20 * * *'
+      - cron: '0 */12 * * *'
+      - cron: '0 0 * * *'
 
 # #
 #   environment variables
@@ -91,6 +92,7 @@ jobs:
           📦 Setup
         runs-on: ubuntu-latest
         # runs-on: apollo-x64
+        timeout-minutes: 60
         steps:
 
             - name: "✅ Start"
@@ -106,7 +108,7 @@ jobs:
               id: task_setup_checkout
               uses: actions/checkout@v4
               with:
-                fetch-depth: 0
+                  fetch-depth: 0
 
             # #
             #   Generate > Install Packages
@@ -124,8 +126,8 @@ jobs:
             - name: "🧱 Cache Packages"
               uses: awalsh128/cache-apt-pkgs-action@latest
               with:
-                packages: ipcalc ed html2text whois uuid-runtime
-                version: 1.0
+                  packages: ipcalc ed html2text whois uuid-runtime
+                  version: 1.0
 
     # #
     #   Job > Blocklist > Master
@@ -136,6 +138,7 @@ jobs:
           📋 Generate › Blocklist
         runs-on: ubuntu-latest
         # runs-on: apollo-x64
+        timeout-minutes: 60
         needs: [ blocklist-setup ]
         steps:
 
@@ -147,7 +150,7 @@ jobs:
               id: task_blocklist_generate_checkout
               uses: actions/checkout@v4
               with:
-                fetch-depth: 0
+                  fetch-depth: 0
 
             # #
             #   Generate > Configure
@@ -527,12 +530,13 @@ jobs:
     # #
 
     blocklist-commit:
-      name: >-
-        📋 Commit
-      runs-on: ubuntu-latest
-      # runs-on: apollo-x64
-      needs: [ blocklist-setup, blocklist-generate ]
-      steps:
+        name: >-
+          📋 Commit
+        runs-on: ubuntu-latest
+        # runs-on: apollo-x64
+        timeout-minutes: 60
+        needs: [ blocklist-setup, blocklist-generate ]
+        steps:
 
             # #
             #   Generate > Checkout
@@ -542,7 +546,7 @@ jobs:
               id: task_blocklist_master_checkout
               uses: actions/checkout@v4
               with:
-                fetch-depth: 0
+                  fetch-depth: 0
 
             # #
             #   Generate  > Artifact > Download
