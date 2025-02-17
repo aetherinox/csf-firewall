@@ -93,8 +93,8 @@ Ipsets include lists from [AbuseIPDB](https://abuseipdb.com/) and [IPThreat](htt
   - [Remove IP to Allow List](#remove-ip-to-allow-list)
   - [Add IP to Deny List](#add-ip-to-deny-list)
   - [Remove IP from Deny List](#remove-ip-from-deny-list)
-  - [Add Temp Block ILast Sync: $now(#add-temp-block-ip)
-  - [Remove Temp Block ILast Sync: $now(#remove-temp-block-ip)
+  - [Add Temp Block IP](#add-temp-block-ip)
+  - [Remove Temp Block IP](#remove-temp-block-ip)
 - [Uninstalling CSF](#uninstalling-csf)
 - [Enable CSF Firewall Web UI](#enable-csf-firewall-web-ui)
   - [Step 1: Install Required Perl Modules:](#step-1-install-required-perl-modules)
@@ -439,7 +439,7 @@ sudo nano /etc/csf/csf.conf
 
 Some essential settings you may want to modify include:
 
-> [!NOTLast Sync: $now
+> [!NOTE]
 > When you run the patcher `install.sh`; **TESTING MODE** will automatically be disabled after everything as successfully completed.
 
 <br />
@@ -1210,7 +1210,7 @@ At the bottom of the same file, we must now add a new **loadBalancer** rule unde
 ```yml
 http:
   routers:
-    [CODE FROM ABOVLast Sync: $now
+    [CODE FROM ABOVE]
   services:
     csf:
       loadBalancer:

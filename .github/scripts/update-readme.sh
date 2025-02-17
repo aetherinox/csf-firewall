@@ -84,7 +84,7 @@ APP_VER=("1" "0" "0" "0")                                       # current script
 APP_DEBUG=false                                                 # debug mode
 APP_REPO="Aetherinox/blocklists"                                # repository
 APP_REPO_BRANCH="main"                                          # repository branch
-TEMPL_NOW=`date -u '+%m/%d/%Y %H:%M'`                           # get current date in utc format
+TEMPL_ARG_NOW=`date -u '+%m/%d/%Y %H:%M'`                       # get current date in utc format
 
 # #
 #   Color Code Test
@@ -192,8 +192,8 @@ echo -e "  ⭐ Starting script ${GREEN1}${APP_THIS_FILE}${RESET}"
 #   README > Set Sync Time
 # #
 
-sed -r -i 's@[[TEMPL_UPDATE]]@Last Sync: $now@g' README.md
-sed -r -i "s@Last Sync: [0-9]{2}\/[0-9]{2}\/[0-9]{4} [0-9]{2}\:[0-9]{2} UTC@Last Sync: $TEMPL_NOW UTC@g" README.md
+sed -r -i 's@[[TEMPLATE_UPDATE]]@Last Sync: $now@g' README.md
+sed -r -i "s@Last Sync: [0-9]{2}\/[0-9]{2}\/[0-9]{4} [0-9]{2}\:[0-9]{2} UTC@Last Sync: ${TEMPL_ARG_NOW} UTC@g" README.md
 
 # #
 #   Finished
