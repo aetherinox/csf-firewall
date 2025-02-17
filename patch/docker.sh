@@ -1,122 +1,23 @@
 #!/bin/bash
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
+#   
+#   ConfigServer Firewall - Blacklist (IPSETS)
+#   
+#   @author         Aetherinox
+#   @package        ConfigServer Firewall
+#   @file           blacklist-ipsets.sh
+#   @type           Patch
+#   @desc           This CSF script scans all docker containers that exist within the server and adds each
+#                   container ip to the ConfigServer Firewall.
+#   
+#   @usage          chmod +x /usr/local/include/csf/post.d/docker.sh
+#                   sudo /usr/local/include/csf/post.d/docker.sh
 #
-#   ConfigServer Firewall
-#
-#   @about          this script automatically scans all docker containers that exist within the server and adds
-#                   each IP to ConfigServer Firewall.
-#
-#   @command        sudo /usr/local/include/csf/post.d/install.sh
-#
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                   this can also be installed by executing the install.sh script
+# #
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-# #
-#   vars > system
-# #
-
-SYS_ARCH=$(dpkg --print-architecture)
-SYS_CODE=$(lsb_release -cs)
-
-# #
-#   vars > app
-# #
-
-APP_TITLE="ConfigServer Firewall Docker Patch"
-APP_ABOUT="Configures ConfigServer Firewall to work with Docker and Traefik"
-APP_VER=("14" "22" "0")
-APP_THIS_FILE=$(basename "$0")                          # current script file
-APP_THIS_DIR="${PWD}"                                   # current script directory
-APP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-
-# #
-#   vars > app repo
-# #
-
-APP_REPO_NAME="csf-firewall"
-APP_REPO_AUTHOR="Aetherinox"
-APP_REPO_BRANCH="main"
-APP_REPO_URL="https://github.com/${APP_REPO_AUTHOR}/${APP_REPO_NAME}"
-
-# #
-#   vars > colors
-#
-#   Use the color table at:
-#       - https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
-# #
-
-RESET=$'\e[0m'
-WHITE=$'\e[97m'
-BOLD=$'\e[1m'
-DIM=$'\e[2m'
-UNDERLINE=$'\e[4m'
-BLINK=$'\e[5m'
-INVERTED=$'\e[7m'
-HIDDEN=$'\e[8m'
-BLACK=$'\e[38;5;0m'
-FUCHSIA1=$'\e[38;5;125m'
-FUCHSIA2=$'\e[38;5;198m'
-RED1=$'\e[38;5;160m'
-RED2=$'\e[38;5;196m'
-ORANGE1=$'\e[38;5;202m'
-ORANGE2=$'\e[38;5;208m'
-MAGENTA=$'\e[38;5;5m'
-BLUE1=$'\e[38;5;033m'
-BLUE2=$'\e[38;5;39m'
-CYAN=$'\e[38;5;6m'
-GREEN1=$'\e[38;5;2m'
-GREEN2=$'\e[38;5;76m'
-YELLOW1=$'\e[38;5;184m'
-YELLOW2=$'\e[38;5;190m'
-YELLOW3=$'\e[38;5;193m'
-GREY1=$'\e[38;5;240m'
-GREY2=$'\e[38;5;244m'
-GREY3=$'\e[38;5;250m'
-NAVY=$'\e[38;5;99m'
-OLIVE=$'\e[38;5;144m'
-PEACH=$'\e[38;5;210m'
-
-# #
-#   print an error and exit with failure
-#   $1: error message
-# #
-
-function error()
-{
-    echo -e "  ⭕ ${GREY2}${APP_THIS_FILE}${RESET}: \n     ${BOLD}${RED}Error${NORMAL}: ${RESET}$1"
-    echo -e
-    exit 0
-}
-
-# #
-#   func > version > compare greater than
-#
-#   this function compares two versions and determines if an update may
-#   be available. or the user is running a lesser version of a program.
-# #
-
-get_version_compare_gt()
-{
-    test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1";
-}
-
-# #
-#   func > get version
-#
-#   returns current version of app
-#   converts to human string.
-#       e.g.    "1" "2" "4" "0"
-#               1.2.4.0
-# #
-
-get_version()
-{
-    ver_join=${APP_VER[@]}
-    ver_str=${ver_join// /.}
-    echo ${ver_str}
-}
 
 # #
 #   Configs
@@ -147,6 +48,140 @@ IP_CONTAINERS=(
 )
 
 # #
+#   define > system
+# #
+
+sys_arch=$(dpkg --print-architecture)
+sys_code=$(lsb_release -cs)
+
+# #
+#   vars > app
+# #
+
+app_title="ConfigServer Firewall - Docker Patch"
+app_about="Sets up your firewall rules to work with Docker and Traefik"
+app_ver=("14" "22" "0")
+app_dir_this_a="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+app_dir_this_b="${PWD}"                                 # current script directory
+app_file_this=$(basename "$0")                          # ports-block.sh (with ext)
+app_file_bin="${app_file_this%.*}"                      # ports-block (without ext)
+app_pid=$BASHPID
+
+# #
+#   define > configs
+# #
+
+cfg_dev_enabled=false
+cfg_verbose_enabled=false
+
+# #
+#   vars > app repo
+# #
+
+repo_name="csf-firewall"
+repo_author="Aetherinox"
+repo_branch="main"
+repo_url="https://github.com/${repo_author}/${repo_name}"
+
+# #
+#   vars > colors
+#
+#   Use the color table at:
+#       - https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
+# #
+
+END=$'\e[0m'
+WHITE=$'\e[97m'
+BOLD=$'\e[1m'
+DIM=$'\e[2m'
+UNDERLINE=$'\e[4m'
+STRIKE=$'\e[9m'
+BLINK=$'\e[5m'
+INVERTED=$'\e[7m'
+HIDDEN=$'\e[8m'
+BLACK=$'\e[38;5;0m'
+FUCHSIA1=$'\e[38;5;205m'
+FUCHSIA2=$'\e[38;5;198m'
+RED=$'\e[38;5;160m'
+RED2=$'\e[38;5;196m'
+ORANGE=$'\e[38;5;202m'
+ORANGE2=$'\e[38;5;208m'
+MAGENTA=$'\e[38;5;5m'
+BLUE=$'\e[38;5;033m'
+BLUE2=$'\e[38;5;39m'
+BLUE3=$'\e[38;5;68m'
+CYAN=$'\e[38;5;51m'
+GREEN=$'\e[38;5;2m'
+GREEN2=$'\e[38;5;76m'
+YELLOW=$'\e[38;5;184m'
+YELLOW2=$'\e[38;5;190m'
+YELLOW3=$'\e[38;5;193m'
+GREY1=$'\e[38;5;240m'
+GREY2=$'\e[38;5;244m'
+GREY3=$'\e[38;5;250m'
+NAVY=$'\e[38;5;62m'
+OLIVE=$'\e[38;5;144m'
+PEACH=$'\e[38;5;210m'
+
+# #
+#   print an error and exit with failure
+#   $1: error message
+# #
+
+function error()
+{
+    echo -e "  ⭕ ${GREY2}${app_file_this}${END}: \n     ${BOLD}${RED}Error${END}: ${END}$1"
+    echo -e
+    exit 0
+}
+
+# #
+#   Check Sudo
+#
+#	this script requires permissions to copy, etc.
+# 	require the user to run as sudo
+# #
+
+check_sudo()
+{
+	if [ "$EUID" -ne 0 ]; then
+        echo
+        echo -e "  ${ORANGE}WARNING      ${WHITE}Must run script with ${YELLOW2}sudo${END}"
+        echo -e "                    ${GREY2}sudo ./${app_file_this}${END}"
+
+        exit 1
+	fi
+}
+
+# #
+#   func > version > compare greater than
+#
+#   this function compares two versions and determines if an update may
+#   be available. or the user is running a lesser version of a program.
+# #
+
+get_version_compare_gt()
+{
+    test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1";
+}
+
+# #
+#   func > get version
+#
+#   returns current version of app
+#   converts to human string.
+#       e.g.    "1" "2" "4" "0"
+#               1.2.4.0
+# #
+
+get_version()
+{
+    ver_join=${app_ver[@]}
+    ver_str=${ver_join// /.}
+    echo ${ver_str}
+}
+
+# #
 #   Find CSF path on system
 # #
 
@@ -158,7 +193,7 @@ csf_path=$(command -v csf)
 
 if [[ $csf_path ]]; then
     echo -e
-    echo -e "  ${BOLD}${GREY1}+ WHITELIST     ${WHITE}Cleaning ${CSF_FILE_ALLOW}${RESET}"
+    echo -e "  ${BOLD}${GREY1}+ WHITELIST     ${WHITE}Cleaning ${CSF_FILE_ALLOW}${END}"
     sed --in-place "/${CSF_COMMENT}/d" ${CSF_FILE_ALLOW}
 fi
 
@@ -174,16 +209,16 @@ fi
 
         if [ -f /etc/os-release ]; then
             . /etc/os-release
-            OS=$NAME
-            OS_VER=$VERSION_ID
+            sys_os=$NAME
+            sys_os_ver=$VERSION_ID
 
     # #
     #   linuxbase.org
     # #
 
         elif type lsb_release >/dev/null 2>&1; then
-            OS=$(lsb_release -si)
-            OS_VER=$(lsb_release -sr)
+            sys_os=$(lsb_release -si)
+            sys_os_ver=$(lsb_release -sr)
 
     # #
     #   versions of Debian/Ubuntu without lsb_release cmd
@@ -191,32 +226,38 @@ fi
 
         elif [ -f /etc/lsb-release ]; then
             . /etc/lsb-release
-            OS=$DISTRIB_ID
-            OS_VER=$DISTRIB_RELEASE
+            sys_os=$DISTRIB_ID
+            sys_os_ver=$DISTRIB_RELEASE
 
     # #
     #   older Debian/Ubuntu/etc distros
     # #
 
         elif [ -f /etc/debian_version ]; then
-            OS=Debian
-            OS_VER=$(cat /etc/debian_version)
+            sys_os=Debian
+            sys_os_ver=$(cat /etc/debian_version)
 
     # #
     #   fallback: uname, e.g. "Linux <version>", also works for BSD
     # #
 
         else
-            OS=$(uname -s)
-            OS_VER=$(uname -r)
+            sys_os=$(uname -s)
+            sys_os_ver=$(uname -r)
         fi
 
 # #
-#   iptables > find
+#   Ensure we're in the correct directory
+# #
+
+cd "${app_dir_this_a}"
+
+# #
+#   find > iptables
 # #
 
 if ! [ -x "$(command -v iptables)" ]; then
-    echo -e "  ${GREY2}Installing package ${MAGENTA}iptables${WHITE}"
+    echo -e "  ${GREEN}OK           ${END}Installing package ${BLUE2}iptables${END}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt-get install iptables -y -qq >/dev/null 2>&1
 fi
@@ -225,17 +266,21 @@ fi
 #   iptables > assign path to var
 # #
 
-PATH_IPTABLES=$(which iptables)
-PATH_IPTABLES6=$(which ip6tables)
+path_iptables4=$(which iptables)
+path_iptables6=$(which ip6tables)
 
 # #
-#   iptables > doesnt exist
+#   empty var > iptables4
 # #
 
-if [ -z "${PATH_IPTABLES}" ]; then
-    echo -e "  ${BOLD}${ORANGE2}WARNING         ${WHITE}Could not locate the package ${YELLOW2}iptables${RESET}"
-    printf '%-17s %-55s %-55s' " " "${GREY1}Must install iptables before continuing${RESET}"
-    echo -e
+if [ -z "${path_iptables4}" ]; then
+    echo
+    echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the package ${YELLOW2}iptables${END}"
+    echo -e "               This package is required before you can utilize this script with ConfigServer Firewall.${END}"
+    echo
+    echo -e "  ${BOLD}${WHITE}Try installing the package with:${END}"
+    echo -e "  ${BOLD}${WHITE}     sudo apt-get update${END}"
+    echo -e "  ${BOLD}${WHITE}     sudo apt-get install iptables${END}"
 
     exit 0
 fi
@@ -249,12 +294,12 @@ fi
 opt_usage()
 {
     echo -e 
-    printf "  ${BLUE2}${APP_TITLE}${RESET}\n" 1>&2
-    printf "  ${GREY2}${APP_ABOUT}${RESET}\n" 1>&2
+    printf "  ${BLUE2}${app_title}${END}\n" 1>&2
+    printf "  ${GREY2}${app_about}${END}\n" 1>&2
     echo -e 
     printf '  %-5s %-40s\n' "Usage:" "" 1>&2
-    printf '  %-5s %-40s\n' "    " "${0} [${GREY2}options${RESET}]" 1>&2
-    printf '  %-5s %-40s\n\n' "    " "${0} [${GREY2}-h${RESET}] [${GREY2}-v${RESET}] [${GREY2}-d${RESET}]" 1>&2
+    printf '  %-5s %-40s\n' "    " "${0} [${GREY2}options${END}]" 1>&2
+    printf '  %-5s %-40s\n\n' "    " "${0} [${GREY2}-h${END}] [${GREY2}-v${END}] [${GREY2}-d${END}]" 1>&2
     printf '  %-5s %-40s\n' "Options:" "" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "developer mode" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "" "displays advanced logs" 1>&2
@@ -277,29 +322,29 @@ opt_usage()
 # #
 
 while [ $# -gt 0 ]; do
-  case "$1" in
-    -d|--dev)
-            OPT_DEV_ENABLE=true
-            echo -e "  ${FUCHSIA2}${BLINK}Devmode Enabled${RESET}"
+    case "$1" in
+        -d|--dev)
+            cfg_dev_enabled=true
+            echo -e "  ${MAGENTA}MODE         ${END}Developer Enabled${END}"
             ;;
 
-    -h*|--help*)
+        -h*|--help*)
             opt_usage
             ;;
 
-    -v|--version)
+        -v|--version)
             echo
-            echo -e "  ${GREEN2}${BOLD}${APP_TITLE}${RESET} - v$(get_version)${RESET}"
-            echo -e "  ${GREY2}${BOLD}${APP_REPO_URL}${RESET}"
-            echo -e "  ${GREY2}${BOLD}${OS} | ${OS_VER}${RESET}"
+            echo -e "  ${GREEN2}${BOLD}${app_title}${END} - v$(get_version)${END}"
+            echo -e "  ${GREY2}${BOLD}${repo_url}${END}"
+            echo -e "  ${GREY2}${BOLD}${sys_os} | ${sys_os_ver}${END}"
             echo
             exit 1
             ;;
-    *)
+        *)
             opt_usage
             ;;
-  esac
-  shift
+    esac
+    shift
 done
 
 # #
@@ -318,12 +363,12 @@ done
 #   check if DOCKER chain exists; flush if true, create if false
 # #
 
-if ${PATH_IPTABLES} -L DOCKER &> /dev/null; then
-    echo -e "  ${BOLD}${GREY1}+ DOCKER        ${WHITE}Flushing existing chain DOCKER${RESET}"
-    ${PATH_IPTABLES} -F DOCKER
+if ${path_iptables4} -L DOCKER &> /dev/null; then
+    echo -e "  ${BOLD}${GREY1}+ DOCKER        ${WHITE}Flushing existing chain DOCKER${END}"
+    ${path_iptables4} -F DOCKER
 else
-    echo -e "  ${BOLD}${GREY1}+ DOCKER        ${WHITE}Creating chain DOCKER${RESET}"
-    ${PATH_IPTABLES} -N DOCKER
+    echo -e "  ${BOLD}${GREY1}+ DOCKER        ${WHITE}Creating chain DOCKER${END}"
+    ${path_iptables4} -N DOCKER
 fi
 
 # #
@@ -340,7 +385,7 @@ chain_exists()
     local chain_name="$1" ; shift
     [ $# -eq 1 ] && local table="--table $1"
 
-    ${PATH_IPTABLES} $table -n --list "$chain_name" >/dev/null 2>&1
+    ${path_iptables4} $table -n --list "$chain_name" >/dev/null 2>&1
 }
 
 # #
@@ -353,17 +398,17 @@ add_to_forward()
 {
     local docker_int=$1
 
-    if [ `${PATH_IPTABLES} -nvL FORWARD | grep ${docker_int} | wc -l` -eq 0 ]; then
+    if [ `${path_iptables4} -nvL FORWARD | grep ${docker_int} | wc -l` -eq 0 ]; then
         # Accept established connections to docker containers
-        ${PATH_IPTABLES} -A FORWARD -o ${docker_int} -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
-        ${PATH_IPTABLES} -A FORWARD -o ${docker_int} -j DOCKER
-        ${PATH_IPTABLES} -A FORWARD -i ${docker_int} ! -o ${docker_int} -j ACCEPT
-        ${PATH_IPTABLES} -A FORWARD -i ${docker_int} -o ${docker_int} -j ACCEPT
+        ${path_iptables4} -A FORWARD -o ${docker_int} -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
+        ${path_iptables4} -A FORWARD -o ${docker_int} -j DOCKER
+        ${path_iptables4} -A FORWARD -i ${docker_int} ! -o ${docker_int} -j ACCEPT
+        ${path_iptables4} -A FORWARD -i ${docker_int} -o ${docker_int} -j ACCEPT
 
-        echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A FORWARD -o ${docker_int} -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT${RESET}"
-        echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A FORWARD -o ${docker_int} -j DOCKER${RESET}"
-        echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A FORWARD -i ${docker_int} ! -o ${docker_int} -j ACCEPT${RESET}"
-        echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A FORWARD -i ${docker_int} -o ${docker_int} -j ACCEPT${RESET}"
+        echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A FORWARD -o ${docker_int} -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT${END}"
+        echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A FORWARD -o ${docker_int} -j DOCKER${END}"
+        echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A FORWARD -i ${docker_int} ! -o ${docker_int} -j ACCEPT${END}"
+        echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A FORWARD -i ${docker_int} -o ${docker_int} -j ACCEPT${END}"
     fi
 }
 
@@ -378,19 +423,19 @@ add_to_nat()
 
     # ipv4
     if [ "$subnet" != "${subnet#*[0-9].[0-9]}" ]; then
-        ${PATH_IPTABLES} -t nat -A POSTROUTING -s ${subnet} ! -o ${docker_int} -j MASQUERADE
-        ${PATH_IPTABLES} -t nat -A DOCKER -i ${docker_int} -j RETURN
+        ${path_iptables4} -t nat -A POSTROUTING -s ${subnet} ! -o ${docker_int} -j MASQUERADE
+        ${path_iptables4} -t nat -A DOCKER -i ${docker_int} -j RETURN
 
-        echo -e "                  ${GREY1}+ RULE v4:               ${FUCHSIA2}-t nat -A POSTROUTING -s ${subnet} ! -o ${docker_int} -j MASQUERADE${RESET}"
-        echo -e "                  ${GREY1}+ RULE v4:               ${FUCHSIA2}-t nat -A DOCKER -i ${docker_int} -j RETURN${RESET}"
+        echo -e "                  ${GREY1}+ RULE v4:               ${FUCHSIA2}-t nat -A POSTROUTING -s ${subnet} ! -o ${docker_int} -j MASQUERADE${END}"
+        echo -e "                  ${GREY1}+ RULE v4:               ${FUCHSIA2}-t nat -A DOCKER -i ${docker_int} -j RETURN${END}"
 
     # ipv6
     elif [ "$subnet" != "${subnet#*:[0-9a-fA-F]}" ]; then
-        ${PATH_IPTABLES6} -t nat -A POSTROUTING -s ${subnet} ! -o ${docker_int} -j MASQUERADE
-        ${PATH_IPTABLES6} -A DOCKER -i ${docker_int} -j RETURN
+        ${path_iptables6} -t nat -A POSTROUTING -s ${subnet} ! -o ${docker_int} -j MASQUERADE
+        ${path_iptables6} -A DOCKER -i ${docker_int} -j RETURN
 
-        echo -e "                  ${GREY1}+ RULE v6:               ${FUCHSIA2}-t nat -A POSTROUTING -s ${subnet} ! -o ${docker_int} -j MASQUERADE${RESET}"
-        echo -e "                  ${GREY1}+ RULE v6:               ${FUCHSIA2}-A DOCKER -i ${docker_int} -j RETURN${RESET}"
+        echo -e "                  ${GREY1}+ RULE v6:               ${FUCHSIA2}-t nat -A POSTROUTING -s ${subnet} ! -o ${docker_int} -j MASQUERADE${END}"
+        echo -e "                  ${GREY1}+ RULE v6:               ${FUCHSIA2}-A DOCKER -i ${docker_int} -j RETURN${END}"
     else
         echo "Unrecognized subnet format '$subnet'"
     fi
@@ -405,11 +450,11 @@ add_to_docker_isolation()
 {
     local docker_int=$1
 
-    ${PATH_IPTABLES} -A DOCKER-ISOLATION-STAGE-1 -i ${docker_int} ! -o ${docker_int} -j DOCKER-ISOLATION-STAGE-2
-    ${PATH_IPTABLES} -A DOCKER-ISOLATION-STAGE-2 -o ${docker_int} -j DROP
+    ${path_iptables4} -A DOCKER-ISOLATION-STAGE-1 -i ${docker_int} ! -o ${docker_int} -j DOCKER-ISOLATION-STAGE-2
+    ${path_iptables4} -A DOCKER-ISOLATION-STAGE-2 -o ${docker_int} -j DROP
 
-    echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A DOCKER-ISOLATION-STAGE-1 -i ${docker_int} ! -o ${docker_int} -j DOCKER-ISOLATION-STAGE-2${RESET}"
-    echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A DOCKER-ISOLATION-STAGE-2 -o ${docker_int} -j DROP${RESET}"
+    echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A DOCKER-ISOLATION-STAGE-1 -i ${docker_int} ! -o ${docker_int} -j DOCKER-ISOLATION-STAGE-2${END}"
+    echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-A DOCKER-ISOLATION-STAGE-2 -o ${docker_int} -j DROP${END}"
 }
 
 # #
@@ -417,34 +462,34 @@ add_to_docker_isolation()
 # #
 
 iptables-save | grep -v -- '-j DOCKER' | iptables-restore
-chain_exists DOCKER && ${PATH_IPTABLES} -X DOCKER
-chain_exists DOCKER nat && ${PATH_IPTABLES} -t nat -X DOCKER
+chain_exists DOCKER && ${path_iptables4} -X DOCKER
+chain_exists DOCKER nat && ${path_iptables4} -t nat -X DOCKER
 
-${PATH_IPTABLES} -N DOCKER
-${PATH_IPTABLES} -N DOCKER-ISOLATION-STAGE-1
-${PATH_IPTABLES} -N DOCKER-ISOLATION-STAGE-2
-${PATH_IPTABLES} -N DOCKER-USER
+${path_iptables4} -N DOCKER
+${path_iptables4} -N DOCKER-ISOLATION-STAGE-1
+${path_iptables4} -N DOCKER-ISOLATION-STAGE-2
+${path_iptables4} -N DOCKER-USER
 
-${PATH_IPTABLES} -t nat -N DOCKER
-${PATH_IPTABLES} -A INPUT -i ${DOCKER_INT} -j ACCEPT
+${path_iptables4} -t nat -N DOCKER
+${path_iptables4} -A INPUT -i ${DOCKER_INT} -j ACCEPT
 
-${PATH_IPTABLES} -A FORWARD -j DOCKER-USER
-${PATH_IPTABLES} -A FORWARD -j DOCKER-ISOLATION-STAGE-1
+${path_iptables4} -A FORWARD -j DOCKER-USER
+${path_iptables4} -A FORWARD -j DOCKER-ISOLATION-STAGE-1
 
 add_to_forward ${DOCKER_INT}
 
-${PATH_IPTABLES} -t nat -A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
-${PATH_IPTABLES} -t nat -A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER
+${path_iptables4} -t nat -A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
+${path_iptables4} -t nat -A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER
 
 # #
 #   whitelist ip addresses associated with docker
 # #
 
 echo -e
-echo -e " ${BLUE2}---------------------------------------------------------------------------------------------------${RESET}"
+echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 echo -e
 
-echo -e "  ${BOLD}${GREY1}+ POSTROUTING   ${WHITE}Adding IPs from primary IP list${RESET}"
+echo -e "  ${BOLD}${GREY1}+ POSTROUTING   ${WHITE}Adding IPs from primary IP list${END}"
 
 for j in "${!IP_CONTAINERS[@]}"; do
 
@@ -453,17 +498,17 @@ for j in "${!IP_CONTAINERS[@]}"; do
     # #
 
     ip_block=${IP_CONTAINERS[$j]}
-    echo -e "  ${BOLD}${WHITE}                + ${YELLOW2}${ip_block}${RESET}"
+    echo -e "  ${BOLD}${WHITE}                + ${YELLOW2}${ip_block}${END}"
 
     # #
     #   Masquerade outbound connections from containers
     # #
 
-    ${PATH_IPTABLES} -t nat -A POSTROUTING ! -o ${DOCKER_INT} -s ${ip_block} -j MASQUERADE
-    ${PATH_IPTABLES} -t nat -A POSTROUTING -s ${ip_block} ! -o ${DOCKER_INT} -j MASQUERADE
+    ${path_iptables4} -t nat -A POSTROUTING ! -o ${DOCKER_INT} -s ${ip_block} -j MASQUERADE
+    ${path_iptables4} -t nat -A POSTROUTING -s ${ip_block} ! -o ${DOCKER_INT} -j MASQUERADE
 
-    echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-t nat -A POSTROUTING ! -o ${DOCKER_INT} -s ${ip_block} -j MASQUERADE${RESET}"
-    echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-t nat -A POSTROUTING -s ${ip_block} ! -o ${DOCKER_INT} -j MASQUERADE${RESET}"
+    echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-t nat -A POSTROUTING ! -o ${DOCKER_INT} -s ${ip_block} -j MASQUERADE${END}"
+    echo -e "                  ${GREY1}+ RULE:                  ${FUCHSIA2}-t nat -A POSTROUTING -s ${ip_block} ! -o ${DOCKER_INT} -j MASQUERADE${END}"
 done
 
 # #
@@ -471,7 +516,7 @@ done
 # #
 
 echo -e
-echo -e " ${BLUE2}---------------------------------------------------------------------------------------------------${RESET}"
+echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 echo -e
 
 # #
@@ -482,7 +527,7 @@ echo -e
 #       2e0fde4b0664
 # #
 
-echo -e "  ${BOLD}${GREY1}+ BRIDGES       ${WHITE}Configuring network bridges${RESET}"
+echo -e "  ${BOLD}${GREY1}+ BRIDGES       ${WHITE}Configuring network bridges${END}"
 
 bridges=`docker network ls -q --filter='Driver=bridge'`
 bridge_ids=`docker network ls -q --filter driver=bridge --format "{{.ID}}"`
@@ -499,9 +544,9 @@ for bridge in $bridges; do
     DOCKER_NET_INT=`docker network inspect -f '{{"'br-$bridge'" | or (index .Options "com.docker.network.bridge.name")}}' $bridge`
     subnet=`docker network inspect -f '{{(index .IPAM.Config 0).Subnet}}' $bridge`
 
-	printf '\n%-17s %-35s %-55s' " " "${GREY1}BRIDGE" "${GREEN2}${bridge}${RESET}"
-	printf '\n%-17s %-35s %-55s' " " "${GREY1}DOCKER INTERFACE" "${GREEN2}${DOCKER_NET_INT}${RESET}"
-	printf '\n%-17s %-35s %-55s' " " "${GREY1}SUBNET" "${GREEN2}${subnet}${RESET}"
+	printf '\n%-17s %-35s %-55s' " " "${GREY1}BRIDGE" "${GREEN2}${bridge}${END}"
+	printf '\n%-17s %-35s %-55s' " " "${GREY1}DOCKER INTERFACE" "${GREEN2}${DOCKER_NET_INT}${END}"
+	printf '\n%-17s %-35s %-55s' " " "${GREY1}SUBNET" "${GREEN2}${subnet}${END}"
 	echo -e
 
     add_to_nat ${DOCKER_NET_INT} ${subnet}
@@ -514,7 +559,7 @@ done
 # #
 
 echo -e
-echo -e " ${BLUE2}---------------------------------------------------------------------------------------------------${RESET}"
+echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 echo -e
 
 # #
@@ -527,7 +572,7 @@ containers=`docker ps -q`
 #   Loop containers
 # #
 
-echo -e "  ${BOLD}${GREY1}+ CONTAINERS    ${WHITE}Configure containers${RESET}"
+echo -e "  ${BOLD}${GREY1}+ CONTAINERS    ${WHITE}Configure containers${END}"
 
 if [ `echo ${containers} | wc -c` -gt "1" ]; then
     for container in ${containers}; do
@@ -548,10 +593,10 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
         network_simple=`docker inspect -f "{{json .NetworkSettings.Networks}}" ${container}`
         name=`docker inspect -f "{{.Name}}" ${container}`
 
-        printf '\n%-22s %-35s %-55s' "    ${GREEN2}           " "${GREY1}NAME" "${YELLOW2}${name}${RESET}"
-        printf '\n%-17s %-35s %-55s' " " "${GREY1}CONTAINER" "${GREEN2}${container}${RESET}"
-        printf '\n%-17s %-35s %-55s' " " "${GREY1}NETMODE" "${GREEN2}${netmode}${RESET}"
-        printf '\n%-17s %-35s %-55s' " " "${GREY1}NETWORK" "${GREEN2}${network_list}${RESET}"
+        printf '\n%-22s %-35s %-55s' "    ${GREEN2}           " "${GREY1}NAME" "${YELLOW2}${name}${END}"
+        printf '\n%-17s %-35s %-55s' " " "${GREY1}CONTAINER" "${GREEN2}${container}${END}"
+        printf '\n%-17s %-35s %-55s' " " "${GREY1}NETMODE" "${GREEN2}${netmode}${END}"
+        printf '\n%-17s %-35s %-55s' " " "${GREY1}NETWORK" "${GREEN2}${network_list}${END}"
 
         # #
         #   Netmode > Default
@@ -591,7 +636,7 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
             # Loop Network
             while IFS= read -r network; do
 
-                printf '\n%-17s %-52s' " " "${GREY1}  │ ${RESET}"
+                printf '\n%-17s %-52s' " " "${GREY1}  │ ${END}"
 
                 bridge=$(docker inspect -f "{{with index .NetworkSettings.Networks \"${network}\"}}{{.NetworkID}}{{end}}" ${container} | cut -c -12)
 
@@ -612,18 +657,18 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 ipaddr=`docker inspect -f "{{with index .NetworkSettings.Networks \"${network}\"}}{{.IPAddress}}{{end}}" ${container}`
                 ipaddr_orig=${ipaddr}
 
-                if [ -z "${bridge}" ]; then bridge="${RED2}Not found${RESET}"; fi
-                if [ -z "${DOCKER_NET_INT}" ]; then DOCKER_NET_INT="${RED2}Not found${RESET}"; fi
-                if [ -z "${ipaddr}" ]; then ipaddr="${RED2}Not found${RESET}"; fi
+                if [ -z "${bridge}" ]; then bridge="${RED2}Not found${END}"; fi
+                if [ -z "${DOCKER_NET_INT}" ]; then DOCKER_NET_INT="${RED2}Not found${END}"; fi
+                if [ -z "${ipaddr}" ]; then ipaddr="${RED2}Not found${END}"; fi
 
-                printf '\n%-17s %-52s %-55s' " " "${GREY1}  ├── ${GREY1}BRIDGE" "${GREEN2}${bridge}${RESET}"
-                printf '\n%-17s %-52s %-55s' " " "${GREY1}  ├── ${GREY1}DOCKER_NET" "${GREEN2}${DOCKER_NET_INT}${RESET}"
-                printf '\n%-17s %-52s %-55s' " " "${GREY1}  ├── ${GREY1}IP" "${GREEN2}${ipaddr}${RESET}"
+                printf '\n%-17s %-52s %-55s' " " "${GREY1}  ├── ${GREY1}BRIDGE" "${GREEN2}${bridge}${END}"
+                printf '\n%-17s %-52s %-55s' " " "${GREY1}  ├── ${GREY1}DOCKER_NET" "${GREEN2}${DOCKER_NET_INT}${END}"
+                printf '\n%-17s %-52s %-55s' " " "${GREY1}  ├── ${GREY1}IP" "${GREEN2}${ipaddr}${END}"
 
-                if [ "${OPT_DEV_ENABLE}" == "true" ] || [ "${DEBUG_ENABLED}" == "true" ]; then
-                    echo -e "                                           ${GREY1}docker inspect -f \"{{with index .NetworkSettings.Networks \"${network}\"}}{{.NetworkID}}{{end}}\" ${container} | cut -c -12${RESET}"
-                    echo -e "                                           ${GREY1}docker network inspect -f '{{\"'br-$bridge'\" | or (index .Options \"com.docker.network.bridge.name\")}}' ${bridge}${RESET}"
-                    echo -e "                                           ${GREY1}docker inspect -f '{{with index .NetworkSettings.Networks \"${network}\"}}{{.IPAddress}}{{end}}' ${container}${RESET}"
+                if [ "${cfg_dev_enabled}" == "true" ] || [ "${DEBUG_ENABLED}" == "true" ]; then
+                    echo -e "                                           ${GREY1}docker inspect -f \"{{with index .NetworkSettings.Networks \"${network}\"}}{{.NetworkID}}{{end}}\" ${container} | cut -c -12${END}"
+                    echo -e "                                           ${GREY1}docker network inspect -f '{{\"'br-$bridge'\" | or (index .Options \"com.docker.network.bridge.name\")}}' ${bridge}${END}"
+                    echo -e "                                           ${GREY1}docker inspect -f '{{with index .NetworkSettings.Networks \"${network}\"}}{{.IPAddress}}{{end}}' ${container}${END}"
                 fi
 
             done <<< "$network"
@@ -633,10 +678,10 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
         #   CHeck if containers IP is currently in CSF allow list /etc/csf/csf.allow
         # #
 
-        if [[ -n "${ipaddr}" ]] && [[ "$ipaddr" != "${RED2}Not found${RESET}" ]]; then
+        if [[ -n "${ipaddr}" ]] && [[ "$ipaddr" != "${RED2}Not found${END}" ]]; then
 
             if grep -q "\b${ipaddr}\b" ${CSF_FILE_ALLOW}; then
-                printf '\n%-17s %-52s %-55s' " " "${GREY1}  └── ${GREY1}WHITELIST" "${YELLOW2}${ipaddr} already white-listed in ${CSF_FILE_ALLOW}${RESET}"
+                printf '\n%-17s %-52s %-55s' " " "${GREY1}  └── ${GREY1}WHITELIST" "${YELLOW2}${ipaddr} already white-listed in ${CSF_FILE_ALLOW}${END}"
             else
 
                 # #
@@ -644,12 +689,12 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 # #
 
                 if [[ $csf_path ]]; then
-                    printf '\n%-17s %-52s %-55s' " " "${GREY1}  └── ${GREY1}WHITELIST" "${GREEN2}Adding ${ipaddr} to allow list ${CSF_FILE_ALLOW}${RESET}"
+                    printf '\n%-17s %-52s %-55s' " " "${GREY1}  └── ${GREY1}WHITELIST" "${GREEN2}Adding ${ipaddr} to allow list ${CSF_FILE_ALLOW}${END}"
                     $csf_path -a ${ipaddr} ${CSF_COMMENT} >/dev/null 2>&1
                 fi
             fi
         else
-            printf '\n%-17s %-52s %-55s' " " "${GREY1}  └── ${GREY1}WHITELIST" "${RED2}Found blank IP, cannot be added to ${CSF_FILE_ALLOW}${RESET}"
+            printf '\n%-17s %-52s %-55s' " " "${GREY1}  └── ${GREY1}WHITELIST" "${RED2}Found blank IP, cannot be added to ${CSF_FILE_ALLOW}${END}"
         fi
 
         # #
@@ -693,22 +738,22 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 #   PROTOTYPE       tcp    
                 # #
                 
-                printf '\n%-17s %-52s' " " "${GREY1}      │ ${RESET}"
-                printf '\n%-17s %-52s %-55s' " " "${GREY1}      ├── ${GREY1}SOURCE" "${FUCHSIA2}${src}${RESET}"
-                printf '\n%-17s %-52s %-55s' " " "${GREY1}      └── ${GREY1}DESTINATION" "${FUCHSIA2}${dst}${RESET}"
-                # printf '\n%-17s %-35s %-55s' " " "${GREY1}PORT" "${FUCHSIA2}${dst_port}${RESET}"
-                # printf '\n%-17s %-35s %-55s' " " "${GREY1}PROTOTYPE" "${FUCHSIA2}${dst_proto}${RESET}"
+                printf '\n%-17s %-52s' " " "${GREY1}      │ ${END}"
+                printf '\n%-17s %-52s %-55s' " " "${GREY1}      ├── ${GREY1}SOURCE" "${FUCHSIA2}${src}${END}"
+                printf '\n%-17s %-52s %-55s' " " "${GREY1}      └── ${GREY1}DESTINATION" "${FUCHSIA2}${dst}${END}"
+                # printf '\n%-17s %-35s %-55s' " " "${GREY1}PORT" "${FUCHSIA2}${dst_port}${END}"
+                # printf '\n%-17s %-35s %-55s' " " "${GREY1}PROTOTYPE" "${FUCHSIA2}${dst_proto}${END}"
                 echo -e
 
                 # #
                 #   IPTABLE RULE > Add container ip:port for each entry
                 # #
 
-                ${PATH_IPTABLES} -A DOCKER -d ${ipaddr}/32 ! -i ${DOCKER_NET_INT} -o ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j ACCEPT
-                ${PATH_IPTABLES} -t nat -A POSTROUTING -s ${ipaddr}/32 -d ${ipaddr}/32 -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j MASQUERADE
+                ${path_iptables4} -A DOCKER -d ${ipaddr}/32 ! -i ${DOCKER_NET_INT} -o ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j ACCEPT
+                ${path_iptables4} -t nat -A POSTROUTING -s ${ipaddr}/32 -d ${ipaddr}/32 -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j MASQUERADE
 
-                echo -e "                  ${GREY1}          ├── + RULE:    ${GREY1}-A DOCKER -d ${ipaddr}/32 ! -i ${DOCKER_NET_INT} -o ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j ACCEPT${RESET}"
-                echo -e "                  ${GREY1}          ├── + RULE:    ${GREY1}-t nat -A POSTROUTING -s ${ipaddr}/32 -d ${ipaddr}/32 -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j MASQUERADE${RESET}"
+                echo -e "                  ${GREY1}          ├── + RULE:    ${GREY1}-A DOCKER -d ${ipaddr}/32 ! -i ${DOCKER_NET_INT} -o ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j ACCEPT${END}"
+                echo -e "                  ${GREY1}          ├── + RULE:    ${GREY1}-t nat -A POSTROUTING -s ${ipaddr}/32 -d ${ipaddr}/32 -p ${dst_proto} -m ${dst_proto} --dport ${dst_port} -j MASQUERADE${END}"
 
                 # #
                 #   Support for IPv4
@@ -720,8 +765,8 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
                 fi
 
                 if [[ ${src_ip} =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-                    ${PATH_IPTABLES} -t nat -A DOCKER ${iptables_opt_src}! -i ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${src_port} -j DNAT --to-destination ${ipaddr}:${dst_port}
-                    echo -e "                  ${GREY1}          └── + RULE:    ${GREY1}-t nat -A DOCKER ${iptables_opt_src}! -i ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${src_port} -j DNAT --to-destination ${ipaddr}:${dst_port}${RESET}"
+                    ${path_iptables4} -t nat -A DOCKER ${iptables_opt_src}! -i ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${src_port} -j DNAT --to-destination ${ipaddr}:${dst_port}
+                    echo -e "                  ${GREY1}          └── + RULE:    ${GREY1}-t nat -A DOCKER ${iptables_opt_src}! -i ${DOCKER_NET_INT} -p ${dst_proto} -m ${dst_proto} --dport ${src_port} -j DNAT --to-destination ${ipaddr}:${dst_port}${END}"
                 fi
             done
         fi
@@ -736,19 +781,19 @@ fi
 #   Loop containers
 # #
 
-echo -e "  ${BOLD}${GREY1}+ RULES         ${WHITE}Add DOCKER-ISOLATION-STAGE rules${RESET}"
+echo -e "  ${BOLD}${GREY1}+ RULES         ${WHITE}Add DOCKER-ISOLATION-STAGE rules${END}"
 
-${PATH_IPTABLES} -A DOCKER-ISOLATION-STAGE-1 -j RETURN
-${PATH_IPTABLES} -A DOCKER-ISOLATION-STAGE-2 -j RETURN
-${PATH_IPTABLES} -A DOCKER-USER -j RETURN
+${path_iptables4} -A DOCKER-ISOLATION-STAGE-1 -j RETURN
+${path_iptables4} -A DOCKER-ISOLATION-STAGE-2 -j RETURN
+${path_iptables4} -A DOCKER-USER -j RETURN
 
-printf '\n%-17s %-35s %-55s' " " "${GREY1}+ RULE" "${FUCHSIA2}-A DOCKER-ISOLATION-STAGE-1 -j RETURN${RESET}"
-printf '\n%-17s %-35s %-55s' " " "${GREY1}+ RULE" "${FUCHSIA2}-A DOCKER-ISOLATION-STAGE-2 -j RETURN${RESET}"
-printf '\n%-17s %-35s %-55s' " " "${GREY1}+ RULE" "${FUCHSIA2}-A DOCKER-USER -j RETURN${RESET}"
+printf '\n%-17s %-35s %-55s' " " "${GREY1}+ RULE" "${FUCHSIA2}-A DOCKER-ISOLATION-STAGE-1 -j RETURN${END}"
+printf '\n%-17s %-35s %-55s' " " "${GREY1}+ RULE" "${FUCHSIA2}-A DOCKER-ISOLATION-STAGE-2 -j RETURN${END}"
+printf '\n%-17s %-35s %-55s' " " "${GREY1}+ RULE" "${FUCHSIA2}-A DOCKER-USER -j RETURN${END}"
 
-if [ `${PATH_IPTABLES} -t nat -nvL DOCKER | grep ${DOCKER_INT} | wc -l` -eq 0 ]; then
-    ${PATH_IPTABLES} -t nat -I DOCKER -i ${DOCKER_INT} -j RETURN
-    printf '\n%-17s %-35s %-55s' " " "${GREY1}+ RULE" "${FUCHSIA2}-t nat -I DOCKER -i ${DOCKER_INT} -j RETURN${RESET}"
+if [ `${path_iptables4} -t nat -nvL DOCKER | grep ${DOCKER_INT} | wc -l` -eq 0 ]; then
+    ${path_iptables4} -t nat -I DOCKER -i ${DOCKER_INT} -j RETURN
+    printf '\n%-17s %-35s %-55s' " " "${GREY1}+ RULE" "${FUCHSIA2}-t nat -I DOCKER -i ${DOCKER_INT} -j RETURN${END}"
 fi
 
 echo -e
