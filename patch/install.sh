@@ -270,6 +270,12 @@ csf_edit_conf() {
         fi
 
 # #
+#   Ensure we're in the correct directory
+# #
+
+cd "${app_this_dir_a}"
+
+# #
 #   find > curl
 # #
 

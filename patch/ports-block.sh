@@ -222,7 +222,7 @@ csf_path=$(command -v csf)
 #   Ensure we're in the correct directory
 # #
 
-cd "${app_this_dir_alt}"
+cd "${app_this_dir_a}"
 
 # #
 #   find > iptables
