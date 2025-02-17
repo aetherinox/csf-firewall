@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_colombia_ipset
 #   @uuid           ab937b04-db6d-372f-9da8-d549f6c42c58
-#   @updated        Sat 15 Feb 2025 12:20:51 AM UTC
-#   @entries        17,641,632 ips
-#                   3,696 subnets
-#                   3,696 lines
+#   @updated        Mon Feb 17 00:18:55 UTC 2025
+#   @entries        17641632 ips
+#                   3696 subnets
+#                   3696 lines
 #   @country        Colombia (CO)
 #   @expires        24 hours
 #   @category       Geolocation

@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_american_samoa_ipset
 #   @uuid           1d518915-e040-354c-88ef-8429d93b8073
-#   @updated        Sat 15 Feb 2025 12:20:33 AM UTC
-#   @entries        81,971 ips
+#   @updated        Mon Feb 17 00:18:44 UTC 2025
+#   @entries        81971 ips
 #                   677 subnets
 #                   677 lines
 #   @country        American Samoa (AS)

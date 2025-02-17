@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_togo_ipset
 #   @uuid           8eb02633-6640-3350-a635-d8b4c98faf15
-#   @updated        Sat 15 Feb 2025 12:22:09 AM UTC
-#   @entries        357,581 ips
+#   @updated        Mon Feb 17 00:19:41 UTC 2025
+#   @entries        357581 ips
 #                   164 subnets
 #                   164 lines
 #   @country        Togo (TG)

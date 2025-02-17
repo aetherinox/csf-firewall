@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_argentina_ipset
 #   @uuid           bb580c66-5180-3cd0-aa88-796509949a56
-#   @updated        Sat 15 Feb 2025 12:20:33 AM UTC
-#   @entries        19,572,155 ips
-#                   5,234 subnets
-#                   5,234 lines
+#   @updated        Mon Feb 17 00:18:43 UTC 2025
+#   @entries        19572155 ips
+#                   5234 subnets
+#                   5234 lines
 #   @country        Argentina (AR)
 #   @expires        24 hours
 #   @category       Geolocation

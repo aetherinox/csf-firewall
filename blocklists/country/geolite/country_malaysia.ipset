@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_malaysia_ipset
 #   @uuid           8d3a17ce-e658-3bc7-979a-575efd8ba130
-#   @updated        Sat 15 Feb 2025 12:21:43 AM UTC
-#   @entries        7,490,620 ips
-#                   3,333 subnets
-#                   3,333 lines
+#   @updated        Mon Feb 17 00:19:25 UTC 2025
+#   @entries        7490620 ips
+#                   3333 subnets
+#                   3333 lines
 #   @country        Malaysia (MY)
 #   @expires        24 hours
 #   @category       Geolocation

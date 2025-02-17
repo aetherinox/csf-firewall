@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_united_states_ipset
 #   @uuid           6063c0ed-d46f-3a64-88a0-7f739b445caf
-#   @updated        Sat 15 Feb 2025 12:22:25 AM UTC
-#   @entries        281,476,505,512,810 ips
-#                   219,787 subnets
-#                   219,787 lines
+#   @updated        Mon Feb 17 00:19:50 UTC 2025
+#   @entries        281476505512810 ips
+#                   219787 subnets
+#                   219787 lines
 #   @country        United States (US)
 #   @expires        24 hours
 #   @category       Geolocation
