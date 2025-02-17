@@ -1,4 +1,10 @@
 <div align="center">
+
+🕙 `Last Sync: 02/17/2025 09:58 UTC`
+
+</div>
+
+<div align="center">
 <h6>New dark theme, support for Docker, Traefik, and OpenVPN servers. Includes a "bad actor" blocklist, and numerous scripts.</h6>
 <h1>♾️ ConfigServer Firewall ♾️</h1>
 
