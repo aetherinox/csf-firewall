@@ -6,6 +6,7 @@
 #   
 #   @author         Aetherinox
 #   @package        ConfigServer Firewall
+#   @file           install.sh
 #   @type           Patch
 #   @desc           This script copies the following files to the below paths:
 #						/usr/local/include/csf/post.d/openvpn.sh
@@ -16,10 +17,12 @@
 #					You can find the ConfigServer Firewall config at:
 #						/etc/csf/csf.conf
 #
-#   @usage          chmod +x /usr/local/include/csf/post.d/ports-drop.sh
-#                   sudo /usr/local/include/csf/post.d/ports-drop.sh
+#   @usage          chmod +x /usr/local/include/csf/post.d/install.sh
+#                   sudo /usr/local/include/csf/post.d/install.sh
 #   
 # #
+
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # #
 #   define > colors

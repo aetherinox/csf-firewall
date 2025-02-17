@@ -6,9 +6,11 @@
 #   
 #   @author         Aetherinox
 #   @package        ConfigServer Firewall
+#   @file           ports-drop
 #   @type           Patch
 #   @desc           This CSF script ensures that certain ports cannot be accessed at all.
-#                   Add each port you wish to block to the table `BLACKLIST_PORTS`
+#                   Add each port you wish to block to the table `BLACKLIST_PORTS`.
+#                   This method adds the port into iptables, it does NOT make use of ipsets.
 #   
 #   @usage          chmod +x /usr/local/include/csf/post.d/ports-drop.sh
 #                   sudo /usr/local/include/csf/post.d/ports-drop.sh
