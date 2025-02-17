@@ -551,15 +551,13 @@ opt_report()
 # #
 
 while [ $# -gt 0 ]; do
-  case "$1" in
-    -d|--dev)
-            OPT_DEV_ENABLE=true
-            echo -e
-            echo -e "  ${MAGENTA}${BLINK}Devmode Enabled${END}"
-            echo -e
+    case "$1" in
+        -d|--dev)
+            cfg_dev_enabled=true
+            echo -e "  ${MAGENTA}MODE         ${END}Developer Enabled${END}"
             ;;
 
-    -f|--flush)
+        -f|--flush)
             echo -e "  ${BOLD}${GREY1}IPTABLES        ${END}Flushing ${GREY1}Started${END}"
 
             ${path_iptables4} -P INPUT ACCEPT
@@ -583,15 +581,15 @@ while [ $# -gt 0 ]; do
             exit 1
             ;;
 
-    -r*|--report*)
+        -r*|--report*)
             opt_report
             ;;
 
-    -h*|--help*)
+        -h*|--help*)
             opt_usage
             ;;
 
-    -v|--version)
+        -v|--version)
             echo -e
             echo -e "  ${GREEN}${BOLD}${app_title}${END} - v$(get_version)${END}"
             echo -e "  ${GREY2}${BOLD}${repo_url}${END}"
@@ -599,11 +597,11 @@ while [ $# -gt 0 ]; do
             echo -e
             exit 1
             ;;
-    *)
+        *)
             opt_usage
             ;;
-  esac
-  shift
+    esac
+    shift
 done
 
 # #
@@ -787,14 +785,14 @@ check_sudo
 
     # Create directories needed for custom csf{pre,post}
     if [ ! -d ${folder_csf_pre} ]; then
-        if [ "${OPT_DEV_ENABLE}" = true ]; then
+        if [ "${cfg_dev_enabled}" = true ]; then
             echo -e "  ${WHITE}                Mkdir           ${MAGENTA}${folder_csf_pre}${END}"
         fi
         mkdir -p ${folder_csf_pre}
     fi
 
     if [ ! -d ${folder_csf_post} ]; then
-        if [ "${OPT_DEV_ENABLE}" = true ]; then
+        if [ "${cfg_dev_enabled}" = true ]; then
             echo -e "  ${WHITE}                Mkdir           ${MAGENTA}${folder_csf_post}${END}"
         fi
         mkdir -p ${folder_csf_post}

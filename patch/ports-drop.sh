@@ -113,7 +113,7 @@ PEACH=$'\e[38;5;210m'
 
 function error()
 {
-    echo -e "  ⭕ ${GREY2}${app_file_this}${END}: \n     ${BOLD}${RED}Error${NORMAL}: ${END}$1"
+    echo -e "  ⭕ ${GREY2}${app_file_this}${END}: \n     ${BOLD}${RED}Error${END}: ${END}$1"
     echo -e
     exit 0
 }
