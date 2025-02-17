@@ -1,1 +1,1 @@
-https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/01_master.ipset
+https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/master.ipset
