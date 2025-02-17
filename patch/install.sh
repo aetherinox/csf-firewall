@@ -158,14 +158,14 @@ function error()
 
 check_sudo()
 {
-	if [ "$EUID" -ne 0 ]; then
+    if [ "$EUID" -ne 0 ]; then
         echo
         echo -e "  ${ORANGE}WARNING      ${WHITE}Must run script with ${YELLOW2}sudo${END}"
         echo -e "                    ${GREY2}sudo ./${app_file_this}${END}"
-		echo
+        echo
 
         exit 1
-	fi
+    fi
 }
 
 # #
@@ -274,7 +274,7 @@ csf_edit_conf() {
 # #
 
 if ! [ -x "$(command -v curl)" ]; then
-	check_sudo
+    check_sudo
     echo -e "  ${GREEN}OK           ${END}Installing package ${BLUE2}curl${END}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt-get install curl -y -qq >/dev/null 2>&1
@@ -285,7 +285,7 @@ fi
 # #
 
 if ! [ -x "$(command -v iptables)" ]; then
-	check_sudo
+    check_sudo
     echo -e "  ${GREEN}OK           ${END}Installing package ${BLUE2}iptables${END}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt-get install iptables -y -qq >/dev/null 2>&1
@@ -296,7 +296,7 @@ fi
 # #
 
 if ! [ -x "$(command -v ipset)" ]; then
-	check_sudo
+    check_sudo
     echo -e "  ${GREEN}OK           ${END}Installing package ${BLUE2}ipset${END}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt-get install ipset -y -qq >/dev/null 2>&1
@@ -347,46 +347,46 @@ fi
 # #
 
 if ! command -v -- "csf" > /dev/null 2>&1; then
-	check_sudo
+    check_sudo
 
     echo -e "  ${GREEN}OK           ${END}Installing package ${BLUE2}ConfigServer Firewall${END}"
 
-	# #
-	#   csf > install prerequisites
-	# #
+    # #
+    #   csf > install prerequisites
+    # #
 
-	sudo apt-get update -y -q >/dev/null 2>&1
-	sudo apt-get install perl ipset -y -qq >/dev/null 2>&1
+    sudo apt-get update -y -q >/dev/null 2>&1
+    sudo apt-get install perl ipset -y -qq >/dev/null 2>&1
 
-	# #
-	#   csf > download, extract, install
-	# #
+    # #
+    #   csf > download, extract, install
+    # #
 
-	wget https://download.configserver.com/csf.tgz >> /dev/null 2>&1
-	tar -xzf csf.tgz >> /dev/null 2>&1
-	cd "${app_this_dir_a}/csf"
-	sudo sh install.sh >> /dev/null 2>&1
+    wget https://download.configserver.com/csf.tgz >> /dev/null 2>&1
+    tar -xzf csf.tgz >> /dev/null 2>&1
+    cd "${app_this_dir_a}/csf"
+    sudo sh install.sh >> /dev/null 2>&1
 
-	# #
-	#   csf > cleanup
-	# #
+    # #
+    #   csf > cleanup
+    # #
 
-	cd "${app_this_dir_a}"
-	sudo rm csf.tgz >> /dev/null 2>&1
-	sudo rm -rf csf/ >> /dev/null 2>&1
+    cd "${app_this_dir_a}"
+    sudo rm csf.tgz >> /dev/null 2>&1
+    sudo rm -rf csf/ >> /dev/null 2>&1
 
-	echo -e
-	echo -e "  ${WHITE}CSF patcher will now start ...${END}"
-	echo -e
+    echo -e
+    echo -e "  ${WHITE}CSF patcher will now start ...${END}"
+    echo -e
 
-	# #
-	#   iptables > assign path to var
-	# #
+    # #
+    #   iptables > assign path to var
+    # #
 
-	path_iptables4=$(which iptables)
-	path_iptables6=$(which ip6tables)
+    path_iptables4=$(which iptables)
+    path_iptables6=$(which ip6tables)
 
-	sleep 2
+    sleep 2
 fi
 
 # #
@@ -397,7 +397,7 @@ fi
 
 opt_usage()
 {
-	echo -e "aa"
+    echo -e "aa"
     echo -e 
     printf "  ${BLUE}${app_title}${END}\n" 1>&2
     printf "  ${GREY2}${app_about}${END}\n" 1>&2
@@ -434,31 +434,31 @@ opt_report()
     #  Section > Manifest
     # #
 
-	manifest_bUpdateAvail="false"
-	manifest_version=$(curl -s https://api.github.com/repos/${repo_author}/${repo_name}/releases/latest | jq -r '.tag_name')
-	manifest_published=$(curl -s https://api.github.com/repos/${repo_author}/${repo_name}/releases/latest | jq -r '.published_at')
+    manifest_bUpdateAvail="false"
+    manifest_version=$(curl -s https://api.github.com/repos/${repo_author}/${repo_name}/releases/latest | jq -r '.tag_name')
+    manifest_published=$(curl -s https://api.github.com/repos/${repo_author}/${repo_name}/releases/latest | jq -r '.published_at')
 
     # #
     #  Check update
     # #
 
-	version_now=$(get_version)
-	version_new=${manifest_version}
+    version_now=$(get_version)
+    version_new=${manifest_version}
 
-	if get_version_compare_gt $version_new $version_now; then
-		manifest_bUpdateAvail="true"
-	else
-		manifest_bUpdateAvail="false"
-	fi
+    if get_version_compare_gt $version_new $version_now; then
+        manifest_bUpdateAvail="true"
+    else
+        manifest_bUpdateAvail="false"
+    fi
 
     # #
     #  Section > Header
     # #
 
-	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+    echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${END}"
     echo -e " ${GREY2} ${app_about}${END}"
-	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+    echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 
     # #
     #  Section > General
@@ -470,9 +470,9 @@ opt_report()
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Script" "${WHITE}${app_file_this}" "${END}"
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Path" "${WHITE}${app_this_dir_a}" "${END}"
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Version" "${WHITE}v$(get_version)" "${END}"
-	if [ "${manifest_bUpdateAvail}" == "true" ]; then
-    	printf "%-5s %-35s %-40s %-40s\n" "" "${BLUE2}           " "${YELLOW}Update Available( v${version_new} )" "${END}"
-	fi
+    if [ "${manifest_bUpdateAvail}" == "true" ]; then
+        printf "%-5s %-35s %-40s %-40s\n" "" "${BLUE2}           " "${YELLOW}Update Available( v${version_new} )" "${END}"
+    fi
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Released" "${WHITE}${manifest_published}" "${END}"
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Repository" "${WHITE}${repo_url}" "${END}"
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  sys_os" "${WHITE}${sys_os} - ${sys_os_ver}" "${END}"
@@ -522,11 +522,9 @@ opt_report()
     # #
 
     echo -e 
-	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+    echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo -e
     echo -e
-
-    sleep 0.3
 
     exit 1
 }
@@ -547,32 +545,32 @@ while [ $# -gt 0 ]; do
   case "$1" in
     -d|--dev)
             OPT_DEV_ENABLE=true
-			echo -e
+            echo -e
             echo -e "  ${MAGENTA}${BLINK}Devmode Enabled${END}"
-			echo -e
+            echo -e
             ;;
 
     -f|--flush)
-			echo -e "  ${BOLD}${GREY1}IPTABLES        ${END}Flushing ${GREY1}Started${END}"
+            echo -e "  ${BOLD}${GREY1}IPTABLES        ${END}Flushing ${GREY1}Started${END}"
 
-			${path_iptables4} -P INPUT ACCEPT
-			${path_iptables4} -P FORWARD ACCEPT
-			${path_iptables4} -P OUTPUT ACCEPT
-			${path_iptables4} -t nat -F
-			${path_iptables4} -t mangle -F
-			${path_iptables4} -F
-			${path_iptables4} -X
+            ${path_iptables4} -P INPUT ACCEPT
+            ${path_iptables4} -P FORWARD ACCEPT
+            ${path_iptables4} -P OUTPUT ACCEPT
+            ${path_iptables4} -t nat -F
+            ${path_iptables4} -t mangle -F
+            ${path_iptables4} -F
+            ${path_iptables4} -X
 
-			${path_iptables6} -P INPUT ACCEPT
-			${path_iptables6} -P FORWARD ACCEPT
-			${path_iptables6} -P OUTPUT ACCEPT
-			${path_iptables6} -t nat -F
-			${path_iptables6} -t mangle -F
-			${path_iptables6} -F
-			${path_iptables6} -X
+            ${path_iptables6} -P INPUT ACCEPT
+            ${path_iptables6} -P FORWARD ACCEPT
+            ${path_iptables6} -P OUTPUT ACCEPT
+            ${path_iptables6} -t nat -F
+            ${path_iptables6} -t mangle -F
+            ${path_iptables6} -F
+            ${path_iptables6} -X
 
-			echo -e "  ${BOLD}${GREY1}IPTABLES        ${END}Flushing ${GREY1}Finished${END}"
-			echo -e
+            echo -e "  ${BOLD}${GREY1}IPTABLES        ${END}Flushing ${GREY1}Finished${END}"
+            echo -e
             exit 1
             ;;
 
@@ -585,11 +583,11 @@ while [ $# -gt 0 ]; do
             ;;
 
     -v|--version)
-			echo -e
+            echo -e
             echo -e "  ${GREEN}${BOLD}${app_title}${END} - v$(get_version)${END}"
             echo -e "  ${GREY2}${BOLD}${repo_url}${END}"
             echo -e "  ${GREY2}${BOLD}${sys_os} | ${sys_os_ver}${END}"
-			echo -e
+            echo -e
             exit 1
             ;;
     *)
@@ -619,556 +617,548 @@ check_sudo
 #		copy_script "csfpost.sh" "/usr/local/csf/bin/csfpost.sh"
 # #
 
-	function copy_script
-	{
-		# #
-		#   STEP 1 > Header
-		# #
+    function copy_script
+    {
+        # #
+        #   STEP 1 > Header
+        # #
 
-		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
-		echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
-		echo -e
-		echo -e "  ${GREEN}${BOLD}Step 1 - Pre & Post Script${END}"
-		echo -e "        This patch will now install the Docker and OpenVPN functionality to your existing copy of"
-		echo -e "        ConfigServer Firewall. The installed patches will then be ran each time you restart"
-		echo -e "        or start up CSF."
-		echo -e
-		echo -e "        All patches will be installed to the path:"
-    	echo -e "                ${GREY2}${folder_csf_bin}${END}"
-		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+        echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+        echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
+        echo -e
+        echo -e "  ${GREEN}${BOLD}Step 1 - Pre & Post Script${END}"
+        echo -e "        This patch will now install the Docker and OpenVPN functionality to your existing copy of"
+        echo -e "        ConfigServer Firewall. The installed patches will then be ran each time you restart"
+        echo -e "        or start up CSF."
+        echo -e
+        echo -e "        All patches will be installed to the path:"
+        echo -e "                ${GREY2}${folder_csf_bin}${END}"
+        echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 
-		sleep 1
+        # #
+        #   csf_script ............. csfpre.sh
+        #   csf_dst_path ........... /usr/local/csf/bin/csfpre.sh
+        # #
 
-		# #
-		#   csf_script ............. csfpre.sh
-		#   csf_dst_path ........... /usr/local/csf/bin/csfpre.sh
-		# #
+        local csf_script=$1
+        local csf_dst_path=$2
 
-		local csf_script=$1
-		local csf_dst_path=$2
+        echo -e
+        echo -e "  ${BOLD}${YELLOW}[ ${csf_script} ]  ${END}"
+        echo -e
 
-		echo -e
-		echo -e "  ${BOLD}${YELLOW}[ ${csf_script} ]  ${END}"
-		echo -e
+        echo -e "  ${BOLD}${GREY1}PATHS           ${END}Checking paths for script ${BLUE2}${app_this_dir_a}/${csf_script}${END}"
+        printf '%-17s %-55s %-55s' " " "${GREY1}Path: Local" "${MAGENTA}${app_this_dir_a}/${csf_script}${END}"
+        echo -e
+        printf '%-17s %-55s %-55s' " " "${GREY1}Path: Destination" "${MAGENTA}${csf_dst_path}${END}"
+        echo -e
 
-		echo -e "  ${BOLD}${GREY1}PATHS           ${END}Checking paths for script ${BLUE2}${app_this_dir_a}/${csf_script}${END}"
-		printf '%-17s %-55s %-55s' " " "${GREY1}Path: Local" "${MAGENTA}${app_this_dir_a}/${csf_script}${END}"
-		echo -e
-		printf '%-17s %-55s %-55s' " " "${GREY1}Path: Destination" "${MAGENTA}${csf_dst_path}${END}"
-		echo -e
+        echo -e
+        echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+        echo -e
 
-		sleep 1
+        sleep 1
 
-		echo -e
-		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
-		echo -e
+        # #
+        #   STEP 1 > If path_csf_post exists
+        # #
 
-		sleep 1
+        if [ -f "${path_csf_post}" ]; then
 
-		# #
-		#   STEP 1 > If path_csf_post exists
-		# #
+            # #
+            #	missing local pre file
+            # #
 
-		if [ -f "${path_csf_post}" ]; then
+            if [ ! -f "${csf_script}" ]; then
+                echo
+                echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${app_this_dir_a}/${csf_script}${END}"
+                echo -e "               Cannot compare MD5 hash when local file is missing${END}"
+                echo
 
-			# #
-			#	missing local pre file
-			# #
+                exit 0
+            fi
 
-			if [ ! -f "${csf_script}" ]; then
-				echo
-				echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${app_this_dir_a}/${csf_script}${END}"
-				echo -e "               Cannot compare MD5 hash when local file is missing${END}"
-				echo
+            md5_0=`md5sum ${csf_script} | awk '{ print $1 }'`
+            md5_1=`md5sum ${path_csf_post} | awk '{ print $1 }'`
 
-				exit 0
-			fi
+            echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${csf_script}${WHITE} with ${BLUE2}${csf_dst_path}${END}"
+            printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${csf_script}" "${MAGENTA}${md5_0}${END}"
+            echo -e
+            printf '%-17s %-55s %-55s' " " "${GREY1}${csf_dst_path}" "${MAGENTA}${md5_1}${END}"
+            echo -e
 
-			md5_0=`md5sum ${csf_script} | awk '{ print $1 }'`
-			md5_1=`md5sum ${path_csf_post} | awk '{ print $1 }'`
+            if [ ${md5_0} == ${md5_1} ]; then
+                echo -e
+                echo -e "  ${BOLD}${WHITE}                ✔️  ${WHITE}MD5 matches: ${ORANGE}Aborting update${END}"
+            else
+                echo -e
+                echo -e "  ${BOLD}${WHITE}                ❌  ${WHITE}MD5 mismatch: ${GREEN}Copying new version of file${END}"
+            fi
 
-			echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${csf_script}${WHITE} with ${BLUE2}${csf_dst_path}${END}"
-			printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${csf_script}" "${MAGENTA}${md5_0}${END}"
-			echo -e
-			printf '%-17s %-55s %-55s' " " "${GREY1}${csf_dst_path}" "${MAGENTA}${md5_1}${END}"
-			echo -e
+            echo -e
+            echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+            echo -e
 
-			if [ ${md5_0} == ${md5_1} ]; then
-				echo -e
-				echo -e "  ${BOLD}${WHITE}                ✔️  ${WHITE}MD5 matches: ${ORANGE}Aborting update${END}"
-			else
-				echo -e
-				echo -e "  ${BOLD}${WHITE}                ❌  ${WHITE}MD5 mismatch: ${GREEN}Copying new version of file${END}"
-			fi
+            # #
+            #   MD5 Compare
+            # #
 
-			sleep 1
+            if [ ${md5_0} == ${md5_1} ]; then
+                echo -e "  ${BOLD}${YELLOW}NOTICE          ${WHITE}Script ${GREEN}${csf_script}${WHITE} is already up to date${END}"
+                printf '%-17s %-55s %-55s' " " "${GREY1}skipping step ....${END}"
+                echo -e
 
-			echo -e
-			echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
-			echo -e
+                STEP1_SKIP="true"
+            else
+                ok=0
+                while [ ${ok} -eq 0 ]; do
+                    echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}A different version of the script ${GREEN}${csf_dst_path}${WHITE} is already present${END}"
+                    printf '%-17s %-55s %-55s' " " "${GREY1}Do you want to replace it (y/n)?${END}"
+                    echo -e
 
-			sleep 1
+                    read answer
 
-			if [ ${md5_0} == ${md5_1} ]; then
-				echo -e "  ${BOLD}${YELLOW}NOTICE          ${WHITE}Script ${GREEN}${csf_script}${WHITE} is already up to date${END}"
-				printf '%-17s %-55s %-55s' " " "${GREY1}skipping step ....${END}"
-				echo -e
+                    if [ ${answer} == "y" -o ${answer} == "n" ]; then
+                        ok=1
+                    fi
+                done
 
-				STEP1_SKIP="true"
-			else
-				ok=0
-				while [ ${ok} -eq 0 ]; do
-					echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}A different version of the script ${GREEN}${csf_dst_path}${WHITE} is already present${END}"
-					printf '%-17s %-55s %-55s' " " "${GREY1}Do you want to replace it (y/n)?${END}"
-					echo -e
+                if [ ${answer} == "n" ]; then
+                    exit 1
+                fi
+            fi
+        fi
 
-					read answer
+        # #
+        #   Determine if step 1 should be skipped
+        # #
 
-					if [ ${answer} == "y" -o ${answer} == "n" ]; then
-						ok=1
-					fi
-				done
+        if [ -z ${STEP1_SKIP} ] || [ ${STEP1_SKIP} == "false" ]; then
 
-				if [ ${answer} == "n" ]; then
-					exit 1
-				fi
-			fi
-		fi
+            if [ -f "${csf_dst_path}" ]; then
 
-		# #
-		#   Determine if step 1 should be skipped
-		# #
+                # #
+                #   Copy
+                # #
 
-		if [ -z ${STEP1_SKIP} ] || [ ${STEP1_SKIP} == "false" ]; then
+                echo -e "  ${WHITE}                Copy            ${MAGENTA}${app_this_dir_a}/${csf_script}${WHITE} > ${MAGENTA}${csf_dst_path}${END}"
+                cp -f "${csf_script}" "${csf_dst_path}"
 
-			if [ -f "${csf_dst_path}" ]; then
+                # #
+                #   Chown
+                # #
 
-				# #
-				#   Copy
-				# #
+                echo -e "  ${WHITE}                Chown           ${MAGENTA}root:root${WHITE} > ${MAGENTA}${csf_dst_path}${END}"
+                chown root:root "${csf_dst_path}"
 
-				echo -e "  ${WHITE}                Copy            ${MAGENTA}${app_this_dir_a}/${csf_script}${WHITE} > ${MAGENTA}${csf_dst_path}${END}"
-				cp -f "${csf_script}" "${csf_dst_path}"
+                # #
+                #   Chmod
+                # #
 
-				# #
-				#   Chown
-				# #
+                echo -e "  ${WHITE}                Chmod           ${MAGENTA}700${WHITE} > ${MAGENTA}${csf_dst_path}${END}"
+                chmod 700 "${csf_dst_path}"
+            else
+                echo
+                echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${csf_dst_path}${END}"
+                echo -e "               This file is required for the ConfigServer Firewall patches to work properly.${END}"
+                echo
 
-				echo -e "  ${WHITE}                Chown           ${MAGENTA}root:root${WHITE} > ${MAGENTA}${csf_dst_path}${END}"
-				chown root:root "${csf_dst_path}"
+                exit 0
+            fi
 
-				# #
-				#   Chmod
-				# #
+        fi
 
-				echo -e "  ${WHITE}                Chmod           ${MAGENTA}700${WHITE} > ${MAGENTA}${csf_dst_path}${END}"
-				chmod 700 "${csf_dst_path}"
-			else
-				echo
-				echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${csf_dst_path}${END}"
-				echo -e "               This file is required for the ConfigServer Firewall patches to work properly.${END}"
-				echo
+        sleep 1
+        clear
+    }
 
-				exit 0
-			fi
+    # #
+    #   STEP 1 > Setup
+    # #
 
-		fi
+    # Create directories needed for custom csf{pre,post}
+    if [ ! -d ${folder_csf_pre} ]; then
+        if [ "${OPT_DEV_ENABLE}" = true ]; then
+            echo -e "  ${WHITE}                Mkdir           ${MAGENTA}${folder_csf_pre}${END}"
+        fi
+        mkdir -p ${folder_csf_pre}
+    fi
 
-		sleep 2
-		clear
-	}
+    if [ ! -d ${folder_csf_post} ]; then
+        if [ "${OPT_DEV_ENABLE}" = true ]; then
+            echo -e "  ${WHITE}                Mkdir           ${MAGENTA}${folder_csf_post}${END}"
+        fi
+        mkdir -p ${folder_csf_post}
+    fi
 
-	# #
-	#   STEP 1 > Setup
-	# #
+    # #
+    #   STEP 1 > Copy Scripts
+    # #
 
-	# Create directories needed for custom csf{pre,post}
-	if [ ! -d ${folder_csf_pre} ]; then
-		if [ "${OPT_DEV_ENABLE}" = true ]; then
-			echo -e "  ${WHITE}                Mkdir           ${MAGENTA}${folder_csf_pre}${END}"
-		fi
-		mkdir -p ${folder_csf_pre}
-	fi
+    copy_script "${file_csf_pre}" "${path_csf_pre}"
+    copy_script "${file_csf_post}" "${path_csf_post}"
 
-	if [ ! -d ${folder_csf_post} ]; then
-		if [ "${OPT_DEV_ENABLE}" = true ]; then
-			echo -e "  ${WHITE}                Mkdir           ${MAGENTA}${folder_csf_post}${END}"
-		fi
-		mkdir -p ${folder_csf_post}
-	fi
+    # #
+    #   STEP 1 > Clear Console
+    # #
 
-	# #
-	#   STEP 1 > Copy Scripts
-	# #
-
-	copy_script "${file_csf_pre}" "${path_csf_pre}"
-	copy_script "${file_csf_post}" "${path_csf_post}"
-
-	# #
-	#   STEP 1 > Clear Console
-	# #
-
-	clear
+    clear
 
 # #
 #   STEP 2 > SCRIPT > DOCKER
 # #
 
-	# #
-	#   STEP 2 > Header
-	# #
+    # #
+    #   STEP 2 > Header
+    # #
 
-	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
-	echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
-	echo -e
-	echo -e "  ${GREEN}${BOLD}Step 2 - Install Docker Patch${END}"
-	echo -e "        This step will copy the docker patch ${file_docker} to the following location:"
-	echo -e "        All patches will be installed to the path:"
-	echo -e "                ${GREY2}${folder_csf_post}${END}"
-	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+    echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+    echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
+    echo -e
+    echo -e "  ${GREEN}${BOLD}Step 2 - Install Docker Patch${END}"
+    echo -e "        This step will copy the docker patch ${file_docker} to the following location:"
+    echo -e "        All patches will be installed to the path:"
+    echo -e "                ${GREY2}${folder_csf_post}${END}"
+    echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 
-	sleep 1
+    # #
+    #	STEP 2:
+    #   	check if script has been ran before:
+    #		- /csf-firewall/patch/install.sh
+    # #
 
-	# #
-	#	STEP 2:
-	#   	check if script has been ran before:
-	#		- /csf-firewall/patch/install.sh
-	# #
+    if [ ! -d "${folder_csf_include_csf}" ]; then
+        echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}Step 1 did not run properly, folder is missing from your system:${END}"
+        printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_include_csf}${END}"
+        echo -e
+        exit 1
+    fi
 
-	if [ ! -d "${folder_csf_include_csf}" ]; then
-		echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}Step 1 did not run properly, folder is missing from your system:${END}"
-		printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_include_csf}${END}"
-		echo -e
-		exit 1
-	fi
+    opt_prefix="None"
+    if [ "$1" == "-p" ] || [ "$1" == "--prefix" ]; then
+        opt_prefix=$2
+        shift 2
+    fi
 
-	opt_prefix="None"
-	if [ "$1" == "-p" ] || [ "$1" == "--prefix" ]; then
-		opt_prefix=$2
-		shift 2
-	fi
+    file_docker_b="${file_docker}"
+    if [ ${opt_prefix} != "None" ]; then
+        file_docker_b="${opt_prefix}_${file_docker}"
+    fi
 
-	file_docker_b="${file_docker}"
-	if [ ${opt_prefix} != "None" ]; then
-		file_docker_b="${opt_prefix}_${file_docker}"
-	fi
+    # #
+    #	STEP 2:
+    #   	check if file exists:
+    #		- /usr/local/include/csf/post.d/docker.sh
+    # #
 
-	# #
-	#	STEP 2:
-	#   	check if file exists:
-	#		- /usr/local/include/csf/post.d/docker.sh
-	# #
+    if [ -f "${folder_csf_post}/${file_docker_b}" ]; then
 
-	if [ -f "${folder_csf_post}/${file_docker_b}" ]; then
+        # #
+        #	missing local docker.sh file
+        # #
+        
+        if [ ! -f "${file_docker}" ]; then
+            echo
+            echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${app_this_dir_a}/${file_docker}${END}"
+            echo -e "               Cannot compare MD5 hash when local file is missing${END}"
+            echo
 
-		# #
-		#	missing local docker.sh file
-		# #
-		
-		if [ ! -f "${file_docker}" ]; then
-			echo
-			echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${app_this_dir_a}/${file_docker}${END}"
-			echo -e "               Cannot compare MD5 hash when local file is missing${END}"
-			echo
+            exit 0
+        fi
 
-			exit 0
-		fi
+        md5_0=`md5sum ${file_docker} | awk '{ print $1 }'`
+        md5_1=`md5sum ${folder_csf_post}/${file_docker_b} | awk '{ print $1 }'`
 
-		md5_0=`md5sum ${file_docker} | awk '{ print $1 }'`
-		md5_1=`md5sum ${folder_csf_post}/${file_docker_b} | awk '{ print $1 }'`
+        echo -e
+        echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${app_this_dir_a}/${file_docker}${END} with ${BLUE2}${folder_csf_post}/${file_docker_b}${END}"
+        printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${file_docker}" "${MAGENTA}${md5_0}${END}"
+        echo -e
+        printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_post}/${file_docker_b}" "${MAGENTA}${md5_1}${END}"
+        echo -e
 
-		echo -e
-		echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${app_this_dir_a}/${file_docker}${END} with ${BLUE2}${folder_csf_post}/${file_docker_b}${END}"
-		printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${file_docker}" "${MAGENTA}${md5_0}${END}"
-		echo -e
-		printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_post}/${file_docker_b}" "${MAGENTA}${md5_1}${END}"
-		echo -e
+        if [ ${md5_0} == ${md5_1} ]; then
+            echo -e
+            echo -e "  ${BOLD}${WHITE}                ✔️  ${WHITE}MD5 matches: ${ORANGE}Aborting update${END}"
+        else
+            echo -e
+            echo -e "  ${BOLD}${WHITE}                ❌  ${WHITE}MD5 mismatch: ${GREEN}Copying new version of file${END}"
+        fi
 
-		if [ ${md5_0} == ${md5_1} ]; then
-			echo -e
-			echo -e "  ${BOLD}${WHITE}                ✔️  ${WHITE}MD5 matches: ${ORANGE}Aborting update${END}"
-		else
-			echo -e
-			echo -e "  ${BOLD}${WHITE}                ❌  ${WHITE}MD5 mismatch: ${GREEN}Copying new version of file${END}"
-		fi
+        echo -e
+        echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+        echo -e
 
-		sleep 1
+        # #
+        #   MD5 Compare
+        # #
 
-		echo -e
-		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
-		echo -e
+        if [ ${md5_0} == ${md5_1} ]; then
+            echo -e "  ${BOLD}${YELLOW}NOTICE          ${WHITE}Script ${GREEN}${folder_csf_post}/${file_docker_b}${WHITE} is already up to date${END}"
+            printf '%-17s %-55s %-55s' " " "${GREY1}skipping step ....${END}"
+            echo -e
 
-		sleep 1
+            STEP2_SKIP="true"
+        else
+            ok=0
+            while [ ${ok} -eq 0 ]; do
+                echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}A different version of the script ${GREEN}${folder_csf_post}/${file_docker_b}${WHITE} is already present${END}"
+                printf '%-17s %-55s %-55s' " " "${GREY1}Do you want to replace it (y/n)?${END}"
+                echo -e
 
-		if [ ${md5_0} == ${md5_1} ]; then
-			echo -e "  ${BOLD}${YELLOW}NOTICE          ${WHITE}Script ${GREEN}${folder_csf_post}/${file_docker_b}${WHITE} is already up to date${END}"
-			printf '%-17s %-55s %-55s' " " "${GREY1}skipping step ....${END}"
-			echo -e
+                read answer
 
-			STEP2_SKIP="true"
-		else
-			ok=0
-			while [ ${ok} -eq 0 ]; do
-				echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}A different version of the script ${GREEN}${folder_csf_post}/${file_docker_b}${WHITE} is already present${END}"
-				printf '%-17s %-55s %-55s' " " "${GREY1}Do you want to replace it (y/n)?${END}"
-				echo -e
+                if [ ${answer} == "y" -o ${answer} == "n" ]; then
+                    ok=1
+                fi
+            done
 
-				read answer
+            if [ ${answer} == "n" ]; then
+                exit 1
+            fi
+        fi
+    fi
 
-				if [ ${answer} == "y" -o ${answer} == "n" ]; then
-					ok=1
-				fi
-			done
+    # #
+    #	STEP 2:
+    #   	Determine if step 2 should be skipped
+    # #
 
-			if [ ${answer} == "n" ]; then
-				exit 1
-			fi
-		fi
-	fi
+    if [ -z ${STEP2_SKIP} ] || [ ${STEP2_SKIP} == "false" ]; then
+        echo -e "  ${WHITE}                Copy            ${MAGENTA}${file_docker}${WHITE} > ${MAGENTA}${folder_csf_post}/${file_docker_b}${END}"
+        cp -f "${file_docker}" "${folder_csf_post}/${file_docker_b}"
 
-	# #
-	#	STEP 2:
-	#   	Determine if step 2 should be skipped
-	# #
+        echo -e "  ${WHITE}                Chown           ${MAGENTA}root:root${WHITE} > ${MAGENTA}${folder_csf_post}/${file_docker_b}${END}"
+        chown root:root "${folder_csf_post}/${file_docker_b}"
 
-	if [ -z ${STEP2_SKIP} ] || [ ${STEP2_SKIP} == "false" ]; then
-		echo -e "  ${WHITE}                Copy            ${MAGENTA}${file_docker}${WHITE} > ${MAGENTA}${folder_csf_post}/${file_docker_b}${END}"
-		cp -f "${file_docker}" "${folder_csf_post}/${file_docker_b}"
+        echo -e "  ${WHITE}                Chmod           ${MAGENTA}700${WHITE} > ${MAGENTA}${folder_csf_post}/${file_docker_b}${END}"
+        chmod 700 "${folder_csf_post}/${file_docker_b}"
+    fi
 
-		echo -e "  ${WHITE}                Chown           ${MAGENTA}root:root${WHITE} > ${MAGENTA}${folder_csf_post}/${file_docker_b}${END}"
-		chown root:root "${folder_csf_post}/${file_docker_b}"
+    # #
+    #	STEP 2:
+    #   	All steps skipped, no changes made
+    # #
 
-		echo -e "  ${WHITE}                Chmod           ${MAGENTA}700${WHITE} > ${MAGENTA}${folder_csf_post}/${file_docker_b}${END}"
-		chmod 700 "${folder_csf_post}/${file_docker_b}"
-	fi
+    if [ ${STEP1_SKIP} == "true" ] && [ ${STEP2_SKIP} == "true" ]; then
+        echo -e
+        echo -e "  ${BOLD}${GREEN}FINISH          ${WHITE}All of your configs were already up to date${END}"
+        printf '%-17s %-55s %-55s' " " "${GREY1}No changes were made to CSF and docker${END}"
+        echo -e
+    fi
 
-	# #
-	#	STEP 2:
-	#   	All steps skipped, no changes made
-	# #
+    # #
+    #	STEP 2:
+    #   	Services
+    #		After applying all the changes, restart the services csf and lfd
+    # #
 
-	if [ ${STEP1_SKIP} == "true" ] && [ ${STEP2_SKIP} == "true" ]; then
-		echo -e
-		echo -e "  ${BOLD}${GREEN}FINISH          ${WHITE}All of your configs were already up to date${END}"
-		printf '%-17s %-55s %-55s' " " "${GREY1}No changes were made to CSF and docker${END}"
-		echo -e
-	fi
+    echo -e
+    echo -e "  ${BOLD}${GREY1}SERVICES        ${END}Checking for ${BLUE2}lfd.service${END} and ${BLUE2}csf.service${END}"
 
-	# #
-	#	STEP 2:
-	#   	Services
-	#		After applying all the changes, restart the services csf and lfd
-	# #
+    if service_exists lfd; then
+        printf '%-17s %-55s %-55s' " " "lfd.service" "${GREEN}Restarting${END}"
+        echo -e
+        systemctl restart lfd.service
+    else
+        printf '%-17s %-55s %-55s' " " "lfd.service" "${ORANGE}Not Found${END}"
+        echo -e
+    fi
 
-	echo -e
-	echo -e "  ${BOLD}${GREY1}SERVICES        ${END}Checking for ${BLUE2}lfd.service${END} and ${BLUE2}csf.service${END}"
+    if service_exists csf; then
+        printf '%-17s %-55s %-55s' " " "csf.service" "${GREEN}Restarting${END}"
+        echo -e
+        systemctl restart csf.service
+    else
+        printf '%-17s %-55s %-55s' " " "csf.service" "${ORANGE}Not Found${END}"
+        echo -e
+    fi
 
-	if service_exists lfd; then
-		printf '%-17s %-55s %-55s' " " "lfd.service" "${GREEN}Restarting${END}"
-		echo -e
-		systemctl restart lfd.service
-	else
-		printf '%-17s %-55s %-55s' " " "lfd.service" "${ORANGE}Not Found${END}"
-		echo -e
-	fi
+    # #
+    #   STEP 2 > CLEAR CONSOLE
+    # #
 
-	if service_exists csf; then
-		printf '%-17s %-55s %-55s' " " "csf.service" "${GREEN}Restarting${END}"
-		echo -e
-		systemctl restart csf.service
-	else
-		printf '%-17s %-55s %-55s' " " "csf.service" "${ORANGE}Not Found${END}"
-		echo -e
-	fi
-
-	# #
-	#   STEP 2 > CLEAR CONSOLE
-	# #
-
-	clear
+    clear
 
 # #
 #   STEP 3 > SCRIPT > OPENVPN
 # #
 
-	# #
-	#   STEP 3 > OpenVPN > Header
-	# #
+    # #
+    #   STEP 3 > OpenVPN > Header
+    # #
 
-	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
-	echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
-	echo -e
-	echo -e "  ${GREEN}${BOLD}Step 3 - Install OpenVPN Patch${END}"
-	echo -e
-	echo -e "  ${BLUE2}This installer will now copy the ${file_openvpn} script to:"
-	echo -e "  ${BOLD}${WHITE}    ${GREY1}${folder_csf_post}${END}"
-	echo -e
-	echo -e "  Every time the services csf and lfd are started / restarted; firewall rules will be added so"
-	echo -e "  that your containers have access to the network and can be accessed."
-	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+    echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+    echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
+    echo -e
+    echo -e "  ${GREEN}${BOLD}Step 3 - Install OpenVPN Patch${END}"
+    echo -e
+    echo -e "  ${BLUE2}This installer will now copy the ${file_openvpn} script to:"
+    echo -e "  ${BOLD}${WHITE}    ${GREY1}${folder_csf_post}${END}"
+    echo -e
+    echo -e "  Every time the services csf and lfd are started / restarted; firewall rules will be added so"
+    echo -e "  that your containers have access to the network and can be accessed."
+    echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 
-	sleep 1
+    # #
+    #	STEP 3:
+    #   	check if script has been ran before:
+    #		- csf-firewall/patch/install.sh
+    # #
 
-	# #
-	#	STEP 3:
-	#   	check if script has been ran before:
-	#		- csf-firewall/patch/install.sh
-	# #
+    if [ ! -d ${folder_csf_include_csf} ]; then
+        echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}Step 1 did not run properly, folder is missing from your system:${END}"
+        printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_include_csf}${END}"
+        echo -e
+        exit 1
+    fi
 
-	if [ ! -d ${folder_csf_include_csf} ]; then
-		echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}Step 1 did not run properly, folder is missing from your system:${END}"
-		printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_include_csf}${END}"
-		echo -e
-		exit 1
-	fi
+    opt_prefix="None"
+    if [ "$1" == "-p" ] || [ "$1" == "--prefix" ]; then
+        opt_prefix=$2
+        shift 2
+    fi
 
-	opt_prefix="None"
-	if [ "$1" == "-p" ] || [ "$1" == "--prefix" ]; then
-		opt_prefix=$2
-		shift 2
-	fi
+    SCRIPT_OPENVPN_FILE="${file_openvpn}"
+    if [ ${opt_prefix} != "None" ]; then
+        SCRIPT_OPENVPN_FILE="${opt_prefix}_${file_openvpn}"
+    fi
 
-	SCRIPT_OPENVPN_FILE="${file_openvpn}"
-	if [ ${opt_prefix} != "None" ]; then
-		SCRIPT_OPENVPN_FILE="${opt_prefix}_${file_openvpn}"
-	fi
+    # #
+    #	STEP 3:
+    #   	check if file exists:
+    #		- /usr/local/include/csf/post.d/openvpn.sh
+    # #
 
-	# #
-	#	STEP 3:
-	#   	check if file exists:
-	#		- /usr/local/include/csf/post.d/openvpn.sh
-	# #
+    if [ -f "${folder_csf_post}/${SCRIPT_OPENVPN_FILE}" ]; then
 
-	if [ -f "${folder_csf_post}/${SCRIPT_OPENVPN_FILE}" ]; then
+        # #
+        #	missing local openvpn.sh file
+        # #
+        
+        if [ ! -f "${file_openvpn}" ]; then
+            echo
+            echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${app_this_dir_a}/${file_openvpn}${END}"
+            echo -e "               Cannot compare MD5 hash when local file is missing${END}"
+            echo
 
-		# #
-		#	missing local openvpn.sh file
-		# #
-		
-		if [ ! -f "${file_openvpn}" ]; then
-			echo
-			echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${app_this_dir_a}/${file_openvpn}${END}"
-			echo -e "               Cannot compare MD5 hash when local file is missing${END}"
-			echo
+            exit 0
+        fi
 
-			exit 0
-		fi
+        md5_0=`md5sum ${file_openvpn} | awk '{ print $1 }'`
+        md5_1=`md5sum ${folder_csf_post}/${SCRIPT_OPENVPN_FILE} | awk '{ print $1 }'`
 
-		md5_0=`md5sum ${file_openvpn} | awk '{ print $1 }'`
-		md5_1=`md5sum ${folder_csf_post}/${SCRIPT_OPENVPN_FILE} | awk '{ print $1 }'`
+        echo -e
+        echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${app_this_dir_a}/${file_openvpn}${END} with ${BLUE2}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
+        printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${file_openvpn}" "${MAGENTA}${md5_0}${END}"
+        echo -e
+        printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}" "${MAGENTA}${md5_1}${END}"
+        echo -e
 
-		echo -e
-		echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${app_this_dir_a}/${file_openvpn}${END} with ${BLUE2}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
-		printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${file_openvpn}" "${MAGENTA}${md5_0}${END}"
-		echo -e
-		printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}" "${MAGENTA}${md5_1}${END}"
-		echo -e
+        if [ ${md5_0} == ${md5_1} ]; then
+            echo -e
+            echo -e "  ${BOLD}${WHITE}                ✔️  ${WHITE}MD5 matches: ${ORANGE}Aborting update${END}"
+        else
+            echo -e
+            echo -e "  ${BOLD}${WHITE}                ❌  ${WHITE}MD5 mismatch: ${GREEN}Copying new version of file${END}"
+        fi
 
-		if [ ${md5_0} == ${md5_1} ]; then
-			echo -e
-			echo -e "  ${BOLD}${WHITE}                ✔️  ${WHITE}MD5 matches: ${ORANGE}Aborting update${END}"
-		else
-			echo -e
-			echo -e "  ${BOLD}${WHITE}                ❌  ${WHITE}MD5 mismatch: ${GREEN}Copying new version of file${END}"
-		fi
+        echo -e
+        echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+        echo -e
 
-		sleep 1
+        # #
+        #   MD5 Compare
+        # #
 
-		echo -e
-		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
-		echo -e
+        if [ ${md5_0} == ${md5_1} ]; then
+            echo -e "  ${BOLD}${YELLOW}NOTICE          ${WHITE}Script ${GREEN}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${WHITE} is already up to date${END}"
+            printf '%-17s %-55s %-55s' " " "${GREY1}skipping step ....${END}"
+            echo -e
 
-		sleep 1
+            STEP2_SKIP="true"
+        else
+            ok=0
+            while [ ${ok} -eq 0 ]; do
+                echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}A different version of the script ${GREEN}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${WHITE} is already present${END}"
+                printf '%-17s %-55s %-55s' " " "${GREY1}Do you want to replace it (y/n)?${END}"
+                echo -e
 
-		if [ ${md5_0} == ${md5_1} ]; then
-			echo -e "  ${BOLD}${YELLOW}NOTICE          ${WHITE}Script ${GREEN}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${WHITE} is already up to date${END}"
-			printf '%-17s %-55s %-55s' " " "${GREY1}skipping step ....${END}"
-			echo -e
+                read answer
 
-			STEP2_SKIP="true"
-		else
-			ok=0
-			while [ ${ok} -eq 0 ]; do
-				echo -e "  ${BOLD}${ORANGE}WARNING         ${WHITE}A different version of the script ${GREEN}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${WHITE} is already present${END}"
-				printf '%-17s %-55s %-55s' " " "${GREY1}Do you want to replace it (y/n)?${END}"
-				echo -e
+                if [ ${answer} == "y" -o ${answer} == "n" ]; then
+                    ok=1
+                fi
+            done
 
-				read answer
+            if [ ${answer} == "n" ]; then
+                exit 1
+            fi
+        fi
+    fi
 
-				if [ ${answer} == "y" -o ${answer} == "n" ]; then
-					ok=1
-				fi
-			done
+    # #
+    #	STEP 3:
+    #   	Determine if step 3 should be skipped
+    # #
 
-			if [ ${answer} == "n" ]; then
-				exit 1
-			fi
-		fi
-	fi
+    if [ -z ${STEP2_SKIP} ] || [ ${STEP2_SKIP} == "false" ]; then
+        echo -e "  ${WHITE}                Copy            ${MAGENTA}${file_openvpn}${WHITE} > ${MAGENTA}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
+        cp -f ${file_openvpn} ${folder_csf_post}/${SCRIPT_OPENVPN_FILE}
 
-	# #
-	#	STEP 3:
-	#   	Determine if step 3 should be skipped
-	# #
+        echo -e "  ${WHITE}                Chown           ${MAGENTA}root:root${WHITE} > ${MAGENTA}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
+        chown root:root ${folder_csf_post}/${SCRIPT_OPENVPN_FILE}
 
-	if [ -z ${STEP2_SKIP} ] || [ ${STEP2_SKIP} == "false" ]; then
-		echo -e "  ${WHITE}                Copy            ${MAGENTA}${file_openvpn}${WHITE} > ${MAGENTA}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
-		cp -f ${file_openvpn} ${folder_csf_post}/${SCRIPT_OPENVPN_FILE}
+        echo -e "  ${WHITE}                Chmod           ${MAGENTA}700${WHITE} > ${MAGENTA}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
+        chmod 700 ${folder_csf_post}/${SCRIPT_OPENVPN_FILE}
+    fi
 
-		echo -e "  ${WHITE}                Chown           ${MAGENTA}root:root${WHITE} > ${MAGENTA}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
-		chown root:root ${folder_csf_post}/${SCRIPT_OPENVPN_FILE}
+    # #
+    #	STEP 3:
+    #   	All steps skipped, no changes made
+    # #
 
-		echo -e "  ${WHITE}                Chmod           ${MAGENTA}700${WHITE} > ${MAGENTA}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
-		chmod 700 ${folder_csf_post}/${SCRIPT_OPENVPN_FILE}
-	fi
+    if [ ${STEP1_SKIP} == "true" ] && [ ${STEP2_SKIP} == "true" ]; then
+        echo -e
+        echo -e "  ${BOLD}${GREEN}FINISH          ${WHITE}All of your configs were already up to date${END}"
+        printf '%-17s %-55s %-55s' " " "${GREY1}No changes were made to CSF and OpenVPN${END}"
+        echo -e
+    fi
 
-	# #
-	#	STEP 3:
-	#   	All steps skipped, no changes made
-	# #
+    # #
+    #	STEP 3:
+    #   	Services
+    #		After applying all the changes, restart the services csf and lfd
+    # #
 
-	if [ ${STEP1_SKIP} == "true" ] && [ ${STEP2_SKIP} == "true" ]; then
-		echo -e
-		echo -e "  ${BOLD}${GREEN}FINISH          ${WHITE}All of your configs were already up to date${END}"
-		printf '%-17s %-55s %-55s' " " "${GREY1}No changes were made to CSF and OpenVPN${END}"
-		echo -e
-	fi
+    echo -e
+    echo -e "  ${BOLD}${GREY1}SERVICES        ${WENDHITE}Checking for ${BLUE2}lfd.service${END} and ${BLUE2}csf.service${WHITE}${END}"
 
-	# #
-	#	STEP 3:
-	#   	Services
-	#		After applying all the changes, restart the services csf and lfd
-	# #
+    if service_exists lfd; then
+        printf '%-17s %-55s %-55s' " " "lfd.service" "${GREEN}Restarting${END}"
+        echo -e
+        systemctl restart lfd.service
+    else
+        printf '%-17s %-55s %-55s' " " "lfd.service" "${ORANGE}Not Found${END}"
+        echo -e
+    fi
 
-	echo -e
-	echo -e "  ${BOLD}${GREY1}SERVICES        ${WENDHITE}Checking for ${BLUE2}lfd.service${END} and ${BLUE2}csf.service${WHITE}${END}"
+    if service_exists csf; then
+        printf '%-17s %-55s %-55s' " " "csf.service" "${GREEN}Restarting${END}"
+        echo -e
+        systemctl restart csf.service
 
-	if service_exists lfd; then
-		printf '%-17s %-55s %-55s' " " "lfd.service" "${GREEN}Restarting${END}"
-		echo -e
-		systemctl restart lfd.service
-	else
-		printf '%-17s %-55s %-55s' " " "lfd.service" "${ORANGE}Not Found${END}"
-		echo -e
-	fi
-
-	if service_exists csf; then
-		printf '%-17s %-55s %-55s' " " "csf.service" "${GREEN}Restarting${END}"
-		echo -e
-		systemctl restart csf.service
-
-		csf -r
-	else
-		printf '%-17s %-55s %-55s' " " "csf.service" "${ORANGE}Not Found${END}"
-		echo -e
-	fi
+        csf -r
+    else
+        printf '%-17s %-55s %-55s' " " "csf.service" "${ORANGE}Not Found${END}"
+        echo -e
+    fi
 
 # #
 #   Modify CSF config to disable TESTING mode
 # #
 
-	echo -e
-	echo -e "  ${BOLD}${GREY1}CSF             ${END}Disabling ${BLUE2}TESTING MODE${END} in ${BLUE2}/etc/csf/csf.conf${END}"
+    echo -e
+    echo -e "  ${BOLD}${GREY1}CSF             ${END}Disabling ${BLUE2}TESTING MODE${END} in ${BLUE2}/etc/csf/csf.conf${END}"
 
 # #
 #	edit configserver config
