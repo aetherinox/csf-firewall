@@ -322,8 +322,12 @@ opt_usage()
 # #
 
 while [ $# -gt 0 ]; do
-  case "$1" in
-    -d|--dev)
+    case "$1" in
+        -h*|--help*)
+            opt_usage
+            ;;
+
+        -d|--dev)
             cfg_dev_enabled=true
             echo -e "  ${MAGENTA}MODE         ${END}Developer Enabled${END}"
             ;;
@@ -333,11 +337,7 @@ while [ $# -gt 0 ]; do
             echo -e "  ${MAGENTA}MODE         ${END}Verbose Enabled${END}"
             ;;
 
-    -h*|--help*)
-            opt_usage
-            ;;
-
-    -c|--clean)
+        -c|--clean)
 
             # #
             #   this argument removes all iptable and blacklist rules from your server.
@@ -347,6 +347,7 @@ while [ $# -gt 0 ]; do
             echo
 
             for row in $(echo "${BLACKLIST_PORTS}" | jq -r '.[] | @base64'); do
+
                 _jq()
                 {
                     echo ${row} | base64 --decode | jq -r ${1}
@@ -391,17 +392,15 @@ while [ $# -gt 0 ]; do
             done
 
             echo
-            echo -e "  ${BOLD}${ORANGE}WARNING ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ${WHITE}Ports have been unblocked${END}"
-            echo -e "  ${END}‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎The ports listed above have been unblocked from iptables, which means that they may now${END}"
-            echo -e "  ${END}‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎be utilized to access your server.${END}"
-            echo
-
+            echo -e "  ${ORANGE}WARNING         ${END}Ports have been unblocked${END}"
+            echo -e "                  The ports listed above have been unblocked from iptables, which means that they may now${END}"
+            echo -e "                  be utilized to access your server.${END}"
             echo
 
             exit 1
             ;;
 
-    -v|--version)
+        -v|--version)
             echo
             echo -e "  ${GREEN2}${BOLD}${app_title}${END} - v$(get_version)${END}"
             echo -e "  ${GREY2}${BOLD}${repo_url}${END}"
@@ -409,11 +408,11 @@ while [ $# -gt 0 ]; do
             echo
             exit 1
             ;;
-    *)
+        *)
             opt_usage
             ;;
-  esac
-  shift
+    esac
+    shift
 done
 
 # #
