@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bosnia_herzegovina_ipset
 #   @uuid           d4466cbd-8452-3c6d-a2d8-30b6fb76a3ac
-#   @updated        Mon Feb 17 00:18:45 UTC 2025
+#   @updated        Mon Feb 17 11:39:43 UTC 2025
 #   @entries        810061 ips
 #                   435 subnets
 #                   435 lines

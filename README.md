@@ -1,6 +1,6 @@
 <div align="center">
 
-🕙 `Last Sync: 02/17/2025 09:58 UTC`
+🕙 `Last Sync: 02/17/2025 11:41 UTC`
 
 </div>
 
@@ -93,8 +93,8 @@ Ipsets include lists from [AbuseIPDB](https://abuseipdb.com/) and [IPThreat](htt
   - [Remove IP to Allow List](#remove-ip-to-allow-list)
   - [Add IP to Deny List](#add-ip-to-deny-list)
   - [Remove IP from Deny List](#remove-ip-from-deny-list)
-  - [Add Temp Block IP](#add-temp-block-ip)
-  - [Remove Temp Block IP](#remove-temp-block-ip)
+  - [Add Temp Block ILast Sync: $now(#add-temp-block-ip)
+  - [Remove Temp Block ILast Sync: $now(#remove-temp-block-ip)
 - [Uninstalling CSF](#uninstalling-csf)
 - [Enable CSF Firewall Web UI](#enable-csf-firewall-web-ui)
   - [Step 1: Install Required Perl Modules:](#step-1-install-required-perl-modules)
