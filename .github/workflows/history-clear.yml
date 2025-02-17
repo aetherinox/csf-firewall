@@ -25,7 +25,8 @@ on:
 
     schedule:
       # - cron: '0 0 * * *' # every day
-        - cron: '0 0 * * 0' # every 7 days (sunday) at 00:00
+      # - cron: '0 0 * * 0' # every 7 days (sunday) at 00:00
+        - cron: '0 0 1 * *' # every month
 
 # #
 #   environment variables
