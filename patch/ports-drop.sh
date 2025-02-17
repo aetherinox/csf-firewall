@@ -44,9 +44,8 @@ sys_code=$(lsb_release -cs)
 app_title="ConfigServer Firewall - Drop Ports"
 app_about="Ensures that certain ports cannot be accessed at all by the outside world"
 app_ver=("14" "22" "0")
-app_this_file=$(basename "$0")                          # current script file
-app_this_dir_a="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-app_this_dir_b="${PWD}"                                 # current script directory
+app_dir_this_a="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+app_dir_this_b="${PWD}"                                 # current script directory
 app_file_this=$(basename "$0")                          # ports-block.sh (with ext)
 app_file_bin="${app_file_this%.*}"                      # ports-block (without ext)
 app_pid=$BASHPID
@@ -114,7 +113,7 @@ PEACH=$'\e[38;5;210m'
 
 function error()
 {
-    echo -e "  ⭕ ${GREY2}${app_this_file}${END}: \n     ${BOLD}${RED}Error${NORMAL}: ${END}$1"
+    echo -e "  ⭕ ${GREY2}${app_file_this}${END}: \n     ${BOLD}${RED}Error${NORMAL}: ${END}$1"
     echo -e
     exit 0
 }
@@ -224,7 +223,7 @@ csf_path=$(command -v csf)
 #   Ensure we're in the correct directory
 # #
 
-cd "${app_this_dir_a}"
+cd "${app_dir_this_a}"
 
 # #
 #   find > iptables
