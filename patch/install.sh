@@ -79,8 +79,8 @@ sys_code=$(lsb_release -cs)
 #   vars > generic
 # #
 
-app_title="ConfigServer Firewall - Drop Ports"
-app_about="Ensures that certain ports cannot be accessed at all by the outside world"
+app_title="ConfigServer Firewall - Installation Patch"
+app_about="Installs Docker and OpenVPN patches for ConfigServer Firewall."
 app_ver=("14" "22" "0")
 app_this_file=$(basename "$0")                          # current script file
 app_this_dir_a="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -455,10 +455,10 @@ opt_report()
     #  Section > Header
     # #
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
-    echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${END}${MAGENTA}"
-    echo -e " ${GREY2} ${app_about}${END}${MAGENTA}"
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+    echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${END}"
+    echo -e " ${GREY2} ${app_about}${END}"
+	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 
     # #
     #  Section > General
@@ -522,7 +522,7 @@ opt_report()
     # #
 
     echo -e 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo -e
     echo -e
 
@@ -553,7 +553,7 @@ while [ $# -gt 0 ]; do
             ;;
 
     -f|--flush)
-			echo -e "  ${BOLD}${GREY1}IPTABLES        ${WHITE}Flushing ${GREY1}Started${END}"
+			echo -e "  ${BOLD}${GREY1}IPTABLES        ${END}Flushing ${GREY1}Started${END}"
 
 			${path_iptables4} -P INPUT ACCEPT
 			${path_iptables4} -P FORWARD ACCEPT
@@ -571,7 +571,7 @@ while [ $# -gt 0 ]; do
 			${path_iptables6} -F
 			${path_iptables6} -X
 
-			echo -e "  ${BOLD}${GREY1}IPTABLES        ${WHITE}Flushing ${GREY1}Finished${END}"
+			echo -e "  ${BOLD}${GREY1}IPTABLES        ${END}Flushing ${GREY1}Finished${END}"
 			echo -e
             exit 1
             ;;
@@ -625,16 +625,17 @@ check_sudo
 		#   STEP 1 > Header
 		# #
 
-		echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
-		echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}${MAGENTA}"
+		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+		echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
 		echo -e
 		echo -e "  ${GREEN}${BOLD}Step 1 - Pre & Post Script${END}"
+		echo -e "        This patch will now install the Docker and OpenVPN functionality to your existing copy of"
+		echo -e "        ConfigServer Firewall. The installed patches will then be ran each time you restart"
+		echo -e "        or start up CSF."
 		echo -e
-		echo -e "  ${MAGENTA}This installer will now copy the CSF pre and post scripts to:"
-		echo -e "  ${BOLD}${WHITE}    ${GREY1}${folder_csf_bin}${END}"
-		echo -e
-		echo -e "  These scripts will be ran by CSF each time you start or restart the csf / lfd services."
-		echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+		echo -e "        All patches will be installed to the path:"
+    	echo -e "                ${GREY2}${folder_csf_bin}${END}"
+		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 
 		sleep 1
 
@@ -650,7 +651,7 @@ check_sudo
 		echo -e "  ${BOLD}${YELLOW}[ ${csf_script} ]  ${END}"
 		echo -e
 
-		echo -e "  ${BOLD}${GREY1}PATHS           ${WHITE}Checking paths for script ${MAGENTA}${app_this_dir_a}/${csf_script}${END}"
+		echo -e "  ${BOLD}${GREY1}PATHS           ${END}Checking paths for script ${BLUE2}${app_this_dir_a}/${csf_script}${END}"
 		printf '%-17s %-55s %-55s' " " "${GREY1}Path: Local" "${MAGENTA}${app_this_dir_a}/${csf_script}${END}"
 		echo -e
 		printf '%-17s %-55s %-55s' " " "${GREY1}Path: Destination" "${MAGENTA}${csf_dst_path}${END}"
@@ -659,7 +660,7 @@ check_sudo
 		sleep 1
 
 		echo -e
-		echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 		echo -e
 
 		sleep 1
@@ -686,7 +687,7 @@ check_sudo
 			md5_0=`md5sum ${csf_script} | awk '{ print $1 }'`
 			md5_1=`md5sum ${path_csf_post} | awk '{ print $1 }'`
 
-			echo -e "  ${BOLD}${GREY1}MD5             ${WHITE}Compare local ${GREY1}${csf_script}${WHITE} with ${MAGENTA}${csf_dst_path}${END}"
+			echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${csf_script}${WHITE} with ${BLUE2}${csf_dst_path}${END}"
 			printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${csf_script}" "${MAGENTA}${md5_0}${END}"
 			echo -e
 			printf '%-17s %-55s %-55s' " " "${GREY1}${csf_dst_path}" "${MAGENTA}${md5_1}${END}"
@@ -703,7 +704,7 @@ check_sudo
 			sleep 1
 
 			echo -e
-			echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+			echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 			echo -e
 
 			sleep 1
@@ -817,17 +818,14 @@ check_sudo
 	#   STEP 2 > Header
 	# #
 
-	echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
-	echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}${MAGENTA}"
+	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
+	echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
 	echo -e
-	echo -e "  ${GREEN}${BOLD}Step 2 - Install Docker Script${END}"
-	echo -e
-	echo -e "  ${MAGENTA}This installer will now copy the ${file_docker} script to:"
-	echo -e "  ${BOLD}${WHITE}    ${GREY1}${folder_csf_post}${END}"
-	echo -e
-	echo -e "  Every time the services csf and lfd are started / restarted; firewall rules will be added so"
-	echo -e "  that your containers have access to the network and can be accessed."
-	echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+	echo -e "  ${GREEN}${BOLD}Step 2 - Install Docker Patch${END}"
+	echo -e "        This step will copy the docker patch ${file_docker} to the following location:"
+	echo -e "        All patches will be installed to the path:"
+	echo -e "                ${GREY2}${folder_csf_post}${END}"
+	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 
 	sleep 1
 
@@ -864,7 +862,7 @@ check_sudo
 	if [ -f "${folder_csf_post}/${file_docker_b}" ]; then
 
 		# #
-		#	missing local pre file
+		#	missing local docker.sh file
 		# #
 		
 		if [ ! -f "${file_docker}" ]; then
@@ -880,7 +878,7 @@ check_sudo
 		md5_1=`md5sum ${folder_csf_post}/${file_docker_b} | awk '{ print $1 }'`
 
 		echo -e
-		echo -e "  ${BOLD}${GREY1}MD5             ${WHITE}Compare local ${GREY1}${app_this_dir_a}/${file_docker}${WHITE} with ${MAGENTA}${folder_csf_post}/${file_docker_b}${END}"
+		echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${app_this_dir_a}/${file_docker}${END} with ${BLUE2}${folder_csf_post}/${file_docker_b}${END}"
 		printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${file_docker}" "${MAGENTA}${md5_0}${END}"
 		echo -e
 		printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_post}/${file_docker_b}" "${MAGENTA}${md5_1}${END}"
@@ -897,7 +895,7 @@ check_sudo
 		sleep 1
 
 		echo -e
-		echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 		echo -e
 
 		sleep 1
@@ -963,7 +961,7 @@ check_sudo
 	# #
 
 	echo -e
-	echo -e "  ${BOLD}${GREY1}SERVICES        ${WHITE}Checking for ${GREY1}lfd.service${WHITE} and ${GREY1}csf.service${WHITE}${END}"
+	echo -e "  ${BOLD}${GREY1}SERVICES        ${END}Checking for ${BLUE2}lfd.service${END} and ${BLUE2}csf.service${END}"
 
 	if service_exists lfd; then
 		printf '%-17s %-55s %-55s' " " "lfd.service" "${GREEN}Restarting${END}"
@@ -994,20 +992,20 @@ check_sudo
 # #
 
 	# #
-	#   STEP 3 > Header
+	#   STEP 3 > OpenVPN > Header
 	# #
 
-	echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 	echo -e "  ${GREY1}${BOLD}${app_title} - v$(get_version)${END}"
 	echo -e
-	echo -e "  ${GREEN}${BOLD}Step 3 - Install OpenVPN Script${END}"
+	echo -e "  ${GREEN}${BOLD}Step 3 - Install OpenVPN Patch${END}"
 	echo -e
-	echo -e "  ${MAGENTA}This installer will now copy the ${file_openvpn} script to:"
+	echo -e "  ${BLUE2}This installer will now copy the ${file_openvpn} script to:"
 	echo -e "  ${BOLD}${WHITE}    ${GREY1}${folder_csf_post}${END}"
 	echo -e
 	echo -e "  Every time the services csf and lfd are started / restarted; firewall rules will be added so"
-	echo -e "  that OpenVPN can communicate through CSF"
-	echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+	echo -e "  that your containers have access to the network and can be accessed."
+	echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 
 	sleep 1
 
@@ -1042,11 +1040,25 @@ check_sudo
 	# #
 
 	if [ -f "${folder_csf_post}/${SCRIPT_OPENVPN_FILE}" ]; then
+
+		# #
+		#	missing local openvpn.sh file
+		# #
+		
+		if [ ! -f "${file_openvpn}" ]; then
+			echo
+			echo -e "  ${ORANGE}WARNING      ${WHITE}Could not locate the file ${YELLOW2}${app_this_dir_a}/${file_openvpn}${END}"
+			echo -e "               Cannot compare MD5 hash when local file is missing${END}"
+			echo
+
+			exit 0
+		fi
+
 		md5_0=`md5sum ${file_openvpn} | awk '{ print $1 }'`
 		md5_1=`md5sum ${folder_csf_post}/${SCRIPT_OPENVPN_FILE} | awk '{ print $1 }'`
 
 		echo -e
-		echo -e "  ${BOLD}${GREY1}MD5             ${WHITE}Compare local ${GREY1}${app_this_dir_a}/${file_openvpn}${WHITE} with ${MAGENTA}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
+		echo -e "  ${BOLD}${GREY1}MD5             ${END}Compare local ${BLUE2}${app_this_dir_a}/${file_openvpn}${END} with ${BLUE2}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}${END}"
 		printf '%-17s %-55s %-55s' " " "${GREY1}${app_this_dir_a}/${file_openvpn}" "${MAGENTA}${md5_0}${END}"
 		echo -e
 		printf '%-17s %-55s %-55s' " " "${GREY1}${folder_csf_post}/${SCRIPT_OPENVPN_FILE}" "${MAGENTA}${md5_1}${END}"
@@ -1063,7 +1075,7 @@ check_sudo
 		sleep 1
 
 		echo -e
-		echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+		echo -e " ${GREY1}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
 		echo -e
 
 		sleep 1
@@ -1129,7 +1141,7 @@ check_sudo
 	# #
 
 	echo -e
-	echo -e "  ${BOLD}${GREY1}SERVICES        ${WHITE}Checking for ${GREY1}lfd.service${WHITE} and ${GREY1}csf.service${WHITE}${END}"
+	echo -e "  ${BOLD}${GREY1}SERVICES        ${WENDHITE}Checking for ${BLUE2}lfd.service${END} and ${BLUE2}csf.service${WHITE}${END}"
 
 	if service_exists lfd; then
 		printf '%-17s %-55s %-55s' " " "lfd.service" "${GREEN}Restarting${END}"
@@ -1156,7 +1168,7 @@ check_sudo
 # #
 
 	echo -e
-	echo -e "  ${BOLD}${GREY1}CSF             ${WHITE}Disabling ${GREY1}TESTING MODE${WHITE} in ${GREY1}/etc/csf/csf.conf${WHITE}${END}"
+	echo -e "  ${BOLD}${GREY1}CSF             ${END}Disabling ${BLUE2}TESTING MODE${END} in ${BLUE2}/etc/csf/csf.conf${END}"
 
 # #
 #	edit configserver config
