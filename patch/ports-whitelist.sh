@@ -34,14 +34,14 @@ LIST_IPS=(
 )
 
 # #
-#   vars > system
+#   define > system
 # #
 
 sys_arch=$(dpkg --print-architecture)
 sys_code=$(lsb_release -cs)
 
 # #
-#   vars > app
+#   define > app
 # #
 
 app_title="ConfigServer Firewall - Drop Ports"
@@ -61,7 +61,7 @@ cfg_dev_enabled=false
 cfg_verbose_enabled=false
 
 # #
-#   vars > app repo
+#   define > app repo
 # #
 
 repo_name="csf-firewall"
@@ -70,7 +70,7 @@ repo_branch="main"
 repo_url="https://github.com/${repo_author}/${repo_name}"
 
 # #
-#   vars > colors
+#   define > colors
 #
 #   Use the color table at:
 #       - https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
