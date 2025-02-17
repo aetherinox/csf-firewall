@@ -29,7 +29,7 @@ EOF
 )
 
 # #
-#   vars > system
+#   define > system
 # #
 
 sys_arch=$(dpkg --print-architecture)
