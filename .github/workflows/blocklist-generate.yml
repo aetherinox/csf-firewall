@@ -216,7 +216,7 @@ jobs:
                   run_master=".github/scripts/bl-master.sh blocklists/master.ipset ${{ secrets.API_01_FILE_01 }} ${{ secrets.API_01_FILE_02 }} ${{ secrets.API_01_FILE_03 }} ${{ secrets.API_01_FILE_04 }} ${{ secrets.API_01_FILE_05 }} ${{ secrets.API_01_FILE_06 }} ${{ secrets.API_01_FILE_07 }} ${{ secrets.API_01_FILE_08 }} ${{ secrets.API_01_FILE_09 }}"
                   eval "./$run_master"
 
-                  run_highrisk=".github/scripts/bl-master.sh blocklists/highrisk.ipset ${{ secrets.API_01_HIGHRISK_URL }}"
+                  run_highrisk=".github/scripts/bl-block.sh blocklists/highrisk.ipset highrisk"
                   eval "./$run_highrisk"
 
             # #
