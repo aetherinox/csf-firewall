@@ -1363,7 +1363,7 @@ For the majority of people, using the blocklists `master.ipset` and `highrisk.ip
 | Set Name | Description | Severity | View |
 | --- | --- | --- | --- |
 | `master.ipset` | <sub>Abusive IP addresses which have been reported for port scanning and SSH brute-forcing. HIGHLY recommended. <br> Includes [AbuseIPDB](https://www.abuseipdb.com/), [IPThreat](https://ipthreat.net/), [CinsScore](https://cinsscore.com), [GreensNow](https://blocklist.greensnow.co/greensnow.txt)</sub> | ★★★★★ | [view](https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/master.ipset) |
-| `highrisk.ipset` | <sub>IPs with highest risk to your network and have a possibility that the activity which comes from them are going to be fraudulent.</sub> | ★★★★⚝ | [view](https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/highrisk.ipset) |
+| `highrisk.ipset` | <sub>IPs with highest risk to your network and have a possibility that the activity which comes from them are going to be fraudulent.</sub> | ★★★★★ | [view](https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/highrisk.ipset) |
 
 <br />
 <br />
@@ -1375,7 +1375,7 @@ These blocklists give you more control over what 3rd party services can access y
 
 | Set | Description | Severity | View |
 | --- | --- | --- | --- |
-| `privacy_general.ipset` | <sub>Servers which scan ports for data collection and research purposes. List includes [Censys](https://censys.io), [Shodan](https://www.shodan.io/), [Project25499](https://blogproject25499.wordpress.com/), [InternetArchive](https://archive.org/) </sub> | ★★★★⚝ | [view](https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/privacy/privacy_general.ipset) |
+| `privacy_general.ipset` | <sub>Servers which scan ports for data collection and research purposes. List includes [Censys](https://censys.io), [Shodan](https://www.shodan.io/), [Project25499](https://blogproject25499.wordpress.com/), [InternetArchive](https://archive.org/), [Cyber Resilience](https://cyberresilience.io), [Internet Measurement](https://internet-measurement.com), [probe.onyphe.net](https://onyphe.net), [Security Trails](https://securitytrails.com) </sub> | ★★★★⚝ | [view](https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/privacy/privacy_general.ipset) |
 | `privacy_ahrefs.ipset` | <sub>Ahrefs SEO and services</sub> | ★★⚝⚝⚝ | [view](https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/privacy/privacy_ahrefs.ipset) |
 | `privacy_amazon_aws.ipset` | <sub>Amazon AWS</sub> | ★★⚝⚝⚝ | [view](https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/privacy/privacy_amazon_aws.ipset) |
 | `privacy_amazon_ec2.ipset` | <sub>Amazon EC2</sub> | ★★⚝⚝⚝ | [view](https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/privacy/privacy_amazon_ec2.ipset) |
