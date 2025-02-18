@@ -4,7 +4,8 @@
 #   @for                https://github.com/Aetherinox/blocklists
 #   @workflow           blocklist-generate.yml
 #   @type               bash script
-#   @summary            updates the repository readme file
+#   @summary            updates the repository readme file with the ability to replace
+#                       placeholders with variables
 #   
 #   @terminal           .github/scripts/update-readme.sh
 #
@@ -22,11 +23,37 @@
 #                               📄 update-readme.sh
 #                           📁 workflows
 #                               📄 blocklist-generate.yml
+#
+#   @usage              This script can update the date/time in a file, either by finding an existing date/time
+#                       or by finding the placeholder. You can place one of the following two options in your
+#                       file:
+#
+#                           🕙 `!TEMPLATE_NOW!`
+#                           🕙 `Last Sync: 02/18/2025 00:19 UTC`
+#
+#                       When the script is ran, it will look either for the placeholder !TEMPLATE_NOW!, or it
+#                       will find an already existing date and update the string to match the date and time
+#                       for whenever the update-readme.sh script was ran.
 # #
 
-APP_THIS_FILE=$(basename "$0")                          # current script file
-APP_THIS_DIR="${PWD}"                                   # current script directory
-APP_GITHUB_DIR="${APP_THIS_DIR}/.github"                # .github folder
+SECONDS=0                                                       # set seconds count for beginning of script
+app_ver=("1" "0" "0" "0")                                       # current script version
+app_file_this=$(basename "$0")                                  # current script file
+app_dir_this="${PWD}"                                           # Current script directory
+app_dir_github="${app_dir_this}/.github"                        # .github folder
+
+# #
+#   define > repo
+# #
+
+repo_name="Aetherinox/blocklists"                               # repository
+repo_branch="main"                                              # repository branch
+
+# #
+#   define > template variables
+# #
+
+TEMPL_NOW=`date -u '+%m/%d/%Y %H:%M'`                           # get current date in utc format
 
 # #
 #   vars > colors
@@ -62,29 +89,6 @@ YELLOW3="\e[38;5;193m"
 GREY1="\e[38;5;240m"
 GREY2="\e[38;5;244m"
 GREY3="\e[38;5;250m"
-
-# #
-#   print an error and exit with failure
-#   $1: error message
-# #
-
-function error()
-{
-    echo -e "  ⭕ ${GREY2}${APP_THIS_FILE}${RESET}: \n     ${BOLD}${RED}Error${NORMAL}: ${RESET}$1"
-    echo -e
-    exit 0
-}
-
-# #
-#    Define > General
-# #
-
-SECONDS=0                                                       # set seconds count for beginning of script
-APP_VER=("1" "0" "0" "0")                                       # current script version
-APP_DEBUG=false                                                 # debug mode
-APP_REPO="Aetherinox/blocklists"                                # repository
-APP_REPO_BRANCH="main"                                          # repository branch
-TEMPL_ARG_NOW=`date -u '+%m/%d/%Y %H:%M'`                       # get current date in utc format
 
 # #
 #   Color Code Test
@@ -124,7 +128,7 @@ function debug_ColorTest()
     echo -e "GREY3 ${GREY1}................ ${GREY3}This is test text ███████████████${RESET}"
     echo -e
 
-    exit 1
+    exit 0
 }
 
 # #
@@ -151,23 +155,23 @@ function debug_ColorChart()
         echo -e
     done
     
-    exit 1
+    exit 0
 }
 
 # #
-#   Arguments
+#   args
 # #
 
 ARG1=$1
 
 if [ "$ARG1" == "clr" ]; then
     debug_ColorTest
-    exit 1
+    exit 0
 fi
 
 if [ "$ARG1" == "chart" ]; then
     debug_ColorChart
-    exit 1
+    exit 0
 fi
 
 # #
@@ -176,24 +180,17 @@ fi
 
 if [[ -z "${ARG1}" ]]; then
     echo -e
-    echo -e "  ⭕ No target file specified for script ${YELLOW1}${APP_THIS_FILE}${RESET}"
+    echo -e "  ⭕ No target file specified for script ${YELLOW1}${app_file_this}${RESET}"
     echo -e
     exit 1
 fi
 
 # #
-#   Start
-# #
-
-echo -e
-echo -e "  ⭐ Starting script ${GREEN1}${APP_THIS_FILE}${RESET}"
-
-# #
 #   README > Set Sync Time
 # #
 
-sed -r -i 's@[[TEMPLATE_UPDATE]]@Last Sync: $now@g' README.md
-sed -r -i "s@Last Sync: [0-9]{2}\/[0-9]{2}\/[0-9]{4} [0-9]{2}\:[0-9]{2} UTC@Last Sync: ${TEMPL_ARG_NOW} UTC@g" README.md
+sed -r -i "s@\!TEMPLATE_NOW\!@Last Sync: $TEMPL_NOW UTC@g" ${ARG1}
+sed -r -i "s@Last Sync: [0-9]{2}\/[0-9]{2}\/[0-9]{4} [0-9]{2}\:[0-9]{2} UTC@Last Sync: $TEMPL_NOW UTC@g" ${ARG1}
 
 # #
 #   Finished
@@ -209,4 +206,6 @@ echo -e
 echo -e " ──────────────────────────────────────────────────────────────────────────────────────────────"
 echo -e "  🎌  ${GREY2}Finished! ${YELLOW2}${D} days ${H} hrs ${M} mins ${S} secs${RESET}"
 echo -e " ──────────────────────────────────────────────────────────────────────────────────────────────"
+echo -e
+echo -e
 echo -e
