@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_belgium_ipset
 #   @uuid           d670de65-10e8-3a39-8ddd-6ac9f2dc2f97
-#   @updated        Mon Feb 17 11:39:44 UTC 2025
+#   @updated        Tue Feb 18 00:17:52 UTC 2025
 #   @entries        13980628 ips
 #                   7461 subnets
 #                   7461 lines
