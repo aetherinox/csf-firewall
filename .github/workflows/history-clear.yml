@@ -23,10 +23,10 @@ on:
     #   Trigger > Cron Schedule
     # #
 
-    schedule:
+    # schedule:
       # - cron: '0 0 * * *' # every day
       # - cron: '0 0 * * 0' # every 7 days (sunday) at 00:00
-        - cron: '0 0 1 * *' # every month
+      # - cron: '0 0 1 * *' # every month
 
 # #
 #   environment variables
@@ -46,7 +46,7 @@ jobs:
 
         steps:
         - name: "Checkout the current repository"
-          uses: actions/checkout@v2
+          uses: actions/checkout@v4
           with:
                 fetch-depth: 0  # Ensure that the entire history is fetched
 
