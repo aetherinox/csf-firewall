@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_iceland_ipset
 #   @uuid           02608517-a80d-312e-ac6d-a62e1e3c7ab1
-#   @updated        Tue Feb 18 00:18:19 UTC 2025
+#   @updated        Wed Feb 19 00:18:44 UTC 2025
 #   @entries        925954 ips
-#                   1185 subnets
-#                   1185 lines
+#                   1186 subnets
+#                   1186 lines
 #   @country        Iceland (IS)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -641,6 +641,7 @@
 2606:54c3:0:117f::/64
 2606:54c3:0:188d::/64
 2606:f18b:6000::/46
+2606:f18c:5900::/48
 2607:740:5e::/48
 2607:6b80:4f::/48
 2607:8940:3468::/46
@@ -1169,13 +1170,12 @@
 2a0e:ec05:5000::/40
 2a0e:ec05:5100::/41
 2a0e:f600:6e::/48
+2a0f:2744:5000::/47
 2a0f:7803:fb44::/48
 2a0f:7803:fec6::/48
-2a10:500:7f00::/40
 2a10:8c40::/29
 2a10:9840::/29
 2a11:24c0::/29
-2a11:f147:f000::/36
 2a12:49c0::/38
 2a12:49c0:400::/40
 2a12:49c0:a000::/39
@@ -1200,6 +1200,7 @@
 2a13:6a40::/30
 2a13:9900::/32
 2a13:a5c3:d044::/46
+2a13:a5c3:d61b::/48
 2a13:a5c3:d66c::/46
 2a13:d9c0::/29
 2a14:5780::/29

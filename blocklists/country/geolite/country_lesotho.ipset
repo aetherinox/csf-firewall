@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_lesotho_ipset
 #   @uuid           fdcb4ec0-0bea-3ea9-9529-ea5b8daa7bca
-#   @updated        Tue Feb 18 00:18:25 UTC 2025
+#   @updated        Wed Feb 19 00:18:49 UTC 2025
 #   @entries        127624 ips
-#                   153 subnets
-#                   153 lines
+#                   152 subnets
+#                   152 lines
 #   @country        Lesotho (LS)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -165,7 +165,6 @@
 2a0a:6044:fa4c::/48
 2a0c:9a40:95b7:b000::/52
 2a10:500:2300::/40
-2a11:f142:3000::/36
 2a13:a5c3:d154::/46
 2c0f:2a80:2580::/42
 2c0f:3140::/32

@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_cote_divoire_ipset
 #   @uuid           ee2198b1-ddcb-3dee-969d-90639e4261e8
-#   @updated        Tue Feb 18 00:17:58 UTC 2025
-#   @entries        1820418 ips
+#   @updated        Wed Feb 19 00:18:23 UTC 2025
+#   @entries        1819906 ips
 #                   472 subnets
 #                   472 lines
 #   @country        Cote d'Ivoire (CI)
@@ -50,7 +50,8 @@
 38.199.200.0/21
 38.199.208.0/24
 38.199.214.0/24
-38.199.216.0/22
+38.199.216.0/24
+38.199.219.0/24
 38.199.220.0/23
 38.199.227.0/24
 38.199.228.0/22
@@ -480,7 +481,6 @@
 2a09:bac6:d618::/45
 2a0c:9a40:95b3:5000::/52
 2a10:500:2100::/40
-2a11:f142:1000::/36
 2c0e:7f80::/27
 2c0f:4c40::/32
 2c0f:4e00:8000::/35

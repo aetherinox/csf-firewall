@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_laos_ipset
 #   @uuid           c322e2c7-b595-3ceb-a607-d9fc43a81933
-#   @updated        Tue Feb 18 00:18:24 UTC 2025
+#   @updated        Wed Feb 19 00:18:48 UTC 2025
 #   @entries        96618 ips
-#                   249 subnets
-#                   249 lines
+#                   247 subnets
+#                   247 lines
 #   @country        Laos (LA)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -264,8 +264,6 @@
 2a0a:9607:5000::/47
 2a0c:9a40:95b7:8000::/52
 2a0f:f44:5000::/47
-2a10:500:5400::/40
 2a10:9007:5:9::/64
-2a11:f145:4000::/36
 2a13:a5c3:d464::/46
 2a13:b487:5010::/48

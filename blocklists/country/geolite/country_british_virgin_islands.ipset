@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_british_virgin_islands_ipset
 #   @uuid           e6b4ef15-e8b2-3829-9e19-6a18222ba30d
-#   @updated        Tue Feb 18 00:18:57 UTC 2025
-#   @entries        83244 ips
+#   @updated        Wed Feb 19 00:19:21 UTC 2025
+#   @entries        82988 ips
 #                   327 subnets
 #                   327 lines
 #   @country        British Virgin Islands (VG)
@@ -57,7 +57,7 @@
 63.143.103.0/24
 63.143.106.0/24
 65.48.153.0/24
-65.48.218.0/23
+65.48.219.0/24
 65.48.220.0/24
 66.81.192.0/20
 66.212.55.0/24

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_serbia_ipset
 #   @uuid           8e9ca69f-5c25-3d83-be66-ddf4edb91984
-#   @updated        Tue Feb 18 00:18:39 UTC 2025
-#   @entries        2326347 ips
-#                   1330 subnets
-#                   1330 lines
+#   @updated        Wed Feb 19 00:19:03 UTC 2025
+#   @entries        2326123 ips
+#                   1332 subnets
+#                   1332 lines
 #   @country        Serbia (RS)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -167,7 +167,7 @@
 89.23.64.0/21
 89.23.72.0/22
 89.23.77.0/24
-89.23.78.0/23
+89.23.78.0/24
 89.23.83.0/24
 89.23.84.0/24
 89.23.86.0/24
@@ -388,6 +388,7 @@
 136.23.0.242/32
 136.23.5.168/32
 139.28.12.0/22
+139.45.193.160/27
 139.138.249.0/24
 140.248.34.188/30
 140.248.36.242/31
@@ -1055,6 +1056,7 @@
 2606:54c3:0:513::/64
 2606:54c3:0:1278::/64
 2606:f189:9000::/47
+2606:f18c:a600::/48
 2607:8940:36b6::/47
 2607:8940:36b8::/45
 2607:8940:36c0::/45
