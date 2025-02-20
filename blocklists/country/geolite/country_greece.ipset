@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_greece_ipset
 #   @uuid           9b874ff5-7d3d-3f0e-9142-3f0b8cddea65
-#   @updated        Wed Feb 19 00:18:38 UTC 2025
+#   @updated        Thu Feb 20 00:19:59 UTC 2025
 #   @entries        5944868 ips
 #                   2398 subnets
 #                   2398 lines
