@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_ireland_ipset
 #   @uuid           4a2cf023-c0b7-3626-9de9-59138fd15398
-#   @updated        Thu Feb 20 00:20:03 UTC 2025
+#   @updated        Fri Feb 21 00:18:55 UTC 2025
 #   @entries        18530222 ips
 #                   8724 subnets
 #                   8724 lines
