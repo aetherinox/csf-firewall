@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_mongolia_ipset
 #   @uuid           760a0090-7cbd-3547-ab0a-f4d73c082f5d
-#   @updated        Fri Feb 21 00:19:06 UTC 2025
-#   @entries        185266 ips
-#                   407 subnets
-#                   407 lines
+#   @updated        Sat Feb 22 00:18:27 UTC 2025
+#   @entries        185522 ips
+#                   408 subnets
+#                   408 lines
 #   @country        Mongolia (MN)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -166,6 +166,7 @@
 140.248.61.146/32
 140.248.62.146/32
 140.248.63.146/32
+143.105.19.0/24
 146.75.154.4/30
 146.75.160.82/31
 146.75.160.84/31

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_macao_ipset
 #   @uuid           eb52941b-d434-3ee3-b9db-2d56f50be3b5
-#   @updated        Fri Feb 21 00:19:07 UTC 2025
-#   @entries        378646 ips
-#                   405 subnets
-#                   405 lines
+#   @updated        Sat Feb 22 00:18:27 UTC 2025
+#   @entries        378390 ips
+#                   406 subnets
+#                   406 lines
 #   @country        Macao (MO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -63,7 +63,6 @@
 104.28.99.61/32
 104.28.205.192/30
 104.28.237.192/30
-104.166.110.0/24
 113.52.64.0/18
 116.193.8.0/21
 122.100.128.0/17
@@ -157,6 +156,7 @@
 2001:470:19:6c6::/64
 2001:470:19:726::/64
 2001:470:19:7fd::/64
+2001:470:19:861::/64
 2001:470:19:8f4::/64
 2001:470:19:935::/64
 2001:470:19:941::/64
@@ -271,6 +271,7 @@
 2001:470:fb8c::/48
 2001:470:fb96::/48
 2001:470:fb98::/48
+2001:470:fb9f::/48
 2001:470:fd94::/48
 2001:470:fd9b::/48
 2001:470:fda5::/48

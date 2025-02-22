@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_uganda_ipset
 #   @uuid           79d649b1-b5b6-32b5-8afd-62e4bea1da6e
-#   @updated        Fri Feb 21 00:19:31 UTC 2025
-#   @entries        1478289 ips
-#                   328 subnets
-#                   328 lines
+#   @updated        Sat Feb 22 00:18:48 UTC 2025
+#   @entries        1478033 ips
+#                   327 subnets
+#                   327 lines
 #   @country        Uganda (UG)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -80,7 +80,6 @@
 102.210.159.0/24
 102.211.60.0/22
 102.211.168.0/22
-102.212.237.0/24
 102.213.192.0/22
 102.214.148.0/22
 102.214.190.0/24
