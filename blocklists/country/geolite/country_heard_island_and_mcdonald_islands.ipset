@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_heard_island_and_mcdonald_islands_ipset
 #   @uuid           fa478431-576b-37de-a4f6-8f69aa6877f9
-#   @updated        Sat Feb 22 00:18:15 UTC 2025
+#   @updated        Sun Feb 23 00:20:26 UTC 2025
 #   @entries        782 ips
 #                   34 subnets
 #                   34 lines

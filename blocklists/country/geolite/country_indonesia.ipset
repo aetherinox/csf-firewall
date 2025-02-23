@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_indonesia_ipset
 #   @uuid           9efe1ecd-8c26-38f2-a3a3-54bbf56f50cf
-#   @updated        Sat Feb 22 00:18:16 UTC 2025
+#   @updated        Sun Feb 23 00:20:28 UTC 2025
 #   @entries        20462619 ips
 #                   10168 subnets
 #                   10168 lines
