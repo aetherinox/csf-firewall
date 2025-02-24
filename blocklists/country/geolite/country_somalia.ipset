@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_somalia_ipset
 #   @uuid           b3c221ba-a4ed-3fbf-9d1f-fa0d5961be05
-#   @updated        Sun Feb 23 00:20:59 UTC 2025
+#   @updated        Mon Feb 24 00:20:18 UTC 2025
 #   @entries        54174 ips
 #                   185 subnets
 #                   185 lines
