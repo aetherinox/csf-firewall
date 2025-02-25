@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_south_africa_ipset
 #   @uuid           7fffa352-18a6-3416-80fe-afa06cd065f3
-#   @updated        Mon Feb 24 00:20:34 UTC 2025
+#   @updated        Tue Feb 25 00:20:19 UTC 2025
 #   @entries        28231549 ips
 #                   5773 subnets
 #                   5773 lines
