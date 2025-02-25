@@ -5,7 +5,7 @@
 #   @source         https://webpagetest.org/addresses.php?f=json
 #   @id             privacy_webpagetest_ipset
 #   @uuid           d0c64444-f996-3e09-8981-ff2f6848f1e8
-#   @updated        Tue Feb 25 00:16:06 UTC 2025
+#   @updated        Tue Feb 25 12:09:30 UTC 2025
 #   @entries        39 ips
 #                   0 subnets
 #                   39 lines
@@ -53,5 +53,5 @@
 150.109.164.199
 150.109.170.222
 150.109.172.79
-162.158.91.41
-172.69.34.135
+172.69.33.236
+172.70.214.121
