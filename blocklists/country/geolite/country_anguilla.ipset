@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_anguilla_ipset
 #   @uuid           b2c38ecb-5141-3b86-b000-07d62973d7fd
-#   @updated        Tue Feb 25 00:19:04 UTC 2025
-#   @entries        18548 ips
-#                   160 subnets
-#                   160 lines
+#   @updated        Wed Feb 26 00:18:52 UTC 2025
+#   @entries        18036 ips
+#                   158 subnets
+#                   158 lines
 #   @country        Anguilla (AI)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -44,6 +44,7 @@
 104.28.208.182/31
 104.28.240.181/32
 104.28.240.182/31
+104.192.93.0/24
 104.192.94.0/23
 104.193.196.0/22
 104.255.176.0/23
@@ -80,15 +81,12 @@
 204.14.252.0/23
 204.14.255.0/24
 205.217.232.0/23
-205.217.236.0/24
-205.217.239.0/24
 205.217.246.0/23
 206.214.14.0/23
 208.66.49.0/24
 208.66.50.0/23
 208.66.52.0/22
 209.59.76.0/22
-209.59.120.0/24
 2001:470:5:45::/64
 2001:470:d:13c::/64
 2001:470:d:23e::/64

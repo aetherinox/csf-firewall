@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_croatia_ipset
 #   @uuid           bcffea06-de55-3e8b-957e-8abf981f76df
-#   @updated        Tue Feb 25 00:19:34 UTC 2025
-#   @entries        2980372 ips
-#                   1110 subnets
-#                   1110 lines
+#   @updated        Wed Feb 26 00:19:24 UTC 2025
+#   @entries        2982420 ips
+#                   1111 subnets
+#                   1111 lines
 #   @country        Croatia (HR)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -99,7 +99,7 @@
 45.150.48.0/24
 46.31.136.0/21
 46.151.128.0/21
-46.163.0.0/20
+46.163.0.0/21
 46.163.51.0/24
 46.163.53.0/24
 46.163.58.0/24
@@ -775,7 +775,7 @@
 213.190.24.0/22
 213.191.128.0/19
 213.202.64.0/18
-213.253.64.0/20
+213.253.64.0/19
 213.253.109.0/24
 213.253.112.0/21
 213.253.120.0/28
@@ -803,6 +803,7 @@
 2001:470:71:964::/64
 2001:470:1f09:2fa::/64
 2001:470:1f0b:15e::/64
+2001:470:1f0b:189::/64
 2001:470:1f0b:28e::/64
 2001:470:1f0b:3a4::/64
 2001:470:1f0b:3b7::/64

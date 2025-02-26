@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_brunei_darussalam_ipset
 #   @uuid           c95ecf65-3850-3ffa-95cf-f26def7119a7
-#   @updated        Tue Feb 25 00:19:11 UTC 2025
+#   @updated        Wed Feb 26 00:18:59 UTC 2025
 #   @entries        204970 ips
 #                   203 subnets
 #                   203 lines
