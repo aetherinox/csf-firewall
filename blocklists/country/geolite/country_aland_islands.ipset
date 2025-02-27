@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_aland_islands_ipset
 #   @uuid           d23ed596-7342-327f-8c0a-8b0b93ba62c8
-#   @updated        Wed Feb 26 00:18:55 UTC 2025
+#   @updated        Thu Feb 27 00:19:02 UTC 2025
 #   @entries        47181 ips
 #                   186 subnets
 #                   186 lines
