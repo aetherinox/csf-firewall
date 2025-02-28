@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             continent_antartica_ipset
 #   @uuid           4664790b-caa6-3b99-b0ab-15f30c9016d1
-#   @updated        Thu Feb 27 00:18:34 UTC 2025
-#   @entries        3521 ips
-#                   466 subnets
-#                   466 lines
+#   @updated        Fri Feb 28 00:18:22 UTC 2025
+#   @entries        3969 ips
+#                   483 subnets
+#                   483 lines
 #   @continent      Antartica (AN)
 #   @countries      Antarctica (AQ), Heard Island and McDonald Islands (HM), 
 #                   French Southern Territories (TF), Bouvet Island (BV), 
@@ -22,6 +22,23 @@
 #       - https://dev.maxmind.com/geoip/docs/databases/#client-apis
 # #
 
+31.6.14.0/29
+31.6.14.16/28
+31.6.14.32/27
+31.6.14.64/26
+31.6.14.128/25
+31.6.16.0/32
+31.6.16.7/32
+31.6.16.8/30
+31.6.16.12/32
+31.6.16.14/31
+31.6.16.17/32
+31.6.16.18/31
+31.6.16.20/30
+31.6.16.24/29
+31.6.16.32/28
+31.6.16.96/27
+31.6.16.128/25
 63.141.240.246/32
 79.110.169.137/32
 85.215.235.150/32
