@@ -246,13 +246,8 @@ function decryptor_reaction(key_or_keys, password_input, decrypted_content, fall
                 el.remove();
             }
         }
-
         // any post processing on the decrypted content should be done here
-        if (typeof MathJax === 'object') { MathJax.typesetPromise();};
-        
-        decrypted_content.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightElement(block);
-        });
+        document$.next(document);
         
         if (typeof theme_run_after_decryption !== 'undefined') {
             theme_run_after_decryption();
