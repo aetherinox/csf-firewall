@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_romania_ipset
 #   @uuid           fc647a87-d88f-315d-8834-bc3eef606cf3
-#   @updated        Fri Feb 28 00:19:45 UTC 2025
+#   @updated        Sat Mar  1 00:20:50 UTC 2025
 #   @entries        7511800 ips
-#                   4723 subnets
-#                   4723 lines
+#                   4721 subnets
+#                   4721 lines
 #   @country        Romania (RO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -3666,7 +3666,6 @@
 2001:470:28:9f8::/64
 2001:470:28:a7f::/64
 2001:470:28:c45::/64
-2001:470:28:d88::/64
 2001:470:28:ee2::/64
 2001:470:36:5a::/64
 2001:470:4b:17c::/64
@@ -3997,7 +3996,6 @@
 2405:f080:1e1e::/47
 2600:70ff:9b31::/48
 2600:70ff:b03f::/48
-2600:70ff:b0bc::/48
 2600:70ff:b0d2::/48
 2600:9000:1141::/64
 2600:9000:1e89::/48

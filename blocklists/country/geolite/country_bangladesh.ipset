@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bangladesh_ipset
 #   @uuid           c6b3cf0c-838a-354d-8190-6b3b0ccf3d51
-#   @updated        Fri Feb 28 00:18:51 UTC 2025
-#   @entries        2002912 ips
+#   @updated        Sat Mar  1 00:20:01 UTC 2025
+#   @entries        2003424 ips
 #                   4166 subnets
 #                   4166 lines
 #   @country        Bangladesh (BD)
@@ -1267,7 +1267,7 @@
 103.171.28.0/23
 103.171.36.0/23
 103.171.68.0/23
-103.171.138.0/23
+103.171.136.0/22
 103.171.142.0/23
 103.171.232.0/23
 103.171.250.0/23

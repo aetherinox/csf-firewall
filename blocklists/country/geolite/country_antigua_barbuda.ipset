@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_antigua_barbuda_ipset
 #   @uuid           a95ca522-2940-3a56-a8d9-60494c51ca1b
-#   @updated        Fri Feb 28 00:18:47 UTC 2025
+#   @updated        Sat Mar  1 00:19:57 UTC 2025
 #   @entries        70651 ips
 #                   252 subnets
 #                   252 lines

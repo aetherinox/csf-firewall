@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_greece_ipset
 #   @uuid           9b874ff5-7d3d-3f0e-9142-3f0b8cddea65
-#   @updated        Fri Feb 28 00:19:16 UTC 2025
-#   @entries        5947007 ips
-#                   2438 subnets
-#                   2438 lines
+#   @updated        Sat Mar  1 00:20:24 UTC 2025
+#   @entries        5947263 ips
+#                   2437 subnets
+#                   2437 lines
 #   @country        Greece (GR)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -719,8 +719,7 @@
 154.43.32.160/27
 154.43.32.192/26
 154.43.34.0/24
-154.43.37.0/24
-154.43.38.0/23
+154.43.36.0/22
 154.43.40.0/21
 154.43.48.0/20
 154.43.64.0/18

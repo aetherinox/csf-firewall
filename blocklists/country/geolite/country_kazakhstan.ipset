@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_kazakhstan_ipset
 #   @uuid           f232915e-8b68-33e1-8cb2-199e1d80904a
-#   @updated        Fri Feb 28 00:19:27 UTC 2025
+#   @updated        Sat Mar  1 00:20:33 UTC 2025
 #   @entries        3410830 ips
-#                   2516 subnets
-#                   2516 lines
+#                   2518 subnets
+#                   2518 lines
 #   @country        Kazakhstan (KZ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -1166,6 +1166,7 @@
 2001:470:28:84c::/64
 2001:470:28:852::/64
 2001:470:28:88c::/64
+2001:470:28:8d2::/64
 2001:470:28:8dc::/64
 2001:470:28:941::/64
 2001:470:28:957::/64
@@ -1541,6 +1542,7 @@
 2600:70ff:b014::/48
 2600:70ff:b017::/48
 2600:70ff:b020::/48
+2600:70ff:b024::/48
 2600:70ff:b026::/48
 2600:70ff:b038::/48
 2600:70ff:b044::/48

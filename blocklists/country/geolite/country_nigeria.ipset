@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_nigeria_ipset
 #   @uuid           df2220e4-b94c-35ca-8e22-2b5b31942e9d
-#   @updated        Fri Feb 28 00:19:37 UTC 2025
-#   @entries        3187965 ips
-#                   1895 subnets
-#                   1895 lines
+#   @updated        Sat Mar  1 00:20:42 UTC 2025
+#   @entries        3188221 ips
+#                   1896 subnets
+#                   1896 lines
 #   @country        Nigeria (NG)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -792,6 +792,7 @@
 172.225.179.80/28
 172.225.212.224/28
 172.225.243.48/28
+173.82.12.0/24
 173.82.73.0/24
 176.97.192.0/24
 185.111.108.0/24
