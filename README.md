@@ -1,6 +1,6 @@
 <div align="center">
 
-🕙 `Last Sync: 03/02/2025 00:21 UTC`
+🕙 `Last Sync: 02/28/2025 00:20 UTC`
 
 </div>
 
@@ -122,6 +122,14 @@ Ipsets include lists from [AbuseIPDB](https://abuseipdb.com/) and [IPThreat](htt
   - [Geographical (Continents \& Countries)](#geographical-continents--countries)
   - [Transmission (BitTorrent Client)](#transmission-bittorrent-client)
 - [Download ConfigServer Firewall](#download-configserver-firewall)
+- [Notes](#notes)
+  - [CSF to Iptable Commands](#csf-to-iptable-commands)
+    - [Default Policy](#default-policy)
+    - [Clear Iptables / Open Firewall](#clear-iptables--open-firewall)
+    - [List Rules](#list-rules)
+    - [List Chains](#list-chains)
+    - [Unblock Port](#unblock-port)
+    - [Allow OpenVPN](#allow-openvpn)
 - [References for More Help](#references-for-more-help)
 - [Contributors ✨](#contributors-)
 
@@ -1453,6 +1461,207 @@ This section includes blocklists which you can import into the [bittorrent clien
 ## Download ConfigServer Firewall
 The latest version of csf can be downloaded from:
 - https://download.configserver.com/csf.tgz
+
+<br />
+
+---
+
+<br />
+
+## Notes
+
+This section simply outlines notes about ConfigServer Firewall
+
+<br />
+
+### CSF to Iptable Commands
+
+This section translates the commands that ConfigServer Firewall uses to manage your firewall, and gives you the iptables alternative command if you do not wish to use CSF.
+
+<br />
+
+#### Default Policy
+
+ConfigServer Firewall will set your three main iptable chains to have a policy of `DROP`; if you want to do this yourself, run:
+
+```shell
+sudo iptables -P INPUT DROP
+sudo iptables -P FORWARD DROP 
+sudo iptables -P OUTPUT DROP
+```
+
+<br />
+
+#### Clear Iptables / Open Firewall
+
+To clear every single iptables rule and open your firewall back up, run the following command. Note that this will completely turn off iptables / CSF's blocking abilities. Your server will be open to connections:
+
+```shell
+sudo iptables -F
+sudo iptables -X
+sudo iptables -t nat -F
+sudo iptables -t nat -X
+sudo iptables -t mangle -F
+sudo iptables -t mangle -X
+sudo iptables -P INPUT ACCEPT
+sudo iptables -P FORWARD ACCEPT
+sudo iptables -P OUTPUT ACCEPT
+```
+
+<br />
+
+#### List Rules
+
+To list all of your iptable rules, and the rules that CSF has added to your firewall, run:
+
+```shell
+sudo iptables --list --line-numbers -n
+```
+
+<br />
+
+#### List Chains
+
+To list all of the chains in iptables, run:
+
+```shell
+sudo iptables -L | grep Chain
+```
+
+<br />
+
+A list of the available CHAINS are provided below:
+
+> [!NOTE]
+> Out of box, ConfigServer Firewall & Iptables makes use of three chains
+>   - `INPUT` Packets coming _from_ the network and going _to_ your server 
+>   - `OUTPUT` Packets originating _from_ your server and going _to_ the network.
+>   - `FORWARD` Packets forwarded by your server, if/when it acts as a router between different networks such as <sup> `DOCKER` </sup>
+> 
+> **Additional Chains**
+>   - `NAT` This table is consulted when a packet that creates a new connection is encountered. It consists of four built-ins:
+>     - `PREROUTING` for altering packets as soon as they come in
+>     - `INPUT` for altering packets destined for local sockets
+>     - `OUTPUT` for altering locally-generated packets before routing
+>     - `POSTROUTING` for altering packets as they are about to go out
+>   - `MANGLE` Used for specialized packet alteration.
+>   - `DOCKER` Rules that determine whether a packet that is not part of an established connection should be accepted, based on the port forwarding configuration of running containers.
+>   - `DOCKER-USER` A placeholder for user-defined rules that will be processed before rules in the <sup> `DOCKER-FORWARD` </sup> and <sup> `DOCKER` </sup> chains.
+>   - `DOCKER-FORWARD` The first stage of processing for Docker's networks. Rules that pass packets that are not related to established connections to the other Docker chains, as well as rules to accept packets that are part of established connections.
+>   - `DOCKER-ISOLATION-STAGE-1` Rules to isolate Docker networks from each other.
+>   - `DOCKER-INGRESS` Rules related to Swarm networking.
+
+<br />
+
+#### Unblock Port
+If you make use of the ConfigServer Firewall WebUI; one of the features available is the ability to whitelist / allow access to certain ports. If you do not wish to use the WebUI, you can unblock these ports in your terminal using `iptables`.
+
+To access unblocking ports in CSF, open your WebUI:
+
+<p align="center"><img style="width: 80%;text-align: center;" src="docs/images/readme/20.jpg"></p>
+
+<br />
+
+Select **Firewall Configuration**, and then scroll down until you see the settings:
+
+- `TCP_IN`
+- `TCP_OUT`
+
+<br />
+
+<p align="center"><img style="width: 80%;text-align: center;" src="docs/images/readme/21.jpg"></p>
+
+<br />
+
+To unblock a port using Iptables using the command that CSF would use, you can run the following. For this example, we will unblock port `43` which can be used for the `whois` package:
+
+```shell
+sudo iptables -I OUTPUT ! -o lo -m conntrack --ctstate NEW -p tcp --dport 43 -j ACCEPT
+```
+
+<br />
+
+Remember to change `--dport 43` to the port you wish to unblock, change `-p tcp` to specify either `TCP` or `UDP`, and change `-D OUTPUT` to specify the chain you want the port to allow access through.
+
+<br />
+
+To re-block port `43` and disallow connections, delete the rule in iptables:
+
+```shell
+sudo iptables -D OUTPUT ! -o lo -m conntrack --ctstate NEW -p tcp --dport 43 -j ACCEPT
+```
+
+<br />
+
+To view the firewall rule in your iptables, run:
+
+```shell
+sudo iptables --list --line-numbers -n
+```
+
+<br />
+
+Running this command should output all your table rules. Your new rule will appear as:
+
+```
+Chain OUTPUT (policy DROP)
+num  target     prot opt source               destination         
+1    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:43 ctstate NEW
+```
+
+<br />
+
+#### Allow OpenVPN
+
+To allow OpenVPN through CSF / Iptables, run the following command. Replace `tun0` with your channel adapter name.
+
+```shell
+TUN_ADAPTER=$(ip -br l | awk '$1 ~ "^tun[0-9]" { print $1}')
+sudo iptables -A FORWARD -o ${TUN_ADAPTER} -j ACCEPT
+```
+
+<br />
+
+Next, add a `POSTROUTING` rule. If you do not want to use your default adapter name, replace `${ETH_ADAPTER}` with the name. For ours, we will use `eth0`.
+
+```shell
+ETH_ADAPTER=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
+sudo iptables -t nat -A POSTROUTING -o ${ETH_ADAPTER} -j MASQUERADE
+```
+
+<br />
+
+Now we need to add a few rules for the IP block our OpenVPN server will use. In this example, we'll use `10.8.0.0/24`.
+
+```shell
+ETH_ADAPTER=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
+sudo iptables -t nat -A POSTROUTING -s "10.8.0.0/24" -o ${ETH_ADAPTER} -j MASQUERADE
+```
+
+<br />
+
+Next, add the iptable rules for your OpenVPN server's port. Replace `1194` with your OpenVPN port if it is different. Replace `${ETH_ADAPTER}` with your desired ethernet adapter name if you do not wish to use the default defined below.
+
+```shell
+ETH_ADAPTER=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
+sudo iptables -A INPUT -i ${ETH_ADAPTER} -m state --state NEW -p udp --dport 1194 -j ACCEPT
+sudo iptables -A FORWARD -i tun+ -o ${ETH_ADAPTER} -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i ${ETH_ADAPTER} -o tun+ -m state --state RELATED,ESTABLISHED -j ACCEPT
+```
+
+<br />
+
+Finally, set the adapter name `tun+` to have access to the `OUTPUT` chain. 
+
+The `+` symbol is a wildcard rule; which means that if you create multiple OpenVPN tunnels, they'll automatically be allowed through the OUTPUT chain, such as `tun1`, `tun2`, etc. If you only want one specific tunnel to be allowed, change `tun+` to `tun0`, or whatever tunnel you want to allow.
+
+```shell
+sudo iptables  -A OUTPUT -o tun+ -j ACCEPT
+```
+
+<br />
+
+Your OpenVPN server should now be able to allow connections between CSF / Iptables and OpenVPN.
 
 <br />
 
