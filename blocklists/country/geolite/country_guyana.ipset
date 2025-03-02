@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_guyana_ipset
 #   @uuid           bc500bbe-e40e-3f0b-8b6a-a7e6242d122f
-#   @updated        Sat Mar  1 00:20:25 UTC 2025
+#   @updated        Sun Mar  2 00:20:21 UTC 2025
 #   @entries        73907 ips
 #                   170 subnets
 #                   170 lines
