@@ -1476,19 +1476,46 @@ This section simply outlines notes about ConfigServer Firewall
 
 ### CSF to Iptable Commands
 
-This section translates the commands that ConfigServer Firewall uses to manage your firewall, and gives you the iptables alternative command if you do not wish to use CSF.
+ConfigServer Firewall is a way to manage your existing firewall rules. In order for ConfigServer Firewall to work, your server must have the library `iptables` installed. ConfigServer Firewall is basically a wrapper for iptables, and has the additional option of adding a web UI so that you can visually manage your firewall instead of using commands. Without `iptables`, ConfigServer Firewall is useless.
+
+<br />
+
+If you were to uninstall ConfigServer Firewall from your server; you would still have the ability to do everything CSF can, but you would have to manually run commands on the package iptables. 
+
+<br />
+
+This section gives you the commands that ConfigServer Firewall uses to manage your firewall, and gives you the iptables alternative command if you do not wish to use CSF.
 
 <br />
 
 #### Default Policy
 
-ConfigServer Firewall will set your three main iptable chains to have a policy of `DROP`; if you want to do this yourself, run:
+ConfigServer Firewall and iptables come with three main CHAINS. ConfigServer Firewall will set these three main chains to have the policy `DROP`. 
+
+This `DROP` policy means that no connections are allowed to access any of these chains on your server, meaning nobody can connect to your server; unless you have added rules to allow access by an IP address or port. 
+
+To set the policy of these chains; run:
 
 ```shell
 sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD DROP 
 sudo iptables -P OUTPUT DROP
 ```
+
+<br />
+
+You can select from the list of available policies. 
+
+- `ACCEPT` Accepts packets into or out of your server.
+- `DROP` Denies access to a port or server, but makes the connection appear to be to an unoccupied IP address. Scanners may choose not to continue scanning addresses which appear unoccupied.
+- `REJECT` Denies access to a port or server, but tells the connecting party that the server and port are really there, but they've been denied access to transmit data or connect.
+
+<br />
+
+As a general rule:
+  - Use `ACCEPT` to allow access to a port or IP by a connecting party.
+  - Use `DROP` for connections to hosts you don't want people to see.
+  - Use `REJECT` when you want the other end to know the port is unreachable.
 
 <br />
 
