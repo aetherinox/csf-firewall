@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             continent_oceania_ipset
 #   @uuid           c2566828-e45f-3f25-a4c7-53ef0c72b9f2
-#   @updated        Sun Mar  2 00:19:01 UTC 2025
+#   @updated        Mon Mar  3 00:19:14 UTC 2025
 #   @entries        60604680 ips
 #                   25405 subnets
 #                   25405 lines
