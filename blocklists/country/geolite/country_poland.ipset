@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_poland_ipset
 #   @uuid           6d7ff897-cc99-344e-9e81-b22e34f14ea0
-#   @updated        Mon Mar  3 00:20:57 UTC 2025
+#   @updated        Tue Mar  4 00:19:47 UTC 2025
 #   @entries        20983668 ips
 #                   10130 subnets
 #                   10130 lines
