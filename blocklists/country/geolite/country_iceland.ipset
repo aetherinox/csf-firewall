@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_iceland_ipset
 #   @uuid           02608517-a80d-312e-ac6d-a62e1e3c7ab1
-#   @updated        Tue Mar  4 00:19:27 UTC 2025
-#   @entries        925954 ips
-#                   1185 subnets
-#                   1185 lines
+#   @updated        Wed Mar  5 00:20:50 UTC 2025
+#   @entries        925953 ips
+#                   1194 subnets
+#                   1194 lines
 #   @country        Iceland (IS)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -301,7 +301,16 @@
 185.177.132.0/22
 185.179.76.0/22
 185.179.108.0/22
-185.191.232.0/22
+185.191.232.0/24
+185.191.233.0/26
+185.191.233.64/31
+185.191.233.67/32
+185.191.233.68/30
+185.191.233.72/29
+185.191.233.80/28
+185.191.233.96/27
+185.191.233.128/25
+185.191.234.0/23
 185.198.144.0/22
 185.208.202.0/24
 185.219.148.0/22

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_american_samoa_ipset
 #   @uuid           1d518915-e040-354c-88ef-8429d93b8073
-#   @updated        Tue Mar  4 00:18:53 UTC 2025
+#   @updated        Wed Mar  5 00:20:19 UTC 2025
 #   @entries        81971 ips
-#                   679 subnets
-#                   679 lines
+#                   681 subnets
+#                   681 lines
 #   @country        American Samoa (AS)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -371,6 +371,7 @@
 218.213.76.0/24
 220.232.58.240/28
 2001:470:8:d8::/64
+2001:470:8:188::/64
 2001:470:b:242::/64
 2001:470:b:51b::/64
 2001:470:d:193::/64
@@ -455,6 +456,7 @@
 2001:470:8a85::/48
 2001:470:b58c::/48
 2001:470:c0a7::/48
+2001:470:e0f1::/48
 2001:470:ec75::/48
 2001:470:ee58::/48
 2001:470:f2b3::/48

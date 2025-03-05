@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_malaysia_ipset
 #   @uuid           8d3a17ce-e658-3bc7-979a-575efd8ba130
-#   @updated        Tue Mar  4 00:19:40 UTC 2025
-#   @entries        7491197 ips
-#                   3263 subnets
-#                   3263 lines
+#   @updated        Wed Mar  5 00:21:02 UTC 2025
+#   @entries        7491709 ips
+#                   3265 subnets
+#                   3265 lines
 #   @country        Malaysia (MY)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -1293,6 +1293,8 @@
 104.133.80.0/24
 104.133.229.0/24
 104.166.162.0/24
+104.233.176.0/23
+104.233.250.0/23
 104.255.59.196/30
 104.255.59.200/31
 107.155.26.0/24
@@ -1770,8 +1772,7 @@
 172.226.44.128/26
 172.235.104.0/23
 172.252.217.0/24
-173.82.61.0/24
-173.82.62.0/23
+173.82.63.0/24
 173.222.152.0/22
 173.223.40.0/22
 173.239.236.0/24
@@ -3257,6 +3258,7 @@
 2a0a:6044:f148::/45
 2a0a:6044:f150::/48
 2a0a:ce07:6000::/47
+2a0a:ce07:6002::/48
 2a0c:9a40:95b8:4000::/52
 2a0c:9a40:9fc0::/44
 2a0d:6c2:2800::/40

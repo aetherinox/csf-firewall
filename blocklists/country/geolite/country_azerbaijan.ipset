@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_azerbaijan_ipset
 #   @uuid           605c3c5d-be18-3c4a-bd9b-833bec79c44a
-#   @updated        Tue Mar  4 00:18:55 UTC 2025
-#   @entries        771078 ips
-#                   614 subnets
-#                   614 lines
+#   @updated        Wed Mar  5 00:20:20 UTC 2025
+#   @entries        771590 ips
+#                   617 subnets
+#                   617 lines
 #   @country        Azerbaijan (AZ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -155,6 +155,7 @@
 94.20.0.0/16
 94.158.191.0/24
 95.86.128.0/18
+95.210.236.0/24
 103.119.111.0/24
 104.28.8.87/32
 104.28.8.88/31
@@ -259,6 +260,7 @@
 172.68.30.0/24
 172.68.75.0/24
 172.71.12.0/24
+172.71.17.0/24
 172.225.36.64/27
 172.225.190.32/27
 172.225.226.32/28
@@ -472,6 +474,7 @@
 2400:cb00:200::/48
 2400:cb00:306::/48
 2400:cb00:489::/48
+2400:cb00:1014::/48
 2600:70ff:d06d::/48
 2600:70ff:d162::/48
 2606:54c0:440::/44
