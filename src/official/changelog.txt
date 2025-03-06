@@ -1,5 +1,10 @@
 ChangeLog:
 
+14.23 - Modified Apache regexes to detect "remote" or "client" as the IP trigger
+        Mdified UI HTTP header checks to be case agnostic
+	
+	Sanitise CC list strings
+
 14.22 - Removed session IP match check from DA login
 
         Added example spamassassin temp file regex to csf.fignore for
