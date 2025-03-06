@@ -342,8 +342,8 @@ sub processline {
 	}
 
 #cxs Apache
-	if (($config{LF_CXS}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[client (\S+)\]( \[client \S+\])? (\w+: )?ModSecurity:(( \[[^]]+\])*)? Access denied with code \d\d\d \(phase 2\)\. File \"[^\"]*\" rejected by the approver script \"\/etc\/cxs\/cxscgi\.sh\"/)) {
-        my $ip = $4;
+	if (($config{LF_CXS}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[(client|remote) (\S+)\]( \[client \S+\])? (\w+: )?ModSecurity:(( \[[^]]+\])*)? Access denied with code \d\d\d \(phase 2\)\. File \"[^\"]*\" rejected by the approver script \"\/etc\/cxs\/cxscgi\.sh\"/)) {
+        my $ip = $5;
 		my $acc = "";
 		my $domain = "";
 		if ($line =~ /\] \[hostname "([^\"]+)"\] \[/) {$domain = $1}
@@ -352,8 +352,8 @@ sub processline {
 		if (checkip(\$ip)) {return ("cxs mod_security triggered by","$ip|$acc|$domain","cxs")} else {return}
 	}
 #cxs Litespeed
-	if (($config{LF_CXS}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[client (\S+)\]( \[client \S+\])? (\w+: )?ModSecurity:(( \[[^]]+\])*)? Access denied with code \d\d\d, \[Rule: 'FILES_TMPNAMES' '\@inspectFile \/etc\/cxs\/cxscgi\.sh'\] \[id "1010101"\]/)) {
-        my $ip = $4;
+	if (($config{LF_CXS}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[(client|remote) (\S+)\]( \[client \S+\])? (\w+: )?ModSecurity:(( \[[^]]+\])*)? Access denied with code \d\d\d, \[Rule: 'FILES_TMPNAMES' '\@inspectFile \/etc\/cxs\/cxscgi\.sh'\] \[id "1010101"\]/)) {
+        my $ip = $5;
 		my $acc = "";
 		my $domain = "";
 		if ($line =~ /\] \[hostname "([^\"]+)"\] \[/) {$domain = $1}
@@ -363,8 +363,8 @@ sub processline {
 	}
 
 #mod_security v1
-	if (($config{LF_MODSEC}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[error\] \[client (\S+)\] mod_security: Access denied/)) {
-        my $ip = $1;
+	if (($config{LF_MODSEC}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[error\] \[(client|remote) (\S+)\] mod_security: Access denied/)) {
+        my $ip = $2;
 		my $acc = "";
 		my $domain = "";
 		if ($line =~ /\] \[hostname "([^\"]+)"\] \[/) {$domain = $1}
@@ -373,8 +373,8 @@ sub processline {
 	}
 
 #mod_security v2 (apache)
-	if (($config{LF_MODSEC}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[client (\S+)\]( \[client \S+\])? (\w+: )?ModSecurity:(( \[[^]]+\])*)? Access denied/)) {
-        my $ip = $4;
+	if (($config{LF_MODSEC}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[(client|remote) (\S+)\]( \[client \S+\])? (\w+: )?ModSecurity:(( \[[^]]+\])*)? Access denied/)) {
+        my $ip = $5;
 		my $acc = "";
 		my $domain = "";
 		if ($line =~ /\] \[hostname "([^\"]+)"\] \[/) {$domain = $1}
@@ -385,8 +385,8 @@ sub processline {
 		if (checkip(\$ip)) {return ("mod_security (id:$ruleid) triggered by","$ip|$acc|$domain","mod_security")} else {return}
 	}
 #mod_security v2 (nginx)
-	if (($config{LF_MODSEC}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\S+ \S+ \[\S+\] \S+ \[client (\S+)\] ModSecurity:(( \[[^]]+\])*)? Access denied/)) {
-        my $ip = $1;
+	if (($config{LF_MODSEC}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\S+ \S+ \[\S+\] \S+ \[(client|remote) (\S+)\] ModSecurity:(( \[[^]]+\])*)? Access denied/)) {
+        my $ip = $2;
 		my $acc = "";
 		my $domain = "";
 		if ($line =~ /\] \[hostname "([^\"]+)"\] \[/) {$domain = $1}
@@ -492,8 +492,8 @@ sub processline {
 	}
 
 #mod_qos
-	if (($config{LF_QOS}) and ($globlogs{HTACCESS_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[client (\S+)\] (\w+: )?mod_qos\(\d+\): access denied,/)) {
-        my $ip = $4;
+	if (($config{LF_QOS}) and ($globlogs{HTACCESS_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[(client|remote) (\S+)\] (\w+: )?mod_qos\(\d+\): access denied,/)) {
+        my $ip = $5;
 		my $acc = "";
 		$ip =~ s/^::ffff://;
 		if ($config{LF_APACHE_ERRPORT} == 2 and $ip =~ /(.*):\d+$/) {$ip = $1}
@@ -501,8 +501,8 @@ sub processline {
 	}
 
 #Apache symlink race condition
-	if (($config{LF_SYMLINK}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[client (\S+)\] (\w+: )?Caught race condition abuser/)) {
-        my $ip = $4;
+	if (($config{LF_SYMLINK}) and ($globlogs{MODSEC_LOG}{$lgfile}) and ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[(client|remote) (\S+)\] (\w+: )?Caught race condition abuser/)) {
+        my $ip = $5;
 		my $acc = "";
 		$ip =~ s/^::ffff://;
 		if ($config{LF_APACHE_ERRPORT} == 2 and $ip =~ /(.*):\d+$/) {$ip = $1}
@@ -961,8 +961,8 @@ sub processdistsmtpline {
 # start loginline404
 sub loginline404 {
 	my $line = shift;
-	if ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?(error|info)\] (\[pid \d+(:tid \d+)?\] )?\[client (\S+)\] (\w+: )?File does not exist\:/) {
-        my $ip = $5;
+	if ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?(error|info)\] (\[pid \d+(:tid \d+)?\] )?\[(client|remote) (\S+)\] (\w+: )?File does not exist\:/) {
+        my $ip = $6;
 		$ip =~ s/^::ffff://;
 		if ($config{LF_APACHE_ERRPORT} == 2 and $ip =~ /(.*):\d+$/) {$ip = $1}
 		if (checkip(\$ip)) {return ($ip)} else {return}
@@ -973,8 +973,8 @@ sub loginline404 {
 # start loginline403
 sub loginline403 {
 	my $line = shift;
-	if ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[client (\S+)\] (\w+: )?client denied by server configuration\:/) {
-        my $ip = $4;
+	if ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[(client|remote) (\S+)\] (\w+: )?client denied by server configuration\:/) {
+        my $ip = $5;
 		$ip =~ s/^::ffff://;
 		if ($config{LF_APACHE_ERRPORT} == 2 and $ip =~ /(.*):\d+$/) {$ip = $1}
 		if (checkip(\$ip)) {return ($ip)} else {return}
@@ -985,8 +985,8 @@ sub loginline403 {
 # start loginline401
 sub loginline401 {
 	my $line = shift;
-	if ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[client (\S+)\] (\w+: )?(user  not found|user \w+ not found|user \w+: authentication failure for "\/\w+\/")\:/) {
-        my $ip = $4;
+	if ($line =~ /^\[\S+\s+\S+\s+\S+\s+\S+\s+\S+\] \[(\S*:)?error\] (\[pid \d+(:tid \d+)?\] )?\[(client|remote) (\S+)\] (\w+: )?(user  not found|user \w+ not found|user \w+: authentication failure for "\/\w+\/")\:/) {
+        my $ip = $5;
 		$ip =~ s/^::ffff://;
 		if ($config{LF_APACHE_ERRPORT} == 2 and $ip =~ /(.*):\d+$/) {$ip = $1}
 		if (checkip(\$ip)) {return ($ip)} else {return}
