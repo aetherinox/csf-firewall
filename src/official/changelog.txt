@@ -1,5 +1,8 @@
 ChangeLog:
 
+14.24 - Fixed regression bug in v14.23 "Modified UI HTTP header checks to be
+        case agnostic"
+
 14.23 - Modified Apache regexes to detect "remote" or "client" as the IP trigger
         Mdified UI HTTP header checks to be case agnostic
 	
