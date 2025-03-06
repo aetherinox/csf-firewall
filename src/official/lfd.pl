@@ -9665,6 +9665,7 @@ sub ui {
 						if ($line =~ /^\r\n$/) {last}
 						$line =~ s/\r\n$//;
 						my ($field,$value) = split(/\:\s/,$line);
+						$field = lc($field);
 						$header{$field} = $value;
 						if ($config{DEBUG} >= 2) {logfile("UI debug: header [$field] [$value]")}
 						$linecnt++;
@@ -9675,17 +9676,17 @@ sub ui {
 							exit;
 						}
 					}
-					if ($header{'Content-Length'} > 0) {
-						if ($header{'Content-Length'} > $maxbody) {
+					if ($header{'content-length'} > 0) {
+						if ($header{'content-length'} > $maxbody) {
 							&ui_413;
 							close ($client);
 							alarm(0);
 							exit;
 						} else {
-							if ($header{'Content-Type'} =~ /multipart\/form-data/) {
-								$client->read($fileinc,$header{'Content-Length'});
+							if ($header{'content-type'} =~ /multipart\/form-data/i) {
+								$client->read($fileinc,$header{'content-length'});
 							} else {
-								$client->read($buffer,$header{'Content-Length'});
+								$client->read($buffer,$header{'content-length'});
 							}
 						}
 					}
@@ -9698,7 +9699,7 @@ sub ui {
 						$value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
 						$FORM{$name} = $value;
 					}
-					if ($header{Cookie} =~ /csfsession=(\w+)/) {$cookie = $1}
+					if ($header{cookie} =~ /csfsession=(\w+)/) {$cookie = $1}
 
 					if (($session ne "" and $cookie ne "") or defined $FORM{csflogin}) {
 						sysopen (my $SESSION,"/var/lib/csf/ui/ui.session", O_RDWR | O_CREAT) or &childcleanup(__LINE__,"UI: unable to open csf.session: $!");
@@ -9709,7 +9710,7 @@ sub ui {
 						truncate ($SESSION, 0);
 
 						my $md5current = Digest::MD5->new;
-						$md5current->add($header{'User-Agent'});
+						$md5current->add($header{'user-agent'});
 						my $md5sum = $md5current->b64digest;
 						foreach my $record (@records) {
 							my ($rtype,$rstart,$rtime,$rsession,$rcookie,$rip,$rhead,$rapp) = split(/\|/,$record,8);
@@ -9849,7 +9850,7 @@ sub ui {
 						$cookie = join '', map {$chars[rand(@chars)]} (1..(15 + int(rand(15))));
 
 						my $md5current = Digest::MD5->new;
-						$md5current->add($header{'User-Agent'});
+						$md5current->add($header{'user-agent'});
 						my $md5sum = $md5current->b64digest;
 						my $time = time;
 						sysopen (my $SESSION,"/var/lib/csf/ui/ui.session", O_RDWR | O_CREAT) or &childcleanup(__LINE__,"UI: unable to open csf.session: $!");

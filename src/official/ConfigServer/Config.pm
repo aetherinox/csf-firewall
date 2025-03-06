@@ -139,6 +139,21 @@ sub loadconfig {
 			$warning .= "*ERROR*: Country Code Lookups setting MM_LICENSE_KEY must be set in /etc/csf/csf.conf to continue using the MaxMind databases\n";
 		}
 	}
+
+	foreach my $cclist ("CC_DENY","CC_ALLOW","CC_ALLOW_FILTER","CC_ALLOW_PORTS","CC_DENY_PORTS","CC_ALLOW_SMTPAUTH") {
+		$config{$cclist} =~ s/\s//g;
+		my $newcclist;
+		foreach my $cc (split(/\,/,$config{$cclist})) {
+			if ($cc ne "" and ((length($cc) == 2 and $cc =~ /^[a-zA-Z][a-zA-Z]$/i) or (length($cc) > 2 and $cc =~ /^AS\d+$/i))) {
+				$cc = lc $cc;
+				if ($newcclist eq "") {$newcclist = "$cc"} else {$newcclist .= ",$cc"}
+			} else {
+				$warning .= "*WARNING* $cclist contains an invalid entry [$cc]\n";
+			}
+		}
+		$config{$cclist} = $newcclist;
+	}
+
 	if ($config{CC_DENY} or $config{CC_ALLOW} or $config{CC_ALLOW_FILTER} or $config{CC_ALLOW_PORTS} or $config{CC_DENY_PORTS} or $config{CC_ALLOW_SMTPAUTH}) {
 		if ($config{MM_LICENSE_KEY} eq "" and $config{CC_SRC} eq "1") {
 			$warning .= "*ERROR*: Country Code Filters setting MM_LICENSE_KEY must be set in /etc/csf/csf.conf to continue updating the MaxMind databases\n";
