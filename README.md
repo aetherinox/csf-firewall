@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-<h6>New dark theme, support for Docker, Traefik, and OpenVPN servers. Includes a "bad actor" blocklist, and numerous scripts.</h6>
+<h6>Unofficial dark theme, Docker, Traefik, and OpenVPN support. Includes "bad actor" blocklists / ipsets, and numerous helper patches.</h6>
 <h1>♾️ ConfigServer Firewall & Blocklist ♾️</h1>
 </div>
 
@@ -17,7 +17,7 @@ ConfigServer Firewall (CSF) is a popular and powerful firewall solution for Linu
 
 <br />
 
-This repository also contains a list of ipsets / blocklists which are updated every few hours. These sets contain various lists of IP addresses which block connections known for [SSH brute-force](https://www.cmu.edu/iso/aware/be-aware/brute-force_ssh_attack.html) attempts, [port knocking](https://en.wikipedia.org/wiki/Port_knocking) / [scanning](https://www.paloaltonetworks.com/cyberpedia/what-is-a-port-scan), research, [IoT](https://en.wikipedia.org/wiki/Internet_of_things), data collection, etc. These ipsets are compatible with ConfigServer Firewall, and also any other application which supports one IP per line (pi-hole, Windows hosts, etc).
+This repository also contains a list of ipsets / blocklists which are updated every few hours. These sets contain various lists of IP addresses which block connections known for [SSH brute-force](https://www.cmu.edu/iso/aware/be-aware/brute-force_ssh_attack.html) attempts, [port knocking](https://en.wikipedia.org/wiki/Port_knocking) / [scanning](https://www.paloaltonetworks.com/cyberpedia/what-is-a-port-scan), research, [IoT](https://en.wikipedia.org/wiki/Internet_of_things), data collection, etc. These ipsets are compatible with ConfigServer Firewall, and also any other application which supports one IP per line (Windows Hosts file, etc).
 
 <br />
 
@@ -713,6 +713,7 @@ sudo service lfd status
 <br />
 
 You should see the `lfd` service running:
+
 ```
 ● lfd.service - ConfigServer Firewall & Security - lfd
      Loaded: loaded (/lib/systemd/system/lfd.service; enabled; preset: enabled)
@@ -1175,6 +1176,7 @@ Ubuntu | 24.04
 <br />
 
 ### Advanced Logs
+
 This script includes debugging prints / logs. To view these, restart `csf.service` by running the following command in terminal:
 ```shell ignore
 sudo csf -ra
@@ -1235,20 +1237,24 @@ Extract the files from the zip to the same paths as they are shown in the zip. Y
 <br />
 
 ## Traefik Integration with CSF WebUI
+
 To integrate the CSF WebUI into Docker and Traefik so that you can access it via a domain and secure it:
 
 <br />
 
 Open `/etc/csf/csf.conf` and change the `UI_IP`. This specifies the IP address that the CSF WebUI will bind to. By default, the value is empty and binds CSF's WebUI to all IPs on your server.
 
-Find
+Find:
+
 ```shell ignore
 UI_IP = ""
 ```
 
 <br />
 
-Change the IP to your Docker network subnet. You MUST use the format below, which is `::IPv6:IPv4`
+Change the IP to your Docker network subnet. You MUST use the format below, which is 
+`::IPv6:IPv4`
+
 ```shell ignore
 UI_IP = "::ffff:172.17.0.1"
 ```
@@ -1263,30 +1269,30 @@ Next, we can add CSF through Docker and Traefik so that it's accessible via `csf
 
 ```yml
 http:
-  routers:
-    csf-http:
-      service: "csf"
-      rule: "Host(`csf.domain.com`)"
-      entryPoints:
-        - "http"
-      middlewares:
-        - https-redirect@file
+    routers:
+        csf-http:
+            service: "csf"
+            rule: "Host(`csf.domain.com`)"
+            entryPoints:
+                - "http"
+            middlewares:
+                - https-redirect@file
 
-    csf-https:
-      service: "csf"
-      rule: "Host(`csf.domain.com`)"
-      entryPoints:
-        - "https"
-      middlewares:
-        - authentik@file
-        - whitelist@file
-        - geoblock@file
-      tls:
-        certResolver: cloudflare
-        domains:
-          - main: "domain.com"
-            sans:
-              - "*.domain.com"
+        csf-https:
+            service: "csf"
+            rule: "Host(`csf.domain.com`)"
+            entryPoints:
+                - "https"
+            middlewares:
+                - authentik@file
+                - whitelist@file
+                - geoblock@file
+            tls:
+              certResolver: cloudflare
+              domains:
+                  - main: "domain.com"
+                    sans:
+                        - "*.domain.com"
 ```
 
 <br />
@@ -1337,6 +1343,7 @@ docker compose down && docker compose up -d
 <br />
 
 ### Adding Authentik Provider
+
 If you are adding [Authentik](https://goauthentik.io/) as middleware in the steps above; the last thing you must do is log in to your Authentik admin panel and add a new **Provider** so that we can access the CSF WebUI via your domain.
 
 <br />
