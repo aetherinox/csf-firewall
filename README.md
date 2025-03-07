@@ -867,13 +867,13 @@ containers_ip_cidr=(
 
 Each setting is defined below:
 
-| Setting | Description |
-| --- | --- |
-| `docker0_eth` | <br>main docker network interface <br><br> |
-| `file_csf_allow` | <br>Path to your `csf.allow` file <br><br> |
-| `csf_comment` | <br>comment added to each new whitelisted docker ip <br><br> |
-| `containers_ip_cidr` | <br>list of ip address blocks you will be using for your docker setup. these blocks will be whitelisted through ConfigServer Firewall <br><br> |
-| `cfg_dev_enabled` | <br>debug mode <br><br> |
+| Setting | Default | Description |
+| --- | --- | --- |
+| `docker0_eth` | `docker0` | <br>main docker network interface <br><br> |
+| `file_csf_allow` | `/etc/csf/csf.allow"` | <br>Path to your `csf.allow` file <br><br> |
+| `csf_comment` | `Docker container whitelist` | <br>comment added to each new whitelisted docker ip in the file `/etc/csf/csf.allow` <br><br> |
+| `containers_ip_cidr` | `172.17.0.0/16` | <br>list of ip address blocks you will be using for your docker setup. these blocks will be whitelisted through ConfigServer Firewall <br><br> |
+| `cfg_dev_enabled` | `false` | <br>debug mode <br><br> |
 
 <br />
 <br />
