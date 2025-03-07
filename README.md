@@ -339,7 +339,7 @@ You can install ConfigServer Firewall and all prerequisites one of two ways:
 
 If you would like to install ConfigServer Firewall using this repo's patcher; download the patch:
 ```shell
-git clone https://github.com/Aetherinox/csf-firewall.git .
+git clone https://github.com/aetherinox/csf-firewall.git .
 ```
 
 <br />
@@ -843,7 +843,7 @@ cd $HOME/Documents
 Clone the repo
 
 ```shell
-git clone https://github.com/Aetherinox/csf-firewall.git
+git clone https://github.com/aetherinox/csf-firewall.git .
 ```
 
 <br />
@@ -1037,7 +1037,7 @@ cd $HOME/Documents
 Clone the repo
 
 ```shell
-git clone https://github.com/Aetherinox/csf-firewall.git
+git clone https://github.com/aetherinox/csf-firewall.git .
 ```
 
 <br />
@@ -1520,6 +1520,8 @@ If you modified the ConfigServer Firewall setting `LF_IPSET_MAXELEM` _(explained
 ```shell
 Header: family inet hashsize 1024 maxelem 4000000 
 ```
+
+<br />
 
 > [!NOTE]
 > If you decide to use the blocklist `master.ipset`, you must ensure you increase the value of the setting `LF_IPSET_MAXELEM` in the file `/etc/csf/csf.conf` to at least `400000`.
