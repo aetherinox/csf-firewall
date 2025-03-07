@@ -133,7 +133,6 @@ Ipsets include lists from [AbuseIPDB](https://abuseipdb.com/) and [IPThreat](htt
 - [References for More Help](#references-for-more-help)
 - [Contributors ✨](#contributors-)
 
-
 <br />
 
 ---
@@ -141,6 +140,7 @@ Ipsets include lists from [AbuseIPDB](https://abuseipdb.com/) and [IPThreat](htt
 <br />
 
 ## Summary
+
 This repository contains several folders:
 - 📁 `configs`
   - Ready-to-use CSF config files
@@ -269,6 +269,7 @@ This guide will help you with the following:
 <br />
 
 ## How The Patcher Works
+
 You can read this if you want, or skip it. It outlines exactly how the patches work:
   - Download all the files in the `/patch` folder to your system.
   - Set the `install.sh` file to be executable.
@@ -326,7 +327,9 @@ Even if you were to completely wipe your iptable rules, as soon as you restart t
 <br />
 
 ## Install ConfigServer Firewall
+
 You can install ConfigServer Firewall and all prerequisites one of two ways:
+
 1. [Install Using Patcher](#install-using-patcher)
 2. [Install Manually](#install-manually)
 
@@ -342,6 +345,7 @@ git clone https://github.com/Aetherinox/csf-firewall.git
 <br />
 
 Set the permissions for the `install.sh` file:
+
 ```shell
 sudo chmod +x /csf-firewall/patch/install.sh
 ```
@@ -349,6 +353,7 @@ sudo chmod +x /csf-firewall/patch/install.sh
 <br />
 
 Run the script:
+
 ```shell
 sudo ./csf-firewall/patch/install.sh
 ```
@@ -356,6 +361,7 @@ sudo ./csf-firewall/patch/install.sh
 <br />
 
 If ConfigServer Firewall is not already installed on your system; you should see:
+
 ```
   Installing package iptables
   Installing package ipset
@@ -366,11 +372,13 @@ If ConfigServer Firewall is not already installed on your system; you should see
 <br />
 
 ### Install Manually
+
 These steps explain how to install ConfigServer Firewall manually.
 
 <br />
 
 #### Step 1: Prerequisites
+
 - A Linux server running CentOS, Debian, Ubuntu, or any other compatible Linux distribution. 
 - Root access or a user account with sudo privileges.
 - Perl installed on your server. If Perl is not installed, you can install it by running the following commands:
@@ -387,8 +395,10 @@ These steps explain how to install ConfigServer Firewall manually.
     ```
 
 <br />
+<br />
 
 #### Step 2: Download and Install CSF
+
 To download and install CSF, follow these steps:
 
 <br />
@@ -422,6 +432,7 @@ CSF will now be installed on your server, along with its Web UI (ConfigServer Fi
 <br />
 
 ## Testing the Firewall
+
 Before enabling and configuring CSF, it is crucial to test whether it is compatible with your server. Run the following command to initiate the test:
 
 ```shell
@@ -437,6 +448,7 @@ The test will check for any potential issues or conflicts. If the test completes
 <br />
 
 ## Configuring CSF
+
 Now that CSF is installed, you can start configuring it to suit your server’s requirements. The main configuration file for CSF is located at /etc/csf/csf.conf. You can use your preferred text editor to modify the file, such as nano or vim:
 
 ```shell
@@ -469,11 +481,14 @@ These are just a few of the numerous configuration options available in CSF. Mak
 <br />
 
 ## Enabling CSF Firewall
+
 Once you have configured the CSF firewall, it is time to enable it. To do so, run the following command:
 
 ```shell
 sudo csf -e
 ```
+
+<br />
 
 This command will restart the CSF and LFD (Login Failure Daemon) services, applying your configuration changes and activating the firewall.
 
@@ -484,6 +499,7 @@ This command will restart the CSF and LFD (Login Failure Daemon) services, apply
 <br />
 
 ## Managing the Firewall
+
 CSF provides several commands to manage the firewall, such as:
 
 <br />
@@ -577,6 +593,7 @@ These commands can help you manage your server’s security and monitor incoming
 <br />
 
 ## Uninstalling CSF
+
 If you decide to uninstall CSF for any reason, follow these steps:
 
 <br />
@@ -585,6 +602,9 @@ If you decide to uninstall CSF for any reason, follow these steps:
     ```shell
     cd /etc/csf
     ```
+
+<br />
+
 2. Run the uninstallation script:
     ```shell
     sudo sh uninstall.sh
@@ -601,16 +621,19 @@ The script will remove CSF and its associated files from your server.
 <br />
 
 ## Enable CSF Firewall Web UI
+
 ConfigServer Firewall offers a WebUI for the managing firewall from the web interface. This section explains how to install the WebUI.
 
 <br />
 
 ### Step 1: Install Required Perl Modules:
+
 CSF UI required some of Perl modules to be installed on your system. Use the following commands to install required modules as per your operating system.
 
 <br />
 
 **Debian based systems:**
+
 ```shell
 sudo apt-get install libio-socket-ssl-perl libcrypt-ssleay-perl \
                     libnet-libidn-perl libio-socket-inet6-perl libsocket6-perl
@@ -619,14 +642,17 @@ sudo apt-get install libio-socket-ssl-perl libcrypt-ssleay-perl \
 <br />
 
 **Redhat based systems:**
+
 ```shell
 sudo yum install perl-IO-Socket-SSL.noarch perl-Net-SSLeay perl-Net-LibIDN \
                perl-IO-Socket-INET6 perl-Socket6
 ```
 
 <br />
+<br />
 
 ### Step 2: Enable CSF Firewall Web UI:
+
 To enable CSF web UI edit /etc/csf/csf.conf file in your favorite text editor and update the following values.
 
 ```shell
@@ -679,6 +705,7 @@ sudo service lfd restart
 <br />
 
 In order to gain access to the online admin panel; you must ensure lfd and csf are running. You can check by running the commands:
+
 ```shell ignore
 sudo service lfd status
 ```
@@ -701,6 +728,7 @@ You should see the `lfd` service running:
 <br />
 
 Next, confirm `csf` service is also running:
+
 ```shell ignore
 sudo service csf status
 ```
@@ -708,7 +736,8 @@ sudo service csf status
 <br />
 
 Check the output for errors on service `csf`. You should see no errors:
-```
+
+```shell
 ● csf.service - ConfigServer Firewall & Security - csf
      Loaded: loaded (/lib/systemd/system/csf.service; enabled; preset: enabled)
      Active: active (exited) since Mon 2024-08-05 12:04:09 MST; 1s ago
@@ -720,6 +749,7 @@ Check the output for errors on service `csf`. You should see no errors:
 <br />
 
 If you see the following error when running `csf status`:
+
 ```
 csf[46313]: open3: exec of /sbin/ipset flush failed: No such file or directory at /usr/sbin/csf line 5650.
 ```
@@ -727,15 +757,19 @@ csf[46313]: open3: exec of /sbin/ipset flush failed: No such file or directory a
 <br />
 
 You must install `ipset`:
+
 ```shell ignore
 sudo apt-get update 
 sudo apt-get install ipset
 ```
 
 <br />
+<br />
 
 ### Step 3: Access and Use Web UI:
+
 Now, access CSF UI on your browser with the specified port. For this tutorial; we used 1025 port and accessed the CSF admin panel by opening our browser and going to:
+
 ```
 https://127.0.0.1:1025
 ```
@@ -765,9 +799,13 @@ After successful login, you will find the screen like below.
 
 <p align="center"><img style="width: 80%;text-align: center;" src="https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/docs/images/csf-quick-allow.png"></p>
 
+<br />
+
 **Deny IP Address**: You can use below option to deny any IP quickly. This action adds the entry to the `/etc/csf/csf.deny` file.
 
 <p align="center"><img style="width: 80%;text-align: center;" src="https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/docs/images/csf-quick-deny.png"></p>
+
+<br />
 
 **Unblock IP Address**: You can use below option to quickly unblocked any IP which is already blocked by CSF.
 
@@ -780,17 +818,20 @@ After successful login, you will find the screen like below.
 <br />
 
 ## Install Docker Patch
+
 After you have installed CSF, the WebUI, and enabled both `lfd` and `csf` services; it's now time to run the docker patcher. The docker patch will check your docker configuration, and add a series of iptable rules so that docker can communicate with the outside world and users can access your containers.
 
 <br />
 
 The docker patch does several things:
+
 - Allows for you to restart CSF without having to restart your docker containers.
 - Scans every container you have set up in docker and adds a whitelist firewall rule
 
 <br />
 
 ### Clone
+
 Within your server, change to whatever directory where you want to download everything (including patch):
 
 ```shell
@@ -800,21 +841,23 @@ cd $HOME/Documents
 <br />
 
 Clone the repo
+
 ```shell
 git clone https://github.com/Aetherinox/csf-firewall.git
 ```
 
 <br />
+<br />
 
 ### Configure
+
 The `/patch/docker.sh` file has a few configs you can adjust. Open it in a text editor and change the values to your preference.
 
-```bash ignore
-DOCKER_INT="docker0"
-CSF_FILE_ALLOW="/etc/csf/csf.allow"
-CSF_COMMENT="Docker container whitelist"
-DEBUG_ENABLED="false"
-IP_CONTAINERS=(
+```bash
+docker0_eth="docker0"
+file_csf_allow="/etc/csf/csf.allow"
+csf_comment="Docker container whitelist"
+containers_ip_cidr=(
     '172.17.0.0/16'
 )
 ```
@@ -825,15 +868,17 @@ Each setting is defined below:
 
 | Setting | Description |
 | --- | --- |
-| `DOCKER_INT` | <br>main docker network interface <br><br> |
-| `CSF_FILE_ALLOW` | <br>Path to your `csf.allow` file <br><br> |
-| `CSF_COMMENT` | <br>comment added to each new whitelisted docker ip <br><br> |
-| `DEBUG_ENABLED` | <br>debugging / better logs <br><br> |
-| `IP_CONTAINERS` | <br>list of ip address blocks you will be using for your docker setup. these blocks will be whitelisted through ConfigServer Firewall <br><br> |
+| `docker0_eth` | <br>main docker network interface <br><br> |
+| `file_csf_allow` | <br>Path to your `csf.allow` file <br><br> |
+| `csf_comment` | <br>comment added to each new whitelisted docker ip <br><br> |
+| `containers_ip_cidr` | <br>list of ip address blocks you will be using for your docker setup. these blocks will be whitelisted through ConfigServer Firewall <br><br> |
+| `cfg_dev_enabled` | <br>debug mode <br><br> |
 
+<br />
 <br />
 
 ### Run Patch
+
 Set the permissions (if needed)
 
 ```shell
@@ -862,8 +907,10 @@ sudo sh install.sh
 The `docker.sh` file will be installed to `/usr/local/include/csf/post.d`
 
 <br />
+<br />
 
 ### Manual Run
+
 You can manually run the `docker.sh` script. It will also allow you to specify arguments such as `--dev` to get more detailed logging as the firewall is set up. This should only be done if you know what you're doing.
 
 ```shell ignore
@@ -892,9 +939,9 @@ You can also find out what version you are running by appending `--version` to e
 ```shell ignore
   ┌────────────────────────────────────────────────────────────────────────────────────────┐
 
-     ConfigServer Firewall - Docker Patch (v14.24.0)
+     ConfigServer Firewall - Installer Script (v14.24.0)
 
-     Sets up your firewall rules to work with Docker and Traefik. 
+     Installs Docker and OpenVPN patches into your existing CSF setup.
      This script requires that you have iptables installed on your system. 
      The required packages will be installed if you do not have them.
 
@@ -932,9 +979,12 @@ sudo /patch/docker.sh --version
 ```
 
 <br />
+<br />
 
 ### Advanced Logs
+
 This script includes debugging prints / logs. To view these, restart `csf.service` by running the following command in terminal:
+
 ```shell ignore
 sudo csf -r
 ```
@@ -942,6 +992,7 @@ sudo csf -r
 <br />
 
 All steps performed by the script will be displayed in terminal:
+
 ```shell ignore
   + POSTROUTING   Adding IPs from primary IP list
                   + 172.17.0.0/16
@@ -968,11 +1019,13 @@ All steps performed by the script will be displayed in terminal:
 <br />
 
 ## Install OpenVPN Patch
+
 This repo includes an OpenVPN patch which automatically sets up ConfigServer Firewall to accept connections from your OpenVPN server; while still restricting other incoming and outgoing connections you may not want going through.
 
 <br />
 
 ### Clone
+
 Within your server, change to whatever directory where you want to download everything (including patch):
 
 ```shell
@@ -982,16 +1035,19 @@ cd $HOME/Documents
 <br />
 
 Clone the repo
+
 ```shell
 git clone https://github.com/Aetherinox/csf-firewall.git
 ```
 
 <br />
+<br />
 
 ### Configure
+
 The `/patch/openvpn.sh` file has a few configs you can adjust. Open it in a text editor and change the values to your preference.
 
-```bash ignore
+```bash
 ETH_ADAPTER=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
 TUN_ADAPTER=$(ip -br l | awk '$1 ~ "^tun[0-9]" { print $1}')
 IP_PUBLIC=$(curl ipinfo.io/ip)
@@ -1021,7 +1077,7 @@ The script tries to automatically detect the values specified above, however, yo
 
 As an example, instead of automatically detecting your server's public IP address or ethernet adapters, you can specify your own by changing the following:
 
-```bash ignore
+```bash
 # old code
 ETH_ADAPTER=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
 TUN_ADAPTER=$(ip -br l | awk '$1 ~ "^tun[0-9]" { print $1}')
@@ -1034,8 +1090,10 @@ IP_PUBLIC="216.55.100.5"
 ```
 
 <br />
+<br />
 
 ### Run Patch
+
 Set the permissions:
 
 ```shell
@@ -1064,8 +1122,10 @@ sudo sh install.sh
 The `openvpn.sh` file will be installed to `/usr/local/include/csf/post.d`
 
 <br />
+<br />
 
 ### Manual Run
+
 You can manually run the `openvpn.sh` script. It will also allow you to specify arguments such as `--dev` to get more detailed logging as the firewall is set up. This should only be done if you know what you're doing.
 
 ```shell ignore
@@ -1076,6 +1136,7 @@ sudo /patch/openvpn.sh
 <br />
 
 You can call arguments by running the file using:
+
 ```shell ignore
 sudo /patch/openvpn.sh --dev
 ```
@@ -1110,6 +1171,7 @@ https://github.com/Aetherinox/csf-firewall
 Ubuntu | 24.04
 ```
 
+<br />
 <br />
 
 ### Advanced Logs
@@ -1239,13 +1301,13 @@ At the bottom of the same file, we must now add a new **loadBalancer** rule unde
 
 ```yml
 http:
-  routers:
-    [CODE FROM ABOVE]
-  services:
-    csf:
-      loadBalancer:
-        servers:
-          - url: "https://172.17.0.1:8546/"
+    routers:
+        [CODE FROM ABOVE]
+    services:
+        csf:
+            loadBalancer:
+                servers:
+                    - url: "https://172.17.0.1:8546/"
 ```
 
 <br />
@@ -1271,6 +1333,7 @@ Once you configure these changes in Traefik, you can restart your Traefik docker
 docker compose down && docker compose up -d
 ```
 
+<br />
 <br />
 
 ### Adding Authentik Provider
@@ -1374,8 +1437,10 @@ csf|1000000|0|https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blo
 ```
 
 <br />
+<br />
 
 ### Main Lists
+
 These are the primary lists that most people will be interested in. They contain a large list of IP addresses which have been reported recently for abusive behavior. These statistics are gathered from numerous websites such as [AbuseIPDB](https://www.abuseipdb.com/) and [IPThreat](https://ipthreat.net/). IPs on this list have a 100% confidene level, which means you should get no false-positives from any of the IPs in these lists. IP addresses in these lists have been flagged for engaging in the following:
 
 - SSH Bruteforcing
@@ -1399,6 +1464,7 @@ For the majority of people, using the blocklists `master.ipset` and `highrisk.ip
 <br />
 
 ### Privacy Lists
+
 These blocklists give you more control over what 3rd party services can access your server, and allows you to remove bad actors or services hosting such services.
 
 <br />
@@ -1431,6 +1497,7 @@ These blocklists give you more control over what 3rd party services can access y
 <br />
 
 ### Spam Lists
+
 These blocklists allow you to remove the possibility of spam sources accessing your server.
 
 <br />
@@ -1457,6 +1524,7 @@ These blocklists allow you to determine what geographical locations can access y
 <br />
 
 ### Transmission (BitTorrent Client)
+
 This section includes blocklists which you can import into the [bittorrent client Transmission](https://transmissionbt.com/).
 
 <br />
@@ -1481,6 +1549,7 @@ This section includes blocklists which you can import into the [bittorrent clien
 <br />
 
 ## Download ConfigServer Firewall
+
 The latest version of csf can be downloaded from:
 - https://download.configserver.com/csf.tgz
 
@@ -1508,6 +1577,7 @@ If you were to uninstall ConfigServer Firewall from your server; you would still
 
 This section gives you the commands that ConfigServer Firewall uses to manage your firewall, and gives you the iptables alternative command if you do not wish to use CSF.
 
+<br />
 <br />
 
 #### Default Policy
@@ -1540,6 +1610,7 @@ As a general rule:
   - Use `REJECT` when you want the other end to know the port is unreachable.
 
 <br />
+<br />
 
 #### Clear Iptables / Open Firewall
 
@@ -1558,6 +1629,7 @@ sudo iptables -P OUTPUT ACCEPT
 ```
 
 <br />
+<br />
 
 #### List Rules
 
@@ -1567,6 +1639,7 @@ To list all of your iptable rules, and the rules that CSF has added to your fire
 sudo iptables --list --line-numbers -n
 ```
 
+<br />
 <br />
 
 #### List Chains
@@ -1601,8 +1674,10 @@ A list of the available CHAINS are provided below:
 >   - `DOCKER-INGRESS` Rules related to Swarm networking.
 
 <br />
+<br />
 
 #### Unblock Port
+
 If you make use of the ConfigServer Firewall WebUI; one of the features available is the ability to whitelist / allow access to certain ports. If you do not wish to use the WebUI, you can unblock these ports in your terminal using `iptables`.
 
 To access unblocking ports in CSF, open your WebUI:
@@ -1658,6 +1733,7 @@ num  target     prot opt source               destination
 1    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:43 ctstate NEW
 ```
 
+<br />
 <br />
 
 #### Allow OpenVPN
@@ -1719,6 +1795,7 @@ Your OpenVPN server should now be able to allow connections between CSF / Iptabl
 <br />
 
 ## References for More Help
+
 If you need additional help apart from this guide to configure CSF; use the following pages for more help:
 - Chapter 1: [How to Install and Configure CSF Firewall on Linux](https://tecadmin.net/install-csf-firewall-on-linux/)
 - Chapter 2: [How to Enable CSF Firewall Web UI](https://tecadmin.net/how-to-enable-csf-firewall-web-ui/)
@@ -1730,6 +1807,7 @@ If you need additional help apart from this guide to configure CSF; use the foll
 <br />
 
 ## Contributors ✨
+
 We are always looking for contributors. If you feel that you can provide something useful to Gistr, then we'd love to review your suggestion. Before submitting your contribution, please review the following resources:
 
 - [Pull Request Procedure](.github/PULL_REQUEST_TEMPLATE.md)
