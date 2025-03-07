@@ -890,9 +890,20 @@ You can also find out what version you are running by appending `--version` to e
 <br />
 
 ```shell ignore
-ConfigServer Firewall Configuration - v14.22.0
-https://github.com/Aetherinox/csf-firewall
-Ubuntu | 24.04
+  ┌────────────────────────────────────────────────────────────────────────────────────────┐
+
+     ConfigServer Firewall - Docker Patch (v14.24.0)
+
+     Sets up your firewall rules to work with Docker and Traefik. 
+     This script requires that you have iptables installed on your system. 
+     The required packages will be installed if you do not have them.
+
+     @repo        https://github.com/Aetherinox/csf-firewall
+     @system      Ubuntu | 24.04
+     @notice      Before running this script, open /path/to/dock.sh
+                  and edit the settings at the top of the file.
+
+  └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 <br />
@@ -904,9 +915,20 @@ sudo /patch/docker.sh --version
 <br />
 
 ```shell ignore
-ConfigServer Firewall Docker Patch - v14.22.0
-https://github.com/Aetherinox/csf-firewall
-Ubuntu | 24.04
+  ┌────────────────────────────────────────────────────────────────────────────────────────┐
+
+     ConfigServer Firewall - Docker Patch (v14.24.0)
+
+     Sets up your firewall rules to work with Docker and Traefik. 
+     This script requires that you have iptables installed on your system. 
+     The required packages will be installed if you do not have them.
+
+     @repo        https://github.com/Aetherinox/csf-firewall
+     @system      Ubuntu | 24.04
+     @notice      Before running this script, open /path/to/dock.sh
+                  and edit the settings at the top of the file.
+
+  └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 <br />

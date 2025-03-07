@@ -385,9 +385,9 @@ cmd_version()
     printf "     ${BLUE2}${app_title} (v$(get_version))${END}\n\n" 1>&2
     printf "     ${GREY2}${app_about}${END}\n" 1>&2
     echo -e
-    printf "     ${GREY2}@repo        ${BLUE2}${repo_url}}\n" 1>&2
+    printf "     ${GREY2}@repo        ${BLUE2}${repo_url}\n" 1>&2
     printf "     ${GREY2}@system      ${BLUE2}${sys_os} | ${sys_os_ver}\n" 1>&2
-    printf "     ${GREY2}@notice      ${YELLOW}Before running this script, open ${FUCHSIA1}${app_dir_this_a}\n" 1>&2
+    printf "     ${GREY2}@notice      ${YELLOW}Before running this script, open ${FUCHSIA1}${app_dir_this_a}/${app_file_this}\n" 1>&2
     printf "     ${GREY2}             ${YELLOW}and edit the settings at the top of the file.\n" 1>&2
     echo
     echo "${GREY1}  └────────────────────────────────────────────────────────────────────────────────────────┘${END}"
