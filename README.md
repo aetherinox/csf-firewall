@@ -17,7 +17,7 @@ ConfigServer Firewall (CSF) is a popular and powerful firewall solution for Linu
 
 <br />
 
-We also host a group ipsets / blocklists which are updated every few hours. These sets contain various lists of IP addresses which block connections known for SSH bruteforce attempts, port knocking / scanning, research, data collection, etc. These ipsets are compatible with ConfigServer Firewall, and also any other application which supports one IP per line (pi-hole, Windows hosts, etc).
+This repository also contains a list of ipsets / blocklists which are updated every few hours. These sets contain various lists of IP addresses which block connections known for [SSH brute-force](https://www.cmu.edu/iso/aware/be-aware/brute-force_ssh_attack.html) attempts, [port knocking](https://en.wikipedia.org/wiki/Port_knocking) / [scanning](https://www.paloaltonetworks.com/cyberpedia/what-is-a-port-scan), research, [IoT](https://en.wikipedia.org/wiki/Internet_of_things), data collection, etc. These ipsets are compatible with ConfigServer Firewall, and also any other application which supports one IP per line (pi-hole, Windows hosts, etc).
 
 <br />
 
