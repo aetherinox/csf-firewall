@@ -85,9 +85,12 @@ Ipsets include lists from [AbuseIPDB](https://abuseipdb.com/) and [IPThreat](htt
 - [Configuring CSF](#configuring-csf)
 - [Enabling CSF Firewall](#enabling-csf-firewall)
 - [Managing the Firewall](#managing-the-firewall)
+  - [Enable CSF \& LFD](#enable-csf--lfd)
+  - [Disable CSF \& LFD](#disable-csf--lfd)
   - [Start Firewall](#start-firewall)
   - [Stop Firewall](#stop-firewall)
-  - [Restart Firewall](#restart-firewall)
+  - [Restart CSF](#restart-csf)
+  - [Restart CSF \& LFD](#restart-csf--lfd)
   - [List Firewall Rules](#list-firewall-rules)
   - [Add IP to Allow List](#add-ip-to-allow-list)
   - [Remove IP to Allow List](#remove-ip-to-allow-list)
@@ -504,6 +507,22 @@ CSF provides several commands to manage the firewall, such as:
 
 <br />
 
+### Enable CSF & LFD
+
+```shell
+sudo csf -e
+```
+
+<br />
+
+### Disable CSF & LFD
+
+```shell
+sudo csf -x
+```
+
+<br />
+
 ### Start Firewall
 
 ```shell
@@ -520,7 +539,7 @@ sudo csf -f
 
 <br />
 
-### Restart Firewall
+### Restart CSF
 
 ```shell
 sudo csf -r
@@ -528,10 +547,22 @@ sudo csf -r
 
 <br />
 
+### Restart CSF & LFD
+
+```shell
+sudo csf -ra
+```
+
+<br />
+
 ### List Firewall Rules
 
 ```shell
+# show IPv4 rules
 sudo csf -l
+
+# Show IPv6 rules
+sudo csf -l6
 ```
 
 <br />
