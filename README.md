@@ -1450,6 +1450,25 @@ The format for the above lines are `NAME|INTERVAL|MAX_IPS|URL`:
 
 <br />
 
+> [!NOTE]
+> If you have not modified the settings of ConfigServer Firewall; the `MAX_IPS` value is limited by the setting `LF_IPSET_MAXELEM` which has a maximum value of `65536` IPs; even if you set the value in your lists above to 0, or anything above 65536.
+>
+> To allow for higher numbers of blocked IPs in an ipset; you must edit your CSF config file located in `/etc/csf/csf.conf` and set the setting `LF_IPSET_MAXELEM` to something higher than `65536`:
+> ```ini
+> # old value
+> # LF_IPSET_MAXELEM = "65536"
+> LF_IPSET_MAXELEM = "4000000"
+> ```
+>
+> This setting can also be modified through the ConfigServer Firewall Admin WebUI if you have it installed.
+>
+> After changing the setting above, restart CSF:
+> ```shell
+> sudo csf -ra
+> ```
+
+<br />
+
 Once you have added the line(s) above; you will need to give ConfigServer Firewall and LFD a restart.
 
 ```shell
