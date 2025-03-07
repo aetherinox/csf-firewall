@@ -248,7 +248,7 @@ This guide will help you with the following:
 - Exploit checks
 - Account modification tracking – sends alerts if an account entry is modified, e.g. if the password is changed or the login shell
 - Shared syslog aware
-- Messenger Service – Allows you to redirect connection requests from blocked IP addresses to preconfigured text and html pages to inform the visitor that they have been blocked in the firewall. This can be particularly useful for those with a large user base and help process support requests more efficiently
+- Messenger Service – Allows you to redirect connection requests from blocked IP addresses to pre-configured text and html pages to inform the visitor that they have been blocked in the firewall. This can be particularly useful for those with a large user base and help process support requests more efficiently
 - Country Code blocking – Allows you to deny or allow access by ISO Country Code
 - Port Flooding Detection – Per IP, per Port connection flooding detection and mitigation to help block DOS attacks
 - WHM root access notification (cPanel servers only)
@@ -350,7 +350,7 @@ git clone https://github.com/aetherinox/csf-firewall.git .
 Set the permissions for the `install.sh` file:
 
 ```shell
-sudo chmod +x /csf-firewall/patch/install.sh
+sudo chmod +x ./patch/install.sh
 ```
 
 <br />
@@ -358,7 +358,7 @@ sudo chmod +x /csf-firewall/patch/install.sh
 Run the script:
 
 ```shell
-sudo ./csf-firewall/patch/install.sh
+sudo ./patch/install.sh
 ```
 
 <br />
@@ -1468,6 +1468,7 @@ You should be able to access `csf.domain.com` and be prompted now to authenticat
 <br />
 
 ## IP Sets / Blocklist
+
 This repository contains a set of ipsets which are automatically updated every `6 hours`. You may add these sets to your ConfigServer Firewall `/etc/csf/csf.blocklists` with the following new line:
 
 ```
@@ -1477,24 +1478,27 @@ CSF_HIGHRISK|86400|0|https://raw.githubusercontent.com/Aetherinox/csf-firewall/m
 
 <br />
 
-The format for the above lines are `NAME|INTERVAL|MAX_IPS|URL`:
+The format for the above lines are `NAME|INTERVAL|MAX_IPS|URL`
 
 - **NAME**: List name with all uppercase alphabetic characters with no spaces and a maximum of 25 characters - this will be used as the iptables chain name
 - **INTERVAL**: Refresh interval to download the list, must be a minimum of 3600 seconds (an hour).
   - `86400` (one day / 24 hours) should be more than enough
-- **MAX_IPS**: This is the maximum number of IP addresses to use from the list, a value of 0 means all IPs. 
+- **MAX_IPS**: This is the maximum number of IP addresses to use from the list, a value of 0 means all IPs _(see note below)_. 
   - If you add an ipset with 50,000 IPs, and you set this value to 20,000; then you will only block the first 20,000.
 - **URL**: The URL to download the ipset from
 
 <br />
 
 > [!NOTE]
-> If you have not modified the settings of ConfigServer Firewall; the `MAX_IPS` value is limited by the setting `LF_IPSET_MAXELEM` which has a maximum value of `65536` IPs; even if you set the value in your lists above to 0, or anything above 65536.
+> If you have not modified the settings of ConfigServer Firewall; the `MAX_IPS` value is limited by the setting `LF_IPSET_MAXELEM` which has a maximum value of loading `65536` IPs; even if you set the value in your lists above to 0, or anything above 65536.
 >
-> To allow for higher numbers of blocked IPs in an ipset; you must edit your CSF config file located in `/etc/csf/csf.conf` and set the setting `LF_IPSET_MAXELEM` to something higher than `65536`:
+> To allow for higher numbers of blocked IPs in an ipset to be loaded; you must edit your CSF config file in `/etc/csf/csf.conf` and change the setting `LF_IPSET_MAXELEM` to something higher than `65536`
+> 
 > ```ini
 > # old value
 > # LF_IPSET_MAXELEM = "65536"
+> 
+> # new value
 > LF_IPSET_MAXELEM = "4000000"
 > ```
 >
@@ -1518,7 +1522,7 @@ sudo ipset --list -n
 
 <br />
 
-The above command will list all existing ipsets running on your firewall. As you can see in the list below; we have `bl_CSF_HIGHRISK`, `bl_6_CSF_HIGHRISK`, `bl_CSF_MASTER`, and `bl_6_CSF_MASTER`. Which are the lists we loaded above.
+The above command will list all existing ipsets running on your firewall:
 
 ```console
 chain_DENY
@@ -1530,6 +1534,15 @@ bl_6_CSF_HIGHRISK
 bl_CSF_MASTER
 bl_6_CSF_MASTER
 ```
+
+<br />
+
+As you can see in the list above; we have the following ipsets loaded from this repository:
+
+- `bl_CSF_HIGHRISK`
+- `bl_6_CSF_HIGHRISK`
+- `bl_CSF_MASTER`
+- `bl_6_CSF_MASTER`
 
 <br />
 
