@@ -339,7 +339,7 @@ You can install ConfigServer Firewall and all prerequisites one of two ways:
 
 If you would like to install ConfigServer Firewall using this repo's patcher; download the patch:
 ```shell
-git clone https://github.com/Aetherinox/csf-firewall.git
+git clone https://github.com/Aetherinox/csf-firewall.git .
 ```
 
 <br />
@@ -1433,7 +1433,70 @@ You should be able to access `csf.domain.com` and be prompted now to authenticat
 This repository contains a set of ipsets which are automatically updated every `6 hours`. You may add these sets to your ConfigServer Firewall `/etc/csf/csf.blocklists` with the following new line:
 
 ```
-csf|1000000|0|https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/master.ipset
+CSF_MASTER|86400|0|https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/master.ipset
+CSF_HIGHRISK|86400|0|https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/highrisk.ipset
+```
+
+<br />
+
+The format for the above lines are `NAME|INTERVAL|MAX_IPS|URL`:
+
+- **NAME**: List name with all uppercase alphabetic characters with no spaces and a maximum of 25 characters - this will be used as the iptables chain name
+- **INTERVAL**: Refresh interval to download the list, must be a minimum of 3600 seconds (an hour).
+  - `86400` (one day / 24 hours) should be more than enough
+- **MAX_IPS**: This is the maximum number of IP addresses to use from the list, a value of 0 means all IPs. 
+  - If you add an ipset with 50,000 IPs, and you set this value to 20,000; then you will only block the first 20,000.
+- **URL**: The URL to download the ipset from
+
+<br />
+
+Once you have added the line(s) above; you will need to give ConfigServer Firewall and LFD a restart.
+
+```shell
+sudo csf -ra
+```
+
+<br />
+
+You can confirm that the ipset is installed by running the command:
+
+```shell
+sudo ipset --list -n
+```
+
+<br />
+
+The above command will list all existing ipsets running on your firewall. As you can see in the list below; we have `bl_CSF_HIGHRISK`, `bl_6_CSF_HIGHRISK`, `bl_CSF_MASTER`, and `bl_6_CSF_MASTER`. Which are the lists we loaded above.
+
+```console
+chain_DENY
+chain_6_DENY
+chain_ALLOW
+chain_6_ALLOW
+bl_CSF_HIGHRISK
+bl_6_CSF_HIGHRISK
+bl_CSF_MASTER
+bl_6_CSF_MASTER
+```
+
+<br />
+
+To view all of the IPs in a specified ipset / list, run:
+
+```shell
+$ sudo ipset --list bl_CSF_HIGHRISK
+
+Name: bl_CSF_HIGHRISK
+Type: hash:net
+Revision: 7
+Header: family inet hashsize 1024 maxelem 65536 bucketsize 12 initval 0x4843ac4c
+Size in memory: 23640
+References: 1
+Number of entries: 630
+Members:
+XX.XX.XX.XXX
+XX.XX.XX.XXX
+[ ... ]
 ```
 
 <br />
