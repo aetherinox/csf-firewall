@@ -1328,8 +1328,6 @@ if [ `echo ${containers} | wc -c` -gt "1" ]; then
 
                 cont_bridge_name=`docker network inspect -f '{{"'br-$cont_bridge'" | or (index .Options "com.docker.network.bridge.name")}}' $cont_bridge`
 
-                # here somewhere
-
                 # #
                 #   should return:
                 #       172.18.0.7 (or any other IP)
