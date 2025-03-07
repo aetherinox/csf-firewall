@@ -1461,11 +1461,6 @@ The format for the above lines are `NAME|INTERVAL|MAX_IPS|URL`:
 > ```
 >
 > This setting can also be modified through the ConfigServer Firewall Admin WebUI if you have it installed.
->
-> After changing the setting above, restart CSF:
-> ```shell
-> sudo csf -ra
-> ```
 
 <br />
 
@@ -1508,8 +1503,8 @@ $ sudo ipset --list bl_CSF_HIGHRISK
 Name: bl_CSF_HIGHRISK
 Type: hash:net
 Revision: 7
-Header: family inet hashsize 1024 maxelem 65536 bucketsize 12 initval 0x4843ac4c
-Size in memory: 23640
+Header: family inet hashsize 1024 maxelem 4000000 bucketsize 12 initval 0x5f263e28
+Size in memory: 24024
 References: 1
 Number of entries: 630
 Members:
@@ -1517,6 +1512,19 @@ XX.XX.XX.XXX
 XX.XX.XX.XXX
 [ ... ]
 ```
+
+<br />
+
+If you modified the ConfigServer Firewall setting `LF_IPSET_MAXELEM` _(explained in the note above)_, you will see the new max limit value listed next to `maxelem`.
+
+```shell
+Header: family inet hashsize 1024 maxelem 4000000 
+```
+
+> [!NOTE]
+> If you decide to use the blocklist `master.ipset`, you must ensure you increase the value of the setting `LF_IPSET_MAXELEM` in the file `/etc/csf/csf.conf` to at least `400000`.
+> 
+> On average, the `master.ipset` list normally contains `392,000` blocked IP addresses.
 
 <br />
 <br />
