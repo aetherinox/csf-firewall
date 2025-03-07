@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_saint_kitts_nevis_ipset
 #   @uuid           b88b4106-17a1-3f23-9478-bd9b63dd24e9
-#   @updated        Thu Mar  6 00:21:13 UTC 2025
+#   @updated        Fri Mar  7 00:20:29 UTC 2025
 #   @entries        44371 ips
 #                   175 subnets
 #                   175 lines
