@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_oman_ipset
 #   @uuid           e0eddb8e-3c58-355a-9370-75290a584bc8
-#   @updated        Sat Mar  8 00:17:17 UTC 2025
+#   @updated        Sun Mar  9 00:19:56 UTC 2025
 #   @entries        1085287 ips
 #                   2084 subnets
 #                   2084 lines
