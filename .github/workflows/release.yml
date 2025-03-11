@@ -480,8 +480,8 @@ jobs:
                   > [!WARNING]
                   > This is a **release candidate**, which means it is not a stable release and could contain bugs. You should download it at your own risk.
 
-                  ${{ steps.task_release_changelog_categorized.outputs.changelog }}
-                  ${{ steps.task_release_changelog_uncategorized.outputs.changelog }}
+                  ${{ env.CHANGELOG_CATEGORIZED }}
+                  ${{ env.CHANGELOG_UNCATEGORIZED }}
 
             # ---------------------------------------------------------------------------------------
             #   Print Status
@@ -493,8 +493,8 @@ jobs:
                 echo "Printing Variables"
                 echo
                 echo "---- CHANGELOG ---------------------------------------------------------------"
-                echo "${{ steps.task_release_changelog_categorized.outputs.changelog }}"
-                echo "${{ steps.task_release_changelog_uncategorized.outputs.changelog }}"
+                echo "${{ env.CHANGELOG_CATEGORIZED }}"
+                echo "${{ env.CHANGELOG_UNCATEGORIZED }}"
                 echo "---- CHANGELOG ---------------------------------------------------------------"
                 echo ""
                 echo ""
