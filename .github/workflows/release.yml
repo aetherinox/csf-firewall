@@ -378,21 +378,31 @@ jobs:
             #   Fetch Changelog
             # ---------------------------------------------------------------------------------------
 
+            - name: "Echo Changelog - Categorized"
+              env:
+                  CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+              run: echo "CHANGELOG_CATEGORIZED"
+
+            - name: "Echo Changelog - Uncategorized"
+              env:
+                  CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+              run: echo "CHANGELOG_UNCATEGORIZED"
+
             - name: "📝 Changelog › Print (Categorized)"
               id: task_release_changelog_print_categorized
               if: |
-                startsWith( inputs.SHOW_UNCATEGORIZED, false ) ||
-                startsWith( env.SHOW_UNCATEGORIZED, false )
+                  startsWith( inputs.SHOW_UNCATEGORIZED, false ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, false )
               run: |
-                echo "${{ steps.task_release_changelog_categorized.outputs.changelog }}"
+                  echo "${{ env.CHANGELOG_CATEGORIZED }}"
 
             - name: "📝 Changelog › Print (Uncategorized)"
               id: task_release_changelog_print_uncategorized
               if: |
-                startsWith( inputs.SHOW_UNCATEGORIZED, true ) ||
-                startsWith( env.SHOW_UNCATEGORIZED, true )
+                  startsWith( inputs.SHOW_UNCATEGORIZED, true ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, true )
               run: |
-                echo "${{ steps.task_release_changelog_uncategorized.outputs.changelog }}"
+                  echo "${{ env.CHANGELOG_UNCATEGORIZED }}"
 
             # ---------------------------------------------------------------------------------------
             #   artifacts > download
