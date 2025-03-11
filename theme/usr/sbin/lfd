@@ -16,7 +16,7 @@ use POSIX qw(:sys_wait_h sysconf strftime setsid);
 use Socket;
 use ConfigServer::Config;
 use ConfigServer::Slurp qw(slurp);
-use ConfigServer::CheckIP qw(checkip);
+use ConfigServer::CheckIP qw(checkip cccheckip);
 use ConfigServer::URLGet;
 use ConfigServer::GetIPs qw(getips);
 use ConfigServer::Service;
@@ -6295,7 +6295,8 @@ sub countrycode6 {
 			if ($cc eq "") {next}
 			undef @ipset;
 			$cc = lc $cc;
-			if ($config{CC_ALLOW_FILTER} and $redo_allow_filter) {&iptablescmd(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} -A CC_ALLOWF -m set --match-set cc_6_$cc src -j RETURN")}
+			if ($config{CC_ALLOW_FILTER} and $redo_allow_filter) {
+				&iptablescmd(__LINE__,"$config{IP6TABLES} $config{IPTABLESWAIT} -A CC_ALLOWF -m set --match-set cc_6_$cc src -j RETURN")}
 			if (-e "/var/lib/csf/zone/$cc.zone6") {
 				logfile("CC: Repopulating ipset cc_6_$cc with IP addresses from [".uc($cc)."]");
 				open (my $IN, "<", "/var/lib/csf/zone/$cc.zone6");
