@@ -146,7 +146,7 @@ check_sudo()
 {
 	if [ "$EUID" -ne 0 ]; then
         echo -e 
-        echo -e "  ${ORANGE}WARNING      ${WHITE}This script requires ${YELLOW2}sudo$${END}"
+        echo -e "  ${ORANGE}WARNING      ${END}This script requires ${YELLOW2}sudo${END}"
         echo -e "               Without this elevated permission; iptables will not add the proper rules."
         echo -e "               before this script can be ran.${END}"
         echo -e
@@ -208,7 +208,7 @@ csf_path=$(command -v csf)
 
 if [ -z "$csf_path" ]; then
     echo -e 
-    echo -e "  ${ORANGE}WARNING      ${WHITE}This Script Requires ConfigServer Firewall${END}"
+    echo -e "  ${ORANGE}WARNING      ${END}This Script Requires ConfigServer Firewall${END}"
     echo -e "               You must install the application ${RED}ConfigServer Firewall${END} on your server"
     echo -e "               before this script can be ran.${END}"
     echo -e
@@ -310,7 +310,7 @@ path_iptables6=$(which ip6tables)
 
 if [ -z "${path_iptables4}" ]; then
     echo -e 
-    echo -e "  ${ORANGE}WARNING      ${WHITE}This Script Requires Iptables${END}"
+    echo -e "  ${ORANGE}WARNING      ${END}This Script Requires Iptables${END}"
     echo -e "               This package is required before you can utilize this script with ConfigServer Firewall."
     echo -e
     echo -e "               Try installing the package with:${END}"
@@ -434,7 +434,7 @@ cmd_csf_restart()
         sudo systemctl restart lfd.service
     else
         echo -e 
-        echo -e "  ${ORANGE}WARNING      ${WHITE}Could not find service ${YELLOW2}lfd.service${END}"
+        echo -e "  ${ORANGE}WARNING      ${END}Could not find service ${YELLOW2}lfd.service${END}"
         echo -e "               It is either not installed or the service is disabled. Enable the service first."
         echo -e
         echo -e "               Once CSF is installed, you can enable the service by running:${END}"
@@ -449,7 +449,7 @@ cmd_csf_restart()
         sudo systemctl restart csf.service
     else
         echo -e 
-        echo -e "  ${ORANGE}WARNING      ${WHITE}Could not find service ${YELLOW2}csf.service${END}"
+        echo -e "  ${ORANGE}WARNING      ${END}Could not find service ${YELLOW2}csf.service${END}"
         echo -e "               It is either not installed or the service is disabled. Enable the service first."
         echo -e
         echo -e "               Once CSF is installed, you can enable the service by running:${END}"
