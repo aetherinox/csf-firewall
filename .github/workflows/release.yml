@@ -5,10 +5,10 @@ on:
   workflow_dispatch:
     inputs:
 
-      # ---------------------------------------------------------------------------------------
+      # #
       #   Name of the plugin to use when creating the release zip filename
       #     e.g: csf-firewall-v1.0.0.zip
-      # ---------------------------------------------------------------------------------------
+      # #
 
       PLUGIN_NAME:
         description:  "📦 Name of Plugin"
@@ -16,10 +16,10 @@ on:
         default:      'csf-firewall'
         type:         string
 
-      # ---------------------------------------------------------------------------------------
+      # #
       #   Version to release
       #     e.g: v1.0.0
-      # ---------------------------------------------------------------------------------------
+      # #
 
       PLUGIN_VERSION:
         description:  "📦 Version"
@@ -27,10 +27,10 @@ on:
         default:      '1.x.x'
         type:         string
 
-      # ---------------------------------------------------------------------------------------
+      # #
       #   ENABLE:   the changelog generated in releases tab will only display single commits.
       #   DISABLE:  the changelog shows pull requests completed based on their labels
-      # ---------------------------------------------------------------------------------------
+      # #
 
       CHANGELOG_MODE_COMMIT:
         description:  "📑 Use Commits Instead of PRs"
@@ -38,12 +38,12 @@ on:
         default:      true
         type:         boolean
 
-      # ---------------------------------------------------------------------------------------
+      # #
       #   ENABLE:   Will show all types of commits, including uncategorized
       #   DISABLE:  WIll only show actions that have been categorized using the format
       #                type(scope): description
       #                type: description
-      # ---------------------------------------------------------------------------------------
+      # #
 
       SHOW_UNCATEGORIZED:
         description:  "🗂️ Show Uncategorized Commits"
@@ -51,10 +51,10 @@ on:
         default:      false
         type:         boolean
 
-      # ---------------------------------------------------------------------------------------
+      # #
       #   ENABLE:   released version will be marked as pre-release
       #   DISABLE:  release version will be marked as stable / normal release
-      # ---------------------------------------------------------------------------------------
+      # #
 
       PRERELEASE:
         description:  "🧪 Build RC (Pre-release)"
@@ -62,11 +62,11 @@ on:
         default:      false
         type:         boolean
 
-      # ---------------------------------------------------------------------------------------
+      # #
       #   Release Candidate version number
       #   this will be added to the end of your released app in the releases page.
       #     e.g: csf-firewall-v1.0.0-rc.1
-      # ---------------------------------------------------------------------------------------
+      # #
 
       VERSION_RC:
         description:  "🧪 RC (Pre-release) Ver (csf-firewall-rc.v1)"
@@ -74,9 +74,9 @@ on:
         type:         string
         default:      "1"
 
-# ---------------------------------------------------------------------------------------
+# #
 #   environment variables
-# ---------------------------------------------------------------------------------------
+# #
 
 env:
     PLUGIN_NAME:            csf-firewall
@@ -86,15 +86,15 @@ env:
     BOT_NAME_3:             EuropaServ
     BOT_NAME_DEPENDABOT:    dependabot[bot]
 
-# ---------------------------------------------------------------------------------------
+# #
 #   jobs
-# ---------------------------------------------------------------------------------------
+# #
 
 jobs:
 
-    # ---------------------------------------------------------------------------------------
+    # #
     #   JOB > INITIALIZE
-    # ---------------------------------------------------------------------------------------
+    # #
 
     job-upload:
         name: >-
@@ -109,18 +109,18 @@ jobs:
           version_tag_previous: ${{ steps.task_build_getver.outputs.VERSION_TAG_PREV }}
         steps:
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Job > Start
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "✅ Start"
               id: task_build_start
               run: |
                 echo "Starting build"
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Job > Checkout
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "☑️ Checkout"
               id: task_build_checkout
@@ -128,11 +128,11 @@ jobs:
               with:
                 fetch-depth: 0
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Job > Get Previous Tag
             #
             #   this is for no particular reason except to just report the last version released
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "🏷️ Get Previous tag"
               id: task_tag_previous
@@ -140,11 +140,11 @@ jobs:
               with:
                 fallback: 1.0.0
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Job > Print Current Version
             #
             #   this is for no particular reason except to just report the last version released
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "🔨 Debug: Previous Github Tag"
               id: task_build_getver
@@ -152,14 +152,14 @@ jobs:
                 echo -e ${{ steps.task_tag_previous.outputs.tag }}
                 echo "VERSION_TAG_PREV=${{ steps.task_tag_previous.outputs.tag }}" >> $GITHUB_OUTPUT
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Job > Download latest version of ConfigServer Firewall
             #
             #   download csf .tgz from official website
             #   read /csf/version.txt inside the .tgz and grab version, assign to env var
             #   rename original .tgz to new name which includes version number:
             #     - csf-firewall.tgz => csf-firewall-v14.20.tgz
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "⬇️ Download: ConfigServer Firewall"
               id: task_build_download_csf
@@ -204,9 +204,9 @@ jobs:
                 path: release/${{ inputs.PLUGIN_NAME }}-v${{ steps.task_build_download_csf.outputs.VERSION_CSF }}.tgz
                 retention-days: 30
 
-    # ---------------------------------------------------------------------------------------
+    # #
     #   Job > Release
-    # ---------------------------------------------------------------------------------------
+    # #
 
     job-release:
         name: >-
@@ -222,9 +222,9 @@ jobs:
           VERSION_TAG_PREV: ${{ needs.job-upload.outputs.version_tag_previous }}
         steps:
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Dist Releases > Checkout
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "☑️ Checkout"
               uses: actions/checkout@v4
@@ -232,9 +232,9 @@ jobs:
               with:
                 fetch-depth: 0
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Debug : View passed values
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "⚙️ Debug › Passed Values"
               id: task_release_debug_print_vals_1
@@ -244,9 +244,9 @@ jobs:
                 echo "CSF VERSION ...................... ${{ env.VERSION_CSF }}"
                 echo "RELEASE BUILD .................... ${{ env.VERSION_BUILD }}"
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Build Project & Create Zip
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "🔨 Build › Stable ( ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip )"
               id: task_release_build_st
@@ -273,13 +273,13 @@ jobs:
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   [ Tag ]: Pre Create
             #
             #   in order to use the changelog github action, you must pre-create the tag otherwise
             #   the changelog action will have no idea what tag you are going to be creating and
             #   the list of commits will not be for the correct release.
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "🔖 Tag › Pre Create ${{ inputs.PLUGIN_VERSION }}"
               uses: rickstaa/action-create-tag@v1
@@ -291,18 +291,18 @@ jobs:
                 gpg_private_key: ${{ secrets.ADMINSERV_GPG_KEY_ASC }}
                 gpg_passphrase: ${{ secrets.ADMINSERV_GPG_PASSPHRASE }}
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   [ Tag ]: Confirm
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "🔖 Tag › Confirm ${{ inputs.PLUGIN_VERSION }}"
               run: |
                 echo "Tag already present: ${{ env.TAG_EXISTS }}"
                 echo "Tag already present: ${{ steps.task_release_tag.outputs.tag_exists }}"
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Contributor Images
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "🥸 Contributors › Generate"
               id: task_release_contribs_generate
@@ -312,7 +312,7 @@ jobs:
                 output: CONTRIBUTORS.svg
                 avatarSize: 42
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Generate Changelog
             #
             #   generates a changelog from the github api. requires a PREVIOUS_TAG in order to figure
@@ -320,7 +320,7 @@ jobs:
             #
             #   outputs:
             #     ${{ steps.changelog.outputs.changelog }}
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "📝 Changelog › Pre Setup (Categorized Commits)"
               id: task_release_changelog_commits_tags_print
@@ -348,11 +348,11 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   shows only categorized commits using the commit standards
             #                type(scope): description
             #                type: description
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "📝 Changelog › Build (Uncategorized)"
               id: task_release_changelog_uncategorized
@@ -374,19 +374,29 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
 
-            # ---------------------------------------------------------------------------------------
-            #   Fetch Changelog
-            # ---------------------------------------------------------------------------------------
+            # #
+            #   Changelog > Convert step into ENV
+            #   
+            #   This is a requirement in order for the action mikepenz/release-changelog-builder-action@v5 to work properly.
+            #   If you use special characters like quotes and tildes in your push comments, bash will have no way of knowing
+            #   if it's part of the changelog, or code itself.
+            #   
+            #   By converting the step into an env var, we quote the text, and it fixes the issue.
+            # #
 
-            - name: "Echo Changelog - Categorized"
+            - name: "🙊 Changelog › Step to Env › Categorized"
               env:
                   CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
               run: echo "CHANGELOG_CATEGORIZED"
 
-            - name: "Echo Changelog - Uncategorized"
+            - name: "🙊 Changelog › Step to Env › Uncategorized"
               env:
                   CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
               run: echo "CHANGELOG_UNCATEGORIZED"
+
+            # #
+            #   Fetch Changelog
+            # #
 
             - name: "📝 Changelog › Print (Categorized)"
               id: task_release_changelog_print_categorized
@@ -404,9 +414,9 @@ jobs:
               run: |
                   echo "${{ env.CHANGELOG_UNCATEGORIZED }}"
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   artifacts > download
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "⚙️ Debug › Clean Dist Folder"
               run: |
@@ -415,22 +425,22 @@ jobs:
             - name: "📁 Download › Saved Artifacts"
               uses: actions/download-artifact@v4
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Clean dist folder since we're getting the files from artifacts
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "⚙️ Debug › Clean Dist Folder"
               run: |
                 tree
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   [ Release ]: Post Release
             #
             #   outputs:
             #     [RELEASE ID]:
             #       ${{ steps.task_release_bundle_rc.outputs.id
             #       ${{ steps.task_release_bundle_st.outputs.id
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "🏳️ Post › Stable"
               id: task_release_bundle_st
@@ -483,9 +493,9 @@ jobs:
                   ${{ env.CHANGELOG_CATEGORIZED }}
                   ${{ env.CHANGELOG_UNCATEGORIZED }}
 
-            # ---------------------------------------------------------------------------------------
+            # #
             #   Print Status
-            # ---------------------------------------------------------------------------------------
+            # #
 
             - name: "🎛️ Status › Print"
               id: task_release_status_print
