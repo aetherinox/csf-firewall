@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_paraguay_ipset
 #   @uuid           0de65af8-075d-36bc-ac14-d57829ca1364
-#   @updated        Tue Mar 11 00:20:23 UTC 2025
-#   @entries        1230286 ips
+#   @updated        Wed Mar 12 00:20:06 UTC 2025
+#   @entries        1234382 ips
 #                   641 subnets
 #                   641 lines
 #   @country        Paraguay (PY)
@@ -358,6 +358,7 @@
 186.2.224.0/20
 186.13.80.0/21
 186.13.192.0/20
+186.13.240.0/20
 186.16.0.0/15
 186.122.240.0/20
 186.123.0.0/21
@@ -465,7 +466,6 @@
 2800:960::/32
 2800:ba0:34::/48
 2800:c70::/32
-2801:0:1f0::/48
 2801:10:9000::/48
 2801:11:1000::/48
 2801:12::/48

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bolivia_ipset
 #   @uuid           e7210395-617d-30a0-900f-8b0e0117fe3a
-#   @updated        Tue Mar 11 00:19:37 UTC 2025
-#   @entries        1207870 ips
-#                   571 subnets
-#                   571 lines
+#   @updated        Wed Mar 12 00:19:18 UTC 2025
+#   @entries        1208126 ips
+#                   569 subnets
+#                   569 lines
 #   @country        Bolivia (BO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -139,9 +139,7 @@
 157.5.124.82/31
 157.5.124.84/32
 157.167.17.0/24
-158.172.152.0/22
-158.172.156.0/24
-158.172.158.0/23
+158.172.152.0/21
 158.172.224.0/19
 159.148.225.0/24
 160.20.225.0/24
