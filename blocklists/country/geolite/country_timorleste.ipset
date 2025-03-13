@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_timorleste_ipset
 #   @uuid           bfa1118c-5c38-3038-a67a-95e5831386c1
-#   @updated        Wed Mar 12 00:20:15 UTC 2025
+#   @updated        Thu Mar 13 00:21:08 UTC 2025
 #   @entries        26571 ips
 #                   169 subnets
 #                   169 lines

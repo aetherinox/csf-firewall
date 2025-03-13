@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bolivia_ipset
 #   @uuid           e7210395-617d-30a0-900f-8b0e0117fe3a
-#   @updated        Wed Mar 12 00:19:18 UTC 2025
+#   @updated        Thu Mar 13 00:20:11 UTC 2025
 #   @entries        1208126 ips
 #                   569 subnets
 #                   569 lines
