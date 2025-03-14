@@ -5,7 +5,7 @@
 #   @source         https://developers.google.com/static/search/apis/ipranges/googlebot.json
 #   @id             privacy_google_ipset
 #   @uuid           ffadb25f-c1da-3844-93c3-f67e573b7ce8
-#   @updated        Fri Mar 14 00:15:36 UTC 2025
+#   @updated        Fri Mar 14 10:03:52 UTC 2025
 #   @entries        4096 ips
 #                   255 subnets
 #                   255 lines
