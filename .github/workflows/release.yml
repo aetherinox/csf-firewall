@@ -129,6 +129,19 @@ jobs:
                 fetch-depth: 0
 
             # #
+            #   Job › Set Env Variables
+            # #
+
+            - name: >-
+                🕛 Get Timestamp
+              id: task_build_label_set_timestamp
+              run: |
+                  echo "NOW=$(date +'%m-%d-%Y %H:%M:%S')" >> $GITHUB_ENV
+                  echo "NOW_SHORT=$(date +'%m-%d-%Y')" >> $GITHUB_ENV
+                  echo "NOW_LONG=$(date +'%m-%d-%Y %H:%M')" >> $GITHUB_ENV
+                  echo "NOW_DOCKER_LABEL=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+            # #
             #   Job > Get Previous Tag
             #
             #   this is for no particular reason except to just report the last version released
@@ -217,9 +230,9 @@ jobs:
             contents: write
             packages: write
         env:
-          VERSION_CSF: ${{ needs.job-upload.outputs.version_csf }}
-          VERSION_BUILD: ${{ needs.job-upload.outputs.version_build }}
-          VERSION_TAG_PREV: ${{ needs.job-upload.outputs.version_tag_previous }}
+            VERSION_CSF: ${{ needs.job-upload.outputs.version_csf }}
+            VERSION_BUILD: ${{ needs.job-upload.outputs.version_build }}
+            VERSION_TAG_PREV: ${{ needs.job-upload.outputs.version_tag_previous }}
         steps:
 
             # #
@@ -230,7 +243,7 @@ jobs:
               uses: actions/checkout@v4
               id: task_release_checkout
               with:
-                fetch-depth: 0
+                  fetch-depth: 0
 
             # #
             #   Debug : View passed values
@@ -239,10 +252,10 @@ jobs:
             - name: "⚙️ Debug › Passed Values"
               id: task_release_debug_print_vals_1
               run: |
-                echo "TAG VERSION (Previous) ........... ${{ env.VERSION_TAG_PREV }}"
-                echo "TAG VERSION (Next) ............... ${{ inputs.PLUGIN_VERSION }}"
-                echo "CSF VERSION ...................... ${{ env.VERSION_CSF }}"
-                echo "RELEASE BUILD .................... ${{ env.VERSION_BUILD }}"
+                  echo "TAG VERSION (Previous) ........... ${{ env.VERSION_TAG_PREV }}"
+                  echo "TAG VERSION (Next) ............... ${{ inputs.PLUGIN_VERSION }}"
+                  echo "CSF VERSION ...................... ${{ env.VERSION_CSF }}"
+                  echo "RELEASE BUILD .................... ${{ env.VERSION_BUILD }}"
 
             # #
             #   Build Project & Create Zip
@@ -259,7 +272,7 @@ jobs:
                   zip -r ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip ./etc/csf/ui/* ./etc/csf/ui/* ./usr/*
                   ls
               env:
-                NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
+                  NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
 
             - name: "🔨 Build › Release Candidate ( ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-patches.zip )"
               id: task_release_build_rc
@@ -271,7 +284,7 @@ jobs:
                   zip -r ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-theme-dark.zip ./etc/csf/ui/* ./etc/csf/ui/* ./usr/*
                   ls
               env:
-                NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
+                  NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
 
             # #
             #   [ Tag ]: Pre Create
@@ -285,11 +298,11 @@ jobs:
               uses: rickstaa/action-create-tag@v1
               id: task_release_tag
               with:
-                tag: ${{ inputs.PLUGIN_VERSION }}
-                tag_exists_error: false
-                message: "Latest release"
-                gpg_private_key: ${{ secrets.ADMINSERV_GPG_KEY_ASC }}
-                gpg_passphrase: ${{ secrets.ADMINSERV_GPG_PASSPHRASE }}
+                  tag: ${{ inputs.PLUGIN_VERSION }}
+                  tag_exists_error: false
+                  message: "Latest release"
+                  gpg_private_key: ${{ secrets.ADMINSERV_GPG_KEY_ASC }}
+                  gpg_passphrase: ${{ secrets.ADMINSERV_GPG_PASSPHRASE }}
 
             # #
             #   [ Tag ]: Confirm
@@ -297,8 +310,8 @@ jobs:
 
             - name: "🔖 Tag › Confirm ${{ inputs.PLUGIN_VERSION }}"
               run: |
-                echo "Tag already present: ${{ env.TAG_EXISTS }}"
-                echo "Tag already present: ${{ steps.task_release_tag.outputs.tag_exists }}"
+                  echo "Tag already present: ${{ env.TAG_EXISTS }}"
+                  echo "Tag already present: ${{ steps.task_release_tag.outputs.tag_exists }}"
 
             # #
             #   Contributor Images
@@ -308,9 +321,9 @@ jobs:
               id: task_release_contribs_generate
               uses: jaywcjlove/github-action-contributors@main
               with:
-                filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
-                output: CONTRIBUTORS.svg
-                avatarSize: 42
+                  filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
+                  output: CONTRIBUTORS.svg
+                  avatarSize: 42
 
             # #
             #   Generate Changelog
@@ -325,28 +338,30 @@ jobs:
             - name: "📝 Changelog › Pre Setup (Categorized Commits)"
               id: task_release_changelog_commits_tags_print
               run: |
-                echo "TAG_LAST=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
-                echo "COMMIT_LAST=$(git rev-parse HEAD)" >> $GITHUB_ENV
+                  echo "TAG_LAST=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+                  echo "COMMIT_LAST=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
             - name: "📝 Changelog › Build (Categorized)"
               id: task_release_changelog_categorized
               if: |
-                startsWith( inputs.SHOW_UNCATEGORIZED, false ) ||
-                startsWith( env.SHOW_UNCATEGORIZED, false )
+                  startsWith( inputs.SHOW_UNCATEGORIZED, false ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, false )
               uses: mikepenz/release-changelog-builder-action@v5
               with:
-                token: ${{ secrets.ADMINSERV_TOKEN }}
-                configuration: ".github/changelog-configuration.json"
-                ignorePreReleases: false
-                commitMode: ${{ inputs.CHANGELOG_MODE_COMMIT || env.CHANGELOG_MODE_COMMIT }}
-                fetchReleaseInformation: true
-                fetchViaCommits: true
-                configurationJson: |
-                  {
-                    "template": "## Release Info \n| Item | Value |\n| --- | --- |\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz</sub>|<sub>Contains the latest verison of the ConfigServer Firewall application. This file is optional to download and is not required if you have already installed CSF on your system.</sub>|\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip</sub>|<sub>Contains the latest verison of the ConfigServer Firewall patches. View README for instructions; run patch by launching the file `./install.sh`.</sub>|\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip</sub>|<sub>Contains custom dark theme.</sub>|\n|<sub>🕟 Stamp</sub>|<sub>`#{{FROM_TAG}}-#{{FROM_TAG_DATE}} 🔺 #{{TO_TAG}}-#{{TO_TAG_DATE}}`</sub>|\n|<sub>📅 Last Release</sub>|<sub>`#{{DAYS_SINCE}} days ago`</sub>|\n\n<br>\n\n---\n\n<br>\n\n### What's New\nThis release contains the following changes:\n\n<br>\n\n---\n\n<br>\n\n### Statistics\nHow the files have changed:\n<ul><li><a href='#{{RELEASE_DIFF}}'>Changed files</a>  : <b>#{{CHANGED_FILES}}</b> </li><li>Changes  : <b>#{{CHANGES}}</b> </li><li>Commits : <b>#{{COMMITS}}</b> </li><li>Additions : <b>#{{ADDITIONS}}</b></li><li>Deletions : <b>#{{DELETIONS}}</b></li><li>PRs (categorized) : <b>#{{CATEGORIZED_COUNT}}</b></li><li>PRs (uncategorized) : <b>#{{UNCATEGORIZED_COUNT}}</b></li><li>PRs (open) : <b>#{{OPEN_COUNT}}</b></li>\n<br />\n</ul>\n\n<br>\n\n---\n\n<br>\n\n### Pull Requests\nThis release is associated with the following pull requests:\n#{{CHANGELOG}}\n\n<br>\n\n---\n\n<br>\n\n"
-                  }
+                  token: ${{ secrets.ADMINSERV_TOKEN }}
+                  #fromTag: "${{ env.TAG_LAST }}"
+                  #toTag: "${{ github.ref }}"
+                  configuration: ".github/changelog-configuration.json"
+                  ignorePreReleases: false
+                  commitMode: ${{ inputs.CHANGELOG_MODE_COMMIT || env.CHANGELOG_MODE_COMMIT }}
+                  fetchReleaseInformation: true
+                  fetchViaCommits: true
+                  configurationJson: |
+                    {
+                      "template": "## Release Info \n| Item | Value |\n| --- | --- |\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz</sub>|<sub>Contains the latest verison of the ConfigServer Firewall application. This file is optional to download and is not required if you have already installed CSF on your system.</sub>|\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip</sub>|<sub>Contains the latest verison of the ConfigServer Firewall patches. View README for instructions; run patch by launching the file `./install.sh`.</sub>|\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip</sub>|<sub>Contains custom dark theme.</sub>|\n|<sub>🕟 Stamp</sub>|<sub>`#{{FROM_TAG}}-#{{FROM_TAG_DATE}} 🔺 #{{TO_TAG}}-#{{TO_TAG_DATE}}`</sub>|\n|<sub>📅 Last Release</sub>|<sub>`#{{DAYS_SINCE}} days ago`</sub>|\n\n<br>\n\n---\n\n<br>\n\n### What's New\nThis release contains the following changes:\n\n<br>\n\n---\n\n<br>\n\n### Statistics\nHow the files have changed:\n<ul><li><a href='#{{RELEASE_DIFF}}'>Changed files</a>  : <b>#{{CHANGED_FILES}}</b> </li><li>Changes  : <b>#{{CHANGES}}</b> </li><li>Commits : <b>#{{COMMITS}}</b> </li><li>Additions : <b>#{{ADDITIONS}}</b></li><li>Deletions : <b>#{{DELETIONS}}</b></li><li>PRs (categorized) : <b>#{{CATEGORIZED_COUNT}}</b></li><li>PRs (uncategorized) : <b>#{{UNCATEGORIZED_COUNT}}</b></li><li>PRs (open) : <b>#{{OPEN_COUNT}}</b></li>\n<br />\n</ul>\n\n<br>\n\n---\n\n<br>\n\n### Pull Requests\nThis release is associated with the following pull requests:\n#{{CHANGELOG}}\n\n<br>\n\n---\n\n<br>\n\n"
+                    }
               env:
-                GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
 
             # #
             #   shows only categorized commits using the commit standards
@@ -357,22 +372,24 @@ jobs:
             - name: "📝 Changelog › Build (Uncategorized)"
               id: task_release_changelog_uncategorized
               if: |
-                startsWith( inputs.SHOW_UNCATEGORIZED, true ) ||
-                startsWith( env.SHOW_UNCATEGORIZED, true )
+                  startsWith( inputs.SHOW_UNCATEGORIZED, true ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, true )
               uses: mikepenz/release-changelog-builder-action@v5
               with:
-                token: ${{ secrets.ADMINSERV_TOKEN }}
-                configuration: ".github/changelog-configuration.json"
-                ignorePreReleases: false
-                commitMode: ${{ inputs.CHANGELOG_MODE_COMMIT || env.CHANGELOG_MODE_COMMIT }}
-                fetchReleaseInformation: true
-                fetchViaCommits: true
-                configurationJson: |
-                  {
-                    "template": "## Release Info \n| Item | Value |\n| --- | --- |\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz</sub>|<sub>Contains the latest verison of the ConfigServer Firewall application. This file is optional to download and is not required if you have already installed CSF on your system.</sub>|\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip</sub>|<sub>Contains the latest verison of the ConfigServer Firewall patches. View README for instructions; run patch by launching the file `./install.sh`.</sub>|\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip</sub>|<sub>Contains custom dark theme.</sub>|\n|<sub>🕟 Stamp</sub>|<sub>`#{{FROM_TAG}}-#{{FROM_TAG_DATE}} 🔺 #{{TO_TAG}}-#{{TO_TAG_DATE}}`</sub>|\n|<sub>📅 Last Release</sub>|<sub>`#{{DAYS_SINCE}} days ago`</sub>|\n\n<br>\n\n---\n\n<br>\n\n### What's New\nThis release contains the following changes:\n\n<br>\n\n---\n\n<br>\n\n### Statistics\nHow the files have changed:\n<ul><li><a href='#{{RELEASE_DIFF}}'>Changed files</a>  : <b>#{{CHANGED_FILES}}</b> </li><li>Changes  : <b>#{{CHANGES}}</b> </li><li>Commits : <b>#{{COMMITS}}</b> </li><li>Additions : <b>#{{ADDITIONS}}</b></li><li>Deletions : <b>#{{DELETIONS}}</b></li><li>PRs (categorized) : <b>#{{CATEGORIZED_COUNT}}</b></li><li>PRs (uncategorized) : <b>#{{UNCATEGORIZED_COUNT}}</b></li><li>PRs (open) : <b>#{{OPEN_COUNT}}</b></li>\n<br />\n</ul>\n\n<br>\n\n---\n\n<br>\n\n### Pull Requests\nThis release is associated with the following pull requests:\n#{{CHANGELOG}}\n\n<br>\n\n"
-                  }
+                  token: ${{ secrets.ADMINSERV_TOKEN }}
+                  #fromTag: "${{ env.TAG_LAST }}"
+                  #toTag: "${{ github.ref }}"
+                  configuration: ".github/changelog-configuration.json"
+                  ignorePreReleases: false
+                  commitMode: ${{ inputs.CHANGELOG_MODE_COMMIT || env.CHANGELOG_MODE_COMMIT }}
+                  fetchReleaseInformation: true
+                  fetchViaCommits: true
+                  configurationJson: |
+                    {
+                      "template": "## Release Info \n| Item | Value |\n| --- | --- |\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz</sub>|<sub>Contains the latest verison of the ConfigServer Firewall application. This file is optional to download and is not required if you have already installed CSF on your system.</sub>|\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip</sub>|<sub>Contains the latest verison of the ConfigServer Firewall patches. View README for instructions; run patch by launching the file `./install.sh`.</sub>|\n|<sub>📄 ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip</sub>|<sub>Contains custom dark theme.</sub>|\n|<sub>🕟 Stamp</sub>|<sub>`#{{FROM_TAG}}-#{{FROM_TAG_DATE}} 🔺 #{{TO_TAG}}-#{{TO_TAG_DATE}}`</sub>|\n|<sub>📅 Last Release</sub>|<sub>`#{{DAYS_SINCE}} days ago`</sub>|\n\n<br>\n\n---\n\n<br>\n\n### What's New\nThis release contains the following changes:\n\n<br>\n\n---\n\n<br>\n\n### Statistics\nHow the files have changed:\n<ul><li><a href='#{{RELEASE_DIFF}}'>Changed files</a>  : <b>#{{CHANGED_FILES}}</b> </li><li>Changes  : <b>#{{CHANGES}}</b> </li><li>Commits : <b>#{{COMMITS}}</b> </li><li>Additions : <b>#{{ADDITIONS}}</b></li><li>Deletions : <b>#{{DELETIONS}}</b></li><li>PRs (categorized) : <b>#{{CATEGORIZED_COUNT}}</b></li><li>PRs (uncategorized) : <b>#{{UNCATEGORIZED_COUNT}}</b></li><li>PRs (open) : <b>#{{OPEN_COUNT}}</b></li>\n<br />\n</ul>\n\n<br>\n\n---\n\n<br>\n\n### Pull Requests\nThis release is associated with the following pull requests:\n#{{CHANGELOG}}\n\n<br>\n\n"
+                    }
               env:
-                GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
 
             # #
             #   Changelog > Convert step into ENV
@@ -385,13 +402,15 @@ jobs:
             # #
 
             - name: "🙊 Changelog › Step to Env › Categorized"
+              id: task_release_changelog_escape_categorized
               env:
                   CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
               run: echo "CHANGELOG_CATEGORIZED"
 
             - name: "🙊 Changelog › Step to Env › Uncategorized"
+              id: task_release_changelog_escape_uncategorized
               env:
-                  CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+                  CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_uncategorized.outputs.changelog }}
               run: echo "CHANGELOG_UNCATEGORIZED"
 
             # #
@@ -420,7 +439,7 @@ jobs:
 
             - name: "⚙️ Debug › Clean Dist Folder"
               run: |
-                tree
+                  tree
 
             - name: "📁 Download › Saved Artifacts"
               uses: actions/download-artifact@v4
@@ -431,7 +450,7 @@ jobs:
 
             - name: "⚙️ Debug › Clean Dist Folder"
               run: |
-                tree
+                  tree
 
             # #
             #   [ Release ]: Post Release
@@ -445,53 +464,53 @@ jobs:
             - name: "🏳️ Post › Stable"
               id: task_release_bundle_st
               if: |
-                startsWith( inputs.PRERELEASE, false ) ||
-                startsWith( env.PRERELEASE, false )
+                  startsWith( inputs.PRERELEASE, false ) ||
+                  startsWith( env.PRERELEASE, false )
               uses: softprops/action-gh-release@v2
               env:
-                GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
+                  GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
               with:
-                token: ${{ secrets.ADMINSERV_TOKEN_CL }}
-                name: v${{ inputs.PLUGIN_VERSION }}
-                tag_name: ${{ inputs.PLUGIN_VERSION }}
-                target_commitish: ${{ github.event.inputs.branch }}
-                draft: false
-                generate_release_notes: false
-                files: |
-                  ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip
-                  ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip
-                  ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz/${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz
-                prerelease: false
-                body: |
-                  ${{ steps.task_release_changelog_categorized.outputs.changelog }}
-                  ${{ steps.task_release_changelog_uncategorized.outputs.changelog }}
+                  token: ${{ secrets.ADMINSERV_TOKEN_CL }}
+                  name: v${{ inputs.PLUGIN_VERSION }}
+                  tag_name: ${{ inputs.PLUGIN_VERSION }}
+                  target_commitish: ${{ github.event.inputs.branch }}
+                  draft: false
+                  generate_release_notes: false
+                  files: |
+                      ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-theme-dark.zip
+                      ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-patches.zip
+                      ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz/${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz
+                  prerelease: false
+                  body: |
+                      ${{ env.CHANGELOG_CATEGORIZED }}
+                      ${{ env.CHANGELOG_UNCATEGORIZED }}
 
             - name: "🏳️ Post › Release Candidate"
               id: task_release_bundle_rc
               if: |
-                startsWith( inputs.PRERELEASE, true ) ||
-                startsWith( env.PRERELEASE, true )
+                  startsWith( inputs.PRERELEASE, true ) ||
+                  startsWith( env.PRERELEASE, true )
               uses: softprops/action-gh-release@v2
               env:
-                GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
               with:
-                token: ${{ secrets.ADMINSERV_TOKEN }}
-                name: v${{ inputs.PLUGIN_VERSION }}
-                tag_name: ${{ inputs.PLUGIN_VERSION }}
-                target_commitish: ${{ github.event.inputs.branch }}
-                draft: false
-                generate_release_notes: false
-                files: |
-                  ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-theme-dark.zip
-                  ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-patches.zip
-                  ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz/${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz
-                prerelease: false
-                body: |
-                  > [!WARNING]
-                  > This is a **release candidate**, which means it is not a stable release and could contain bugs. You should download it at your own risk.
+                  token: ${{ secrets.ADMINSERV_TOKEN }}
+                  name: v${{ inputs.PLUGIN_VERSION }}
+                  tag_name: ${{ inputs.PLUGIN_VERSION }}
+                  target_commitish: ${{ github.event.inputs.branch }}
+                  draft: false
+                  generate_release_notes: false
+                  files: |
+                      ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-theme-dark.zip
+                      ${{ inputs.PLUGIN_NAME }}-v${{ inputs.PLUGIN_VERSION }}-rc.${{ inputs.VERSION_RC }}-patches.zip
+                      ${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz/${{ inputs.PLUGIN_NAME }}-v${{ env.VERSION_CSF }}.tgz
+                  prerelease: false
+                  body: |
+                      > [!WARNING]
+                      > This is a **release candidate**, which means it is not a stable release and could contain bugs. You should download it at your own risk.
 
-                  ${{ env.CHANGELOG_CATEGORIZED }}
-                  ${{ env.CHANGELOG_UNCATEGORIZED }}
+                      ${{ env.CHANGELOG_CATEGORIZED }}
+                      ${{ env.CHANGELOG_UNCATEGORIZED }}
 
             # #
             #   Print Status
@@ -500,19 +519,19 @@ jobs:
             - name: "🎛️ Status › Print"
               id: task_release_status_print
               run: |
-                echo "Printing Variables"
-                echo
-                echo "---- CHANGELOG ---------------------------------------------------------------"
-                echo "${{ env.CHANGELOG_CATEGORIZED }}"
-                echo "${{ env.CHANGELOG_UNCATEGORIZED }}"
-                echo "---- CHANGELOG ---------------------------------------------------------------"
-                echo ""
-                echo ""
-                echo "---- VARIABLES ---------------------------------------------------------------"
-                echo "Package Version ............ ${{ inputs.PLUGIN_VERSION }}"
-                echo "Tag: Previous .............. ${{ env.TAG_LAST }}"
-                echo "Tag: Now.... ............... ${{ github.ref }}"
-                echo "Last Commit ................ ${{ env.COMMIT_LAST }}"
-                echo "ST Output ID ............... ${{ steps.task_release_bundle_st.outputs.id }}"
-                echo "RC Output ID ............... ${{ steps.task_release_bundle_rc.outputs.id }}"
-                echo "---- CHANGELOG ---------------------------------------------------------------"
+                  echo "Printing Variables"
+                  echo
+                  echo "---- CHANGELOG ---------------------------------------------------------------"
+                  echo "${{ env.CHANGELOG_CATEGORIZED }}"
+                  echo "${{ env.CHANGELOG_UNCATEGORIZED }}"
+                  echo "---- CHANGELOG ---------------------------------------------------------------"
+                  echo ""
+                  echo ""
+                  echo "---- VARIABLES ---------------------------------------------------------------"
+                  echo "Package Version ............ ${{ inputs.PLUGIN_VERSION }}"
+                  echo "Tag: Previous .............. ${{ env.TAG_LAST }}"
+                  echo "Tag: Now.... ............... ${{ github.ref }}"
+                  echo "Last Commit ................ ${{ env.COMMIT_LAST }}"
+                  echo "ST Output ID ............... ${{ steps.task_release_bundle_st.outputs.id }}"
+                  echo "RC Output ID ............... ${{ steps.task_release_bundle_rc.outputs.id }}"
+                  echo "---- CHANGELOG ---------------------------------------------------------------"
