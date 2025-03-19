@@ -5,10 +5,10 @@
 #   @source         https://my.pingdom.com/probes/ipv4 | https://my.pingdom.com/probes/ipv6
 #   @id             privacy_pingdom_ipset
 #   @uuid           b5c33ba7-0bce-3d84-b803-c055dbe15e0f
-#   @updated        Wed Mar 19 10:04:42 UTC 2025
-#   @entries        158 ips
+#   @updated        Wed Mar 19 20:06:11 UTC 2025
+#   @entries        157 ips
 #                   0 subnets
-#                   158 lines
+#                   157 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
@@ -172,7 +172,6 @@
 2606:9880:f000:4:5::4047
 2607:f0d0:3701:f2::4079
 2607:fc88:100:26::421
-2607:fcd0:100:8d01::4010
 2607:fcd0:aa80:2a00::4039
 2607:fcd0:bb80:1e00::4030
 2607:ff28:800f:21::4067
