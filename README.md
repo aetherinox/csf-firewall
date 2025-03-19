@@ -1472,8 +1472,8 @@ You should be able to access `csf.domain.com` and be prompted now to authenticat
 This repository contains a set of ipsets which are automatically updated every `6 hours`. You may add these sets to your ConfigServer Firewall `/etc/csf/csf.blocklists` with the following new line:
 
 ```
-CSF_MASTER|86400|0|https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/master.ipset
-CSF_HIGHRISK|86400|0|https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/highrisk.ipset
+CSF_MASTER|43200|400000|https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/master.ipset
+CSF_HIGHRISK|43200|0|https://raw.githubusercontent.com/Aetherinox/csf-firewall/main/blocklists/highrisk.ipset
 ```
 
 <br />
@@ -1482,7 +1482,8 @@ The format for the above lines are `NAME|INTERVAL|MAX_IPS|URL`
 
 - **NAME**: List name with all uppercase alphabetic characters with no spaces and a maximum of 25 characters - this will be used as the iptables chain name
 - **INTERVAL**: Refresh interval to download the list, must be a minimum of 3600 seconds (an hour).
-  - `86400` (one day / 24 hours) should be more than enough
+  - `43200`: 12 hours
+  - `86400`: 24 hours
 - **MAX_IPS**: This is the maximum number of IP addresses to use from the list, a value of 0 means all IPs _(see note below)_. 
   - If you add an ipset with 50,000 IPs, and you set this value to 20,000; then you will only block the first 20,000.
 - **URL**: The URL to download the ipset from
