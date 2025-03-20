@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_malaysia_ipset
 #   @uuid           8d3a17ce-e658-3bc7-979a-575efd8ba130
-#   @updated        Wed Mar 19 00:20:48 UTC 2025
+#   @updated        Thu Mar 20 00:20:22 UTC 2025
 #   @entries        7464602 ips
 #                   3637 subnets
 #                   3637 lines
