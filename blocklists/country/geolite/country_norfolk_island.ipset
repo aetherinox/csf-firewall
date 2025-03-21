@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_norfolk_island_ipset
 #   @uuid           ea4afea7-f3db-35ac-bd2f-719d44c45ab8
-#   @updated        Thu Mar 20 00:20:23 UTC 2025
+#   @updated        Fri Mar 21 00:20:27 UTC 2025
 #   @entries        897 ips
 #                   108 subnets
 #                   108 lines

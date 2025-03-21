@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_puerto_rico_ipset
 #   @uuid           d624d93e-0228-30c5-bc52-57237a83fbeb
-#   @updated        Thu Mar 20 00:20:30 UTC 2025
+#   @updated        Fri Mar 21 00:20:33 UTC 2025
 #   @entries        1322528 ips
 #                   1229 subnets
 #                   1229 lines

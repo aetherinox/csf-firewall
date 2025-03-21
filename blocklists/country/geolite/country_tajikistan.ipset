@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_tajikistan_ipset
 #   @uuid           77c6e18b-16ac-3e50-9f68-a94f122422ea
-#   @updated        Thu Mar 20 00:20:39 UTC 2025
+#   @updated        Fri Mar 21 00:20:43 UTC 2025
 #   @entries        96645 ips
 #                   213 subnets
 #                   213 lines
