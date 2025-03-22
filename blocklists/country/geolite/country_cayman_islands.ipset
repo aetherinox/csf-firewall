@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_cayman_islands_ipset
 #   @uuid           923c99a8-b5f3-3e79-b106-398622ce5cee
-#   @updated        Fri Mar 21 00:20:18 UTC 2025
+#   @updated        Sat Mar 22 00:20:09 UTC 2025
 #   @entries        85692 ips
-#                   240 subnets
-#                   240 lines
+#                   241 subnets
+#                   241 lines
 #   @country        Cayman Islands (KY)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -182,6 +182,7 @@
 2001:470:8:1eb::/64
 2001:470:b:f7::/64
 2001:470:b:243::/64
+2001:470:19:1005::/64
 2001:470:24:2b7::/64
 2001:470:26:5c0::/64
 2001:470:26:743::/64

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_central_african_republic_ipset
 #   @uuid           c8562bfd-a736-3a1b-91fa-35c7720d0568
-#   @updated        Fri Mar 21 00:19:49 UTC 2025
+#   @updated        Sat Mar 22 00:19:40 UTC 2025
 #   @entries        11389 ips
-#                   124 subnets
-#                   124 lines
+#                   125 subnets
+#                   125 lines
 #   @country        Central African Republic (CF)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -85,6 +85,7 @@
 2001:470:19:776::/64
 2001:470:19:a3c::/64
 2001:470:19:d93::/64
+2001:470:19:1006::/64
 2001:470:26:1d5::/64
 2001:470:6d:f57::/64
 2001:470:6d:f9a::/64

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bonaire_sint_eustatius_saba_ipset
 #   @uuid           b14c615b-0708-395c-a7e8-24c3784c1d17
-#   @updated        Fri Mar 21 00:19:45 UTC 2025
+#   @updated        Sat Mar 22 00:19:36 UTC 2025
 #   @entries        28304 ips
-#                   121 subnets
-#                   121 lines
+#                   122 subnets
+#                   122 lines
 #   @country        Bonaire Sint Eustatius Saba (BQ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -80,6 +80,7 @@
 2001:470:19:7a3::/64
 2001:470:19:881::/64
 2001:470:19:a1d::/64
+2001:470:19:ff9::/64
 2001:470:1f15:22a::/64
 2001:470:f833::/48
 2001:470:fb62::/48
