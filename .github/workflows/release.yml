@@ -104,29 +104,42 @@ jobs:
             contents: write
             packages: write
         outputs:
-          version_csf: ${{ steps.task_build_download_csf.outputs.VERSION_CSF }}
-          version_build: ${{ steps.task_build_download_csf.outputs.VERSION_BUILD }}
-          version_tag_previous: ${{ steps.task_build_getver.outputs.VERSION_TAG_PREV }}
+            version_csf: ${{ steps.task_build_download_csf.outputs.VERSION_CSF }}
+            version_build: ${{ steps.task_build_download_csf.outputs.VERSION_BUILD }}
+            version_tag_previous: ${{ steps.task_build_getver.outputs.VERSION_TAG_PREV }}
         steps:
 
             # #
-            #   Job > Start
+            #   Initialize › Start
             # #
 
             - name: "✅ Start"
               id: task_build_start
               run: |
-                echo "Starting build"
+                  echo "Starting build"
 
             # #
-            #   Job > Checkout
+            #   Initialize › Set Env Variables
+            # #
+
+            - name: >-
+                🕛 Get Timestamp
+              id: task_initialize_label_set_timestamp
+              run: |
+                  echo "NOW=$(date +'%m-%d-%Y %H:%M:%S')" >> $GITHUB_ENV
+                  echo "NOW_SHORT=$(date +'%m-%d-%Y')" >> $GITHUB_ENV
+                  echo "NOW_LONG=$(date +'%m-%d-%Y %H:%M')" >> $GITHUB_ENV
+                  echo "NOW_DOCKER_LABEL=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+            # #
+            #   Initialize › Checkout
             # #
 
             - name: "☑️ Checkout"
               id: task_build_checkout
               uses: actions/checkout@v4
               with:
-                fetch-depth: 0
+                  fetch-depth: 0
 
             # #
             #   Job › Set Env Variables
@@ -151,7 +164,7 @@ jobs:
               id: task_tag_previous
               uses: "WyriHaximus/github-action-get-previous-tag@v1"
               with:
-                fallback: 1.0.0
+                  fallback: 1.0.0
 
             # #
             #   Job > Print Current Version
@@ -162,8 +175,8 @@ jobs:
             - name: "🔨 Debug: Previous Github Tag"
               id: task_build_getver
               run: |
-                echo -e ${{ steps.task_tag_previous.outputs.tag }}
-                echo "VERSION_TAG_PREV=${{ steps.task_tag_previous.outputs.tag }}" >> $GITHUB_OUTPUT
+                  echo -e ${{ steps.task_tag_previous.outputs.tag }}
+                  echo "VERSION_TAG_PREV=${{ steps.task_tag_previous.outputs.tag }}" >> $GITHUB_OUTPUT
 
             # #
             #   Job > Download latest version of ConfigServer Firewall
@@ -177,31 +190,31 @@ jobs:
             - name: "⬇️ Download: ConfigServer Firewall"
               id: task_build_download_csf
               run: |
-                mkdir release
-                wget https://download.configserver.com/csf.tgz -O release/${{ inputs.PLUGIN_NAME }}.tgz
+                  mkdir release
+                  wget https://download.configserver.com/csf.tgz -O release/${{ inputs.PLUGIN_NAME }}.tgz
 
-                # #
-                #   generate build number
-                #     2408.07 (YYMM.DD)
-                # #
+                  # #
+                  #   generate build number
+                  #     2408.07 (YYMM.DD)
+                  # #
 
-                ver_build=$(date -u '+%y%m-%d')
-                echo "VERSION_BUILD=$ver_build" >> $GITHUB_OUTPUT
+                  ver_build=$(date -u '+%y%m-%d')
+                  echo "VERSION_BUILD=$ver_build" >> $GITHUB_OUTPUT
 
-                # #
-                #   get csf version from version.txt in .tgz
-                # #
+                  # #
+                  #   get csf version from version.txt in .tgz
+                  # #
 
-                ver_csf=$(tar -axf release/${{ inputs.PLUGIN_NAME }}.tgz csf/version.txt -O)
-                echo "VERSION_CSF=$ver_csf" >> $GITHUB_OUTPUT
-                echo -e "Found ConfigServer Firewall v${ver_csf}"
+                  ver_csf=$(tar -axf release/${{ inputs.PLUGIN_NAME }}.tgz csf/version.txt -O)
+                  echo "VERSION_CSF=$ver_csf" >> $GITHUB_OUTPUT
+                  echo -e "Found ConfigServer Firewall v${ver_csf}"
 
-                # #
-                #   rename .tgz
-                # #
+                  # #
+                  #   rename .tgz
+                  # #
 
-                mv release/${{ inputs.PLUGIN_NAME }}.tgz release/${{ inputs.PLUGIN_NAME }}-v${ver_csf}.tgz
-                echo -e "Creating release/${{ inputs.PLUGIN_NAME }}-v${ver_csf}.tgz"
+                  mv release/${{ inputs.PLUGIN_NAME }}.tgz release/${{ inputs.PLUGIN_NAME }}-v${ver_csf}.tgz
+                  echo -e "Creating release/${{ inputs.PLUGIN_NAME }}-v${ver_csf}.tgz"
 
             # ---------------------------------------------------------------------------------------
             #   Upload artifacts > release/csf-firewall-v14.20.tgz
@@ -213,9 +226,9 @@ jobs:
               uses: actions/upload-artifact@v4
               if: always()
               with:
-                name: ${{ inputs.PLUGIN_NAME }}-v${{ steps.task_build_download_csf.outputs.VERSION_CSF }}.tgz
-                path: release/${{ inputs.PLUGIN_NAME }}-v${{ steps.task_build_download_csf.outputs.VERSION_CSF }}.tgz
-                retention-days: 30
+                  name: ${{ inputs.PLUGIN_NAME }}-v${{ steps.task_build_download_csf.outputs.VERSION_CSF }}.tgz
+                  path: release/${{ inputs.PLUGIN_NAME }}-v${{ steps.task_build_download_csf.outputs.VERSION_CSF }}.tgz
+                  retention-days: 30
 
     # #
     #   Job > Release
@@ -240,8 +253,8 @@ jobs:
             # #
 
             - name: "☑️ Checkout"
-              uses: actions/checkout@v4
               id: task_release_checkout
+              uses: actions/checkout@v4
               with:
                   fetch-depth: 0
 
@@ -405,13 +418,15 @@ jobs:
               id: task_release_changelog_escape_categorized
               env:
                   CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
-              run: echo "CHANGELOG_CATEGORIZED"
+              run:
+                  echo "CHANGELOG_CATEGORIZED"
 
             - name: "🙊 Changelog › Step to Env › Uncategorized"
               id: task_release_changelog_escape_uncategorized
               env:
                   CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_uncategorized.outputs.changelog }}
-              run: echo "CHANGELOG_UNCATEGORIZED"
+              run:
+                  echo "CHANGELOG_UNCATEGORIZED"
 
             # #
             #   Fetch Changelog
