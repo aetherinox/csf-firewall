@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_qatar_ipset
 #   @uuid           de3f8d1a-6313-3317-995c-429749e852bd
-#   @updated        Tue Mar 25 00:21:17 UTC 2025
-#   @entries        1293591 ips
-#                   1219 subnets
-#                   1219 lines
+#   @updated        Wed Mar 26 00:21:23 UTC 2025
+#   @entries        1293589 ips
+#                   1217 subnets
+#                   1217 lines
 #   @country        Qatar (QA)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -162,6 +162,8 @@
 103.225.72.0/22
 104.28.12.154/31
 104.28.12.156/32
+104.28.38.73/32
+104.28.38.74/32
 104.28.38.91/32
 104.28.38.92/32
 104.28.51.167/32
@@ -290,10 +292,6 @@
 161.69.78.158/32
 161.69.84.30/32
 161.69.84.158/32
-161.69.86.21/32
-161.69.86.149/32
-161.69.87.21/32
-161.69.87.149/32
 161.69.88.20/32
 161.69.89.20/32
 161.69.93.20/32
