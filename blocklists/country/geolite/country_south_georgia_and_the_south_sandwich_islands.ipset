@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_south_georgia_and_the_south_sandwich_islands_ipset
 #   @uuid           78f7d2c5-303a-3058-b5ed-6380b00f1389
-#   @updated        Wed Mar 26 00:20:58 UTC 2025
+#   @updated        Thu Mar 27 00:20:40 UTC 2025
 #   @entries        271 ips
 #                   30 subnets
 #                   30 lines
