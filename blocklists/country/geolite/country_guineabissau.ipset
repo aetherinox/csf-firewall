@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_guineabissau_ipset
 #   @uuid           8077ed97-e65d-301b-a830-bbf9d08eaeac
-#   @updated        Thu Mar 27 00:20:41 UTC 2025
+#   @updated        Fri Mar 28 00:20:04 UTC 2025
 #   @entries        8569 ips
 #                   131 subnets
 #                   131 lines

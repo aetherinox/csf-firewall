@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_chad_ipset
 #   @uuid           33e6ca9a-082c-31c9-81e1-2817751b5737
-#   @updated        Thu Mar 27 00:21:13 UTC 2025
+#   @updated        Fri Mar 28 00:20:37 UTC 2025
 #   @entries        34208 ips
 #                   179 subnets
 #                   179 lines
