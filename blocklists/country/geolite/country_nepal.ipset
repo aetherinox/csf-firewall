@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_nepal_ipset
 #   @uuid           30681ea1-120b-3183-b866-664c7e99f0a4
-#   @updated        Fri Mar 28 00:20:25 UTC 2025
+#   @updated        Sat Mar 29 00:20:21 UTC 2025
 #   @entries        613217 ips
-#                   835 subnets
-#                   835 lines
+#                   836 subnets
+#                   836 lines
 #   @country        Nepal (NP)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -842,6 +842,7 @@
 2a0a:9607:8000::/47
 2a0c:9a40:95b9:9000::/52
 2a0d:6c2:3100::/40
+2a0d:5600:159::/48
 2a0e:48c3:8c00::/38
 2a0e:ec05:bb40::/42
 2a0e:ec05:bb80::/41

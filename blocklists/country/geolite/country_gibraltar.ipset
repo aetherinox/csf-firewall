@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_gibraltar_ipset
 #   @uuid           3871faa6-6178-3e51-9a3e-4daf3337198a
-#   @updated        Fri Mar 28 00:20:01 UTC 2025
-#   @entries        114371 ips
-#                   443 subnets
-#                   443 lines
+#   @updated        Sat Mar 29 00:19:58 UTC 2025
+#   @entries        113603 ips
+#                   444 subnets
+#                   444 lines
 #   @country        Gibraltar (GI)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -102,7 +102,8 @@
 95.164.88.0/23
 95.164.91.0/24
 95.164.94.0/24
-95.164.104.0/21
+95.164.104.0/22
+95.164.109.0/24
 95.164.228.0/22
 95.164.248.0/22
 104.28.10.76/31
