@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_christmas_island_ipset
 #   @uuid           7c1575b4-a7e4-3e1e-9fec-fc3dad22516c
-#   @updated        Mon Mar 31 00:21:40 UTC 2025
+#   @updated        Tue Apr  1 00:23:14 UTC 2025
 #   @entries        26 ips
 #                   86 subnets
 #                   86 lines
