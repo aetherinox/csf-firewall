@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_georgia_ipset
 #   @uuid           dd1f414b-3a04-3945-8333-54ec8d6c72ff
-#   @updated        Tue Apr  1 00:23:27 UTC 2025
+#   @updated        Wed Apr  2 00:21:26 UTC 2025
 #   @entries        1292054 ips
-#                   726 subnets
-#                   726 lines
+#                   729 subnets
+#                   729 lines
 #   @country        Georgia (GE)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -599,9 +599,13 @@
 2a02:26f7:e042:cda0::/63
 2a02:26f7:e042:cda2::/64
 2a02:26f7:e043:4000::/64
-2a02:26f7:e044::/48
+2a02:26f7:e044:4000::/64
+2a02:26f7:e044:cda0::/63
+2a02:26f7:e044:cda2::/64
 2a02:26f7:e045:4000::/64
-2a02:26f7:e048::/48
+2a02:26f7:e048:4000::/64
+2a02:26f7:e048:cda0::/63
+2a02:26f7:e048:cda2::/64
 2a02:26f7:e049:4000::/64
 2a02:26f7:e04c:4000::/64
 2a02:26f7:e04c:cda0::/63
@@ -629,7 +633,6 @@
 2a04:4e41:20:1500::/56
 2a04:4e41:4e:32::/63
 2a04:4e41:4e:1e00::/56
-2a04:4e41:65:32::/63
 2a04:4e41:65:1e00::/56
 2a04:4e41:66:3b::/64
 2a04:4e41:66:3c::/64

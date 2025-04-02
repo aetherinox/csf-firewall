@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_sierra_leone_ipset
 #   @uuid           92971a41-1b3e-385c-9405-99bc753600a2
-#   @updated        Tue Apr  1 00:24:06 UTC 2025
+#   @updated        Wed Apr  2 00:22:05 UTC 2025
 #   @entries        89011 ips
 #                   177 subnets
 #                   177 lines
