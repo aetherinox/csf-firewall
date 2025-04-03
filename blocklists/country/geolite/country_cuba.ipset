@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_cuba_ipset
 #   @uuid           b7b75721-45ee-3fc5-ba13-8e85ed54f132
-#   @updated        Wed Apr  2 00:21:13 UTC 2025
+#   @updated        Thu Apr  3 00:20:11 UTC 2025
 #   @entries        259596 ips
 #                   171 subnets
 #                   171 lines
