@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_armenia_ipset
 #   @uuid           9969777b-460e-39db-89f6-b13719a0b51d
-#   @updated        Fri Apr  4 00:20:27 UTC 2025
+#   @updated        Sat Apr  5 00:20:00 UTC 2025
 #   @entries        656753 ips
-#                   711 subnets
-#                   711 lines
+#                   712 subnets
+#                   712 lines
 #   @country        Armenia (AM)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -484,6 +484,7 @@
 2001:470:1f17:c2::/64
 2001:470:1f17:16e::/64
 2001:470:1f17:180::/64
+2001:470:1f19:156::/64
 2001:470:1f19:1d2::/64
 2001:470:1f19:222::/64
 2001:470:1f1b:ae::/64
