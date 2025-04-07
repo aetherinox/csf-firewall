@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_panama_ipset
 #   @uuid           9225892a-530e-3f73-b322-b26fe8cdeb68
-#   @updated        Sun Apr  6 00:22:05 UTC 2025
+#   @updated        Mon Apr  7 00:21:53 UTC 2025
 #   @entries        1770439 ips
 #                   792 subnets
 #                   792 lines
