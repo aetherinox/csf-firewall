@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_georgia_ipset
 #   @uuid           dd1f414b-3a04-3945-8333-54ec8d6c72ff
-#   @updated        Mon Apr  7 00:21:25 UTC 2025
+#   @updated        Tue Apr  8 00:20:44 UTC 2025
 #   @entries        1292822 ips
 #                   732 subnets
 #                   732 lines
