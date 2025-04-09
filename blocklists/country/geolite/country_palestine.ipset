@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_palestine_ipset
 #   @uuid           3209fbe8-87bf-3d1b-babb-83c027f612c8
-#   @updated        Tue Apr  8 00:21:14 UTC 2025
-#   @entries        840896 ips
-#                   445 subnets
-#                   445 lines
+#   @updated        Wed Apr  9 00:21:20 UTC 2025
+#   @entries        840640 ips
+#                   446 subnets
+#                   446 lines
 #   @country        Palestine (PS)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -301,7 +301,6 @@
 212.33.96.0/19
 212.47.82.0/23
 212.106.64.0/19
-212.192.2.0/24
 212.193.8.0/24
 213.6.0.0/16
 213.182.200.0/24
@@ -463,5 +462,7 @@
 2a12:cf40::/32
 2a13:a5c3:d613::/48
 2a13:a5c3:d64c::/46
+2a13:a5c7:25b7::/48
+2a13:a5c7:25ff:b600::/56
 2a13:b487:5036::/48
 2a14:9f80::/29

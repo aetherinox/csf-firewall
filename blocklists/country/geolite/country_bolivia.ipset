@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bolivia_ipset
 #   @uuid           e7210395-617d-30a0-900f-8b0e0117fe3a
-#   @updated        Tue Apr  8 00:20:23 UTC 2025
-#   @entries        1208978 ips
-#                   582 subnets
-#                   582 lines
+#   @updated        Wed Apr  9 00:20:32 UTC 2025
+#   @entries        1208986 ips
+#                   583 subnets
+#                   583 lines
 #   @country        Bolivia (BO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -301,6 +301,7 @@
 190.104.0.0/19
 190.106.240.0/20
 190.107.32.0/19
+190.108.91.0/29
 190.109.224.0/19
 190.111.152.0/22
 190.111.178.0/24
@@ -501,11 +502,9 @@
 2a02:26f7:e580:4000::/64
 2a02:26f7:e580:d080::/61
 2a02:26f7:e581:4000::/64
-2a02:26f7:e584:4000::/64
-2a02:26f7:e584:d080::/61
+2a02:26f7:e584::/48
 2a02:26f7:e585:4000::/64
-2a02:26f7:e588:4000::/64
-2a02:26f7:e588:d080::/61
+2a02:26f7:e588::/48
 2a02:26f7:e589:4000::/64
 2a02:5740:52::/48
 2a02:5741:52::/48
@@ -602,3 +601,5 @@
 2a12:49c4:280::/41
 2a12:49c5:1400::/38
 2a13:6843::/32
+2a13:a5c7:251d::/48
+2a13:a5c7:25ff:1c00::/56

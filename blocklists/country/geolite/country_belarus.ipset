@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_belarus_ipset
 #   @uuid           2c022716-2784-3acf-a8bd-b6cbef0dabef
-#   @updated        Tue Apr  8 00:20:25 UTC 2025
+#   @updated        Wed Apr  9 00:20:34 UTC 2025
 #   @entries        1882067 ips
-#                   637 subnets
-#                   637 lines
+#                   641 subnets
+#                   641 lines
 #   @country        Belarus (BY)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -441,6 +441,7 @@
 2001:470:1f0b:a3f::/64
 2001:470:1f0b:c50::/64
 2001:470:1f0b:e09::/64
+2001:470:1f0b:f8a::/64
 2001:470:1f0b:197d::/64
 2001:470:1f11:9f::/64
 2001:470:1f13:1ed::/64
@@ -631,6 +632,7 @@
 2a0a:6044:f3b8::/47
 2a0a:6044:f3ba::/48
 2a0a:7d80::/29
+2a0a:9607:2000::/47
 2a0a:eac0::/29
 2a0a:f240::/29
 2a0b:8680::/29
@@ -655,5 +657,7 @@
 2a12:49c5:1800::/38
 2a13:3e83::/32
 2a13:a5c3:d00c::/46
+2a13:a5c7:2524::/48
+2a13:a5c7:25ff:2300::/56
 2a14:2bc0::/29
 2a14:3cc0::/29
