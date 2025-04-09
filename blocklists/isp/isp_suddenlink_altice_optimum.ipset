@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             isp_suddenlink_altice_optimum_ipset
 #   @uuid           10b6335a-b4db-3e3e-a5f9-80a82a8db3f9
-#   @updated        Wed Apr  9 00:17:23 UTC 2025
-#   @entries        7093760 ips
-#                   660 subnets
-#                   660 lines
+#   @updated        Wed Apr  9 10:05:28 UTC 2025
+#   @entries        7094016 ips
+#                   661 subnets
+#                   661 lines
 #   @expires        6 hours
 #   @category       Uncategorized
 #
@@ -20,6 +20,7 @@
 24.32.0.0/20
 24.32.24.0/21
 24.32.32.0/21
+24.32.130.0/24
 24.32.212.0/24
 24.49.194.0/24
 24.49.200.0/24
