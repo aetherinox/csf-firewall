@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_uganda_ipset
 #   @uuid           79d649b1-b5b6-32b5-8afd-62e4bea1da6e
-#   @updated        Wed Apr  9 00:21:32 UTC 2025
+#   @updated        Thu Apr 10 00:22:21 UTC 2025
 #   @entries        1457873 ips
 #                   340 subnets
 #                   340 lines
