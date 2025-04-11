@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_saint_barthelemy_ipset
 #   @uuid           23bd6bd6-f772-3a3f-9a25-71e2311ec529
-#   @updated        Thu Apr 10 00:21:22 UTC 2025
-#   @entries        2088 ips
-#                   111 subnets
-#                   111 lines
+#   @updated        Fri Apr 11 00:22:13 UTC 2025
+#   @entries        2086 ips
+#                   108 subnets
+#                   108 lines
 #   @country        Saint Barthelemy (BL)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -54,7 +54,6 @@
 149.112.20.0/24
 162.120.193.225/32
 162.120.216.112/32
-163.116.250.120/31
 172.225.32.0/27
 172.225.173.32/27
 172.225.238.48/28
@@ -101,10 +100,8 @@
 2a02:26f7:eb50:4000::/64
 2a02:26f7:eb50:c100::/64
 2a02:26f7:eb51:4000::/64
-2a04:4e41:16:1500::/56
 2a04:4e41:3c::/64
 2a04:4e41:3c:1000::/56
-2a04:4e41:4b:1100::/56
 2a04:4e41:181::/48
 2a04:4e41:3210::/48
 2a04:4e41:3a16::/48

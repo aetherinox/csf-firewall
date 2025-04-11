@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_myanmar_ipset
 #   @uuid           ee0c67be-abe0-3cfa-b30f-b463c29cbc05
-#   @updated        Thu Apr 10 00:21:58 UTC 2025
-#   @entries        267575 ips
-#                   1342 subnets
-#                   1342 lines
+#   @updated        Fri Apr 11 00:22:55 UTC 2025
+#   @entries        267571 ips
+#                   1337 subnets
+#                   1337 lines
 #   @country        Myanmar (MM)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -363,10 +363,6 @@
 162.245.127.249/32
 162.245.127.250/31
 162.245.127.252/30
-163.116.200.107/32
-163.116.200.108/32
-163.116.204.113/32
-163.116.204.114/32
 163.171.190.0/24
 165.85.6.64/27
 165.85.191.192/27
@@ -634,7 +630,6 @@
 2a02:5745:142::/48
 2a02:5746:142::/48
 2a02:5747:142::/48
-2a04:4e41:e:1600::/56
 2a04:4e41:f:2100::/56
 2a04:4e41:12:38::/64
 2a04:4e41:12:2500::/56

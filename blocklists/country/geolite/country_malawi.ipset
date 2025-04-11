@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_malawi_ipset
 #   @uuid           1a801e6d-a38b-372d-88c0-5e4e99df7c4a
-#   @updated        Thu Apr 10 00:22:01 UTC 2025
-#   @entries        560577 ips
-#                   217 subnets
-#                   217 lines
+#   @updated        Fri Apr 11 00:22:58 UTC 2025
+#   @entries        560321 ips
+#                   216 subnets
+#                   216 lines
 #   @country        Malawi (MW)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -98,7 +98,6 @@
 146.75.168.146/31
 146.75.198.18/31
 154.66.120.0/21
-154.217.15.0/24
 154.220.149.0/24
 156.251.111.0/24
 157.5.101.130/31

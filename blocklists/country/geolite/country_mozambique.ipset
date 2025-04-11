@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_mozambique_ipset
 #   @uuid           31a60a96-0de7-300e-9d30-b943f0d9e702
-#   @updated        Thu Apr 10 00:22:01 UTC 2025
-#   @entries        471197 ips
-#                   242 subnets
-#                   242 lines
+#   @updated        Fri Apr 11 00:22:59 UTC 2025
+#   @entries        470937 ips
+#                   237 subnets
+#                   237 lines
 #   @country        Mozambique (MZ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -87,7 +87,6 @@
 146.75.168.148/31
 146.75.198.20/31
 154.204.107.0/24
-154.217.16.0/24
 156.251.110.0/24
 157.5.101.132/31
 157.5.109.132/31
@@ -119,10 +118,6 @@
 160.119.112.0/21
 160.119.156.0/22
 160.242.32.0/21
-163.116.164.107/32
-163.116.164.139/32
-163.116.180.105/32
-163.116.180.111/32
 165.90.64.0/19
 169.239.104.0/22
 169.255.132.0/22
