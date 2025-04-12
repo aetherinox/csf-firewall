@@ -5,10 +5,10 @@
 #   @source         https://webpagetest.org/addresses.php?f=json
 #   @id             privacy_webpagetest_ipset
 #   @uuid           d0c64444-f996-3e09-8981-ff2f6848f1e8
-#   @updated        Sat Apr 12 00:16:57 UTC 2025
-#   @entries        35 ips
+#   @updated        Sat Apr 12 10:03:33 UTC 2025
+#   @entries        38 ips
 #                   0 subnets
-#                   35 lines
+#                   38 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
@@ -16,6 +16,7 @@
 #   optimize their website’s performance.
 # #
 
+1.15.20.174
 13.208.89.86
 13.246.114.251
 13.36.154.207
@@ -44,10 +45,12 @@
 82.156.158.170
 101.43.224.52
 104.199.223.119
+106.54.228.7
 124.156.240.52
+124.221.208.204
 150.109.172.234
+150.158.119.180
 152.136.61.213
-172.70.206.98
-172.70.207.115
-172.70.207.202
+172.69.34.170
+172.70.207.74
 192.144.219.88
