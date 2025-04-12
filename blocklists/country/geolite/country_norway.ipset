@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_norway_ipset
 #   @uuid           dc638025-2999-3e63-9d3c-a2786942dbfd
-#   @updated        Fri Apr 11 00:23:03 UTC 2025
-#   @entries        16333710 ips
-#                   4719 subnets
-#                   4719 lines
+#   @updated        Sat Apr 12 00:21:00 UTC 2025
+#   @entries        16333720 ips
+#                   4729 subnets
+#                   4729 lines
 #   @country        Norway (NO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -1656,6 +1656,16 @@
 162.120.215.176/31
 162.158.220.0/22
 163.34.0.0/16
+163.116.166.78/32
+163.116.166.105/32
+163.116.168.80/32
+163.116.168.93/32
+163.116.173.113/32
+163.116.173.120/32
+163.116.181.91/32
+163.116.181.98/32
+163.116.246.80/32
+163.116.246.87/32
 163.174.0.0/16
 165.1.186.128/26
 165.1.241.129/32

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bulgaria_ipset
 #   @uuid           98c29942-0ab1-3489-9eec-bb712af8154b
-#   @updated        Fri Apr 11 00:22:12 UTC 2025
-#   @entries        4287717 ips
-#                   3130 subnets
-#                   3130 lines
+#   @updated        Sat Apr 12 00:20:16 UTC 2025
+#   @entries        4287727 ips
+#                   3139 subnets
+#                   3139 lines
 #   @country        Bulgaria (BG)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -1406,6 +1406,15 @@
 162.158.60.0/24
 162.158.208.0/22
 162.218.93.0/24
+163.116.166.94/32
+163.116.166.139/32
+163.116.172.91/32
+163.116.172.142/32
+163.116.178.179/32
+163.116.178.189/32
+163.116.179.64/32
+163.116.179.87/32
+163.116.241.92/31
 164.138.216.0/21
 165.1.187.64/27
 165.1.191.105/32

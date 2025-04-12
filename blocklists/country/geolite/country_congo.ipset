@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_congo_ipset
 #   @uuid           e026910f-7c5c-36b0-b9a6-86a0ba1d44c2
-#   @updated        Fri Apr 11 00:22:19 UTC 2025
-#   @entries        147308 ips
-#                   176 subnets
-#                   176 lines
+#   @updated        Sat Apr 12 00:20:22 UTC 2025
+#   @entries        147312 ips
+#                   180 subnets
+#                   180 lines
 #   @country        Congo (CG)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -72,6 +72,10 @@
 157.5.109.27/32
 157.5.109.28/32
 160.113.0.0/16
+163.116.180.104/32
+163.116.180.110/32
+163.116.190.46/32
+163.116.190.50/32
 164.160.16.0/22
 169.239.43.0/24
 169.255.67.0/24
