@@ -5,7 +5,7 @@
 #   @source         https://www.cloudflare.com/ips-v4 | https://www.cloudflare.com/ips-v6
 #   @id             privacy_cloudflarecdn_ipset
 #   @uuid           5e2f5e8d-c63b-33f3-999a-9e8c97213acf
-#   @updated        Mon Apr 14 10:04:16 UTC 2025
+#   @updated        Mon Apr 14 20:03:53 UTC 2025
 #   @entries        1523712 ips
 #                   20 subnets
 #                   20 lines
