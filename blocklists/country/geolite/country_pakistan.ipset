@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_pakistan_ipset
 #   @uuid           bab5bec8-7ff1-350d-a209-46ce79b9138c
-#   @updated        Sun Apr 13 00:46:21 UTC 2025
+#   @updated        Mon Apr 14 00:22:57 UTC 2025
 #   @entries        6020068 ips
 #                   1788 subnets
 #                   1788 lines

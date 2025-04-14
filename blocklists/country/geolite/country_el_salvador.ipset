@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_el_salvador_ipset
 #   @uuid           8dacfc48-0fbb-39b1-b688-8dc4fde049a7
-#   @updated        Sun Apr 13 00:46:30 UTC 2025
+#   @updated        Mon Apr 14 00:23:05 UTC 2025
 #   @entries        700560 ips
 #                   1269 subnets
 #                   1269 lines
