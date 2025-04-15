@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_namibia_ipset
 #   @uuid           57690377-074c-3d4d-8505-2b6da2095137
-#   @updated        Mon Apr 14 00:22:51 UTC 2025
+#   @updated        Tue Apr 15 00:21:51 UTC 2025
 #   @entries        467159 ips
 #                   213 subnets
 #                   213 lines

@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_british_indian_ocean_territory_ipset
 #   @uuid           e28ec2a7-c431-3091-a7df-8562d41f1971
-#   @updated        Mon Apr 14 00:22:39 UTC 2025
+#   @updated        Tue Apr 15 00:21:36 UTC 2025
 #   @entries        3179 ips
 #                   85 subnets
 #                   85 lines

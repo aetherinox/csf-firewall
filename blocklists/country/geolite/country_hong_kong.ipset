@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_hong_kong_ipset
 #   @uuid           85d360eb-7167-3b92-a02a-78ebfe5a1dc4
-#   @updated        Mon Apr 14 00:22:36 UTC 2025
+#   @updated        Tue Apr 15 00:21:32 UTC 2025
 #   @entries        20367134 ips
 #                   14069 subnets
 #                   14069 lines
