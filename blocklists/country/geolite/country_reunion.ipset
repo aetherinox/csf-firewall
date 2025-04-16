@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_reunion_ipset
 #   @uuid           9188dc00-8bd1-3e95-9f01-c49ad3430716
-#   @updated        Tue Apr 15 00:22:00 UTC 2025
+#   @updated        Wed Apr 16 00:21:47 UTC 2025
 #   @entries        745878 ips
-#                   263 subnets
-#                   263 lines
+#                   261 subnets
+#                   261 lines
 #   @country        Reunion (RE)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -273,8 +273,6 @@
 2a09:bac6:5118::/45
 2a0b:dc00::/29
 2a0c:9a40:95bb:3000::/52
-2a0d:3341:b0c0::/42
-2a0d:3344:1600::/42
 2a13:a5c7:25bc::/48
 2a13:a5c7:25ff:bb00::/56
 2c0f:2a80:740::/42

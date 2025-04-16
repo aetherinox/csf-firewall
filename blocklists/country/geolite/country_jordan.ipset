@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_jordan_ipset
 #   @uuid           51ed3e85-4f93-3e0e-89f9-61e8ee0f86e5
-#   @updated        Tue Apr 15 00:21:38 UTC 2025
-#   @entries        664508 ips
-#                   551 subnets
-#                   551 lines
+#   @updated        Wed Apr 16 00:21:25 UTC 2025
+#   @entries        663996 ips
+#                   550 subnets
+#                   550 lines
 #   @country        Jordan (JO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -98,7 +98,7 @@
 80.90.160.0/20
 81.21.0.0/24
 81.21.5.0/24
-81.21.6.0/23
+81.21.6.0/24
 81.21.8.0/22
 81.21.12.0/23
 81.21.14.0/24
@@ -347,7 +347,6 @@
 185.182.62.0/24
 185.182.136.0/22
 185.193.176.0/22
-185.196.221.0/24
 185.196.222.0/23
 185.197.176.0/22
 185.200.128.0/22

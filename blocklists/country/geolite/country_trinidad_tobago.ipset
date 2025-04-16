@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_trinidad_tobago_ipset
 #   @uuid           c5bbe7f4-f40f-3dbf-9d41-9b0fd878b811
-#   @updated        Tue Apr 15 00:22:11 UTC 2025
-#   @entries        544864 ips
-#                   300 subnets
-#                   300 lines
+#   @updated        Wed Apr 16 00:21:58 UTC 2025
+#   @entries        545376 ips
+#                   302 subnets
+#                   302 lines
 #   @country        Trinidad Tobago (TT)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -131,8 +131,10 @@
 190.58.0.0/15
 190.83.128.0/17
 190.93.0.0/19
+190.93.71.0/24
 190.93.72.0/22
 190.93.78.0/24
+190.93.84.0/24
 190.93.107.0/24
 190.93.110.0/24
 190.93.115.0/24

@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_south_sudan_ipset
 #   @uuid           4ed2795a-699f-3f58-89d5-f71e2ed883bd
-#   @updated        Tue Apr 15 00:22:06 UTC 2025
-#   @entries        30911 ips
+#   @updated        Wed Apr 16 00:21:54 UTC 2025
+#   @entries        30907 ips
 #                   167 subnets
 #                   167 lines
 #   @country        South Sudan (SS)
@@ -26,7 +26,6 @@
 41.194.83.0/27
 41.222.72.0/22
 62.56.242.83/32
-74.118.126.208/30
 84.254.180.0/24
 95.210.60.0/24
 102.22.232.0/28
@@ -112,6 +111,7 @@
 196.201.8.0/22
 197.231.236.0/22
 213.209.163.0/24
+2001:470:19:107c::/64
 2001:43f8:13b1::/48
 2001:43f8:1660::/47
 2606:40:a88::/45
