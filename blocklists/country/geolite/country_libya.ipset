@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_libya_ipset
 #   @uuid           8df7412e-87d2-3f4e-9abc-1de6155ed915
-#   @updated        Wed Apr 16 00:21:32 UTC 2025
+#   @updated        Thu Apr 17 00:21:46 UTC 2025
 #   @entries        468450 ips
 #                   228 subnets
 #                   228 lines

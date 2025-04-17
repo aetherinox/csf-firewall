@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_uzbekistan_ipset
 #   @uuid           65d84ffc-8de0-33f8-b716-16e0f12775c7
-#   @updated        Wed Apr 16 00:22:11 UTC 2025
+#   @updated        Thu Apr 17 00:22:22 UTC 2025
 #   @entries        370409 ips
 #                   716 subnets
 #                   716 lines
