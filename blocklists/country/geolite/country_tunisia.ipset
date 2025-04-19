@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_tunisia_ipset
 #   @uuid           01edfa66-3f18-3c72-8308-135afbe7d2bb
-#   @updated        Fri Apr 18 00:22:33 UTC 2025
+#   @updated        Sat Apr 19 00:20:54 UTC 2025
 #   @entries        7881085 ips
-#                   312 subnets
-#                   312 lines
+#                   307 subnets
+#                   307 lines
 #   @country        Tunisia (TN)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -252,13 +252,8 @@
 2a02:26f7:c288:4000::/64
 2a02:26f7:c288:4d00::/64
 2a02:26f7:c289:4000::/64
-2a04:4e41:12:44::/63
 2a04:4e41:12:2f00::/56
-2a04:4e41:26:11::/64
-2a04:4e41:26:12::/64
 2a04:4e41:26:1900::/56
-2a04:4e41:66:99::/64
-2a04:4e41:66:9a::/64
 2a04:4e41:66:4e00::/56
 2a04:4e41:1805:8000::/52
 2a04:4e41:1843::/48

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_benin_ipset
 #   @uuid           1494cf8c-6b18-3735-99b9-543d1df0d77a
-#   @updated        Fri Apr 18 00:21:31 UTC 2025
+#   @updated        Sat Apr 19 00:19:57 UTC 2025
 #   @entries        157016 ips
-#                   193 subnets
-#                   193 lines
+#                   194 subnets
+#                   194 lines
 #   @country        Benin (BJ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -115,6 +115,7 @@
 196.223.40.0/24
 196.251.152.0/22
 197.234.216.0/21
+2001:470:24:177::/64
 2001:470:6d:b28::/64
 2001:470:1f07:3e2::/64
 2001:4320::/32

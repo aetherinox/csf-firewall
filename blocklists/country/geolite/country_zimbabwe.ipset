@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_zimbabwe_ipset
 #   @uuid           bb1063c0-e007-3fd7-bf19-b0bb6b190bd0
-#   @updated        Fri Apr 18 00:22:51 UTC 2025
-#   @entries        256801 ips
-#                   360 subnets
-#                   360 lines
+#   @updated        Sat Apr 19 00:21:10 UTC 2025
+#   @entries        257057 ips
+#                   361 subnets
+#                   361 lines
 #   @country        Zimbabwe (ZW)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -103,6 +103,7 @@
 102.213.40.0/22
 102.217.48.0/22
 102.218.12.0/22
+103.71.60.0/24
 104.28.15.119/32
 104.28.15.120/31
 104.28.38.165/32
@@ -224,6 +225,7 @@
 217.15.126.0/24
 217.74.239.0/24
 2001:470:d:11e4::/64
+2001:470:19:6ec::/64
 2001:470:28:69f::/64
 2001:470:28:e1e::/64
 2001:470:6d:d8::/64
@@ -311,7 +313,6 @@
 2a02:f402:fdb1:c000::/50
 2a04:4e41:11:3e00::/56
 2a04:4e41:14:3500::/56
-2a04:4e41:32:13::/64
 2a04:4e41:32:2200::/56
 2a04:4e41:12d3::/48
 2a04:4e41:1331::/48

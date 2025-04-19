@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_djibouti_ipset
 #   @uuid           b9cadc49-d8af-3313-a6ef-2db51245c5d5
-#   @updated        Fri Apr 18 00:21:43 UTC 2025
+#   @updated        Sat Apr 19 00:20:08 UTC 2025
 #   @entries        57476 ips
-#                   167 subnets
-#                   167 lines
+#                   164 subnets
+#                   164 lines
 #   @country        Djibouti (DJ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -142,11 +142,8 @@
 2a02:5745:76::/48
 2a02:5746:76::/48
 2a02:5747:76::/48
-2a04:4e41:12:14::/64
 2a04:4e41:12:1400::/56
-2a04:4e41:4e:23::/64
 2a04:4e41:4e:1a00::/56
-2a04:4e41:66:29::/64
 2a04:4e41:66:1e00::/56
 2a04:4e41:140f::/48
 2a04:4e41:1814::/48
