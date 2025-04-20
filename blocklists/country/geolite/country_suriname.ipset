@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_suriname_ipset
 #   @uuid           d3c9b19f-4772-3509-96a8-f319d723e8a2
-#   @updated        Sat Apr 19 00:20:50 UTC 2025
+#   @updated        Sun Apr 20 00:23:35 UTC 2025
 #   @entries        86470 ips
 #                   145 subnets
 #                   145 lines
