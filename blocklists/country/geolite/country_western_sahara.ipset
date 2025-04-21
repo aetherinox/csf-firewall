@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_western_sahara_ipset
 #   @uuid           981b96b7-bd3c-3343-9e81-f6f4c6481e33
-#   @updated        Sun Apr 20 00:22:56 UTC 2025
+#   @updated        Mon Apr 21 00:23:11 UTC 2025
 #   @entries        38 ips
 #                   47 subnets
 #                   47 lines
