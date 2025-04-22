@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bhutan_ipset
 #   @uuid           ed91133f-1493-30e0-ac7c-8e8b0ab3b0d9
-#   @updated        Mon Apr 21 00:23:00 UTC 2025
+#   @updated        Tue Apr 22 00:23:19 UTC 2025
 #   @entries        51377 ips
 #                   241 subnets
 #                   241 lines

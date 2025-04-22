@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_san_marino_ipset
 #   @uuid           dd9a0f9e-486d-3e2f-96c2-56c0ffb6b3c0
-#   @updated        Mon Apr 21 00:23:50 UTC 2025
+#   @updated        Tue Apr 22 00:24:07 UTC 2025
 #   @entries        40140 ips
 #                   180 subnets
 #                   180 lines
