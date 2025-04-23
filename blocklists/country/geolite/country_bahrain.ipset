@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bahrain_ipset
 #   @uuid           9d562a47-eed2-3274-a895-0deaa40538a4
-#   @updated        Tue Apr 22 00:23:16 UTC 2025
-#   @entries        880685 ips
-#                   448 subnets
-#                   448 lines
+#   @updated        Wed Apr 23 00:21:08 UTC 2025
+#   @entries        880941 ips
+#                   451 subnets
+#                   451 lines
 #   @country        Bahrain (BH)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -252,6 +252,7 @@
 169.224.145.0/24
 172.69.228.0/24
 172.71.228.0/24
+172.111.226.0/24
 172.225.160.32/28
 172.225.196.0/28
 172.225.220.32/28
@@ -415,6 +416,8 @@
 2a05:d040:e000::/40
 2a05:d050:e000::/40
 2a05:d058:e000::/40
+2a05:d05b:e000::/40
+2a05:d06e:e000::/40
 2a05:d06f:e000::/40
 2a05:d070:e000::/40
 2a05:d071:e000::/40

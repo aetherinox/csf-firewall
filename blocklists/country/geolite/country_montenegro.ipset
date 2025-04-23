@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_montenegro_ipset
 #   @uuid           f6e9b705-ad6a-3a19-87ae-34ca8e62e2e6
-#   @updated        Tue Apr 22 00:23:50 UTC 2025
-#   @entries        199465 ips
-#                   277 subnets
-#                   277 lines
+#   @updated        Wed Apr 23 00:21:48 UTC 2025
+#   @entries        199977 ips
+#                   279 subnets
+#                   279 lines
 #   @country        Montenegro (ME)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -74,6 +74,7 @@
 108.171.62.0/24
 109.72.96.0/20
 109.228.64.0/18
+128.14.7.0/24
 136.23.6.118/32
 136.23.20.46/32
 140.248.18.26/31
@@ -134,6 +135,7 @@
 185.255.228.0/22
 188.255.131.0/24
 188.255.132.0/24
+192.254.88.0/24
 193.32.112.0/22
 194.50.99.141/32
 195.66.160.0/19
