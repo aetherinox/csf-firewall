@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_vietnam_ipset
 #   @uuid           c1de558e-4e3f-3769-9139-550a9e7e6abc
-#   @updated        Wed Apr 23 00:22:28 UTC 2025
+#   @updated        Thu Apr 24 00:22:49 UTC 2025
 #   @entries        16656234 ips
 #                   4067 subnets
 #                   4067 lines
