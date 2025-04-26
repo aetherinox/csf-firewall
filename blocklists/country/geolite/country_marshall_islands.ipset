@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_marshall_islands_ipset
 #   @uuid           3caf8c67-1f78-39d8-9dad-75e2a1b0a2d4
-#   @updated        Fri Apr 25 00:23:37 UTC 2025
+#   @updated        Sat Apr 26 00:21:22 UTC 2025
 #   @entries        8348 ips
-#                   115 subnets
-#                   115 lines
+#                   112 subnets
+#                   112 lines
 #   @country        Marshall Islands (MH)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -95,9 +95,6 @@
 2a02:5745:131::/48
 2a02:5746:131::/48
 2a02:5747:131::/48
-2a04:4e41:29:1400::/56
-2a04:4e41:35:1200::/56
-2a04:4e41:64:1400::/56
 2a04:4e41:2402::/48
 2a04:4e41:4018:e000::/52
 2a04:4e41:4028:e000::/52

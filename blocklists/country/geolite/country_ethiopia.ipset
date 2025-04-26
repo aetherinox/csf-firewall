@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_ethiopia_ipset
 #   @uuid           99870db1-f287-3b49-a665-37ac5079f7a6
-#   @updated        Fri Apr 25 00:23:16 UTC 2025
+#   @updated        Sat Apr 26 00:20:59 UTC 2025
 #   @entries        371868 ips
-#                   203 subnets
-#                   203 lines
+#                   200 subnets
+#                   200 lines
 #   @country        Ethiopia (ET)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -174,9 +174,6 @@
 2a02:5745:86::/48
 2a02:5746:86::/48
 2a02:5747:86::/48
-2a04:4e41:12:1700::/56
-2a04:4e41:1a:1300::/56
-2a04:4e41:66:2300::/56
 2a04:4e41:1819::/48
 2a04:4e41:4014:4000::/52
 2a04:4e41:4024:4000::/52

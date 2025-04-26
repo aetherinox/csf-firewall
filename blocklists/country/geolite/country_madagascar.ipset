@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_madagascar_ipset
 #   @uuid           af763214-f92b-31a3-9b06-8d8de82dc00e
-#   @updated        Fri Apr 25 00:23:37 UTC 2025
+#   @updated        Sat Apr 26 00:21:22 UTC 2025
 #   @entries        586970 ips
-#                   212 subnets
-#                   212 lines
+#                   209 subnets
+#                   209 lines
 #   @country        Madagascar (MG)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -185,9 +185,7 @@
 2a02:5745:125::/48
 2a02:5746:125::/48
 2a02:5747:125::/48
-2a04:4e41:11:2900::/56
 2a04:4e41:14:2200::/56
-2a04:4e41:32:1600::/56
 2a04:4e41:12c7::/48
 2a04:4e41:131c::/48
 2a04:4e41:1614::/48
@@ -227,7 +225,6 @@
 2a13:a5c7:258e::/48
 2a13:a5c7:25ff:8d00::/56
 2c0f:1740::/32
-2c0f:2a80:700::/42
 2c0f:2a80:2180::/42
 2c0f:f1c8::/32
 2c0f:f9f0::/32

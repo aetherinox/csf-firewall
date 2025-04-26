@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_lebanon_ipset
 #   @uuid           d0a79f55-389a-31c6-ad63-aab24324fef7
-#   @updated        Fri Apr 25 00:23:33 UTC 2025
-#   @entries        578148 ips
-#                   586 subnets
-#                   586 lines
+#   @updated        Sat Apr 26 00:21:18 UTC 2025
+#   @entries        578212 ips
+#                   583 subnets
+#                   583 lines
 #   @country        Lebanon (LB)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -115,6 +115,7 @@
 95.210.182.0/24
 95.210.239.0/24
 95.214.212.0/22
+103.209.255.192/26
 104.28.11.162/31
 104.28.11.164/32
 104.28.60.105/32
@@ -458,10 +459,6 @@
 2a03:8760::/32
 2a03:9de0::/32
 2a03:a3e0::/32
-2a04:4e41:12:2000::/56
-2a04:4e41:13:1f00::/56
-2a04:4e41:5d:1f00::/56
-2a04:4e41:66:3200::/56
 2a04:4e41:801:7000::/52
 2a04:4e41:80e::/48
 2a04:4e41:1802:f000::/52

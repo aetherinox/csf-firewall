@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_monaco_ipset
 #   @uuid           ee98ae04-5b04-38ca-a6c5-f223aa585461
-#   @updated        Fri Apr 25 00:23:36 UTC 2025
+#   @updated        Sat Apr 26 00:21:21 UTC 2025
 #   @entries        80168 ips
-#                   263 subnets
-#                   263 lines
+#                   262 subnets
+#                   262 lines
 #   @country        Monaco (MC)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -244,7 +244,6 @@
 2a02:5745:137::/48
 2a02:5746:137::/48
 2a02:5747:137::/48
-2a04:4e41:12:2400::/56
 2a04:4e41:211::/48
 2a04:4e41:4018:9000::/52
 2a04:4e41:4028:9000::/52

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_democratic_republic_congo_ipset
 #   @uuid           47405ec7-9e3e-317a-bccc-12f6a4cefe3f
-#   @updated        Fri Apr 25 00:23:06 UTC 2025
+#   @updated        Sat Apr 26 00:20:48 UTC 2025
 #   @entries        220062 ips
-#                   372 subnets
-#                   372 lines
+#                   368 subnets
+#                   368 lines
 #   @country        Democratic Republic Congo (CD)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -319,10 +319,6 @@
 2a02:5747:74::/48
 2a03:31c0::/38
 2a03:31c0:400::/39
-2a04:4e41:11:1400::/56
-2a04:4e41:13:1300::/56
-2a04:4e41:32:1300::/56
-2a04:4e41:5d:1300::/56
 2a04:4e41:805::/48
 2a04:4e41:12c4::/48
 2a04:4e41:1308::/48
