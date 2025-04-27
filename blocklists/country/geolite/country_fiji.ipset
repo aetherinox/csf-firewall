@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_fiji_ipset
 #   @uuid           a9d0f8ff-431b-388e-9ce5-b6d12e96fa02
-#   @updated        Sat Apr 26 00:21:00 UTC 2025
+#   @updated        Sun Apr 27 00:24:42 UTC 2025
 #   @entries        152227 ips
 #                   207 subnets
 #                   207 lines

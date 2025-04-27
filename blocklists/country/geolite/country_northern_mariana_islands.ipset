@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_northern_mariana_islands_ipset
 #   @uuid           dc6bbdea-860d-340b-b696-2be1aed70dff
-#   @updated        Sat Apr 26 00:21:24 UTC 2025
+#   @updated        Sun Apr 27 00:25:07 UTC 2025
 #   @entries        38465 ips
 #                   126 subnets
 #                   126 lines
