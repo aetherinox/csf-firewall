@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_rwanda_ipset
 #   @uuid           3f1c99ee-cd45-37c9-a8cf-50e4ac0e3d10
-#   @updated        Sun Apr 27 00:25:21 UTC 2025
+#   @updated        Mon Apr 28 00:22:53 UTC 2025
 #   @entries        314832 ips
 #                   195 subnets
 #                   195 lines

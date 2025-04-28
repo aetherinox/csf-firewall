@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_marshall_islands_ipset
 #   @uuid           3caf8c67-1f78-39d8-9dad-75e2a1b0a2d4
-#   @updated        Sun Apr 27 00:25:05 UTC 2025
+#   @updated        Mon Apr 28 00:22:39 UTC 2025
 #   @entries        8348 ips
 #                   112 subnets
 #                   112 lines
