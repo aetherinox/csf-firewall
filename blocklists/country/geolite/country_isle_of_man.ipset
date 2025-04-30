@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_isle_of_man_ipset
 #   @uuid           146a7291-5994-351c-80d6-378bcd05968b
-#   @updated        Tue Apr 29 00:21:53 UTC 2025
-#   @entries        133915 ips
-#                   310 subnets
-#                   310 lines
+#   @updated        Wed Apr 30 00:24:35 UTC 2025
+#   @entries        133659 ips
+#                   315 subnets
+#                   315 lines
 #   @country        Isle of Man (IM)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -126,7 +126,10 @@
 140.248.62.103/32
 140.248.63.103/32
 146.75.174.112/31
-146.247.48.0/20
+146.247.48.0/22
+146.247.52.0/23
+146.247.55.0/24
+146.247.56.0/21
 146.252.127.0/24
 149.143.177.0/24
 150.48.139.210/31
@@ -274,9 +277,11 @@
 2607:8940:4183:ec00::/56
 2a01:6a00::/29
 2a02:2318::/29
-2a02:26f7:fa80::/48
+2a02:26f7:fa80:4000::/64
+2a02:26f7:fa80:c380::/64
 2a02:26f7:fa81:4000::/64
-2a02:26f7:fa84::/48
+2a02:26f7:fa84:4000::/64
+2a02:26f7:fa84:c380::/64
 2a02:26f7:fa85:4000::/64
 2a02:26f7:fa88::/48
 2a02:26f7:fa89:4000::/64

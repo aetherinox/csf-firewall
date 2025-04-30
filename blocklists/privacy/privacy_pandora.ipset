@@ -5,11 +5,11 @@
 #   @source         None
 #   @id             privacy_pandora_ipset
 #   @uuid           4ecaa598-16b1-361f-b556-774eecbd9da9
-#   @updated        Wed Apr 30 00:07:14 UTC 2025
+#   @updated        Wed Apr 30 00:20:42 UTC 2025
 #   @entries        2048 ips
 #                   1 subnets
 #                   1 lines
-#   @expires        
+#   @expires        6 hours
 #   @category       Uncategorized
 #
 #   No description provided

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_slovakia_ipset
 #   @uuid           37900d8e-07c4-3a41-8217-ab044f0643f5
-#   @updated        Tue Apr 29 00:22:21 UTC 2025
+#   @updated        Wed Apr 30 00:25:08 UTC 2025
 #   @entries        2788979 ips
-#                   1722 subnets
-#                   1722 lines
+#                   1726 subnets
+#                   1726 lines
 #   @country        Slovakia (SK)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -1173,6 +1173,8 @@
 2001:470:6f:4cb::/64
 2001:470:6f:4e1::/64
 2001:470:6f:4e4::/64
+2001:470:6f:4f7::/64
+2001:470:6f:4ff::/64
 2001:470:6f:502::/63
 2001:470:6f:506::/64
 2001:470:6f:519::/64
@@ -1364,6 +1366,7 @@
 2001:470:5a64::/48
 2001:470:5a69::/48
 2001:470:5a6c::/48
+2001:470:5a8b::/48
 2001:470:5a8d::/48
 2001:470:5acd::/48
 2001:470:5ae9::/48
@@ -1579,6 +1582,7 @@
 2a03:aac0::/32
 2a03:cd80::/32
 2a03:f040::/32
+2a04:4e41:66:80::/57
 2a04:4e41:1404:a000::/52
 2a04:4e41:1425::/48
 2a04:4e41:1805:7000::/52
