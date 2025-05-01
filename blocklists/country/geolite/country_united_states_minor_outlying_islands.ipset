@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_united_states_minor_outlying_islands_ipset
 #   @uuid           0b97f4e5-fdb7-3d9b-b787-7b74fae9bdc2
-#   @updated        Wed Apr 30 00:25:16 UTC 2025
+#   @updated        Thu May  1 00:24:29 UTC 2025
 #   @entries        405 ips
 #                   103 subnets
 #                   103 lines

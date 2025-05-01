@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_french_guiana_ipset
 #   @uuid           063f08b4-2ac3-31da-bf2c-2ff3e7a9b3e5
-#   @updated        Wed Apr 30 00:24:28 UTC 2025
+#   @updated        Thu May  1 00:23:46 UTC 2025
 #   @entries        111531 ips
 #                   166 subnets
 #                   166 lines

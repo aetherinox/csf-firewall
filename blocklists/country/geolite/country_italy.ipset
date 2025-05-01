@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_italy_ipset
 #   @uuid           063e4bba-835a-3678-beb4-afc22536170d
-#   @updated        Wed Apr 30 00:24:38 UTC 2025
+#   @updated        Thu May  1 00:23:55 UTC 2025
 #   @entries        57377157 ips
 #                   15880 subnets
 #                   15880 lines
