@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_ethiopia_ipset
 #   @uuid           99870db1-f287-3b49-a665-37ac5079f7a6
-#   @updated        Thu May  1 00:23:40 UTC 2025
+#   @updated        Fri May  2 00:21:50 UTC 2025
 #   @entries        371868 ips
 #                   200 subnets
 #                   200 lines

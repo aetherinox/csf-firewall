@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_burundi_ipset
 #   @uuid           6d26dde4-9e04-3131-b2e4-21768abd8f94
-#   @updated        Thu May  1 00:23:24 UTC 2025
+#   @updated        Fri May  2 00:21:34 UTC 2025
 #   @entries        41152 ips
 #                   145 subnets
 #                   145 lines
