@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_turkmenistan_ipset
 #   @uuid           2ea2427c-7ea2-395d-b826-e24498f9bc95
-#   @updated        Fri May  2 00:22:39 UTC 2025
-#   @entries        27420 ips
+#   @updated        Sat May  3 00:22:10 UTC 2025
+#   @entries        27292 ips
 #                   146 subnets
 #                   146 lines
 #   @country        Turkmenistan (TM)
@@ -91,8 +91,8 @@
 196.198.195.0/24
 196.199.195.0/24
 216.250.8.0/21
-217.138.10.0/25
 217.174.224.0/20
+2001:470:19:1247::/64
 2001:470:71:1::/64
 2001:470:1f0b:19d::/64
 2001:470:1f0b:da6::/64
