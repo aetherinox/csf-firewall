@@ -129,38 +129,45 @@ jobs:
     issues-labels-create:
         name: >-
             🎫 Labels › Create
-        runs-on: ubuntu-latest
-      # runs-on: apollo-x64
+      # runs-on: ubuntu-latest
+        runs-on: apollo-x64
         timeout-minutes: 3
         permissions:
             contents: 'read'
             id-token: 'write'
             issues: 'write'
         steps:
-
             # #
-            #   [ Create Labels ] Start
-            # #
-
-            - name: >-
-                  ✅ Start
-              id: task_label_create_start
-              run: |
-                  echo "Assigning labels and assignees"
-
-            # #
-            #   Create Labels › Set Env Variables
+            #   Job > Set Env Variables
             # #
 
             - name: >-
                 🕛 Get Timestamp
-              id: task_label_set_timestamp
+              id: task_setup_envvar
               run: |
                   echo "YEAR=$(date +'%Y')" >> $GITHUB_ENV
                   echo "NOW=$(date +'%m-%d-%Y %H:%M:%S')" >> $GITHUB_ENV
                   echo "NOW_SHORT=$(date +'%m-%d-%Y')" >> $GITHUB_ENV
                   echo "NOW_LONG=$(date +'%m-%d-%Y %H:%M')" >> $GITHUB_ENV
                   echo "NOW_DOCKER_LABEL=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+            # #
+            #   Job > Start
+            # #
+
+            - name: >-
+                ✅ Start
+              id: task_label_create_start
+              run: |
+                echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                echo " Starting Label Creation Script"
+                echo " Runner .............. ${{ runner.name }}"
+                echo " Workflow ............ ${{ github.workflow }} (#${{ github.workflow_ref }})"
+                echo " Run Number .......... #${{ github.run_number }}"
+                echo " Run ID .............. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                echo " Triggered By ........ ${{ github.actor }}"
+                echo " Time ................ ${{ env.NOW_LONG }}"
+                echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
 
             # #
             #   [ Create Labels ] Checkout
