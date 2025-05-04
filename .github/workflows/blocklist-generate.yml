@@ -136,7 +136,7 @@ jobs:
                 ✅ Start
               id: task_setup_start
               run: |
-                echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
                 echo " Starting blocklist build script"
                 echo " Runner .............. ${{ runner.name }}"
                 echo " Workflow ............ ${{ github.workflow }} (#${{ github.workflow_ref }})"
@@ -144,7 +144,7 @@ jobs:
                 echo " Run ID .............. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                 echo " Triggered By ........ ${{ github.actor }}"
                 echo " Time ................ ${{ env.NOW_LONG }}"
-                echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
 
             # #
             #   Job > Checkout

@@ -51,6 +51,38 @@ jobs:
         steps:
 
             # #
+            #   Build > Set Env Variables
+            # #
+
+            - name: >-
+                🕛 Get Timestamp
+              id: task_build_envvar
+              run: |
+                  echo "YEAR=$(date +'%Y')" >> $GITHUB_ENV
+                  echo "NOW=$(date +'%m-%d-%Y %H:%M:%S')" >> $GITHUB_ENV
+                  echo "NOW_SHORT=$(date +'%m-%d-%Y')" >> $GITHUB_ENV
+                  echo "NOW_LONG=$(date +'%m-%d-%Y %H:%M')" >> $GITHUB_ENV
+                  echo "NOW_DOCKER_LABEL=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+            # #
+            #   Build > Start
+            # #
+
+            - name: >-
+                ✅ Start
+              id: task_build_start
+              run: |
+                echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                echo " Starting Documentation Build script"
+                echo " Runner .............. ${{ runner.name }}"
+                echo " Workflow ............ ${{ github.workflow }} (#${{ github.workflow_ref }})"
+                echo " Run Number .......... #${{ github.run_number }}"
+                echo " Run ID .............. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                echo " Triggered By ........ ${{ github.actor }}"
+                echo " Time ................ ${{ env.NOW_LONG }}"
+                echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+            # #
             #   Build › Checkout
             # #
 
