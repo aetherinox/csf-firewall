@@ -3,15 +3,6 @@
 #   @type               github workflow
 #
 #   generates a list of ipsets which can then be used within host files, config server firewall, and various other apps
-#
-#   📄 bl-master.sh               generate master ipset | URLs: VARARG
-#   📄 bl-plain.sh                generate ipset from online plain-text url / page | URLs: VARARG
-#   📄 bl-json.sh                 generate ipset from json formatted web url. requires url and jq query | URLs: SINGLE
-#   📄 bl-htmlip.sh               generate ipset by fetching HTML in web url, pulls only ips with grep rule (cant be changed) | URLs: SINGLE
-#   📄 bl-html.sh                 generate ipset by fetching HTML in web url, does not run its own grep, must be specified in command | URLs: VARARG
-#   📄 bl-block.sh                generate ipset by fetching locally specified file in /blocks/ repo folder
-#   📄 bl-format.sh               generate ipset by from an existing list of IPs. does not generate ips itself. only validates a list provided
-#   📄 bl-spf.sh                  generate ipset by fetching _spf ips from domain
 #   
 #   @secrets            secrets.SELF_TOKEN                                          self github personal access token (fine-grained)
 #                       secrets.SELF_TOKEN_CL                                       self github personal access token (classic)
@@ -28,6 +19,16 @@
 #                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_RELEASES                discord webhook to report release notifications from github to discord
 #                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_WORKFLOWS               discord webhook to report workflow notifications from github to discord
 #                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_UPDATES                 discord webhook to report activity notifications from github to discord
+#
+#
+#   📄 bl-master.sh               generate master ipset | URLs: VARARG
+#   📄 bl-plain.sh                generate ipset from online plain-text url / page | URLs: VARARG
+#   📄 bl-json.sh                 generate ipset from json formatted web url. requires url and jq query | URLs: SINGLE
+#   📄 bl-htmlip.sh               generate ipset by fetching HTML in web url, pulls only ips with grep rule (cant be changed) | URLs: SINGLE
+#   📄 bl-html.sh                 generate ipset by fetching HTML in web url, does not run its own grep, must be specified in command | URLs: VARARG
+#   📄 bl-block.sh                generate ipset by fetching locally specified file in /blocks/ repo folder
+#   📄 bl-format.sh               generate ipset by from an existing list of IPs. does not generate ips itself. only validates a list provided
+#   📄 bl-spf.sh                  generate ipset by fetching _spf ips from domain
 #
 #   local test requires the same structure as the github workflow
 #       📁 .github
@@ -109,9 +110,9 @@ jobs:
     blocklist-setup:
         name: >-
           📦 Setup
-        runs-on: ubuntu-latest
-        # runs-on: apollo-x64
-        timeout-minutes: 60
+      # runs-on: ubuntu-latest
+        runs-on: apollo-x64
+        timeout-minutes: 20
         steps:
 
             # #
@@ -185,9 +186,9 @@ jobs:
     blocklist-generate:
         name: >-
           📋 Generate › Blocklist
-        runs-on: ubuntu-latest
-        # runs-on: apollo-x64
-        timeout-minutes: 60
+      # runs-on: ubuntu-latest
+        runs-on: apollo-x64
+        timeout-minutes: 20
         needs: [ blocklist-setup ]
         steps:
 
@@ -595,8 +596,8 @@ jobs:
     blocklist-commit:
         name: >-
           📋 Commit
-        runs-on: ubuntu-latest
-        # runs-on: apollo-x64
+      # runs-on: ubuntu-latest
+        runs-on: apollo-x64
         timeout-minutes: 5
         needs: [ blocklist-setup, blocklist-generate ]
         steps:
