@@ -5,8 +5,8 @@
 #   @source         https://core.telegram.org/resources/cidr.txt
 #   @id             privacy_telegram_ipset
 #   @uuid           d1bc7fff-3756-30cb-b376-b1ed8fdc511b
-#   @updated        Sun May  4 00:19:59 UTC 2025
-#   @entries        11008 ips
+#   @updated        Sun 04 May 2025 10:03:34 AM UTC
+#   @entries        11,008 ips
 #                   14 subnets
 #                   14 lines
 #   @expires        6 hours
