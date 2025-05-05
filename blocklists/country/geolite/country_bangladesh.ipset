@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bangladesh_ipset
 #   @uuid           c6b3cf0c-838a-354d-8190-6b3b0ccf3d51
-#   @updated        Sun May  4 00:23:34 UTC 2025
-#   @entries        2008088 ips
-#                   4296 subnets
-#                   4296 lines
+#   @updated        Mon 05 May 2025 12:26:56 AM UTC
+#   @entries        2,008,088 ips
+#                   4,296 subnets
+#                   4,296 lines
 #   @country        Bangladesh (BD)
 #   @expires        24 hours
 #   @category       Geolocation

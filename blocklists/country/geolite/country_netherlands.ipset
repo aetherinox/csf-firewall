@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_netherlands_ipset
 #   @uuid           84366ea6-7807-38af-b752-f6a2c15a90c0
-#   @updated        Sun May  4 00:24:29 UTC 2025
-#   @entries        53384502 ips
-#                   78744 subnets
-#                   78744 lines
+#   @updated        Mon 05 May 2025 12:28:21 AM UTC
+#   @entries        53,384,502 ips
+#                   78,744 subnets
+#                   78,744 lines
 #   @country        Netherlands (NL)
 #   @expires        24 hours
 #   @category       Geolocation

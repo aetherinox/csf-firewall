@@ -5,8 +5,8 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_svalbard_jan_mayen_ipset
 #   @uuid           3c8709aa-0982-38e5-a8d0-24b8f776dd6f
-#   @updated        Sun May  4 00:24:41 UTC 2025
-#   @entries        1042 ips
+#   @updated        Mon 05 May 2025 12:28:41 AM UTC
+#   @entries        1,042 ips
 #                   57 subnets
 #                   57 lines
 #   @country        Svalbard Jan Mayen (SJ)

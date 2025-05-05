@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_belgium_ipset
 #   @uuid           d670de65-10e8-3a39-8ddd-6ac9f2dc2f97
-#   @updated        Sun May  4 00:23:35 UTC 2025
-#   @entries        14046834 ips
-#                   7383 subnets
-#                   7383 lines
+#   @updated        Mon 05 May 2025 12:26:56 AM UTC
+#   @entries        14,046,834 ips
+#                   7,383 subnets
+#                   7,383 lines
 #   @country        Belgium (BE)
 #   @expires        24 hours
 #   @category       Geolocation

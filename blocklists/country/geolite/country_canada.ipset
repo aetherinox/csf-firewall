@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_canada_ipset
 #   @uuid           8dc58e38-706f-3f7e-a0d8-739afda65ba9
-#   @updated        Sun May  4 00:23:41 UTC 2025
-#   @entries        71722890 ips
-#                   36728 subnets
-#                   36728 lines
+#   @updated        Mon 05 May 2025 12:27:07 AM UTC
+#   @entries        71,722,890 ips
+#                   36,728 subnets
+#                   36,728 lines
 #   @country        Canada (CA)
 #   @expires        24 hours
 #   @category       Geolocation
