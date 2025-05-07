@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_luxembourg_ipset
 #   @uuid           6091660d-076d-38c5-8b24-3115fccded32
-#   @updated        Tue 06 May 2025 12:27:55 AM UTC
+#   @updated        Wed 07 May 2025 12:27:32 AM UTC
 #   @entries        1,592,808 ips
 #                   1,805 subnets
 #                   1,805 lines
