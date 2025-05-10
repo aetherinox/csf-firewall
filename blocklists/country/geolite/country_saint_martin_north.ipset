@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_saint_martin_north_ipset
 #   @uuid           9b42ad71-b3cb-329d-a5e3-6a061e4d44f1
-#   @updated        Fri 09 May 2025 12:27:48 AM UTC
+#   @updated        Sat 10 May 2025 12:30:11 AM UTC
 #   @entries        8,666 ips
-#                   130 subnets
-#                   130 lines
+#                   132 subnets
+#                   132 lines
 #   @country        Saint Martin (North) (MF)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -90,10 +90,12 @@
 208.91.192.0/22
 2001:470:19:ba8::/64
 2001:470:19:c23::/64
+2001:470:19:12fc::/64
 2001:470:1f1b:1bd::/64
 2001:470:1f2b:226::/64
 2001:470:fb88::/48
 2001:470:fb92::/48
+2600:70ff:a945::/48
 2602:fb4a::/40
 2602:fb4b::/40
 2602:ff07::/36

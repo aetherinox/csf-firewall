@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_eswatini_ipset
 #   @uuid           067f0d40-8c4a-35e4-93c8-6498aa1e9c05
-#   @updated        Fri 09 May 2025 12:28:25 AM UTC
+#   @updated        Sat 10 May 2025 12:30:47 AM UTC
 #   @entries        60,049 ips
-#                   170 subnets
-#                   170 lines
+#                   171 subnets
+#                   171 lines
 #   @country        Eswatini (SZ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -189,4 +189,5 @@
 2c0f:1580::/32
 2c0f:2780::/32
 2c0f:2a80:2000::/42
+2c0f:e908::/32
 2c0f:ebc8::/32
