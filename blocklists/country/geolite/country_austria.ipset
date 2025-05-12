@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_austria_ipset
 #   @uuid           7de03780-612a-33ff-8028-20dbfaab40d4
-#   @updated        Sun 11 May 2025 12:27:46 AM UTC
+#   @updated        Mon 12 May 2025 12:27:30 AM UTC
 #   @entries        11,412,925 ips
 #                   6,838 subnets
 #                   6,838 lines

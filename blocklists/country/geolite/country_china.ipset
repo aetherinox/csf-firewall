@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_china_ipset
 #   @uuid           c7cc752e-e97e-385e-900b-3482d4efd4cd
-#   @updated        Sun 11 May 2025 12:28:06 AM UTC
+#   @updated        Mon 12 May 2025 12:27:50 AM UTC
 #   @entries        344,859,906 ips
 #                   20,855 subnets
 #                   20,855 lines
