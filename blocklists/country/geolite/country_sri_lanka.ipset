@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_sri_lanka_ipset
 #   @uuid           d86dc453-d004-3659-a503-cdaca8cfb8ce
-#   @updated        Thu 15 May 2025 12:27:10 AM UTC
+#   @updated        Fri 16 May 2025 12:28:12 AM UTC
 #   @entries        585,397 ips
 #                   454 subnets
 #                   454 lines
