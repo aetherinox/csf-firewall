@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bouvet_island_ipset
 #   @uuid           0fcc357a-3aef-3193-86cd-ba6866297396
-#   @updated        Fri 16 May 2025 12:27:12 AM UTC
-#   @entries        271 ips
-#                   42 subnets
-#                   42 lines
+#   @updated        Sat 17 May 2025 12:27:09 AM UTC
+#   @entries        273 ips
+#                   44 subnets
+#                   44 lines
 #   @country        Bouvet Island (BV)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -33,6 +33,7 @@
 140.248.61.33/32
 140.248.62.33/32
 140.248.63.33/32
+157.5.124.222/31
 185.193.124.0/24
 194.50.99.34/32
 2001:470:d:4e9::/64
@@ -47,6 +48,7 @@
 2001:470:fadd::/48
 2606:40:1af0::/44
 2606:40:1b00::/44
+2607:8940:4200:de00::/55
 2a04:4e41:4012:1000::/52
 2a04:4e41:4022:1000::/52
 2a04:4e41:4032:1000::/52

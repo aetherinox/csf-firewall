@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_cote_divoire_ipset
 #   @uuid           ee2198b1-ddcb-3dee-969d-90639e4261e8
-#   @updated        Fri 16 May 2025 12:27:18 AM UTC
-#   @entries        1,834,274 ips
-#                   444 subnets
-#                   444 lines
+#   @updated        Sat 17 May 2025 12:27:15 AM UTC
+#   @entries        1,834,786 ips
+#                   446 subnets
+#                   446 lines
 #   @country        Cote d'Ivoire (CI)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -239,6 +239,8 @@
 163.116.162.199/32
 163.116.190.47/32
 163.116.190.51/32
+164.137.24.0/24
+164.137.49.0/24
 164.160.32.0/22
 164.160.40.0/22
 164.160.100.0/22

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_saint_pierre_miquelon_ipset
 #   @uuid           dafdc303-5d32-3134-aa6a-c7385f33cbf0
-#   @updated        Fri 16 May 2025 12:28:41 AM UTC
-#   @entries        6,349 ips
-#                   110 subnets
-#                   110 lines
+#   @updated        Sat 17 May 2025 12:28:32 AM UTC
+#   @entries        6,353 ips
+#                   117 subnets
+#                   117 lines
 #   @country        Saint Pierre Miquelon (PM)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -66,6 +66,9 @@
 146.75.128.18/31
 146.75.188.0/31
 146.75.236.18/31
+157.5.67.174/31
+157.5.91.173/32
+157.5.91.174/32
 162.120.199.176/32
 162.120.203.205/32
 163.116.130.91/32
@@ -79,6 +82,7 @@
 194.50.99.181/32
 198.165.195.0/24
 209.198.150.0/24
+2001:470:24:892::/64
 2604:ca40::/32
 2605:59c8:2d00::/42
 2606:40:16d0::/44
@@ -87,6 +91,9 @@
 2606:40:2171:a000::/51
 2606:54c0:4fc0::/45
 2606:54c3:0:d87::/64
+2607:8940:4023:ae00::/55
+2607:8940:4143:ad00::/56
+2607:8940:4143:ae00::/56
 2a02:26f7:e5c0:4000::/64
 2a02:26f7:e5c0:c6c0::/64
 2a02:26f7:e5c1:4000::/64
