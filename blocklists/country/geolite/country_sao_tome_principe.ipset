@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_sao_tome_principe_ipset
 #   @uuid           a2a88f2c-d5b1-3b65-9ab7-28d6c4a9dfdd
-#   @updated        Wed 21 May 2025 12:30:44 AM UTC
+#   @updated        Thu 22 May 2025 12:29:55 AM UTC
 #   @entries        15,742 ips
 #                   129 subnets
 #                   129 lines
