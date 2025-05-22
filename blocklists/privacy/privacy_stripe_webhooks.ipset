@@ -5,10 +5,10 @@
 #   @source         https://stripe.com/files/ips/ips_webhooks.txt
 #   @id             privacy_stripe_webhooks_ipset
 #   @uuid           6fa1c39a-fe72-35c2-81ee-2f3ca15f40d7
-#   @updated        Thu 22 May 2025 10:07:08 AM UTC
-#   @entries        0 ips
+#   @updated        Thu 22 May 2025 08:07:05 PM UTC
+#   @entries        12 ips
 #                   0 subnets
-#                   0 lines
+#                   12 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
@@ -24,3 +24,15 @@
 #       https://api.stripe.com
 # #
 
+3.130.192.231
+3.18.12.63
+13.235.122.149
+13.235.14.237
+18.211.135.69
+35.154.171.200
+52.15.183.38
+54.187.174.169
+54.187.205.235
+54.187.216.72
+54.88.130.119
+54.88.130.237
