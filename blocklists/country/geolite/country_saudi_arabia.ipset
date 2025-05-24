@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_saudi_arabia_ipset
 #   @uuid           e00c2b4b-7f02-331c-b7b5-4e33b95fd20f
-#   @updated        Fri 23 May 2025 12:29:28 AM UTC
-#   @entries        11,284,593 ips
-#                   2,357 subnets
-#                   2,357 lines
+#   @updated        Sat 24 May 2025 12:29:59 AM UTC
+#   @entries        11,285,361 ips
+#                   2,362 subnets
+#                   2,362 lines
 #   @country        Saudi Arabia (SA)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -826,7 +826,10 @@
 151.186.76.0/23
 151.186.108.0/23
 151.186.114.0/24
+151.186.125.0/24
+151.186.126.0/24
 151.186.132.0/23
+151.186.134.0/24
 151.242.13.0/24
 151.254.0.0/15
 152.36.240.0/20
@@ -1972,7 +1975,9 @@
 2a05:d040:800::/40
 2a05:d050:800::/40
 2a05:d058:800::/40
+2a05:d059:800::/40
 2a05:d05b:800::/40
+2a05:d06d:800::/40
 2a05:d06e:800::/40
 2a05:d06f:800::/40
 2a05:d070:800::/40

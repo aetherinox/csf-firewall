@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_vatican_city_holy_see_ipset
 #   @uuid           72d18d64-d2e0-3aef-ab4b-fa94b88bec9d
-#   @updated        Fri 23 May 2025 12:30:06 AM UTC
+#   @updated        Sat 24 May 2025 12:30:42 AM UTC
 #   @entries        19,340 ips
-#                   155 subnets
-#                   155 lines
+#                   158 subnets
+#                   158 lines
 #   @country        Vatican City Holy See (VA)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -90,6 +90,7 @@
 2001:470:19:cd0::/64
 2001:470:24:37d::/64
 2001:470:24:76d::/64
+2001:470:24:8a4::/64
 2001:470:28:e36::/64
 2001:470:36:104::/64
 2001:470:6d:793::/64
@@ -108,6 +109,7 @@
 2001:470:fb65::/48
 2001:470:fb66::/48
 2001:470:fd71::/48
+2001:470:ffb9::/48
 2001:678:f98:2::/64
 2606:40:1370::/44
 2606:40:1380::/44
@@ -175,3 +177,4 @@
 2a13:a5c7:25ff:eb00::/56
 2a13:b487:1804::/48
 2a13:b487:5012::/48
+2a14:67c1:1418::/48

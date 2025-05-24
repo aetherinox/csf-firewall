@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_iran_ipset
 #   @uuid           a56d768c-cf9c-375d-be45-b9c82065513e
-#   @updated        Fri 23 May 2025 12:28:43 AM UTC
-#   @entries        11,077,035 ips
-#                   2,646 subnets
-#                   2,646 lines
+#   @updated        Sat 24 May 2025 12:29:14 AM UTC
+#   @entries        11,077,547 ips
+#                   2,647 subnets
+#                   2,647 lines
 #   @country        Iran (IR)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -262,6 +262,7 @@
 45.92.92.0/22
 45.94.212.0/22
 45.94.252.0/22
+45.95.88.0/22
 45.128.140.0/22
 45.129.36.0/22
 45.129.116.0/22
@@ -1016,13 +1017,13 @@
 176.46.136.0/24
 176.46.138.0/23
 176.46.141.0/24
-176.46.142.0/23
+176.46.142.0/24
 176.46.144.0/24
 176.46.148.0/23
 176.46.150.0/24
 176.46.152.0/24
 176.46.155.0/24
-176.46.156.0/23
+176.46.156.0/24
 176.46.158.0/24
 176.56.144.0/20
 176.62.144.0/21

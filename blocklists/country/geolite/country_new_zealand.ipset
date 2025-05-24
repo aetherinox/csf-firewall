@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_new_zealand_ipset
 #   @uuid           0c39e926-a00f-3b4d-9b4d-c98235337755
-#   @updated        Fri 23 May 2025 12:29:16 AM UTC
-#   @entries        7,059,300 ips
-#                   4,309 subnets
-#                   4,309 lines
+#   @updated        Sat 24 May 2025 12:29:47 AM UTC
+#   @entries        7,059,302 ips
+#                   4,313 subnets
+#                   4,313 lines
 #   @country        New Zealand (NZ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -135,7 +135,9 @@
 31.222.252.0/24
 32.109.42.192/27
 32.114.11.0/26
+32.114.65.54/32
 32.114.84.22/32
+32.114.90.178/32
 32.114.104.242/32
 32.114.114.238/32
 32.114.115.62/32
@@ -3084,7 +3086,9 @@
 2406:da70:2800::/40
 2406:daa0:2800::/40
 2406:dab8:2800::/40
+2406:dab9:2800::/40
 2406:dabb:2800::/40
+2406:daed:2800::/40
 2406:daee:2800::/40
 2406:daef:2800::/40
 2406:daf0:2800::/40

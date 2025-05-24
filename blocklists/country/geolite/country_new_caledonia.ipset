@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_new_caledonia_ipset
 #   @uuid           3f4459a8-2032-30af-a8d0-1922d6cd53f8
-#   @updated        Fri 23 May 2025 12:29:08 AM UTC
+#   @updated        Sat 24 May 2025 12:29:39 AM UTC
 #   @entries        151,003 ips
 #                   192 subnets
 #                   192 lines
