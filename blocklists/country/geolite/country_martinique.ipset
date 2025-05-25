@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_martinique_ipset
 #   @uuid           251981f4-fd66-3dcf-924d-1b88663f4946
-#   @updated        Sat 24 May 2025 12:29:34 AM UTC
+#   @updated        Sun 25 May 2025 12:31:48 AM UTC
 #   @entries        249,492 ips
 #                   227 subnets
 #                   227 lines
