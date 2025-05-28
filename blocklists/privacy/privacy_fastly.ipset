@@ -5,7 +5,7 @@
 #   @source         https://api.fastly.com/public-ip-list
 #   @id             privacy_fastly_ipset
 #   @uuid           bc39e07e-ba7f-3724-bb6a-d250b2d443ff
-#   @updated        Wed 28 May 2025 10:07:46 AM UTC
+#   @updated        Wed 28 May 2025 08:07:44 PM UTC
 #   @entries        304,128 ips
 #                   21 subnets
 #                   21 lines
