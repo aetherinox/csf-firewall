@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_burundi_ipset
 #   @uuid           6d26dde4-9e04-3131-b2e4-21768abd8f94
-#   @updated        Wed 28 May 2025 12:29:37 AM UTC
+#   @updated        Thu 29 May 2025 12:29:09 AM UTC
 #   @entries        41,664 ips
-#                   148 subnets
-#                   148 lines
+#                   149 subnets
+#                   149 lines
 #   @country        Burundi (BI)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -157,6 +157,7 @@
 2a0a:6044:f958::/46
 2a0a:6044:f95c::/48
 2a0c:9a40:95b2:4000::/52
+2a0f:85c1:81b:f200::/60
 2a10:500:f00::/40
 2a13:a5c3:d114::/46
 2a13:a5c7:2518::/48

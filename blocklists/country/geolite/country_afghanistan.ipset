@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_afghanistan_ipset
 #   @uuid           08cd1aec-051b-3b4b-988a-87488b4fa719
-#   @updated        Wed 28 May 2025 12:29:26 AM UTC
-#   @entries        188,192 ips
-#                   933 subnets
-#                   933 lines
+#   @updated        Thu 29 May 2025 12:28:58 AM UTC
+#   @entries        188,256 ips
+#                   935 subnets
+#                   935 lines
 #   @country        Afghanistan (AF)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -179,6 +179,7 @@
 146.75.214.38/31
 149.54.0.0/17
 152.36.192.0/19
+154.30.28.0/26
 154.57.200.0/21
 154.59.40.0/24
 154.59.42.0/24
@@ -263,7 +264,6 @@
 2001:470:d:a0b::/64
 2001:470:d:a5b::/64
 2001:470:d:cab::/64
-2001:470:d:cb2::/64
 2001:470:d:d94::/64
 2001:470:d:f0e::/64
 2001:470:d:fac::/64
@@ -453,6 +453,7 @@
 2001:470:71:6c9::/64
 2001:470:7c:18b::/64
 2001:470:1f05:10d::/64
+2001:470:1f05:228::/64
 2001:470:1f05:448::/64
 2001:470:1f05:4cf::/64
 2001:470:1f05:639::/64
@@ -946,6 +947,7 @@
 2a09:bac6:30::/44
 2a0c:9a40:95b0::/52
 2a0f:7803:ff10:6000::/51
+2a0f:85c1:81b:f000::/60
 2a10:500:3f00::/40
 2a10:9007:2:1::/64
 2a13:a5c3:d400::/46

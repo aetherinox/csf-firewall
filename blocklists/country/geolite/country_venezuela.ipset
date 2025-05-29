@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_venezuela_ipset
 #   @uuid           62d2b174-58b0-38d6-9496-7bfa471e73e6
-#   @updated        Wed 28 May 2025 12:31:57 AM UTC
+#   @updated        Thu 29 May 2025 12:31:29 AM UTC
 #   @entries        7,477,797 ips
-#                   1,451 subnets
-#                   1,451 lines
+#                   1,452 subnets
+#                   1,452 lines
 #   @country        Venezuela (VE)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -1467,6 +1467,7 @@
 2a0e:8f02:10f3:24::/64
 2a0e:b107:931::/48
 2a0e:b107:932::/48
+2a0f:85c1:81b:fc10::/60
 2a10:9007:3:e::/64
 2a13:6840::/32
 2a13:a5c7:25ed::/48

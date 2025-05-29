@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_micronesia_ipset
 #   @uuid           41e48b8a-0631-3bc7-8a9a-42a72db4774b
-#   @updated        Wed 28 May 2025 12:30:09 AM UTC
+#   @updated        Thu 29 May 2025 12:29:39 AM UTC
 #   @entries        16,380 ips
-#                   157 subnets
-#                   157 lines
+#                   158 subnets
+#                   158 lines
 #   @country        Micronesia (FM)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -175,5 +175,6 @@
 2a09:bac5:31e0::/44
 2a09:bac6:31e0::/44
 2a0c:9a40:95b8:e000::/52
+2a0f:85c1:81b:f740::/60
 2a13:a5c7:2549::/48
 2a13:a5c7:25ff:4800::/56

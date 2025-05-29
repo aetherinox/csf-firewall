@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_san_marino_ipset
 #   @uuid           dd9a0f9e-486d-3e2f-96c2-56c0ffb6b3c0
-#   @updated        Wed 28 May 2025 12:31:24 AM UTC
-#   @entries        40,124 ips
-#                   176 subnets
-#                   176 lines
+#   @updated        Thu 29 May 2025 12:30:56 AM UTC
+#   @entries        40,140 ips
+#                   178 subnets
+#                   178 lines
 #   @country        San Marino (SM)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -100,6 +100,7 @@
 185.146.128.0/22
 185.168.170.0/23
 192.145.48.0/22
+193.84.183.240/28
 194.0.27.0/24
 194.50.99.205/32
 194.183.64.0/19
@@ -190,6 +191,7 @@
 2a0c:9a40:95bb:f000::/52
 2a0e:b107:bad::/48
 2a0e:d340::/32
+2a0f:85c1:81b:f970::/60
 2a0f:fb42::/32
 2a13:9840::/29
 2a13:a5c3:d08c::/46
