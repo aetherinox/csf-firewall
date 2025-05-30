@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_saint_helena_ipset
 #   @uuid           235a6118-84b6-355c-b4ab-3f624b63a353
-#   @updated        Thu 29 May 2025 12:30:54 AM UTC
+#   @updated        Fri 30 May 2025 12:31:58 AM UTC
 #   @entries        1,047 ips
 #                   51 subnets
 #                   51 lines
