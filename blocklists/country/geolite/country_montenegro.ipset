@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_montenegro_ipset
 #   @uuid           f6e9b705-ad6a-3a19-87ae-34ca8e62e2e6
-#   @updated        Sat 31 May 2025 12:30:25 AM UTC
+#   @updated        Sun 01 Jun 2025 12:35:08 AM UTC
 #   @entries        199,754 ips
 #                   280 subnets
 #                   280 lines

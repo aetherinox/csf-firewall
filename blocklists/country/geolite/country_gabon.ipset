@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_gabon_ipset
 #   @uuid           b1fb9988-aeda-3423-b9a4-0cb5297908bf
-#   @updated        Sat 31 May 2025 12:29:47 AM UTC
+#   @updated        Sun 01 Jun 2025 12:34:31 AM UTC
 #   @entries        397,534 ips
 #                   174 subnets
 #                   174 lines
