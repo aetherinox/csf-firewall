@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_syria_ipset
 #   @uuid           9a66a3c5-3d93-33bd-8b19-51515ea421f2
-#   @updated        Mon 02 Jun 2025 12:32:21 AM UTC
+#   @updated        Tue 03 Jun 2025 12:31:57 AM UTC
 #   @entries        1,301,163 ips
 #                   341 subnets
 #                   341 lines
