@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_british_indian_ocean_territory_ipset
 #   @uuid           e28ec2a7-c431-3091-a7df-8562d41f1971
-#   @updated        Tue 03 Jun 2025 12:30:57 AM UTC
+#   @updated        Wed 04 Jun 2025 12:32:01 AM UTC
 #   @entries        3,179 ips
-#                   89 subnets
-#                   89 lines
+#                   90 subnets
+#                   90 lines
 #   @country        British Indian Ocean Territory (IO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -61,6 +61,7 @@
 2001:470:19:7f7::/64
 2001:470:19:10a4::/64
 2001:470:19:10c3::/64
+2001:470:24:6db::/64
 2001:470:36:7ff::/64
 2001:470:fbee::/48
 2001:470:fbf9::/48

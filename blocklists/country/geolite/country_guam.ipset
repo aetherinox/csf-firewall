@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_guam_ipset
 #   @uuid           2e4478a5-74b2-359a-821a-39a5af063a94
-#   @updated        Tue 03 Jun 2025 12:30:48 AM UTC
-#   @entries        221,375 ips
-#                   250 subnets
-#                   250 lines
+#   @updated        Wed 04 Jun 2025 12:31:52 AM UTC
+#   @entries        223,167 ips
+#                   253 subnets
+#                   253 lines
 #   @country        Guam (GU)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -24,6 +24,9 @@
 5.62.56.110/31
 5.62.60.165/32
 5.62.60.166/31
+8.3.112.0/22
+8.3.116.0/24
+8.3.118.0/23
 8.3.120.0/22
 8.3.124.0/23
 8.3.126.0/24

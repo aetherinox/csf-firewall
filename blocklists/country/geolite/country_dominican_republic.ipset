@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_dominican_republic_ipset
 #   @uuid           29cf6def-49df-3d1e-a81d-4bc234f77ec2
-#   @updated        Tue 03 Jun 2025 12:30:26 AM UTC
+#   @updated        Wed 04 Jun 2025 12:31:29 AM UTC
 #   @entries        1,910,600 ips
-#                   996 subnets
-#                   996 lines
+#                   988 subnets
+#                   988 lines
 #   @country        Dominican Republic (DO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -818,6 +818,7 @@
 2803:7b10::/32
 2803:7d10::/32
 2803:7d90::/32
+2803:7ed0::/32
 2803:8090::/32
 2803:8490::/32
 2803:8710::/32
@@ -909,20 +910,11 @@
 2a02:26f7:be84:43d0::/61
 2a02:26f7:be84:43d8::/62
 2a02:26f7:be85:4000::/64
-2a02:26f7:be88:4000::/64
-2a02:26f7:be88:43c0::/60
-2a02:26f7:be88:43d0::/61
-2a02:26f7:be88:43d8::/62
+2a02:26f7:be88::/48
 2a02:26f7:be89:4000::/64
-2a02:26f7:be8c:4000::/64
-2a02:26f7:be8c:43c0::/60
-2a02:26f7:be8c:43d0::/61
-2a02:26f7:be8c:43d8::/62
+2a02:26f7:be8c::/48
 2a02:26f7:be8d:4000::/64
-2a02:26f7:be90:4000::/64
-2a02:26f7:be90:43c0::/60
-2a02:26f7:be90:43d0::/61
-2a02:26f7:be90:43d8::/62
+2a02:26f7:be90::/48
 2a02:26f7:be91:4000::/64
 2a02:5740:78::/48
 2a02:5741:78::/48
