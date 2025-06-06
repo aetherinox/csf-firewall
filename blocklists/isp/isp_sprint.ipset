@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             isp_sprint_ipset
 #   @uuid           2bdab4b3-4e73-39a5-887f-d74798d7c94e
-#   @updated        Wed 04 Jun 2025 10:09:48 AM UTC
-#   @entries        10,572,184 ips
-#                   1,029 subnets
-#                   1,029 lines
+#   @updated        Fri 06 Jun 2025 04:43:22 AM UTC
+#   @entries        10,570,136 ips
+#                   1,026 subnets
+#                   1,026 lines
 #   @asn            
 #                   AS1239, AS150389, AS1789, 
 #                   AS1790, AS1791, AS1792, 
@@ -194,9 +194,6 @@
 45.205.236.0/22
 45.207.0.0/24
 45.207.1.0/24
-46.3.116.0/22
-46.3.116.0/23
-46.3.118.0/23
 46.3.190.0/24
 46.3.220.0/23
 46.3.230.0/23
