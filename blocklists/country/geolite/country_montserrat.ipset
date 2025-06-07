@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_montserrat_ipset
 #   @uuid           cacb1f1d-bdf1-3b5d-8bf9-57c89b168c78
-#   @updated        Wed 04 Jun 2025 12:32:28 AM UTC
+#   @updated        Sat 07 Jun 2025 12:32:48 AM UTC
 #   @entries        2,065 ips
 #                   106 subnets
 #                   106 lines

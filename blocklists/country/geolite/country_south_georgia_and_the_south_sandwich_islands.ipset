@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_south_georgia_and_the_south_sandwich_islands_ipset
 #   @uuid           78f7d2c5-303a-3058-b5ed-6380b00f1389
-#   @updated        Wed 04 Jun 2025 12:31:51 AM UTC
+#   @updated        Sat 07 Jun 2025 12:32:16 AM UTC
 #   @entries        273 ips
-#                   37 subnets
-#                   37 lines
+#                   38 subnets
+#                   38 lines
 #   @country        South Georgia and the South Sandwich Islands (GS)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -38,6 +38,7 @@
 194.50.99.91/32
 2001:470:19:1067::/64
 2001:470:24:86d::/64
+2001:470:24:914::/64
 2001:470:36:7fd::/64
 2606:40:1260::/43
 2607:8940:4200:e000::/55
