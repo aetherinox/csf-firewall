@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_egypt_ipset
 #   @uuid           72b278a4-426a-31f9-9ef4-b8fd97796a62
-#   @updated        Sat 07 Jun 2025 12:31:58 AM UTC
+#   @updated        Mon 09 Jun 2025 12:33:07 AM UTC
 #   @entries        24,213,230 ips
 #                   1,072 subnets
 #                   1,072 lines

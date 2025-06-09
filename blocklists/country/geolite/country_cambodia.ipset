@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_cambodia_ipset
 #   @uuid           eb3d3651-e289-341b-aec3-0af24e6471ab
-#   @updated        Sat 07 Jun 2025 12:32:32 AM UTC
+#   @updated        Mon 09 Jun 2025 12:33:41 AM UTC
 #   @entries        461,383 ips
 #                   733 subnets
 #                   733 lines
