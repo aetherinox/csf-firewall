@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_zambia_ipset
 #   @uuid           884b8971-6fab-347f-9eea-0d6068d76fed
-#   @updated        Mon 09 Jun 2025 12:35:09 AM UTC
+#   @updated        Tue 10 Jun 2025 12:35:03 AM UTC
 #   @entries        1,648,571 ips
 #                   268 subnets
 #                   268 lines
