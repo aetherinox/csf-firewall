@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_montserrat_ipset
 #   @uuid           cacb1f1d-bdf1-3b5d-8bf9-57c89b168c78
-#   @updated        Tue 10 Jun 2025 12:33:48 AM UTC
+#   @updated        Wed 11 Jun 2025 12:32:06 AM UTC
 #   @entries        2,065 ips
-#                   106 subnets
-#                   106 lines
+#                   108 subnets
+#                   108 lines
 #   @country        Montserrat (MS)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -63,9 +63,11 @@
 199.7.90.0/24
 208.90.112.0/22
 209.59.97.0/24
+2001:470:19:e3b::/64
 2001:470:19:1309::/64
 2001:470:26:7c4::/64
 2001:470:fa65::/48
+2600:70ff:a963::/48
 2605:9e40:c000::/48
 2606:40:1200::/43
 2606:40:20f5:e000::/51

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_faroe_islands_ipset
 #   @uuid           fe41ff40-f9e5-3c51-8116-e00a97c34fb3
-#   @updated        Tue 10 Jun 2025 12:33:04 AM UTC
+#   @updated        Wed 11 Jun 2025 12:31:20 AM UTC
 #   @entries        46,010 ips
-#                   155 subnets
-#                   155 lines
+#                   154 subnets
+#                   154 lines
 #   @country        Faroe Islands (FO)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -100,6 +100,7 @@
 2001:470:d:6c5::/64
 2001:470:24:731::/64
 2001:470:1a34::/48
+2001:470:1f09:73a::/64
 2001:470:1f1d:46d::/64
 2604:ca00:183:8000::/49
 2604:ca00:193:8000::/49
@@ -133,9 +134,7 @@
 2a02:26f7:d084:cd80::/63
 2a02:26f7:d084:cd82::/64
 2a02:26f7:d085:4000::/64
-2a02:26f7:d088:4000::/64
-2a02:26f7:d088:cd80::/63
-2a02:26f7:d088:cd82::/64
+2a02:26f7:d088::/48
 2a02:26f7:d089:4000::/64
 2a03:ace0:122::/47
 2a03:ace0:222::/47

@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_cape_verde_ipset
 #   @uuid           6aa37f49-5942-30c1-971e-afa448efc6ba
-#   @updated        Tue 10 Jun 2025 12:32:46 AM UTC
+#   @updated        Wed 11 Jun 2025 12:31:03 AM UTC
 #   @entries        49,096 ips
-#                   176 subnets
-#                   176 lines
+#                   177 subnets
+#                   177 lines
 #   @country        Cape Verde (CV)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -115,6 +115,7 @@
 197.255.128.0/20
 212.221.33.40/30
 213.150.192.0/21
+2001:470:67:5e1::/64
 2001:470:71:6ef::/64
 2001:470:1f05:229::/64
 2001:470:1f21:2c0::/64

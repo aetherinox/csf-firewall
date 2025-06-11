@@ -5,10 +5,10 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_uzbekistan_ipset
 #   @uuid           65d84ffc-8de0-33f8-b716-16e0f12775c7
-#   @updated        Tue 10 Jun 2025 12:34:54 AM UTC
-#   @entries        371,816 ips
-#                   724 subnets
-#                   724 lines
+#   @updated        Wed 11 Jun 2025 12:33:10 AM UTC
+#   @entries        371,944 ips
+#                   723 subnets
+#                   723 lines
 #   @country        Uzbekistan (UZ)
 #   @expires        24 hours
 #   @category       Geolocation
@@ -416,7 +416,7 @@
 194.76.15.0/24
 194.93.24.0/22
 194.107.115.0/24
-194.213.16.0/25
+194.213.16.0/24
 195.64.112.0/24
 195.69.188.0/22
 195.88.214.0/23
@@ -551,8 +551,7 @@
 2a02:26f7:cdc4:4000::/64
 2a02:26f7:cdc4:c900::/64
 2a02:26f7:cdc5:4000::/64
-2a02:26f7:cdc8:4000::/64
-2a02:26f7:cdc8:c900::/64
+2a02:26f7:cdc8::/48
 2a02:26f7:cdc9:4000::/64
 2a02:26f7:cdcc:4000::/64
 2a02:26f7:cdcc:c900::/64
