@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_france_ipset
 #   @uuid           67899565-63fb-3d3a-a230-729c006f56a6
-#   @updated        Fri 13 Jun 2025 12:32:57 AM UTC
+#   @updated        Sun 15 Jun 2025 12:34:46 AM UTC
 #   @entries        83,806,011 ips
 #                   39,693 subnets
 #                   39,693 lines

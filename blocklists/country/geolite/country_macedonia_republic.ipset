@@ -5,7 +5,7 @@
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_macedonia_republic_ipset
 #   @uuid           fbeeabfd-60e1-301e-a1f2-fb31f8ffe56e
-#   @updated        Fri 13 Jun 2025 12:33:37 AM UTC
+#   @updated        Sun 15 Jun 2025 12:35:26 AM UTC
 #   @entries        712,288 ips
 #                   419 subnets
 #                   419 lines
