@@ -9,7 +9,7 @@
 #                       Copyright (C) 2006-2025 Jonathan Michaelson
 #                       Copyright (C) 2006-2025 Way to the Web Ltd.
 #   @license            GPLv3
-#   @updated            02.12.2026
+#   @updated            09.06.2026
 #   
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -49,6 +49,35 @@ sub checkip {
 	my $ipin = shift;
 	my $ret = 0;
 	my $ipref = 0;
+# #
+#   Changelog Notes
+#   
+#   @tag            checkip::cidr-prefix-0
+#   @since          CSF v15.11
+#   @subroutines    checkip(), cccheckip()
+#   @fixed          CIDR prefix /0 treated as false by Perl and bypassed the
+#                   CIDR range check.
+#                       checkip( '192.168.1.1/0' )  => pass / returned 4 (int)
+#                       checkip( '2001:db8::1/0' )  => pass / returned 6 (int)
+#                   
+#                   /0 prefix used directly in firewall rules could match entire
+#                   IPv4 or IPv6 address space, potentially blocking all IPs.
+#                       IPv4:       Firewall Rule:  44.252.80.5/0
+#                                   Blocks:         0.0.0.0 - 255.255.255.255
+#   
+#                       IPv6:       Firewall Rule:  2001:db8::1/0
+#                                   Blocks:         0000:0000:0000:0000:0000:0000:0000:0000
+#                                                   ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+#   
+#                   CSF >= v15.11 validates provided CIDR values, rejects
+#                   IPv4 and IPv6 /0 prefix lengths.
+#                       CSF <= v15.10:      if ( $cidr )
+#                       CSF >= v15.11:      if ( $cidr ne "" )
+#   
+#   @note           Found no existing functionality which explicitly requires
+#                   an IP prefix length to be /0
+# #
+
 	my $ip;
 	my $cidr;
 	if (ref $ipin) {
@@ -65,16 +94,44 @@ sub checkip {
 
 	if ($ip =~ /^$ipv4reg$/) {
 		$ret = 4;
-		if ($cidr) {
-			unless ($cidr >= 1 && $cidr <= 32) {return 0}
+
+        # #
+        #   IPv4 › CIDR Prefix Length
+        #   
+        #   Reject prefix lower than /1
+        #   Reject prefix higher than /32
+        #   
+        #   @note       See [checkip::cidr-prefix-0]
+        # #
+
+		if ( $cidr ne "" )
+        {
+			if ( $cidr < 1 || $cidr > 32 )
+            {
+                return 0
+            }
 		}
 		if ($ip eq "127.0.0.1") {return 0}
 	}
 
 	if ($ip =~ /^$ipv6reg$/) {
 		$ret = 6;
-		if ($cidr) {
-			unless ($cidr >= 1 && $cidr <= 128) {return 0}
+
+        # #
+        #   IPv6 › CIDR Prefix Length
+        #   
+        #   Reject prefix lower than /1
+        #   Reject prefix higher than /128
+        #   
+        #   @note       See [checkip::cidr-prefix-0]
+        # #
+
+		if ( $cidr ne "" )
+        {
+            if ( $cidr < 1 || $cidr > 128 )
+            {
+                return 0
+            }
 		}
 		$ip =~ s/://g;
 		$ip =~ s/^0*//g;
@@ -121,8 +178,22 @@ sub cccheckip {
 
 	if ($ip =~ /^$ipv4reg$/) {
 		$ret = 4;
-		if ($cidr) {
-			unless ($cidr >= 1 && $cidr <= 32) {return 0}
+
+        # #
+        #   IPv4 › CIDR Prefix Length
+        #   
+        #   Reject prefix lower than /1
+        #   Reject prefix higher than /32
+        #   
+        #   @note       See [checkip::cidr-prefix-0]
+        # #
+
+		if ( $cidr ne "" )
+        {
+			if ( $cidr < 1 || $cidr > 32 )
+            {
+                return 0
+            }
 		}
 		if ($ip eq "127.0.0.1") {return 0}
 		my $type;
@@ -137,8 +208,22 @@ sub cccheckip {
 
 	if ($ip =~ /^$ipv6reg$/) {
 		$ret = 6;
-		if ($cidr) {
-			unless ($cidr >= 1 && $cidr <= 128) {return 0}
+
+        # #
+        #   IPv6 › CIDR Prefix Length
+        #   
+        #   Reject prefix lower than /1
+        #   Reject prefix higher than /128
+        #   
+        #   @note       See [checkip::cidr-prefix-0]
+        # #
+
+		if ( $cidr ne "" )
+        {
+            if ( $cidr < 1 || $cidr > 128 )
+            {
+                return 0
+            }
 		}
 		$ip =~ s/://g;
 		$ip =~ s/^0*//g;
