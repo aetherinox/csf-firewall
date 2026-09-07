@@ -9,7 +9,7 @@
 #                       Copyright (C) 2006-2025 Jonathan Michaelson
 #                       Copyright (C) 2006-2025 Way to the Web Ltd.
 #   @license            GPLv3
-#   @updated            02.12.2026
+#   @updated            09.06.2026
 #   
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -85,7 +85,82 @@ sub logfile {
 	}
 	return;
 }
-# end logfile
-###############################################################################
+
+# #
+#   Debug Log
+#   
+#   Write debug messages when the defined LEVEL requirement is met. Determines 
+#   the name of the subroutine calling debuglog() automatically.
+#   
+#   Calls sub logfile; stores logs in:
+#       /var/log/lfd.log
+#       /var/log/lfd_messenger.log
+#   
+#   Debuglevel is any int between 0 and 5.
+#   
+#   Status can be specified by str|int:
+#       0   FAIL
+#       1   OK
+#       2   WARN
+#       3   ABORT
+#       4   INFO
+#   
+#   If status is not defined, defaults to INFO (4)
+#   
+#   @usage          debuglog( 1, PACKAGE_NAME, ConfigServer::Messenger::PACKAGE_NAME( ), "Debug message" );
+#                   debuglog( 1, PACKAGE_NAME, ConfigServer::Messenger::PACKAGE_NAME( ), 'ok', "Debug message" );
+#                   debuglog( 1, PACKAGE_NAME, ConfigServer::Messenger::PACKAGE_NAME( ), 1, "Debug message" );
+#   
+#   @param          level           num         minimum DEBUG level required
+#   @param          package         str         package name
+#   @param          module          str         module name
+#   @param          status          str|num     optional message status; defaults to INFO
+#   @param          message         str         message to write
+#   @return                                     undef
+# #
+
+sub debuglog
+{
+	my ( $level, $package, $module, @args ) = @_;
+
+	_config_load();
+
+	return if ( $config{DEBUG} // 0 ) < $level;
+
+	my ( $status, $message );
+
+	if ( @args == 1 )
+	{
+		$status		= 'info';
+		$message	= $args[ 0 ];
+	}
+	else
+	{
+		$status		= $args[ 0 ];
+		$message	= $args[ 1 ];
+	}
+
+	my %status_map =
+	(
+		0       => 'FAIL',
+		1       => 'OK',
+		2       => 'WARN',
+		3       => 'ABORT',
+		4       => 'INFO',
+		'fail'  => 'FAIL',
+		'ok'    => 'OK',
+		'warn'  => 'WARN',
+		'abort' => 'ABORT',
+		'info'  => 'INFO',
+	);
+
+	$status     = lc $status if $status !~ /^\d+$/;
+	$status     = $status_map{ $status } // uc $status;
+	my $sub     = ( caller(1) )[3] // 'main';
+
+	logfile( "[DEBUG:$level] [$sub] [$module] [$status]: $message" );
+
+	return;
+}
 
 1;
